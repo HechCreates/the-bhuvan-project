@@ -1,4 +1,5 @@
+# Staging. Crawling is deliberately left open so that crawlers can read the
+# noindex in the page, and so link previews keep working; indexing is
+# refused by the meta tag and the X-Robots-Tag header instead.
 User-agent: *
 Allow: /
-
-Sitemap: https://thebhuvanproject.netlify.app/sitemap.xml

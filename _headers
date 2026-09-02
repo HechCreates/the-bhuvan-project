@@ -1,3 +1,9 @@
+# --- indexing (managed by build/set-indexing.mjs) ---
+# Covers og-image.jpg and the photographs too, which a meta tag cannot reach.
+/*
+  X-Robots-Tag: noindex, nofollow
+# --- end indexing ---
+
 # Browsers reject a manifest served as octet-stream; Netlify does not know the
 # .webmanifest extension on its own.
 /site.webmanifest
