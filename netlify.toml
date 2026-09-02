@@ -1,0 +1,16 @@
+# Netlify reads this in preference to the dashboard settings, so the site keeps
+# building correctly without anyone touching the UI.
+#
+# Netlify is a staging host only. The site moves to a custom domain served
+# entirely from GitHub once the design is signed off, so nothing here may be
+# load-bearing: _headers and _redirects are optional extras, and dist/ is a
+# plain static folder any host can serve.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # sharp is a devDependency and only needed to regenerate images locally
+  NPM_FLAGS = "--omit=dev"

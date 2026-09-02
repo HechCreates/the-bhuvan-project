@@ -1,0 +1,92 @@
+order: 4
+slug: nilgiris-biosphere-reserve
+title: Watershed management and ecological restoration of a tea estate, Nilgiris
+subtitle: ''
+location: Nilgiris
+status: Ongoing
+link: null
+body:
+  - >-
+    A landscape extending across several hill slopes and valleys is set in the mountains of
+    Nilgiris, this ongoing initiative is an integrated effort to restore the ecological and
+    hydrological balance of a high-altitude tea estate. The project responds to challenges
+    such as soil erosion, slope instability, invasive species, droughts and declining
+    groundwater, all of which directly affect both biodiversity and land productivity.
+  - >-
+    The process began with an in-depth ecological and hydrological assessment, establishing
+    a strong scientific foundation for a Resilient Watershed Management Strategy. Four pilot
+    micro-watersheds were identified to demonstrate low-impact, non-cementitious soil and
+    water conservation techniques, restoration of hill wetlands and stream systems and
+    regeneration of native shola forest and montane grassland habitats. Each pilot site
+    tests adaptive solutions for erosion control, improved water retention and the creation
+    of ecological corridors within the working estate.
+  - >-
+    By combining Assisted Natural Regeneration (ANR) with field-based watershed measures,
+    the project addresses critical issues such as drought, landslides, Invasive species
+    management and habitat fragmentation. The learn>study>develop>demonstrate framework
+    enables a cycle of continuous observation, innovation, and implementation. Over time,
+    this forms a replicable model for climate-adaptive land management, where ecological
+    processes and productive land use are harmonized to sustain both people and nature.
+card:
+  number: '04'
+  title: Nilgiris Biosphere Reserve
+  subtitle: Watershed management and ecological restoration of a tea estate
+  image: images/cards/nilgiris-biosphere-reserve.webp
+  alt: An Indian gaur emerging from dense tea-estate vegetation at night in the Nilgiris.
+gallery:
+  - image: images/projects/nilgiris-biosphere-reserve/01.webp
+    caption: Typical Tea estate landscape
+    width: 500
+    height: 277
+  - image: images/projects/nilgiris-biosphere-reserve/02.webp
+    caption: Proposed render for Non-Tea Riparian zones
+    width: 500
+    height: 354
+  - image: images/projects/nilgiris-biosphere-reserve/03.webp
+    caption: Existing and proposed section Non-Tea Riparian zones
+    width: 500
+    height: 553
+  - image: images/projects/nilgiris-biosphere-reserve/04.webp
+    caption: Existing and proposed section Non-Tea rocky outcrop zones
+    width: 500
+    height: 464
+  - image: images/projects/nilgiris-biosphere-reserve/05.webp
+    caption: Soil and water conservation measure on the hill slopes
+    width: 500
+    height: 539
+  - image: images/projects/nilgiris-biosphere-reserve/06.webp
+    caption: Bog bulrush planted in the newly developed wetland
+    width: 500
+    height: 375
+  - image: images/projects/nilgiris-biosphere-reserve/07.webp
+    caption: Development of hetrogeneous habitats in the Non-Tea areas
+    width: 500
+    height: 375
+  - image: images/projects/nilgiris-biosphere-reserve/08.webp
+    caption: Introduction of native flora after managing IAS
+    width: 500
+    height: 667
+  - image: images/projects/nilgiris-biosphere-reserve/09.webp
+    caption: Constructed Wetlands
+    width: 500
+    height: 225
+  - image: images/projects/nilgiris-biosphere-reserve/10.webp
+    caption: A network of hill wetlands and swamps
+    width: 500
+    height: 225
+  - image: images/projects/nilgiris-biosphere-reserve/11.webp
+    caption: ''
+    width: 500
+    height: 354
+  - image: images/projects/nilgiris-biosphere-reserve/12.webp
+    caption: Revival of Open dug wells
+    width: 500
+    height: 227
+  - image: images/projects/nilgiris-biosphere-reserve/13.webp
+    caption: Wild Gaur graasing along the newly developed wetlands
+    width: 500
+    height: 666
+  - image: images/projects/nilgiris-biosphere-reserve/14.webp
+    caption: Malabar Danao found in the newly developed wetlands
+    width: 500
+    height: 666

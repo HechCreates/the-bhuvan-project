@@ -1,0 +1,22 @@
+{
+  "name": "the-bhuvan-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Bhu.Van Project — ecological restoration and landscape architecture studio, Bengaluru",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "verify": "node build/verify-chrome.mjs && node build/verify-links.mjs",
+    "assets": "node build/gen-brand-assets.mjs",
+    "serve": "node build/serve.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

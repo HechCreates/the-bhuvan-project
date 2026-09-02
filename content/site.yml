@@ -1,0 +1,37 @@
+# Site-wide content: the things that appear on every page.
+#
+# Until now the header and footer were copied into all 11 pages, so changing a
+# nav label meant changing it in 11 places. This file is the single source; the
+# build writes it into every page.
+
+brand:
+  name: The Bhu.Van Project
+  logo: images/site/logo.webp
+  logoAlt: The Bhu.Van Project logo
+  tagline: "Design · Ecology · Resilience"
+
+# Each entry becomes a link in the desktop nav, the mobile drawer and the
+# footer. `route` points at a page that exists; `soon` marks one that does not
+# exist yet, and the link falls back to home.
+nav:
+  - label: Home
+    route: home
+  - label: About
+    route: about
+  - label: Projects
+    route: projects
+  - label: Testimonials
+    route: testimonials
+  - label: Gallery
+    soon: gallery
+
+cta:
+  label: Get in Touch
+
+contact:
+  location: Bengaluru, Karnataka, India
+  email: nikhiludupa4@gmail.com
+
+footer:
+  copyright: "© 2026 The Bhu.Van Project"
+  motto: "Rewild · Restore · Reimagine"

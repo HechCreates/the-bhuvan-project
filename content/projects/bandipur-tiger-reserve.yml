@@ -1,0 +1,87 @@
+order: 1
+slug: bandipur-tiger-reserve
+title: Hydro-Ecological Restoration in collaboration with Junglescapes Charitable Trust
+subtitle: Bandipur Tiger Reserve, Karnataka
+location: Bandipur Tiger Reserve, Karnataka
+status: Ongoing
+link:
+  label: Junglescapes
+  url: https://www.junglescapes.org/communitymc.html
+body:
+  - >-
+    Located along the northern boundary of the Bandipur Tiger Reserve in the Western Ghats
+    (global bio-diversity hotspot), this ongoing initiative with Junglescapes Charitable
+    Trust focuses on restoring the hydro-ecological integrity of a 1500 Acre degraded forest
+    landscape within the critical buffer zone also a narrow elephant corridor. Years of soil
+    erosion, invasive species, and disrupted drainage had weakened the natural water systems
+    that sustain both wildlife and native vegetation.
+  - >-
+    The project aimed to rebuild the hydrological and ecological processes that define this
+    landscape, restoring soil-water balance, enhancing native vegetation, and improving
+    habitat connectivity. Restoration interventions include contour bunds, check dams, and
+    earthen swales that slow runoff and increase groundwater recharge. These are
+    complemented by the management of Invasive Alien Species (IAS) such as Lantana, and
+    Assisted Natural Regeneration (ANR) using locally collected native seeds.
+  - >-
+    Working closely with local tribal woman SHG’s, the project combines ecological design
+    and traditional stewardship. Their participation in soil and water conservation works,
+    IAS management, seed collection, and site maintenance has been central to restoring the
+    land’s natural resilience. Native grass and woody species regeneration and increased
+    wildlife presence within the forest, Seasonal streams hold water for longer durations,
+    waterholes provide relief for wildlife during extreme dry periods are signs of recovery
+    and reflect the gradual return of balance.
+  - >-
+    Grounded in the shared philosophy of rewilding through water, soil, and community, this
+    collaboration demonstrates how restoration can reconnect natural systems and livelihoods
+    in one of India’s most vital ecological corridors.
+card:
+  number: '01'
+  title: Bandipur Tiger Reserve, Karnataka
+  subtitle: Hydro-ecological restoration with Junglescapes Charitable Trust
+  image: images/cards/bandipur-tiger-reserve.webp
+  alt: A restored waterhole holding water within the degraded forest landscape at Bandipur.
+gallery:
+  - image: images/projects/bandipur-tiger-reserve/01.webp
+    caption: Heterogeneous habitats emerging as the watershed recovers
+    width: 1500
+    height: 750
+  - image: images/projects/bandipur-tiger-reserve/02.webp
+    caption: Hydro-Eco Restoration work being implemented by tribal women SHGs
+    width: 1500
+    height: 841
+  - image: images/projects/bandipur-tiger-reserve/03.webp
+    caption: Documenting the process
+    width: 1000
+    height: 750
+  - image: images/projects/bandipur-tiger-reserve/04.webp
+    caption: Before and after the interventions
+    width: 1000
+    height: 708
+  - image: images/projects/bandipur-tiger-reserve/05.webp
+    caption: Stable stream flow during dry season
+    width: 640
+    height: 360
+  - image: images/projects/bandipur-tiger-reserve/06.webp
+    caption: Critical water source for wildlife
+    width: 640
+    height: 360
+  - image: images/projects/bandipur-tiger-reserve/07.webp
+    caption: Mapping the watershed of the region
+    width: 750
+    height: 373
+  - image: images/projects/bandipur-tiger-reserve/08.webp
+    caption: Natural recovery processes taking over the intervention area
+    width: 750
+    height: 375
+  - image: images/projects/bandipur-tiger-reserve/09.webp
+    caption: Habitat Recovering observed in 2024
+    width: 500
+    height: 560
+  - image: images/projects/bandipur-tiger-reserve/10.webp
+    caption: Indicators of habitat recovery
+    width: 500
+    height: 375
+  - image: images/projects/bandipur-tiger-reserve/11.webp
+    caption: Perennial water body with high cultural and ecological value for the region
+    width: 750
+    height: 375

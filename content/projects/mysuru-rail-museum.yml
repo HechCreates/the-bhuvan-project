@@ -1,0 +1,115 @@
+order: 3
+slug: mysuru-rail-museum
+title: Mysuru Rail Museum
+subtitle: ''
+location: Mysuru, Karnataka
+status: Completed
+link:
+  label: Virtual tour
+  url: https://mysururailmuseum.com/virtual-tour/
+body:
+  - >-
+    The Mysuru Railway Museum, established in 1979, is one of India’s earliest outdoor
+    railway museums dedicated to celebrating the nation’s rich railway heritage. Managed by
+    the South Western Railways, it showcases vintage steam locomotives, railway carriages,
+    inspection cars, signaling and telecommunication equipment and other historical
+    artifacts. Spread across over 1,30,000 sq ft adjacent to the Mysuru railway station, the
+    museum stands as a landmark of India’s engineering and cultural history.
+  - >-
+    By the end of 2019, the revitalization of the museum was commissioned to reimagine it as
+    a vibrant public space that blends heritage, ecology and design. The project was
+    developed in collaboration with the Divisional Railway Manager, Ar. Sumedha Sah, and Ar.
+    Rahul M. The master plan prioritized existing mature trees conservation and were
+    meticulously mapped and integrated into the design, shaping the layout of pathways,
+    galleries, and exhibit placements.
+  - >-
+    Handling railway exhibits weighing over 60 tons required precise engineering and
+    coordination, with cranes maneuvering locomotives and coaches into position without
+    disturbing the site ecology. The material palette draws from Mysuru’s architectural
+    heritage, local granite, Athangudi tiles, oxide flooring, and polished wooden furniture
+    evoke the city’s timeless character. Today, the museum attracts 300–400 visitors daily,
+    functioning as both a cultural landmark and a restored urban open space, allowing public
+    engagement with India’s rail legacy in a biodiverse and climate-sensitive setting.
+card:
+  number: '03'
+  title: Mysuru Rail Museum
+  subtitle: Reimagining a heritage railway museum as a biodiverse public space
+  image: images/cards/mysuru-rail-museum.webp
+  alt: The landscape masterplan drawing for the Mysuru Rail Museum revitalisation.
+gallery:
+  - image: images/projects/mysuru-rail-museum/01.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/02.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/03.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/04.webp
+    caption: ''
+    width: 500
+    height: 243
+  - image: images/projects/mysuru-rail-museum/05.webp
+    caption: ''
+    width: 500
+    height: 243
+  - image: images/projects/mysuru-rail-museum/06.webp
+    caption: ''
+    width: 500
+    height: 316
+  - image: images/projects/mysuru-rail-museum/07.webp
+    caption: ''
+    width: 500
+    height: 384
+  - image: images/projects/mysuru-rail-museum/08.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/09.webp
+    caption: ''
+    width: 500
+    height: 243
+  - image: images/projects/mysuru-rail-museum/10.webp
+    caption: ''
+    width: 500
+    height: 278
+  - image: images/projects/mysuru-rail-museum/11.webp
+    caption: ''
+    width: 500
+    height: 625
+  - image: images/projects/mysuru-rail-museum/12.webp
+    caption: ''
+    width: 500
+    height: 625
+  - image: images/projects/mysuru-rail-museum/13.webp
+    caption: ''
+    width: 500
+    height: 500
+  - image: images/projects/mysuru-rail-museum/14.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/15.webp
+    caption: ''
+    width: 500
+    height: 667
+  - image: images/projects/mysuru-rail-museum/16.webp
+    caption: ''
+    width: 300
+    height: 168
+  - image: images/projects/mysuru-rail-museum/17.webp
+    caption: ''
+    width: 500
+    height: 256
+  - image: images/projects/mysuru-rail-museum/18.webp
+    caption: ''
+    width: 300
+    height: 168
+  - image: images/projects/mysuru-rail-museum/19.webp
+    caption: ''
+    width: 500
+    height: 282
