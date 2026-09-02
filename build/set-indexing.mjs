@@ -17,8 +17,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const SRC = 'The-Bhu.Van-Project-Site.html';
-const D = 'deploy';
+const SRC = 'src/index.html';
+const D = 'static';
 const mode = (process.argv[2] || '').toLowerCase();
 const newOrigin = process.argv[3];
 
@@ -55,8 +55,7 @@ if (newOrigin && newOrigin !== cur) {
   log.push(`ok    origin ${cur} -> ${newOrigin} (${n} references)`);
 }
 fs.writeFileSync(SRC, s);
-fs.copyFileSync(SRC, path.join(D, 'index.html'));
-log.push('ok    refreshed deploy/index.html');
+log.push('ok    src/index.html updated; run `npm run build` to publish');
 
 /* ---- 3. robots.txt: crawling stays open either way ---- */
 const robotsTxt = mode === 'on'

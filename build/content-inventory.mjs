@@ -1,5 +1,5 @@
 import fs from 'fs';
-const s = fs.readFileSync('The-Bhu.Van-Project-Site.html', 'utf8');
+const s = fs.readFileSync('dist/index.html', 'utf8');
 
 // split into pages
 const marks = [...s.matchAll(/<div (?:id="[^"]*" )?data-page="([^"'+]+)"/g)];

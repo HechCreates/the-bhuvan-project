@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { ORDER, META } from './projects-content.mjs';
 
-const s = fs.readFileSync('The-Bhu.Van-Project-Site.html', 'utf8');
+const s = fs.readFileSync('dist/index.html', 'utf8');
 const imgsManifest = JSON.parse(fs.readFileSync('build/projects-images.json', 'utf8'));
 
 let bad = 0;

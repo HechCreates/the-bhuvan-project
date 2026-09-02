@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const s = fs.readFileSync('The-Bhu.Van-Project-Site.html', 'utf8');
+const s = fs.readFileSync('dist/index.html', 'utf8');
 const style = s.slice(s.indexOf('<style>') + 7, s.indexOf('</style>'));
 
 function splitRules(css) {

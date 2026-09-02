@@ -2,7 +2,7 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 
-const ROOT = process.cwd();
+const ROOT = path.join(process.cwd(), 'dist');
 const PORT = 8777;
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -17,8 +17,7 @@ const TYPES = {
 http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   // mimic a static host: "/" serves index.html where one exists
-  if (p === '/') p = fs.existsSync(path.join(ROOT, 'index.html'))
-    ? '/index.html' : '/The-Bhu.Van-Project-Site.html';
+  if (p === '/') p = '/index.html';
   const f = path.join(ROOT, p);
   if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
