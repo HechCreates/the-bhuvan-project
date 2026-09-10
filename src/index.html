@@ -134,7 +134,7 @@ body{margin:0}
 #page-home /* bottom row: eyebrow tags (left) aligned with keyword pills (right) */
 .hero-bottom{margin-top:auto;padding-bottom:clamp(2rem,5vh,3.5rem);display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
 #page-home .hero-tagpills{display:flex;gap:0;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease forwards 1.15s}
-#page-home .hero-tag{font-family:var(--fb);font-weight:600;font-size:.66rem;letter-spacing:.16em;
+#page-home .hero-tag{font-family:var(--fb);font-weight:600;font-size:.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(243,239,230,.62);display:inline-flex;align-items:center}
 #page-home .hero-tag + .hero-tag::before{content:'\00B7';margin:0 .5rem;opacity:.55}
 
@@ -929,19 +929,53 @@ body{margin:0}
    The statement's own size drops to 0.62 of what it was and .hero-key holds
    the original, so "people, place and ecology" is what carries. The same class
    on the lede lifts "rewild, restore, and reimagine" to match it. */
-#page-home .hero-statement{font-size:clamp(.85rem,min(2.1vw,6.2svh - 1.27vw - 2px),2.1rem)}
-#page-home .hero-key{font-size:clamp(1.35rem,min(3.4vw,10svh - 2.05vw - 3px),3.4rem);
-  line-height:1.1;display:inline}
-#page-home .hero-lede .hero-key{font-weight:600}
+/* One size per line; the keywords carry on weight alone. The paragraph sits
+   a step below the face's normal display weight so the phrase lifts off it
+   without breaking the line's rhythm, and takes the full off-white while the
+   surrounding copy stays slightly back. */
+#page-home .hero-statement{font-weight:500}
+#page-home .hero-key{display:inline;color:#FFF;text-shadow:0 2px 22px rgba(42,31,8,.55)}
+#page-home .hero-statement .hero-key{font-weight:800;letter-spacing:-.025em}
+#page-home .hero-lede .hero-key{font-weight:700;letter-spacing:-.005em}
 
 /* ---------- Map on the site's cream ----------
    The new drawing is transparent, so the ground now shows through where the
    old one carried its own white. */
 #page-home .map-btn img{background:var(--light);padding:14px}
-#page-home .map-panel-figure{background:var(--light)}
 
 /* ---------- What we do, without the numbering ---------- */
 #page-home .practice-coord{min-width:0;gap:0}
+
+/* ---------- Map panel ----------
+   The drawing's dots are #AEAEAE. On the cream they measured 1.8:1 and washed
+   out; on soil they are 6.4:1, and the red site markers 3.6:1. */
+#page-home .map-panel-figure{background:var(--soil)}
+#page-home .map-panel-figure img{max-height:min(440px,44svh)}
+
+/* At 1440x700 the body column ran 101px past the panel and cut the keywords
+   off. The rhythm tightens with the viewport instead of scrolling. */
+@media (max-height:840px){
+  #page-home .map-panel-grid{padding:clamp(1.2rem,2.4vw,2rem);gap:clamp(1.2rem,2.4vw,2rem)}
+  #page-home .map-lead{margin-top:.75rem}
+  #page-home .map-features{margin-top:1.1rem;padding-top:1.1rem;gap:1rem 1.5rem}
+  #page-home .map-feat svg{width:32px;height:32px}
+  #page-home .map-feat h3{margin:.45rem 0 .25rem}
+  #page-home .map-keywords{margin-top:1.1rem;padding-top:.9rem}
+}
+@media (max-height:700px){
+  #page-home .map-h{font-size:clamp(1.35rem,2.2vw,1.9rem)}
+  #page-home .map-lead{font-size:.9rem;line-height:1.5}
+  #page-home .map-feat p{font-size:.8rem;line-height:1.45}
+  #page-home .map-features{margin-top:.8rem;padding-top:.8rem;gap:.8rem 1.4rem}
+  #page-home .map-feat svg{width:28px;height:28px}
+}
+
+/* ---------- Collaborator logos ----------
+   White rather than cream: several of these marks are supplied on white and
+   were showing a faint square against the tile. Padding drops so the mark
+   itself grows while the tile keeps its dimensions. */
+#page-home .collab-item,#page-about .collab-item{background:#FFF;padding:4px}
+#page-home .collab-item img,#page-about .collab-item img{width:100%;height:100%;object-fit:contain}
 </style>
 </head>
 <body>
@@ -1020,7 +1054,7 @@ body{margin:0}
   <div class="about-bottom">
     <div class="wrap">
       <p class="label collab-head">Collaborators and partner firms</p>
-      <div class="collab-grid" data-reveal><div class="collab-item"><img src="images/partners/01.png" alt="Partner or collaborator logo 1" loading="lazy"></div><div class="collab-item"><img src="images/partners/02.png" alt="Partner or collaborator logo 2" loading="lazy"></div><div class="collab-item"><img src="images/partners/03.png" alt="Partner or collaborator logo 3" loading="lazy"></div><div class="collab-item"><img src="images/partners/04.png" alt="Partner or collaborator logo 4" loading="lazy"></div><div class="collab-item"><img src="images/partners/05.png" alt="Partner or collaborator logo 5" loading="lazy"></div><div class="collab-item"><img src="images/partners/06.png" alt="Partner or collaborator logo 6" loading="lazy"></div><div class="collab-item"><img src="images/partners/07.png" alt="Partner or collaborator logo 7" loading="lazy"></div><div class="collab-item"><img src="images/partners/08.png" alt="Partner or collaborator logo 8" loading="lazy"></div><div class="collab-item"><img src="images/partners/09.png" alt="Partner or collaborator logo 9" loading="lazy"></div><div class="collab-item"><img src="images/partners/10.png" alt="Partner or collaborator logo 10" loading="lazy"></div><div class="collab-item"><img src="images/partners/11.png" alt="Partner or collaborator logo 11" loading="lazy"></div><div class="collab-item"><img src="images/partners/12.png" alt="Partner or collaborator logo 12" loading="lazy"></div><div class="collab-item"><img src="images/partners/13.png" alt="Partner or collaborator logo 13" loading="lazy"></div><div class="collab-item"><img src="images/partners/14.png" alt="Partner or collaborator logo 14" loading="lazy"></div><div class="collab-item"><img src="images/partners/15.png" alt="Partner or collaborator logo 15" loading="lazy"></div><div class="collab-item"><img src="images/partners/16.png" alt="Partner or collaborator logo 16" loading="lazy"></div><div class="collab-item"><img src="images/partners/17.png" alt="Partner or collaborator logo 17" loading="lazy"></div></div>
+      <div class="collab-grid" data-reveal><div class="collab-item"><img src="images/partners/01.png" alt="Souk" loading="lazy"></div><div class="collab-item"><img src="images/partners/02.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/03.png" alt="apt" loading="lazy"></div><div class="collab-item"><img src="images/partners/04.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/05.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/06.png" alt="Junglescapes" loading="lazy"></div><div class="collab-item"><img src="images/partners/07.png" alt="Punarchith" loading="lazy"></div><div class="collab-item"><img src="images/partners/08.png" alt="Biome Farms" loading="lazy"></div><div class="collab-item"><img src="images/partners/09.png" alt="Ananda Marga Pracaraka Samgha" loading="lazy"></div><div class="collab-item"><img src="images/partners/15.png" alt="South Western Railway, Indian Railways" loading="lazy"></div><div class="collab-item"><img src="images/partners/16.png" alt="Brahma Kumaris" loading="lazy"></div><div class="collab-item"><img src="images/partners/17.png" alt="Tophills77" loading="lazy"></div><div class="collab-item"><img src="images/partners/10.png" alt="Wadiyar Centre for Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/11.png" alt="DSCA" loading="lazy"></div><div class="collab-item"><img src="images/partners/12.png" alt="BMS College of Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/13.png" alt="Bangalore University" loading="lazy"></div><div class="collab-item"><img src="images/partners/14.png" alt="BVBCET, KLE Society" loading="lazy"></div></div>
     </div>
   </div>
 </section>
@@ -1445,7 +1479,7 @@ body{margin:0}
       <h2 class="sec-title">Collaborators<span class="sec-kicker">.</span></h2>
       <span class="sec-label">Partners &amp; institutions</span>
     </div>
-    <div class="collab-grid"><div class="collab-item"><img src="images/partners/01.png" alt="Partner or collaborator logo 1" loading="lazy"></div><div class="collab-item"><img src="images/partners/02.png" alt="Partner or collaborator logo 2" loading="lazy"></div><div class="collab-item"><img src="images/partners/03.png" alt="Partner or collaborator logo 3" loading="lazy"></div><div class="collab-item"><img src="images/partners/04.png" alt="Partner or collaborator logo 4" loading="lazy"></div><div class="collab-item"><img src="images/partners/05.png" alt="Partner or collaborator logo 5" loading="lazy"></div><div class="collab-item"><img src="images/partners/06.png" alt="Partner or collaborator logo 6" loading="lazy"></div><div class="collab-item"><img src="images/partners/07.png" alt="Partner or collaborator logo 7" loading="lazy"></div><div class="collab-item"><img src="images/partners/08.png" alt="Partner or collaborator logo 8" loading="lazy"></div><div class="collab-item"><img src="images/partners/09.png" alt="Partner or collaborator logo 9" loading="lazy"></div><div class="collab-item"><img src="images/partners/10.png" alt="Partner or collaborator logo 10" loading="lazy"></div><div class="collab-item"><img src="images/partners/11.png" alt="Partner or collaborator logo 11" loading="lazy"></div><div class="collab-item"><img src="images/partners/12.png" alt="Partner or collaborator logo 12" loading="lazy"></div><div class="collab-item"><img src="images/partners/13.png" alt="Partner or collaborator logo 13" loading="lazy"></div><div class="collab-item"><img src="images/partners/14.png" alt="Partner or collaborator logo 14" loading="lazy"></div><div class="collab-item"><img src="images/partners/15.png" alt="Partner or collaborator logo 15" loading="lazy"></div><div class="collab-item"><img src="images/partners/16.png" alt="Partner or collaborator logo 16" loading="lazy"></div><div class="collab-item"><img src="images/partners/17.png" alt="Partner or collaborator logo 17" loading="lazy"></div></div>
+    <div class="collab-grid"><div class="collab-item"><img src="images/partners/01.png" alt="Souk" loading="lazy"></div><div class="collab-item"><img src="images/partners/02.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/03.png" alt="apt" loading="lazy"></div><div class="collab-item"><img src="images/partners/04.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/05.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/06.png" alt="Junglescapes" loading="lazy"></div><div class="collab-item"><img src="images/partners/07.png" alt="Punarchith" loading="lazy"></div><div class="collab-item"><img src="images/partners/08.png" alt="Biome Farms" loading="lazy"></div><div class="collab-item"><img src="images/partners/09.png" alt="Ananda Marga Pracaraka Samgha" loading="lazy"></div><div class="collab-item"><img src="images/partners/15.png" alt="South Western Railway, Indian Railways" loading="lazy"></div><div class="collab-item"><img src="images/partners/16.png" alt="Brahma Kumaris" loading="lazy"></div><div class="collab-item"><img src="images/partners/17.png" alt="Tophills77" loading="lazy"></div><div class="collab-item"><img src="images/partners/10.png" alt="Wadiyar Centre for Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/11.png" alt="DSCA" loading="lazy"></div><div class="collab-item"><img src="images/partners/12.png" alt="BMS College of Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/13.png" alt="Bangalore University" loading="lazy"></div><div class="collab-item"><img src="images/partners/14.png" alt="BVBCET, KLE Society" loading="lazy"></div></div>
   </div>
 </section>
 
