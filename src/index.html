@@ -1160,18 +1160,32 @@ body{margin:0}
 /* Above the collage panel it opens from. The photograph renders at its own
    size, only shrunk to fit -- the sources are 400-1000px on the long edge and
    upscaling them would just be soft. */
-.vj-light{z-index:90;cursor:zoom-out}
-.vj-light .modal-backdrop{background:rgba(20,15,4,.88)}
+/* This element is .modal .vj-light, not .vj-modal, so it needs its own
+   positioning -- without it the overlay laid out in normal flow at the bottom
+   of the page and the viewport just locked. */
+.vj-light{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;
+  padding:clamp(3.6rem,8vh,5.5rem) clamp(.75rem,2vw,1.5rem) clamp(1rem,3vh,2rem)}
+.vj-light[hidden]{display:none}
+.vj-light .modal-backdrop{position:absolute;inset:0;background:rgba(20,15,4,.9);
+  backdrop-filter:blur(4px);cursor:zoom-out}
 .vj-light-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:.9rem;
   max-width:94vw;max-height:92vh;animation:mIn .28s ease}
-.vj-light-inner img{display:block;max-width:94vw;max-height:82vh;width:auto;height:auto;
+.vj-light-inner img{display:block;max-width:94vw;max-height:74vh;width:auto;height:auto;
   border-radius:3px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
 .vj-light-cap{margin:0;font-family:var(--fb);font-size:.8rem;line-height:1.5;text-align:center;
   color:rgba(243,239,230,.86);max-width:56ch}
-.vj-light .modal-close{position:absolute;top:clamp(.6rem,2vw,1.4rem);right:clamp(.6rem,2vw,1.4rem);
-  width:42px;height:42px;border:0;border-radius:50%;background:rgba(243,239,230,.14);color:var(--light);
-  font-size:1.6rem;line-height:1;cursor:pointer;transition:background .2s;z-index:2}
-.vj-light .modal-close:hover{background:rgba(243,239,230,.28)}
+.vj-back{position:absolute;top:clamp(.9rem,2.5vh,1.6rem);left:clamp(.9rem,2vw,1.6rem);z-index:2;
+  display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:.6rem 1.15rem;
+  border:1px solid rgba(243,239,230,.28);border-radius:100px;background:rgba(243,239,230,.1);
+  color:var(--light);cursor:pointer;font-family:var(--fb);font-size:.75rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;transition:background .2s,border-color .2s}
+.vj-back:hover{background:rgba(243,239,230,.2);border-color:rgba(243,239,230,.5)}
+.vj-back:focus-visible{outline:2px solid var(--light);outline-offset:3px}
+.vj-back-arrow{font-size:1rem;line-height:1;transition:transform .2s}
+.vj-back:hover .vj-back-arrow{transform:translateX(-3px)}
+@media (max-width:560px){
+  .vj-back{font-size:.6875rem;padding:.55rem .9rem;letter-spacing:.06em}
+}
 </style>
 </head>
 <body>
@@ -4081,12 +4095,15 @@ body{margin:0}
   </div>
 </div>
 <div class="modal vj-light" data-shot-modal role="dialog" aria-modal="true" aria-label="Photograph" hidden>
-  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-backdrop" data-shot-back></div>
+  <button type="button" class="vj-back" data-shot-back>
+    <span class="vj-back-arrow" aria-hidden="true">&larr;</span>
+    <span>Back to <span class="vj-back-cat">the collection</span></span>
+  </button>
   <div class="vj-light-inner">
     <img src="" alt="">
     <p class="vj-light-cap" hidden></p>
   </div>
-  <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
 </div>
 </div>
 <div data-page="testimonials" class="project-page testimonials-page">
@@ -4279,6 +4296,21 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
 
   /* ---- team member modals, delegated so they work on any route ---- */
   var memberLast=null;
+  /* which collage a photograph was opened from, so Back can restore it */
+  var shotFrom=null;
+  function shotBack(){
+    var lb=document.querySelector('[data-shot-modal]');
+    if(!lb || lb.hidden) return false;
+    lb.hidden=true;
+    if(shotFrom){
+      shotFrom.hidden=false;
+      var c=shotFrom.querySelector('.modal-close'); if(c) c.focus();
+      shotFrom=null;
+      return true;
+    }
+    document.body.style.overflow='';
+    return true;
+  }
   document.addEventListener('click',function(e){
     if(!e.target.closest) return;
     var open=e.target.closest('[data-open-member],[data-open-journey]');
@@ -4300,10 +4332,19 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
       img.alt=shot.querySelector('img').alt;
       var lc=lb.querySelector('.vj-light-cap');
       lc.textContent=cap?cap.textContent:''; lc.hidden=!cap;
+      /* the photograph replaces the collage; Back puts it again */
+      shotFrom=shot.closest('.vj-modal');
+      if(shotFrom){
+        shotFrom.hidden=true;
+        var t=shotFrom.querySelector('.vj-panel-title');
+        lb.querySelector('.vj-back-cat').textContent=t?t.textContent:'the collection';
+      }
       lb.hidden=false; document.body.style.overflow='hidden';
-      var lx=lb.querySelector('.modal-close'); if(lx) lx.focus();
+      var bk=lb.querySelector('.vj-back'); if(bk) bk.focus();
       return;
     }
+    var back=e.target.closest('[data-shot-back]');
+    if(back){ shotBack(); return; }
     var close=e.target.closest('[data-close-modal]');
     if(close){
       var mm=close.closest('.modal'); if(!mm) return;
@@ -4315,6 +4356,7 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
   });
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
+    if(shotBack()) return;
     var all=document.querySelectorAll('.modal:not([hidden])');
     var o=all[all.length-1];
     if(o){ o.hidden=true;
