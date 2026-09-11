@@ -22,8 +22,8 @@ nav:
     route: projects
   - label: Testimonials
     route: testimonials
-  - label: Gallery
-    soon: gallery
+  - label: Visual Journey
+    route: journey
 
 cta:
   label: Get in Touch
