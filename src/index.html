@@ -549,6 +549,10 @@ body{margin:0}
 .crow{display:flex;gap:var(--cgap);align-items:flex-start;margin-bottom:var(--cgap)}
 .cfig{margin:0;display:flex;flex-direction:column;min-width:0}
 .cfig img{display:block;width:100%;height:auto;background:#1B1305}
+/* ---------- Collage hover zoom ---------- */
+.czoom{display:block;overflow:hidden}
+.cfig img{transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.cfig:hover img{transform:scale(1.04)}
 .ccap{padding:.6rem .2rem 0;font-family:var(--fb);font-size:.8125rem;line-height:1.45;
   color:#F3EFE6;opacity:.76;text-wrap:pretty}
 .cspace{align-self:stretch}
@@ -1856,64 +1860,64 @@ body{margin:0}
   <section class="proj-collage" aria-label="Hydro-Ecological Restoration in collaboration with Junglescapes Charitable Trust, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:2 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/01.webp" width="1500" height="750" style="aspect-ratio:2"
-               loading="lazy" decoding="async" alt="Heterogeneous habitats emerging as the watershed recovers">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/01.webp" width="1500" height="750" style="aspect-ratio:2"
+               loading="lazy" decoding="async" alt="Heterogeneous habitats emerging as the watershed recovers"></span>
           <figcaption class="ccap">Heterogeneous habitats emerging as the watershed recovers</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.7836 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/02.webp" width="1500" height="841" style="aspect-ratio:1.7836"
-               loading="lazy" decoding="async" alt="Hydro-Eco Restoration work being implemented by tribal women SHGs">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/02.webp" width="1500" height="841" style="aspect-ratio:1.7836"
+               loading="lazy" decoding="async" alt="Hydro-Eco Restoration work being implemented by tribal women SHGs"></span>
           <figcaption class="ccap">Hydro-Eco Restoration work being implemented by tribal women SHGs</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/03.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Documenting the process">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/03.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Documenting the process"></span>
           <figcaption class="ccap">Documenting the process</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.4124 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/04.webp" width="1000" height="708" style="aspect-ratio:1.4124"
-               loading="lazy" decoding="async" alt="Before and after the interventions">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/04.webp" width="1000" height="708" style="aspect-ratio:1.4124"
+               loading="lazy" decoding="async" alt="Before and after the interventions"></span>
           <figcaption class="ccap">Before and after the interventions</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.7778 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/05.webp" width="640" height="360" style="aspect-ratio:1.7778"
-               loading="lazy" decoding="async" alt="Stable stream flow during dry season">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/05.webp" width="640" height="360" style="aspect-ratio:1.7778"
+               loading="lazy" decoding="async" alt="Stable stream flow during dry season"></span>
           <figcaption class="ccap">Stable stream flow during dry season</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.7778 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/06.webp" width="640" height="360" style="aspect-ratio:1.7778"
-               loading="lazy" decoding="async" alt="Critical water source for wildlife">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/06.webp" width="640" height="360" style="aspect-ratio:1.7778"
+               loading="lazy" decoding="async" alt="Critical water source for wildlife"></span>
           <figcaption class="ccap">Critical water source for wildlife</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:2.0107 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/07.webp" width="750" height="373" style="aspect-ratio:2.0107"
-               loading="lazy" decoding="async" alt="Mapping the watershed of the region">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/07.webp" width="750" height="373" style="aspect-ratio:2.0107"
+               loading="lazy" decoding="async" alt="Mapping the watershed of the region"></span>
           <figcaption class="ccap">Mapping the watershed of the region</figcaption>
         </figure>
         <figure class="cfig" style="flex:2 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/08.webp" width="750" height="375" style="aspect-ratio:2"
-               loading="lazy" decoding="async" alt="Natural recovery processes taking over the intervention area">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/08.webp" width="750" height="375" style="aspect-ratio:2"
+               loading="lazy" decoding="async" alt="Natural recovery processes taking over the intervention area"></span>
           <figcaption class="ccap">Natural recovery processes taking over the intervention area</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.8929 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/09.webp" width="500" height="560" style="aspect-ratio:0.8929"
-               loading="lazy" decoding="async" alt="Habitat Recovering observed in 2024">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/09.webp" width="500" height="560" style="aspect-ratio:0.8929"
+               loading="lazy" decoding="async" alt="Habitat Recovering observed in 2024"></span>
           <figcaption class="ccap">Habitat Recovering observed in 2024</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/10.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Indicators of habitat recovery">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/10.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Indicators of habitat recovery"></span>
           <figcaption class="ccap">Indicators of habitat recovery</figcaption>
         </figure>
         <figure class="cfig" style="flex:2 1 0">
-          <img src="images/projects/bandipur-tiger-reserve/11.webp" width="750" height="375" style="aspect-ratio:2"
-               loading="lazy" decoding="async" alt="Perennial water body with high cultural and ecological value for the region">
+          <span class="czoom"><img src="images/projects/bandipur-tiger-reserve/11.webp" width="750" height="375" style="aspect-ratio:2"
+               loading="lazy" decoding="async" alt="Perennial water body with high cultural and ecological value for the region"></span>
           <figcaption class="ccap">Perennial water body with high cultural and ecological value for the region</figcaption>
         </figure>
         <span class="cspace" style="flex:0.902 1 0" aria-hidden="true"></span>
@@ -1995,132 +1999,132 @@ body{margin:0}
   <section class="proj-collage" aria-label="Ecological Restoration of Degraded Wildlife Habitat, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:1.7762 1 0">
-          <img src="images/projects/ecological-restoration/01.webp" width="1000" height="563" style="aspect-ratio:1.7762"
-               loading="lazy" decoding="async" alt="Wetland complex with the catchment area in the background">
+          <span class="czoom"><img src="images/projects/ecological-restoration/01.webp" width="1000" height="563" style="aspect-ratio:1.7762"
+               loading="lazy" decoding="async" alt="Wetland complex with the catchment area in the background"></span>
           <figcaption class="ccap">Wetland complex with the catchment area in the background</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/ecological-restoration/02.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Formulating the site-specific restoration plan">
+          <span class="czoom"><img src="images/projects/ecological-restoration/02.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Formulating the site-specific restoration plan"></span>
           <figcaption class="ccap">Formulating the site-specific restoration plan</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.7794 1 0">
-          <img src="images/projects/ecological-restoration/03.webp" width="1000" height="562" style="aspect-ratio:1.7794"
-               loading="lazy" decoding="async" alt="On Site Marking the proposed wetland complex">
+          <span class="czoom"><img src="images/projects/ecological-restoration/03.webp" width="1000" height="562" style="aspect-ratio:1.7794"
+               loading="lazy" decoding="async" alt="On Site Marking the proposed wetland complex"></span>
           <figcaption class="ccap">On Site Marking the proposed wetland complex</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.7794 1 0">
-          <img src="images/projects/ecological-restoration/04.webp" width="1000" height="562" style="aspect-ratio:1.7794"
-               loading="lazy" decoding="async" alt="Site during dry season">
+          <span class="czoom"><img src="images/projects/ecological-restoration/04.webp" width="1000" height="562" style="aspect-ratio:1.7794"
+               loading="lazy" decoding="async" alt="Site during dry season"></span>
           <figcaption class="ccap">Site during dry season</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.7794 1 0">
-          <img src="images/projects/ecological-restoration/05.webp" width="1000" height="562" style="aspect-ratio:1.7794"
-               loading="lazy" decoding="async" alt="Site under restoration activities following the monsoon">
+          <span class="czoom"><img src="images/projects/ecological-restoration/05.webp" width="1000" height="562" style="aspect-ratio:1.7794"
+               loading="lazy" decoding="async" alt="Site under restoration activities following the monsoon"></span>
           <figcaption class="ccap">Site under restoration activities following the monsoon</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.4124 1 0">
-          <img src="images/projects/ecological-restoration/06.webp" width="1000" height="708" style="aspect-ratio:1.4124"
-               loading="lazy" decoding="async" alt="Documenting biodiversity within the restoration site">
+          <span class="czoom"><img src="images/projects/ecological-restoration/06.webp" width="1000" height="708" style="aspect-ratio:1.4124"
+               loading="lazy" decoding="async" alt="Documenting biodiversity within the restoration site"></span>
           <figcaption class="ccap">Documenting biodiversity within the restoration site</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.4124 1 0">
-          <img src="images/projects/ecological-restoration/07.webp" width="1000" height="708" style="aspect-ratio:1.4124"
-               loading="lazy" decoding="async" alt="Documenting and monitoring the Restoration process">
+          <span class="czoom"><img src="images/projects/ecological-restoration/07.webp" width="1000" height="708" style="aspect-ratio:1.4124"
+               loading="lazy" decoding="async" alt="Documenting and monitoring the Restoration process"></span>
           <figcaption class="ccap">Documenting and monitoring the Restoration process</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.8904 1 0">
-          <img src="images/projects/ecological-restoration/08.webp" width="1000" height="529" style="aspect-ratio:1.8904"
-               loading="lazy" decoding="async" alt="undefined, photograph 8">
+          <span class="czoom"><img src="images/projects/ecological-restoration/08.webp" width="1000" height="529" style="aspect-ratio:1.8904"
+               loading="lazy" decoding="async" alt="undefined, photograph 8"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/ecological-restoration/09.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Implementation of soil and water conservation measures">
+          <span class="czoom"><img src="images/projects/ecological-restoration/09.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Implementation of soil and water conservation measures"></span>
           <figcaption class="ccap">Implementation of soil and water conservation measures</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.6313 1 0">
-          <img src="images/projects/ecological-restoration/10.webp" width="1000" height="613" style="aspect-ratio:1.6313"
-               loading="lazy" decoding="async" alt="Wild dogs (dholes, Cuon alpinus) traversing through the restoration site">
+          <span class="czoom"><img src="images/projects/ecological-restoration/10.webp" width="1000" height="613" style="aspect-ratio:1.6313"
+               loading="lazy" decoding="async" alt="Wild dogs (dholes, Cuon alpinus) traversing through the restoration site"></span>
           <figcaption class="ccap">Wild dogs (dholes, Cuon alpinus) traversing through the restoration site</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.0178 1 0">
-          <img src="images/projects/ecological-restoration/11.webp" width="916" height="900" style="aspect-ratio:1.0178"
-               loading="lazy" decoding="async" alt="Documenting Grasses">
+          <span class="czoom"><img src="images/projects/ecological-restoration/11.webp" width="916" height="900" style="aspect-ratio:1.0178"
+               loading="lazy" decoding="async" alt="Documenting Grasses"></span>
           <figcaption class="ccap">Documenting Grasses</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.25 1 0">
-          <img src="images/projects/ecological-restoration/12.webp" width="1000" height="800" style="aspect-ratio:1.25"
-               loading="lazy" decoding="async" alt="Invasive Alien Species Managment">
+          <span class="czoom"><img src="images/projects/ecological-restoration/12.webp" width="1000" height="800" style="aspect-ratio:1.25"
+               loading="lazy" decoding="async" alt="Invasive Alien Species Managment"></span>
           <figcaption class="ccap">Invasive Alien Species Managment</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.25 1 0">
-          <img src="images/projects/ecological-restoration/13.webp" width="1000" height="800" style="aspect-ratio:1.25"
-               loading="lazy" decoding="async" alt="Freshwater crabs observed within the restoration site">
+          <span class="czoom"><img src="images/projects/ecological-restoration/13.webp" width="1000" height="800" style="aspect-ratio:1.25"
+               loading="lazy" decoding="async" alt="Freshwater crabs observed within the restoration site"></span>
           <figcaption class="ccap">Freshwater crabs observed within the restoration site</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/ecological-restoration/14.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Manual removal of Lantana C">
+          <span class="czoom"><img src="images/projects/ecological-restoration/14.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Manual removal of Lantana C"></span>
           <figcaption class="ccap">Manual removal of Lantana C</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/ecological-restoration/15.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Documenting the mycelial network across the restoration area">
+          <span class="czoom"><img src="images/projects/ecological-restoration/15.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Documenting the mycelial network across the restoration area"></span>
           <figcaption class="ccap">Documenting the mycelial network across the restoration area</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.25 1 0">
-          <img src="images/projects/ecological-restoration/16.webp" width="1000" height="800" style="aspect-ratio:1.25"
-               loading="lazy" decoding="async" alt="Seed collection of Dodonaea viscosa">
+          <span class="czoom"><img src="images/projects/ecological-restoration/16.webp" width="1000" height="800" style="aspect-ratio:1.25"
+               loading="lazy" decoding="async" alt="Seed collection of Dodonaea viscosa"></span>
           <figcaption class="ccap">Seed collection of Dodonaea viscosa</figcaption>
         </figure>
         <span class="cspace" style="flex:0.319 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.5552 1 0">
-          <img src="images/projects/ecological-restoration/17.webp" width="1000" height="643" style="aspect-ratio:1.5552"
-               loading="lazy" decoding="async" alt="Newly developed wildlife wetland complex">
+          <span class="czoom"><img src="images/projects/ecological-restoration/17.webp" width="1000" height="643" style="aspect-ratio:1.5552"
+               loading="lazy" decoding="async" alt="Newly developed wildlife wetland complex"></span>
           <figcaption class="ccap">Newly developed wildlife wetland complex</figcaption>
         </figure>
         <figure class="cfig" style="flex:2.2222 1 0">
-          <img src="images/projects/ecological-restoration/18.webp" width="1000" height="450" style="aspect-ratio:2.2222"
-               loading="lazy" decoding="async" alt="Tribal community empowerment">
+          <span class="czoom"><img src="images/projects/ecological-restoration/18.webp" width="1000" height="450" style="aspect-ratio:2.2222"
+               loading="lazy" decoding="async" alt="Tribal community empowerment"></span>
           <figcaption class="ccap">Tribal community empowerment</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.8489 1 0">
-          <img src="images/projects/ecological-restoration/19.webp" width="764" height="900" style="aspect-ratio:0.8489"
-               loading="lazy" decoding="async" alt="Wildlife movement showing positive signs of Restoration">
+          <span class="czoom"><img src="images/projects/ecological-restoration/19.webp" width="764" height="900" style="aspect-ratio:0.8489"
+               loading="lazy" decoding="async" alt="Wildlife movement showing positive signs of Restoration"></span>
           <figcaption class="ccap">Wildlife movement showing positive signs of Restoration</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.4556 1 0">
-          <img src="images/projects/ecological-restoration/20.webp" width="410" height="900" style="aspect-ratio:0.4556"
-               loading="lazy" decoding="async" alt="Preparation for ANR">
+          <span class="czoom"><img src="images/projects/ecological-restoration/20.webp" width="410" height="900" style="aspect-ratio:0.4556"
+               loading="lazy" decoding="async" alt="Preparation for ANR"></span>
           <figcaption class="ccap">Preparation for ANR</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.4556 1 0">
-          <img src="images/projects/ecological-restoration/21.webp" width="410" height="900" style="aspect-ratio:0.4556"
-               loading="lazy" decoding="async" alt="undefined, photograph 21">
+          <span class="czoom"><img src="images/projects/ecological-restoration/21.webp" width="410" height="900" style="aspect-ratio:0.4556"
+               loading="lazy" decoding="async" alt="undefined, photograph 21"></span>
         </figure>
         <span class="cspace" style="flex:1.339 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.7762 1 0">
-          <img src="images/projects/ecological-restoration/22.webp" width="1000" height="563" style="aspect-ratio:1.7762"
-               loading="lazy" decoding="async" alt="Lantana biomass rings used to protect planted areas">
+          <span class="czoom"><img src="images/projects/ecological-restoration/22.webp" width="1000" height="563" style="aspect-ratio:1.7762"
+               loading="lazy" decoding="async" alt="Lantana biomass rings used to protect planted areas"></span>
           <figcaption class="ccap">Lantana biomass rings used to protect planted areas</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/ecological-restoration/23.webp" width="1000" height="750" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Native species planted with protection from wild harbivores">
+          <span class="czoom"><img src="images/projects/ecological-restoration/23.webp" width="1000" height="750" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Native species planted with protection from wild harbivores"></span>
           <figcaption class="ccap">Native species planted with protection from wild harbivores</figcaption>
         </figure>
         <span class="cspace" style="flex:1.126 1 0" aria-hidden="true"></span>
@@ -2205,92 +2209,92 @@ body{margin:0}
   <section class="proj-collage" aria-label="Mysuru Rail Museum, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/01.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 1">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/01.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 1"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/02.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 2">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/02.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 2"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/03.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 3">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/03.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 3"></span>
         </figure>
         <figure class="cfig" style="flex:2.0576 1 0">
-          <img src="images/projects/mysuru-rail-museum/04.webp" width="500" height="243" style="aspect-ratio:2.0576"
-               loading="lazy" decoding="async" alt="undefined, photograph 4">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/04.webp" width="500" height="243" style="aspect-ratio:2.0576"
+               loading="lazy" decoding="async" alt="undefined, photograph 4"></span>
         </figure>
         <span class="cspace" style="flex:1.619 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:2.0576 1 0">
-          <img src="images/projects/mysuru-rail-museum/05.webp" width="500" height="243" style="aspect-ratio:2.0576"
-               loading="lazy" decoding="async" alt="undefined, photograph 5">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/05.webp" width="500" height="243" style="aspect-ratio:2.0576"
+               loading="lazy" decoding="async" alt="undefined, photograph 5"></span>
         </figure>
         <figure class="cfig" style="flex:1.5823 1 0">
-          <img src="images/projects/mysuru-rail-museum/06.webp" width="500" height="316" style="aspect-ratio:1.5823"
-               loading="lazy" decoding="async" alt="undefined, photograph 6">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/06.webp" width="500" height="316" style="aspect-ratio:1.5823"
+               loading="lazy" decoding="async" alt="undefined, photograph 6"></span>
         </figure>
         <figure class="cfig" style="flex:1.3021 1 0">
-          <img src="images/projects/mysuru-rail-museum/07.webp" width="500" height="384" style="aspect-ratio:1.3021"
-               loading="lazy" decoding="async" alt="undefined, photograph 7">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/07.webp" width="500" height="384" style="aspect-ratio:1.3021"
+               loading="lazy" decoding="async" alt="undefined, photograph 7"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/08.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 8">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/08.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 8"></span>
         </figure>
         <span class="cspace" style="flex:0.234 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:2.0576 1 0">
-          <img src="images/projects/mysuru-rail-museum/09.webp" width="500" height="243" style="aspect-ratio:2.0576"
-               loading="lazy" decoding="async" alt="undefined, photograph 9">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/09.webp" width="500" height="243" style="aspect-ratio:2.0576"
+               loading="lazy" decoding="async" alt="undefined, photograph 9"></span>
         </figure>
         <figure class="cfig" style="flex:1.7986 1 0">
-          <img src="images/projects/mysuru-rail-museum/10.webp" width="500" height="278" style="aspect-ratio:1.7986"
-               loading="lazy" decoding="async" alt="undefined, photograph 10">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/10.webp" width="500" height="278" style="aspect-ratio:1.7986"
+               loading="lazy" decoding="async" alt="undefined, photograph 10"></span>
         </figure>
         <figure class="cfig" style="flex:0.8 1 0">
-          <img src="images/projects/mysuru-rail-museum/11.webp" width="500" height="625" style="aspect-ratio:0.8"
-               loading="lazy" decoding="async" alt="undefined, photograph 11">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/11.webp" width="500" height="625" style="aspect-ratio:0.8"
+               loading="lazy" decoding="async" alt="undefined, photograph 11"></span>
         </figure>
         <figure class="cfig" style="flex:0.8 1 0">
-          <img src="images/projects/mysuru-rail-museum/12.webp" width="500" height="625" style="aspect-ratio:0.8"
-               loading="lazy" decoding="async" alt="undefined, photograph 12">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/12.webp" width="500" height="625" style="aspect-ratio:0.8"
+               loading="lazy" decoding="async" alt="undefined, photograph 12"></span>
         </figure>
         <span class="cspace" style="flex:0.47 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1 1 0">
-          <img src="images/projects/mysuru-rail-museum/13.webp" width="500" height="500" style="aspect-ratio:1"
-               loading="lazy" decoding="async" alt="undefined, photograph 13">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/13.webp" width="500" height="500" style="aspect-ratio:1"
+               loading="lazy" decoding="async" alt="undefined, photograph 13"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/14.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 14">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/14.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 14"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/mysuru-rail-museum/15.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 15">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/15.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 15"></span>
         </figure>
         <figure class="cfig" style="flex:1.7857 1 0">
-          <img src="images/projects/mysuru-rail-museum/16.webp" width="300" height="168" style="aspect-ratio:1.7857"
-               loading="lazy" decoding="async" alt="undefined, photograph 16">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/16.webp" width="300" height="168" style="aspect-ratio:1.7857"
+               loading="lazy" decoding="async" alt="undefined, photograph 16"></span>
         </figure>
         <figure class="cfig" style="flex:1.9531 1 0">
-          <img src="images/projects/mysuru-rail-museum/17.webp" width="500" height="256" style="aspect-ratio:1.9531"
-               loading="lazy" decoding="async" alt="undefined, photograph 17">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/17.webp" width="500" height="256" style="aspect-ratio:1.9531"
+               loading="lazy" decoding="async" alt="undefined, photograph 17"></span>
         </figure>
         <span class="cspace" style="flex:0.958 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.7857 1 0">
-          <img src="images/projects/mysuru-rail-museum/18.webp" width="300" height="168" style="aspect-ratio:1.7857"
-               loading="lazy" decoding="async" alt="undefined, photograph 18">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/18.webp" width="300" height="168" style="aspect-ratio:1.7857"
+               loading="lazy" decoding="async" alt="undefined, photograph 18"></span>
         </figure>
         <figure class="cfig" style="flex:1.773 1 0">
-          <img src="images/projects/mysuru-rail-museum/19.webp" width="500" height="282" style="aspect-ratio:1.773"
-               loading="lazy" decoding="async" alt="undefined, photograph 19">
+          <span class="czoom"><img src="images/projects/mysuru-rail-museum/19.webp" width="500" height="282" style="aspect-ratio:1.773"
+               loading="lazy" decoding="async" alt="undefined, photograph 19"></span>
         </figure>
         <span class="cspace" style="flex:1.833 1 0" aria-hidden="true"></span>
       </div>
@@ -2373,79 +2377,79 @@ body{margin:0}
   <section class="proj-collage" aria-label="Watershed management and ecological restoration of a tea estate, Nilgiris, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:1.8051 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/01.webp" width="500" height="277" style="aspect-ratio:1.8051"
-               loading="lazy" decoding="async" alt="Typical Tea estate landscape">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/01.webp" width="500" height="277" style="aspect-ratio:1.8051"
+               loading="lazy" decoding="async" alt="Typical Tea estate landscape"></span>
           <figcaption class="ccap">Typical Tea estate landscape</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.4124 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/02.webp" width="500" height="354" style="aspect-ratio:1.4124"
-               loading="lazy" decoding="async" alt="Proposed render for Non-Tea Riparian zones">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/02.webp" width="500" height="354" style="aspect-ratio:1.4124"
+               loading="lazy" decoding="async" alt="Proposed render for Non-Tea Riparian zones"></span>
           <figcaption class="ccap">Proposed render for Non-Tea Riparian zones</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.9042 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/03.webp" width="500" height="553" style="aspect-ratio:0.9042"
-               loading="lazy" decoding="async" alt="Existing and proposed section Non-Tea Riparian zones">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/03.webp" width="500" height="553" style="aspect-ratio:0.9042"
+               loading="lazy" decoding="async" alt="Existing and proposed section Non-Tea Riparian zones"></span>
           <figcaption class="ccap">Existing and proposed section Non-Tea Riparian zones</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.0776 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/04.webp" width="500" height="464" style="aspect-ratio:1.0776"
-               loading="lazy" decoding="async" alt="Existing and proposed section Non-Tea rocky outcrop zones">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/04.webp" width="500" height="464" style="aspect-ratio:1.0776"
+               loading="lazy" decoding="async" alt="Existing and proposed section Non-Tea rocky outcrop zones"></span>
           <figcaption class="ccap">Existing and proposed section Non-Tea rocky outcrop zones</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.9276 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/05.webp" width="500" height="539" style="aspect-ratio:0.9276"
-               loading="lazy" decoding="async" alt="Soil and water conservation measure on the hill slopes">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/05.webp" width="500" height="539" style="aspect-ratio:0.9276"
+               loading="lazy" decoding="async" alt="Soil and water conservation measure on the hill slopes"></span>
           <figcaption class="ccap">Soil and water conservation measure on the hill slopes</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/06.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Bog bulrush planted in the newly developed wetland">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/06.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Bog bulrush planted in the newly developed wetland"></span>
           <figcaption class="ccap">Bog bulrush planted in the newly developed wetland</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/07.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="Development of hetrogeneous habitats in the Non-Tea areas">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/07.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="Development of hetrogeneous habitats in the Non-Tea areas"></span>
           <figcaption class="ccap">Development of hetrogeneous habitats in the Non-Tea areas</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/08.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="Introduction of native flora after managing IAS">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/08.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="Introduction of native flora after managing IAS"></span>
           <figcaption class="ccap">Introduction of native flora after managing IAS</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:2.2222 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/09.webp" width="500" height="225" style="aspect-ratio:2.2222"
-               loading="lazy" decoding="async" alt="Constructed Wetlands">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/09.webp" width="500" height="225" style="aspect-ratio:2.2222"
+               loading="lazy" decoding="async" alt="Constructed Wetlands"></span>
           <figcaption class="ccap">Constructed Wetlands</figcaption>
         </figure>
         <figure class="cfig" style="flex:2.2222 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/10.webp" width="500" height="225" style="aspect-ratio:2.2222"
-               loading="lazy" decoding="async" alt="A network of hill wetlands and swamps">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/10.webp" width="500" height="225" style="aspect-ratio:2.2222"
+               loading="lazy" decoding="async" alt="A network of hill wetlands and swamps"></span>
           <figcaption class="ccap">A network of hill wetlands and swamps</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.4124 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/11.webp" width="500" height="354" style="aspect-ratio:1.4124"
-               loading="lazy" decoding="async" alt="undefined, photograph 11">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/11.webp" width="500" height="354" style="aspect-ratio:1.4124"
+               loading="lazy" decoding="async" alt="undefined, photograph 11"></span>
         </figure>
         <span class="cspace" style="flex:0.543 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:2.2026 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/12.webp" width="500" height="227" style="aspect-ratio:2.2026"
-               loading="lazy" decoding="async" alt="Revival of Open dug wells">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/12.webp" width="500" height="227" style="aspect-ratio:2.2026"
+               loading="lazy" decoding="async" alt="Revival of Open dug wells"></span>
           <figcaption class="ccap">Revival of Open dug wells</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/13.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="Wild Gaur graasing along the newly developed wetlands">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/13.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="Wild Gaur graasing along the newly developed wetlands"></span>
           <figcaption class="ccap">Wild Gaur graasing along the newly developed wetlands</figcaption>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/nilgiris-biosphere-reserve/14.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="Malabar Danao found in the newly developed wetlands">
+          <span class="czoom"><img src="images/projects/nilgiris-biosphere-reserve/14.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="Malabar Danao found in the newly developed wetlands"></span>
           <figcaption class="ccap">Malabar Danao found in the newly developed wetlands</figcaption>
         </figure>
         <span class="cspace" style="flex:1.908 1 0" aria-hidden="true"></span>
@@ -2529,162 +2533,162 @@ body{margin:0}
   <section class="proj-collage" aria-label="Chairman's Bungalow Landscape, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:3.0441 1 0">
-          <img src="images/projects/chairmans-bungalow/01.webp" width="691" height="227" style="aspect-ratio:3.0441"
-               loading="lazy" decoding="async" alt="undefined, photograph 1">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/01.webp" width="691" height="227" style="aspect-ratio:3.0441"
+               loading="lazy" decoding="async" alt="undefined, photograph 1"></span>
         </figure>
         <figure class="cfig" style="flex:3.1244 1 0">
-          <img src="images/projects/chairmans-bungalow/02.webp" width="678" height="217" style="aspect-ratio:3.1244"
-               loading="lazy" decoding="async" alt="undefined, photograph 2">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/02.webp" width="678" height="217" style="aspect-ratio:3.1244"
+               loading="lazy" decoding="async" alt="undefined, photograph 2"></span>
         </figure>
         <span class="cspace" style="flex:0.467 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/03.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 3">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/03.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 3"></span>
         </figure>
         <figure class="cfig" style="flex:1.4098 1 0">
-          <img src="images/projects/chairmans-bungalow/04.webp" width="750" height="532" style="aspect-ratio:1.4098"
-               loading="lazy" decoding="async" alt="undefined, photograph 4">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/04.webp" width="750" height="532" style="aspect-ratio:1.4098"
+               loading="lazy" decoding="async" alt="undefined, photograph 4"></span>
         </figure>
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/05.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 5">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/05.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 5"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/06.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 6">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/06.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 6"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/chairmans-bungalow/07.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 7">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/07.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 7"></span>
         </figure>
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/08.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 8">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/08.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 8"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/chairmans-bungalow/09.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 9">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/09.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 9"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/10.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 10">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/10.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 10"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/11.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 11">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/11.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 11"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/12.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 12">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/12.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 12"></span>
         </figure>
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/13.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 13">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/13.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 13"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/14.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 14">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/14.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 14"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/15.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 15">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/15.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 15"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/16.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 16">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/16.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 16"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/chairmans-bungalow/17.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 17">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/17.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 17"></span>
         </figure>
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/18.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 18">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/18.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 18"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.6667 1 0">
-          <img src="images/projects/chairmans-bungalow/19.webp" width="600" height="900" style="aspect-ratio:0.6667"
-               loading="lazy" decoding="async" alt="undefined, photograph 19">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/19.webp" width="600" height="900" style="aspect-ratio:0.6667"
+               loading="lazy" decoding="async" alt="undefined, photograph 19"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/20.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 20">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/20.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 20"></span>
         </figure>
         <figure class="cfig" style="flex:1.5 1 0">
-          <img src="images/projects/chairmans-bungalow/21.webp" width="750" height="500" style="aspect-ratio:1.5"
-               loading="lazy" decoding="async" alt="undefined, photograph 21">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/21.webp" width="750" height="500" style="aspect-ratio:1.5"
+               loading="lazy" decoding="async" alt="undefined, photograph 21"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/chairmans-bungalow/22.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 22">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/22.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 22"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/23.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 23">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/23.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 23"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/24.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 24">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/24.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 24"></span>
         </figure>
         <figure class="cfig" style="flex:3.0612 1 0">
-          <img src="images/projects/chairmans-bungalow/25.webp" width="750" height="245" style="aspect-ratio:3.0612"
-               loading="lazy" decoding="async" alt="undefined, photograph 25">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/25.webp" width="750" height="245" style="aspect-ratio:3.0612"
+               loading="lazy" decoding="async" alt="undefined, photograph 25"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/26.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 26">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/26.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 26"></span>
         </figure>
         <span class="cspace" style="flex:0.566 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/27.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 27">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/27.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 27"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/28.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 28">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/28.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 28"></span>
         </figure>
         <figure class="cfig" style="flex:1.5957 1 0">
-          <img src="images/projects/chairmans-bungalow/29.webp" width="750" height="470" style="aspect-ratio:1.5957"
-               loading="lazy" decoding="async" alt="undefined, photograph 29">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/29.webp" width="750" height="470" style="aspect-ratio:1.5957"
+               loading="lazy" decoding="async" alt="undefined, photograph 29"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/30.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 30">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/30.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 30"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/31.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 31">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/31.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 31"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/32.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 32">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/32.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 32"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/33.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 33">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/33.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 33"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/34.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 34">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/34.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 34"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/chairmans-bungalow/35.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 35">
+          <span class="czoom"><img src="images/projects/chairmans-bungalow/35.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 35"></span>
         </figure>
         <span class="cspace" style="flex:1.235 1 0" aria-hidden="true"></span>
       </div>
@@ -2768,160 +2772,160 @@ body{margin:0}
   <section class="proj-collage" aria-label="Regenerative Farm Landscapes, Karavulapalli, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:1.5106 1 0">
-          <img src="images/projects/karavulapalli-farm/01.webp" width="500" height="331" style="aspect-ratio:1.5106"
-               loading="lazy" decoding="async" alt="undefined, photograph 1">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/01.webp" width="500" height="331" style="aspect-ratio:1.5106"
+               loading="lazy" decoding="async" alt="undefined, photograph 1"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/02.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 2">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/02.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 2"></span>
         </figure>
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/karavulapalli-farm/03.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 3">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/03.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 3"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/04.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 4">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/04.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 4"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.7496 1 0">
-          <img src="images/projects/karavulapalli-farm/05.webp" width="500" height="667" style="aspect-ratio:0.7496"
-               loading="lazy" decoding="async" alt="undefined, photograph 5">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/05.webp" width="500" height="667" style="aspect-ratio:0.7496"
+               loading="lazy" decoding="async" alt="undefined, photograph 5"></span>
         </figure>
         <figure class="cfig" style="flex:1.7361 1 0">
-          <img src="images/projects/karavulapalli-farm/06.webp" width="500" height="288" style="aspect-ratio:1.7361"
-               loading="lazy" decoding="async" alt="undefined, photograph 6">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/06.webp" width="500" height="288" style="aspect-ratio:1.7361"
+               loading="lazy" decoding="async" alt="undefined, photograph 6"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/07.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 7">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/07.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 7"></span>
         </figure>
         <figure class="cfig" style="flex:2.2321 1 0">
-          <img src="images/projects/karavulapalli-farm/08.webp" width="500" height="224" style="aspect-ratio:2.2321"
-               loading="lazy" decoding="async" alt="undefined, photograph 8">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/08.webp" width="500" height="224" style="aspect-ratio:2.2321"
+               loading="lazy" decoding="async" alt="undefined, photograph 8"></span>
         </figure>
         <span class="cspace" style="flex:0.377 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.6181 1 0">
-          <img src="images/projects/karavulapalli-farm/09.webp" width="500" height="309" style="aspect-ratio:1.6181"
-               loading="lazy" decoding="async" alt="undefined, photograph 9">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/09.webp" width="500" height="309" style="aspect-ratio:1.6181"
+               loading="lazy" decoding="async" alt="undefined, photograph 9"></span>
         </figure>
         <figure class="cfig" style="flex:1.6026 1 0">
-          <img src="images/projects/karavulapalli-farm/10.webp" width="500" height="312" style="aspect-ratio:1.6026"
-               loading="lazy" decoding="async" alt="undefined, photograph 10">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/10.webp" width="500" height="312" style="aspect-ratio:1.6026"
+               loading="lazy" decoding="async" alt="undefined, photograph 10"></span>
         </figure>
         <figure class="cfig" style="flex:1.5974 1 0">
-          <img src="images/projects/karavulapalli-farm/11.webp" width="500" height="313" style="aspect-ratio:1.5974"
-               loading="lazy" decoding="async" alt="undefined, photograph 11">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/11.webp" width="500" height="313" style="aspect-ratio:1.5974"
+               loading="lazy" decoding="async" alt="undefined, photograph 11"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.6447 1 0">
-          <img src="images/projects/karavulapalli-farm/12.webp" width="500" height="304" style="aspect-ratio:1.6447"
-               loading="lazy" decoding="async" alt="undefined, photograph 12">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/12.webp" width="500" height="304" style="aspect-ratio:1.6447"
+               loading="lazy" decoding="async" alt="undefined, photograph 12"></span>
         </figure>
         <figure class="cfig" style="flex:1.6077 1 0">
-          <img src="images/projects/karavulapalli-farm/13.webp" width="500" height="311" style="aspect-ratio:1.6077"
-               loading="lazy" decoding="async" alt="undefined, photograph 13">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/13.webp" width="500" height="311" style="aspect-ratio:1.6077"
+               loading="lazy" decoding="async" alt="undefined, photograph 13"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/14.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 14">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/14.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 14"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/15.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 15">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/15.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 15"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/16.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 16">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/16.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 16"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/17.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 17">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/17.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 17"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/18.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 18">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/18.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 18"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/19.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 19">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/19.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 19"></span>
         </figure>
         <span class="cspace" style="flex:0.067 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/20.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 20">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/20.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 20"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/21.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 21">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/21.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 21"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/22.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 22">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/22.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 22"></span>
         </figure>
         <figure class="cfig" style="flex:2.2222 1 0">
-          <img src="images/projects/karavulapalli-farm/23.webp" width="500" height="225" style="aspect-ratio:2.2222"
-               loading="lazy" decoding="async" alt="undefined, photograph 23">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/23.webp" width="500" height="225" style="aspect-ratio:2.2222"
+               loading="lazy" decoding="async" alt="undefined, photograph 23"></span>
         </figure>
         <span class="cspace" style="flex:0.76 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/24.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 24">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/24.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 24"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/25.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 25">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/25.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 25"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/26.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 26">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/26.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 26"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/27.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 27">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/27.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 27"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/28.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 28">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/28.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 28"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/29.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 29">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/29.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 29"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/30.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 30">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/30.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 30"></span>
         </figure>
         <figure class="cfig" style="flex:0.7508 1 0">
-          <img src="images/projects/karavulapalli-farm/31.webp" width="500" height="666" style="aspect-ratio:0.7508"
-               loading="lazy" decoding="async" alt="undefined, photograph 31">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/31.webp" width="500" height="666" style="aspect-ratio:0.7508"
+               loading="lazy" decoding="async" alt="undefined, photograph 31"></span>
         </figure>
         <span class="cspace" style="flex:0.067 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/32.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 32">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/32.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 32"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/33.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 33">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/33.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 33"></span>
         </figure>
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/karavulapalli-farm/34.webp" width="500" height="375" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 34">
+          <span class="czoom"><img src="images/projects/karavulapalli-farm/34.webp" width="500" height="375" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 34"></span>
         </figure>
         <span class="cspace" style="flex:0.235 1 0" aria-hidden="true"></span>
       </div>
@@ -2997,133 +3001,133 @@ body{margin:0}
   <section class="proj-collage" aria-label="Context-Responsive Design, photographs">
       <div class="crow">
         <figure class="cfig" style="flex:3.125 1 0">
-          <img src="images/projects/context-responsive-design/01.webp" width="750" height="240" style="aspect-ratio:3.125"
-               loading="lazy" decoding="async" alt="undefined, photograph 1">
+          <span class="czoom"><img src="images/projects/context-responsive-design/01.webp" width="750" height="240" style="aspect-ratio:3.125"
+               loading="lazy" decoding="async" alt="undefined, photograph 1"></span>
         </figure>
         <figure class="cfig" style="flex:1.3321 1 0">
-          <img src="images/projects/context-responsive-design/02.webp" width="750" height="563" style="aspect-ratio:1.3321"
-               loading="lazy" decoding="async" alt="undefined, photograph 2">
+          <span class="czoom"><img src="images/projects/context-responsive-design/02.webp" width="750" height="563" style="aspect-ratio:1.3321"
+               loading="lazy" decoding="async" alt="undefined, photograph 2"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/03.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 3">
+          <span class="czoom"><img src="images/projects/context-responsive-design/03.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 3"></span>
         </figure>
         <span class="cspace" style="flex:0.208 1 0" aria-hidden="true"></span>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3321 1 0">
-          <img src="images/projects/context-responsive-design/04.webp" width="750" height="563" style="aspect-ratio:1.3321"
-               loading="lazy" decoding="async" alt="undefined, photograph 4">
+          <span class="czoom"><img src="images/projects/context-responsive-design/04.webp" width="750" height="563" style="aspect-ratio:1.3321"
+               loading="lazy" decoding="async" alt="undefined, photograph 4"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/05.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 5">
+          <span class="czoom"><img src="images/projects/context-responsive-design/05.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 5"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/06.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 6">
+          <span class="czoom"><img src="images/projects/context-responsive-design/06.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 6"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/07.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 7">
+          <span class="czoom"><img src="images/projects/context-responsive-design/07.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 7"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/08.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="Terrace Garden @ Inde">
+          <span class="czoom"><img src="images/projects/context-responsive-design/08.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="Terrace Garden @ Inde"></span>
           <figcaption class="ccap">Terrace Garden @ Inde</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/09.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="Terrace Garden @ Inde">
+          <span class="czoom"><img src="images/projects/context-responsive-design/09.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="Terrace Garden @ Inde"></span>
           <figcaption class="ccap">Terrace Garden @ Inde</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/10.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 10">
+          <span class="czoom"><img src="images/projects/context-responsive-design/10.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 10"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/11.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="Terrace Garden @ Inde">
+          <span class="czoom"><img src="images/projects/context-responsive-design/11.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="Terrace Garden @ Inde"></span>
           <figcaption class="ccap">Terrace Garden @ Inde</figcaption>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/12.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="Terrace Garden @ Inde">
+          <span class="czoom"><img src="images/projects/context-responsive-design/12.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="Terrace Garden @ Inde"></span>
           <figcaption class="ccap">Terrace Garden @ Inde</figcaption>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3333 1 0">
-          <img src="images/projects/context-responsive-design/13.webp" width="720" height="540" style="aspect-ratio:1.3333"
-               loading="lazy" decoding="async" alt="undefined, photograph 13">
+          <span class="czoom"><img src="images/projects/context-responsive-design/13.webp" width="720" height="540" style="aspect-ratio:1.3333"
+               loading="lazy" decoding="async" alt="undefined, photograph 13"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/14.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 14">
+          <span class="czoom"><img src="images/projects/context-responsive-design/14.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 14"></span>
         </figure>
         <figure class="cfig" style="flex:1.3321 1 0">
-          <img src="images/projects/context-responsive-design/15.webp" width="750" height="563" style="aspect-ratio:1.3321"
-               loading="lazy" decoding="async" alt="undefined, photograph 15">
+          <span class="czoom"><img src="images/projects/context-responsive-design/15.webp" width="750" height="563" style="aspect-ratio:1.3321"
+               loading="lazy" decoding="async" alt="undefined, photograph 15"></span>
         </figure>
         <figure class="cfig" style="flex:0.859 1 0">
-          <img src="images/projects/context-responsive-design/16.webp" width="719" height="837" style="aspect-ratio:0.859"
-               loading="lazy" decoding="async" alt="undefined, photograph 16">
+          <span class="czoom"><img src="images/projects/context-responsive-design/16.webp" width="719" height="837" style="aspect-ratio:0.859"
+               loading="lazy" decoding="async" alt="undefined, photograph 16"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.7489 1 0">
-          <img src="images/projects/context-responsive-design/17.webp" width="674" height="900" style="aspect-ratio:0.7489"
-               loading="lazy" decoding="async" alt="undefined, photograph 17">
+          <span class="czoom"><img src="images/projects/context-responsive-design/17.webp" width="674" height="900" style="aspect-ratio:0.7489"
+               loading="lazy" decoding="async" alt="undefined, photograph 17"></span>
         </figure>
         <figure class="cfig" style="flex:0.7678 1 0">
-          <img src="images/projects/context-responsive-design/18.webp" width="691" height="900" style="aspect-ratio:0.7678"
-               loading="lazy" decoding="async" alt="undefined, photograph 18">
+          <span class="czoom"><img src="images/projects/context-responsive-design/18.webp" width="691" height="900" style="aspect-ratio:0.7678"
+               loading="lazy" decoding="async" alt="undefined, photograph 18"></span>
         </figure>
         <figure class="cfig" style="flex:1.3483 1 0">
-          <img src="images/projects/context-responsive-design/19.webp" width="720" height="534" style="aspect-ratio:1.3483"
-               loading="lazy" decoding="async" alt="undefined, photograph 19">
+          <span class="czoom"><img src="images/projects/context-responsive-design/19.webp" width="720" height="534" style="aspect-ratio:1.3483"
+               loading="lazy" decoding="async" alt="undefined, photograph 19"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/20.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 20">
+          <span class="czoom"><img src="images/projects/context-responsive-design/20.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 20"></span>
         </figure>
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/21.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 21">
+          <span class="czoom"><img src="images/projects/context-responsive-design/21.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 21"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/22.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 22">
+          <span class="czoom"><img src="images/projects/context-responsive-design/22.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 22"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/23.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 23">
+          <span class="czoom"><img src="images/projects/context-responsive-design/23.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 23"></span>
         </figure>
         <figure class="cfig" style="flex:0.75 1 0">
-          <img src="images/projects/context-responsive-design/24.webp" width="675" height="900" style="aspect-ratio:0.75"
-               loading="lazy" decoding="async" alt="undefined, photograph 24">
+          <span class="czoom"><img src="images/projects/context-responsive-design/24.webp" width="675" height="900" style="aspect-ratio:0.75"
+               loading="lazy" decoding="async" alt="undefined, photograph 24"></span>
         </figure>
         <figure class="cfig" style="flex:1.3112 1 0">
-          <img src="images/projects/context-responsive-design/25.webp" width="750" height="572" style="aspect-ratio:1.3112"
-               loading="lazy" decoding="async" alt="undefined, photograph 25">
+          <span class="czoom"><img src="images/projects/context-responsive-design/25.webp" width="750" height="572" style="aspect-ratio:1.3112"
+               loading="lazy" decoding="async" alt="undefined, photograph 25"></span>
         </figure>
         <figure class="cfig" style="flex:0.7522 1 0">
-          <img src="images/projects/context-responsive-design/26.webp" width="677" height="900" style="aspect-ratio:0.7522"
-               loading="lazy" decoding="async" alt="undefined, photograph 26">
+          <span class="czoom"><img src="images/projects/context-responsive-design/26.webp" width="677" height="900" style="aspect-ratio:0.7522"
+               loading="lazy" decoding="async" alt="undefined, photograph 26"></span>
         </figure>
       </div>
       <div class="crow">
         <figure class="cfig" style="flex:1.3345 1 0">
-          <img src="images/projects/context-responsive-design/27.webp" width="750" height="562" style="aspect-ratio:1.3345"
-               loading="lazy" decoding="async" alt="undefined, photograph 27">
+          <span class="czoom"><img src="images/projects/context-responsive-design/27.webp" width="750" height="562" style="aspect-ratio:1.3345"
+               loading="lazy" decoding="async" alt="undefined, photograph 27"></span>
         </figure>
         <figure class="cfig" style="flex:1.3321 1 0">
-          <img src="images/projects/context-responsive-design/28.webp" width="750" height="563" style="aspect-ratio:1.3321"
-               loading="lazy" decoding="async" alt="undefined, photograph 28">
+          <span class="czoom"><img src="images/projects/context-responsive-design/28.webp" width="750" height="563" style="aspect-ratio:1.3321"
+               loading="lazy" decoding="async" alt="undefined, photograph 28"></span>
         </figure>
         <span class="cspace" style="flex:1.374 1 0" aria-hidden="true"></span>
       </div>

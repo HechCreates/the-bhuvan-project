@@ -22,8 +22,8 @@ export function pageFor(slug) {
         : '';
       const alt = it.caption ? esc(it.caption) : esc(meta.title + ', photograph ' + it.n);
       return `        <figure class="cfig" style="flex:${it.ratio} 1 0">
-          <img src="${it.src}" width="${it.w}" height="${it.h}" style="aspect-ratio:${it.ratio}"
-               loading="lazy" decoding="async" alt="${alt}">${cap}
+          <span class="czoom"><img src="${it.src}" width="${it.w}" height="${it.h}" style="aspect-ratio:${it.ratio}"
+               loading="lazy" decoding="async" alt="${alt}"></span>${cap}
         </figure>`;
     }).join('\n');
     const spacer = r.spacer > 0.02
@@ -132,6 +132,11 @@ export const CSS = `
 .crow{display:flex;gap:var(--cgap);align-items:flex-start;margin-bottom:var(--cgap)}
 .cfig{margin:0;display:flex;flex-direction:column;min-width:0}
 .cfig img{display:block;width:100%;height:auto;background:#1B1305}
+/* the span is the clipping box: .cfig also holds the caption, so a scaled
+   image would otherwise grow over the caption text */
+.czoom{display:block;overflow:hidden}
+.cfig img{transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.cfig:hover img{transform:scale(1.04)}
 .ccap{padding:.6rem .2rem 0;font-family:var(--fb);font-size:.8125rem;line-height:1.45;
   color:#F3EFE6;opacity:.76;text-wrap:pretty}
 .cspace{align-self:stretch}
