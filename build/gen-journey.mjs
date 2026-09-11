@@ -48,8 +48,7 @@ const modal = c => `<div class="modal vj-modal" data-journey-modal="${esc(c.key)
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-${c.photos.map(p => `      <figure class="vj-shot">
-        <img src="images/journey/${esc(p.file)}" loading="lazy" decoding="async" alt="${altOf(p, c.title)}">
+${c.photos.map(p => `      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/${esc(p.file)}"><img src="images/journey/${esc(p.file)}" loading="lazy" decoding="async" alt="${altOf(p, c.title)}"></button>
         ${p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ''}
       </figure>`).join('\n')}
     </div>

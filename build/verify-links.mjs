@@ -12,7 +12,7 @@ const check = (label, cond, detail = '') => {
 // exclude the router's own selector string: '[data-page="'+route+'"]'
 const pages = [...s.matchAll(/data-page="([^"'+]+)"/g)].map(m => m[1]);
 const unique = [...new Set(pages)];
-check('pages registered', unique.length === 11, `${unique.length}: ` + unique.join(', '));
+check('pages registered', unique.length === 12, `${unique.length}: ` + unique.join(', '));
 
 // testimonials
 const soonT = (s.match(/data-soon="testimonials"/g) || []).length;
@@ -43,7 +43,7 @@ check('modal sits outside every [data-page]',
 const mailto = (s.match(/window.location.href='mailto/g) || []).length;
 check('no per-page mailto bindings left', mailto === 0, `${mailto} left`);
 const openers = (s.match(/data-open-contact/g) || []).length;
-check('Get in Touch buttons wired', openers === 35, `${openers} (34 buttons + 1 delegated selector)`);
+check('Get in Touch buttons wired', openers === 38, `${openers} (37 buttons + 1 delegated selector)`);
 check('endpoint constant present and empty',
   /var CONTACT_ENDPOINT = '';/.test(s), 'paste the Apps Script /exec URL here to go live');
 check('CTA radius overridden to --radius',

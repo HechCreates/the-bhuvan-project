@@ -255,7 +255,7 @@ body{margin:0}
 #page-home .map-h{font-family:var(--fd);font-weight:700;font-size:clamp(1.6rem,2.8vw,2.5rem);line-height:1.05;letter-spacing:-.01em;color:var(--primary);margin:0}
 #page-home .map-lead{margin:1.1rem 0 0;font-size:clamp(.95rem,1.2vw,1.05rem);line-height:1.6;color:var(--secondary);max-width:52ch}
 #page-home .map-features{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1.6rem;margin:2rem 0 0;padding:1.6rem 0 0;border-top:1px solid rgba(55,40,7,.16)}
-#page-home .map-feat svg{width:38px;height:38px;color:var(--clay)}
+#page-home .map-feat-icon{width:38px;height:38px;display:block}
 #page-home .map-feat h3{font-family:var(--fd);font-weight:700;font-size:1.05rem;line-height:1.12;color:var(--primary);margin:.7rem 0 .35rem}
 #page-home .map-feat p{font-size:.85rem;line-height:1.5;color:var(--secondary);margin:0}
 #page-home .map-keywords{margin:2rem 0 0;padding-top:1.4rem;border-top:1px solid rgba(55,40,7,.16);font-family:var(--fb);font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
@@ -374,7 +374,7 @@ body{margin:0}
 #page-about /* geographies */
 .geo{background:var(--bg)}
 #page-about .geo-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
-#page-about .geo-figure{background:var(--light);border-radius:var(--radius);padding:1.5rem}
+#page-about .geo-figure{background:#372807;border-radius:var(--radius);padding:1.5rem}
 #page-about .geo-figure img{width:100%;max-height:460px;object-fit:contain}
 #page-about .geo-body p{font-size:1.02rem;line-height:1.7;margin:0 0 1.1rem;color:var(--primary);max-width:56ch}
 @media(max-width:860px){#page-about .geo-grid{grid-template-columns:1fr;gap:2.2rem}#page-about .geo-figure{order:-1;max-width:460px;margin-inline:auto}}
@@ -887,7 +887,7 @@ body{margin:0}
 /* ---------- Map on the site's cream ----------
    The new drawing is transparent, so the ground now shows through where the
    old one carried its own white. */
-#page-home .map-btn img{background:var(--light);padding:14px}
+#page-home .map-btn img{background:#372807;padding:14px}
 
 /* ---------- What we do, without the numbering ---------- */
 #page-home .practice-coord{min-width:0;gap:0}
@@ -895,7 +895,7 @@ body{margin:0}
 /* ---------- Map panel ----------
    The drawing's dots are #AEAEAE. On the cream they measured 1.8:1 and washed
    out; on soil they are 6.4:1, and the red site markers 3.6:1. */
-#page-home .map-panel-figure{background:var(--light);border:1px solid rgba(55,40,7,.14)}
+#page-home .map-panel-figure{background:#372807;border:1px solid rgba(55,40,7,.14)}
 #page-home .map-panel-figure img{max-height:min(440px,44svh)}
 
 /* At 1440x700 the body column ran 101px past the panel and cut the keywords
@@ -904,7 +904,7 @@ body{margin:0}
   #page-home .map-panel-grid{padding:clamp(1.2rem,2.4vw,2rem);gap:clamp(1.2rem,2.4vw,2rem)}
   #page-home .map-lead{margin-top:.75rem}
   #page-home .map-features{margin-top:1.1rem;padding-top:1.1rem;gap:1rem 1.5rem}
-  #page-home .map-feat svg{width:32px;height:32px}
+  #page-home .map-feat-icon{width:32px;height:32px}
   #page-home .map-feat h3{margin:.45rem 0 .25rem}
   #page-home .map-keywords{margin-top:1.1rem;padding-top:.9rem}
 }
@@ -913,7 +913,7 @@ body{margin:0}
   #page-home .map-lead{font-size:.9rem;line-height:1.5}
   #page-home .map-feat p{font-size:.8rem;line-height:1.45}
   #page-home .map-features{margin-top:.8rem;padding-top:.8rem;gap:.8rem 1.4rem}
-  #page-home .map-feat svg{width:28px;height:28px}
+  #page-home .map-feat-icon{width:28px;height:28px}
 }
 
 /* ---------- Collaborator logos ----------
@@ -1068,19 +1068,16 @@ body{margin:0}
 }
 
 /* ---------- Visual Journey ---------- */
-.journey-page{background:#CAC7BF;color:var(--primary)}
-.journey-page .footer{background:#CAC7BF}
+.journey-page{background:var(--light);color:var(--primary)}
+.journey-page .footer{background:var(--light)}
 
 .vj-open{padding-block:clamp(7rem,15vh,10rem) clamp(2rem,4vw,3rem)}
 .vj-h1{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(2.1rem,5vw,3.6rem);color:var(--primary);margin:0 0 clamp(1.5rem,3vw,2.4rem)}
 .journey-page .sec-kicker{color:var(--clay)}
-/* two columns so the copy fills the layout without running past a readable
-   measure; one column once there is no room for two */
-.vj-lede{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.75rem);
-  max-width:none}
+.vj-lede{display:flex;flex-direction:column;gap:clamp(1.1rem,2vw,1.6rem);max-width:none}
 .vj-lede p{margin:0;font-size:clamp(.98rem,1.08vw,1.06rem);line-height:1.75;
-  color:rgba(55,40,7,.88);max-width:68ch}
+  color:rgba(55,40,7,.88);max-width:none}
 
 .vj-grid-sec{padding-block:0 clamp(4rem,9vw,7rem)}
 .vj-grid{--vj-gap:clamp(2rem,9vw,7rem);
@@ -1095,7 +1092,7 @@ body{margin:0}
   margin:0 0 clamp(.7rem,1.3vw,1.05rem)}
 
 .vj-mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,1.47%,9px)}
-.vj-cell{overflow:hidden;aspect-ratio:1;background:#b9b5ac}
+.vj-cell{overflow:hidden;aspect-ratio:1;background:#ddd8ca}
 .vj-cell img{width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .6s cubic-bezier(.22,.61,.36,1)}
 .vj-cell:hover img{transform:scale(1.05)}
@@ -1142,7 +1139,6 @@ body{margin:0}
   color:rgba(55,40,7,.72);text-wrap:pretty}
 
 @media (max-width:900px){
-  .vj-lede{grid-template-columns:1fr}
   .vj-grid{grid-template-columns:1fr;--vj-gap:0px;row-gap:clamp(2.5rem,6vw,3.5rem)}
   .vj-grid .vj-block:last-child{max-width:none}
 }
@@ -1151,6 +1147,31 @@ body{margin:0}
   .vj-more>span:first-child{font-size:.6875rem;letter-spacing:.02em}
   .vj-count{display:none}
 }
+
+/* ---------- Visual Journey: collage zoom and lightbox ----------
+   The button is the clipping box so a scaled photograph cannot grow over the
+   caption beneath it. */
+.vj-zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;
+  overflow:hidden;border-radius:2px;line-height:0}
+.vj-zoom img{transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.vj-zoom:hover img{transform:scale(1.06)}
+.vj-zoom:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+
+/* Above the collage panel it opens from. The photograph renders at its own
+   size, only shrunk to fit -- the sources are 400-1000px on the long edge and
+   upscaling them would just be soft. */
+.vj-light{z-index:90;cursor:zoom-out}
+.vj-light .modal-backdrop{background:rgba(20,15,4,.88)}
+.vj-light-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:.9rem;
+  max-width:94vw;max-height:92vh;animation:mIn .28s ease}
+.vj-light-inner img{display:block;max-width:94vw;max-height:82vh;width:auto;height:auto;
+  border-radius:3px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+.vj-light-cap{margin:0;font-family:var(--fb);font-size:.8rem;line-height:1.5;text-align:center;
+  color:rgba(243,239,230,.86);max-width:56ch}
+.vj-light .modal-close{position:absolute;top:clamp(.6rem,2vw,1.4rem);right:clamp(.6rem,2vw,1.4rem);
+  width:42px;height:42px;border:0;border-radius:50%;background:rgba(243,239,230,.14);color:var(--light);
+  font-size:1.6rem;line-height:1;cursor:pointer;transition:background .2s;z-index:2}
+.vj-light .modal-close:hover{background:rgba(243,239,230,.28)}
 </style>
 </head>
 <body>
@@ -1216,7 +1237,7 @@ body{margin:0}
         </div>
         <figure class="about-figure" data-reveal>
           <button type="button" class="map-btn" data-open-map aria-label="Explore where we work across India">
-            <img src="images/home/about-map.png" alt="A dotted map of India marking the studio’s project sites across the country, concentrated in the south.">
+            <img src="images/home/india-map.png" alt="A dotted map of India marking the studio’s project sites across the country, concentrated in the south.">
             <span class="map-hint" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M4 9 V4 H9 M15 4 H20 V9 M20 15 V20 H15 M9 20 H4 V15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -1515,29 +1536,29 @@ body{margin:0}
     <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
     <div class="map-panel-grid">
       <div class="map-panel-figure">
-        <img src="images/home/about-map.png" alt="A dotted map of India marking the studio’s project sites across the country, concentrated in the south.">
+        <img src="images/home/india-map.png" alt="A dotted map of India marking the studio’s project sites across the country, concentrated in the south.">
       </div>
       <div class="map-panel-body">
         <h2 id="map-modal-title" class="map-h">Landscapes. Communities. Regenerative Design.</h2>
         <p class="map-lead">From the high-altitude Himalayas to the southern forests, from river basins to city edges, our work spans India&rsquo;s diverse geographies. Each place is an opportunity to understand its living systems, its communities and its ecological context &mdash; and to design with them rather than against them.</p>
         <div class="map-features">
           <div class="map-feat">
-            <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 28.6 C8.4 22.4 12.2 17.2 15.4 12.4 C18.9 17.4 22.4 22.6 26.4 28.4" stroke-width="1.7"/><path d="M11.4 19.6 C13 18.4 14.2 17.4 15.5 16.2 C16.9 17.6 18.2 18.8 19.6 20" stroke-width="1.2"/><path d="M19.6 28.6 C22.4 24.4 25 20.9 27.4 17.6 C30.2 21.4 32.9 25 36.2 28.5" stroke-width="1.5"/><path d="M3.4 31.9 C11.6 30.6 20.4 30.5 28.6 31.4 C31.6 31.8 34.2 32.2 36.6 32.6" stroke-width="1.4"/><path d="M3.8 28.6 C8.4 22.4 12.2 17.2 15.4 12.4 C18.9 17.4 22.4 22.6 26.4 28.4" stroke-width="1.22" opacity=".5" transform="rotate(-0.33 20 20) translate(0.14 0.14)"/><path d="M11.4 19.6 C13 18.4 14.2 17.4 15.5 16.2 C16.9 17.6 18.2 18.8 19.6 20" stroke-width="0.86" opacity=".5" transform="rotate(-0.33 20 20) translate(0.14 0)"/><path d="M19.6 28.6 C22.4 24.4 25 20.9 27.4 17.6 C30.2 21.4 32.9 25 36.2 28.5" stroke-width="1.08" opacity=".5" transform="rotate(-1.22 20 20) translate(0.29 -0.43)"/><path d="M3.4 31.9 C11.6 30.6 20.4 30.5 28.6 31.4 C31.6 31.8 34.2 32.2 36.6 32.6" stroke-width="1.01" opacity=".5" transform="rotate(-0.44 20 20) translate(0 -0.43)"/></svg>
+            <img class="map-feat-icon" src="images/icons/map-diverse-geographies.webp" width="152" height="152" loading="lazy" alt="Diverse geographies">
             <h3>Diverse Geographies</h3>
             <p>Mountains, forests, river basins, and urban landscapes.</p>
           </div>
           <div class="map-feat">
-            <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 6.4 C12.6 8.4 7.4 14.4 7.9 21.4 C8.3 26.6 12.4 29.6 17.6 29 C25.4 28.1 30.6 21.6 30.4 13.2 C30.3 9.6 29.4 7.4 28.4 5.6 C25.8 5.6 22.9 5.8 20.4 6.4 Z" stroke-width="1.6"/><path d="M27.6 7.4 C22.6 13.4 17.2 19.4 11.4 25.9" stroke-width="1.4"/><path d="M24.4 12.4 C22.4 12.9 20.4 13.9 18.6 15.4" stroke-width="1.1"/><path d="M20.9 16.9 C19.2 17.6 17.6 18.9 16.2 20.4" stroke-width="1.1"/><path d="M22.4 11.4 C22 9.4 21.4 7.9 20.9 6.6" stroke-width="1.1"/><path d="M11.4 26.2 C10.4 29.4 9.4 32.4 8.6 35.4" stroke-width="1.4"/><path d="M10.2 30.4 C8.2 31.4 6.4 32.9 5.2 34.9" stroke-width="1.1"/><path d="M9.6 32.4 C11.4 33.2 13 34.6 14 36.4" stroke-width="1.1"/><path d="M20.4 6.4 C12.6 8.4 7.4 14.4 7.9 21.4 C8.3 26.6 12.4 29.6 17.6 29 C25.4 28.1 30.6 21.6 30.4 13.2 C30.3 9.6 29.4 7.4 28.4 5.6 C25.8 5.6 22.9 5.8 20.4 6.4 Z" stroke-width="1.15" opacity=".5" transform="rotate(-0.56 20 20) translate(-0.29 -1.29)"/><path d="M27.6 7.4 C22.6 13.4 17.2 19.4 11.4 25.9" stroke-width="1.01" opacity=".5" transform="rotate(-0.44 20 20) translate(-0.43 0.29)"/><path d="M24.4 12.4 C22.4 12.9 20.4 13.9 18.6 15.4" stroke-width="0.79" opacity=".5" transform="rotate(-0.33 20 20) translate(0.29 -0.43)"/><path d="M20.9 16.9 C19.2 17.6 17.6 18.9 16.2 20.4" stroke-width="0.79" opacity=".5" transform="rotate(-0.89 20 20) translate(-0.29 -0.43)"/><path d="M22.4 11.4 C22 9.4 21.4 7.9 20.9 6.6" stroke-width="0.79" opacity=".5" transform="rotate(-1.33 20 20) translate(-0.43 -0.71)"/><path d="M11.4 26.2 C10.4 29.4 9.4 32.4 8.6 35.4" stroke-width="1.01" opacity=".5" transform="rotate(-0.67 20 20) translate(0.14 -0.71)"/><path d="M10.2 30.4 C8.2 31.4 6.4 32.9 5.2 34.9" stroke-width="0.79" opacity=".5" transform="rotate(-0.56 20 20) translate(-0.14 -1.14)"/><path d="M9.6 32.4 C11.4 33.2 13 34.6 14 36.4" stroke-width="0.79" opacity=".5" transform="rotate(0 20 20) translate(0.29 0.29)"/></svg>
+            <img class="map-feat-icon" src="images/icons/map-living-systems.webp" width="152" height="152" loading="lazy" alt="Living systems">
             <h3>Living Systems</h3>
             <p>Soil, water, vegetation and people at the core.</p>
           </div>
           <div class="map-feat">
-            <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15.6 7.4 C20.6 7.2 24.4 11.2 24.2 16.2 C24 21.1 20.2 24.8 15.3 24.6 C10.4 24.4 6.8 20.4 7 15.6 C7.2 11 10.8 7.6 16.1 7.5" stroke-width="1.6"/><path d="M24.4 7.6 C29.4 7.4 33.2 11.4 33 16.4 C32.8 21.2 29 24.9 24.1 24.7 C19.2 24.5 15.6 20.6 15.8 15.8 C16 11.2 19.6 7.8 24.9 7.7" stroke-width="1.6"/><path d="M20 16.9 C25 16.7 28.8 20.7 28.6 25.7 C28.4 30.6 24.6 34.3 19.7 34.1 C14.8 33.9 11.2 29.9 11.4 25.1 C11.6 20.5 15.2 17.1 20.5 17" stroke-width="1.6"/><path d="M15.6 7.4 C20.6 7.2 24.4 11.2 24.2 16.2 C24 21.1 20.2 24.8 15.3 24.6 C10.4 24.4 6.8 20.4 7 15.6 C7.2 11 10.8 7.6 16.1 7.5" stroke-width="1.15" opacity=".5" transform="rotate(-0.11 20 20) translate(0.29 0.29)"/><path d="M24.4 7.6 C29.4 7.4 33.2 11.4 33 16.4 C32.8 21.2 29 24.9 24.1 24.7 C19.2 24.5 15.6 20.6 15.8 15.8 C16 11.2 19.6 7.8 24.9 7.7" stroke-width="1.15" opacity=".5" transform="rotate(0 20 20) translate(0.29 0.14)"/><path d="M20 16.9 C25 16.7 28.8 20.7 28.6 25.7 C28.4 30.6 24.6 34.3 19.7 34.1 C14.8 33.9 11.2 29.9 11.4 25.1 C11.6 20.5 15.2 17.1 20.5 17" stroke-width="1.15" opacity=".5" transform="rotate(-0.44 20 20) translate(-0.43 -1)"/></svg>
+            <img class="map-feat-icon" src="images/icons/map-integrated-approach.webp" width="152" height="152" loading="lazy" alt="Integrated approach">
             <h3>Integrated Approach</h3>
             <p>Ecology, research, local knowledge and collaboration.</p>
           </div>
           <div class="map-feat">
-            <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M30.4 13.4 C27.6 9.2 22.9 6.6 17.9 7.2 C10.9 8 6.2 14.2 6.9 21.4 C7.6 28.4 13.6 33.2 20.6 32.6 C25.6 32.2 29.6 29 31.4 24.6" stroke-width="1.7"/><path d="M24.4 13.9 C27.2 13.6 29.4 13.4 31.4 13.2 C31.2 11 30.9 8.9 30.6 6.6" stroke-width="1.4"/><path d="M19.4 26.4 C19 23.4 19.1 21.2 19.4 18.6" stroke-width="1.4"/><path d="M19.4 20.9 C17.9 18.2 15.4 16.9 12.6 16.9 C12.6 20.2 15 22.4 19.2 21.6" stroke-width="1.2"/><path d="M19.6 23.4 C20.9 21.2 23.2 20 25.9 20.2 C25.9 23 23.6 24.9 19.8 24.2" stroke-width="1.2"/><path d="M30.4 13.4 C27.6 9.2 22.9 6.6 17.9 7.2 C10.9 8 6.2 14.2 6.9 21.4 C7.6 28.4 13.6 33.2 20.6 32.6 C25.6 32.2 29.6 29 31.4 24.6" stroke-width="1.22" opacity=".5" transform="rotate(-0.78 20 20) translate(0.43 -0.71)"/><path d="M24.4 13.9 C27.2 13.6 29.4 13.4 31.4 13.2 C31.2 11 30.9 8.9 30.6 6.6" stroke-width="1.01" opacity=".5" transform="rotate(-0.67 20 20) translate(0 -0.57)"/><path d="M19.4 26.4 C19 23.4 19.1 21.2 19.4 18.6" stroke-width="1.01" opacity=".5" transform="rotate(0 20 20) translate(0.14 0.29)"/><path d="M19.4 20.9 C17.9 18.2 15.4 16.9 12.6 16.9 C12.6 20.2 15 22.4 19.2 21.6" stroke-width="0.86" opacity=".5" transform="rotate(0.44 20 20) translate(-0.43 -0.14)"/><path d="M19.6 23.4 C20.9 21.2 23.2 20 25.9 20.2 C25.9 23 23.6 24.9 19.8 24.2" stroke-width="0.86" opacity=".5" transform="rotate(-1 20 20) translate(-0.43 -0.86)"/></svg>
+            <img class="map-feat-icon" src="images/icons/map-regenerative-outcomes.webp" width="152" height="152" loading="lazy" alt="Regenerative outcomes">
             <h3>Regenerative Outcomes</h3>
             <p>Resilient, climate responsive and contextual solutions.</p>
           </div>
@@ -1672,7 +1693,7 @@ body{margin:0}
     </div>
     <div class="geo-grid">
       <figure class="geo-figure">
-        <img src="images/home/about-map.png" alt="A dotted map of India marking the studio's project sites, concentrated in the south.">
+        <img src="images/home/india-map.png" alt="A dotted map of India marking the studio's project sites, concentrated in the south.">
       </figure>
       <div class="geo-body">
         <p>From the high-altitude valleys of Ladakh to the tea gardens of the Nilgiris, and from the remote forests of Arunachal Pradesh to the dynamic urban landscapes of Ahmedabad, our work experience spans the ecological and cultural diversity of India.</p>
@@ -3366,180 +3387,136 @@ body{margin:0}
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-      <figure class="vj-shot">
-        <img src="images/journey/alpine-meadows-of-tarsar-marsar-landscape-kashmir.webp" loading="lazy" decoding="async" alt="Alpine meadow's of Tarsar Marsar landscape, Kashmir">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/alpine-meadows-of-tarsar-marsar-landscape-kashmir.webp"><img src="images/journey/alpine-meadows-of-tarsar-marsar-landscape-kashmir.webp" loading="lazy" decoding="async" alt="Alpine meadow's of Tarsar Marsar landscape, Kashmir"></button>
         <figcaption>Alpine meadow's of Tarsar Marsar landscape, Kashmir</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-4.webp" loading="lazy" decoding="async" alt="Amboseli National Park 4">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-4.webp"><img src="images/journey/amboseli-national-park-4.webp" loading="lazy" decoding="async" alt="Amboseli National Park 4"></button>
         <figcaption>Amboseli National Park 4</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-6.webp" loading="lazy" decoding="async" alt="Amboseli National Park 6">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-6.webp"><img src="images/journey/amboseli-national-park-6.webp" loading="lazy" decoding="async" alt="Amboseli National Park 6"></button>
         <figcaption>Amboseli National Park 6</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/aru-valley-temperate-forest.webp" loading="lazy" decoding="async" alt="Aru Valley temperate forest">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/aru-valley-temperate-forest.webp"><img src="images/journey/aru-valley-temperate-forest.webp" loading="lazy" decoding="async" alt="Aru Valley temperate forest"></button>
         <figcaption>Aru Valley temperate forest</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/atlantic-coast-of-western-sahara.webp" loading="lazy" decoding="async" alt="Atlantic Coast of Western Sahara">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/atlantic-coast-of-western-sahara.webp"><img src="images/journey/atlantic-coast-of-western-sahara.webp" loading="lazy" decoding="async" alt="Atlantic Coast of Western Sahara"></button>
         <figcaption>Atlantic Coast of Western Sahara</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/coastal-landscape-of-kumta.webp" loading="lazy" decoding="async" alt="Coastal Landscape of Kumta">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/coastal-landscape-of-kumta.webp"><img src="images/journey/coastal-landscape-of-kumta.webp" loading="lazy" decoding="async" alt="Coastal Landscape of Kumta"></button>
         <figcaption>Coastal Landscape of Kumta</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/high-altitude-wilderness-of-western-himalayas.webp" loading="lazy" decoding="async" alt="High-altitude wilderness of Western Himalayas">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/high-altitude-wilderness-of-western-himalayas.webp"><img src="images/journey/high-altitude-wilderness-of-western-himalayas.webp" loading="lazy" decoding="async" alt="High-altitude wilderness of Western Himalayas"></button>
         <figcaption>High-altitude wilderness of Western Himalayas</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-046.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-046.webp"><img src="images/journey/geographical-046.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-047.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-047.webp"><img src="images/journey/geographical-047.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-052.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-052.webp"><img src="images/journey/geographical-052.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-057.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-057.webp"><img src="images/journey/geographical-057.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-067.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-067.webp"><img src="images/journey/geographical-067.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-072.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-072.webp"><img src="images/journey/geographical-072.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-083.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-083.webp"><img src="images/journey/geographical-083.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-089.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-089.webp"><img src="images/journey/geographical-089.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-090.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-090.webp"><img src="images/journey/geographical-090.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-091.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-091.webp"><img src="images/journey/geographical-091.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-092.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-092.webp"><img src="images/journey/geographical-092.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-101.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-101.webp"><img src="images/journey/geographical-101.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-102.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-102.webp"><img src="images/journey/geographical-102.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-114.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-114.webp"><img src="images/journey/geographical-114.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-115.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-115.webp"><img src="images/journey/geographical-115.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-121.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-121.webp"><img src="images/journey/geographical-121.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-125.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-125.webp"><img src="images/journey/geographical-125.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-126.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-126.webp"><img src="images/journey/geographical-126.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-127.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-127.webp"><img src="images/journey/geographical-127.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-128.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-128.webp"><img src="images/journey/geographical-128.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-130.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-130.webp"><img src="images/journey/geographical-130.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-132.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-132.webp"><img src="images/journey/geographical-132.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-133.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-133.webp"><img src="images/journey/geographical-133.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-134.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-134.webp"><img src="images/journey/geographical-134.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-140.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-140.webp"><img src="images/journey/geographical-140.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-146.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-146.webp"><img src="images/journey/geographical-146.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geographical-152.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geographical-152.webp"><img src="images/journey/geographical-152.webp" loading="lazy" decoding="async" alt="Geographical — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/indus-river-valley.webp" loading="lazy" decoding="async" alt="Indus River Valley">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/indus-river-valley.webp"><img src="images/journey/indus-river-valley.webp" loading="lazy" decoding="async" alt="Indus River Valley"></button>
         <figcaption>Indus River Valley</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai mara national reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/masai-mara-national-reserve.webp"><img src="images/journey/masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai mara national reserve"></button>
         <figcaption>Masai mara national reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/remote-moroccan-landscape.webp" loading="lazy" decoding="async" alt="Remote Moroccan landscape">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/remote-moroccan-landscape.webp"><img src="images/journey/remote-moroccan-landscape.webp" loading="lazy" decoding="async" alt="Remote Moroccan landscape"></button>
         <figcaption>Remote Moroccan landscape</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/rift-valley-kenya-2.webp" loading="lazy" decoding="async" alt="Rift Valley, Kenya 2">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/rift-valley-kenya-2.webp"><img src="images/journey/rift-valley-kenya-2.webp" loading="lazy" decoding="async" alt="Rift Valley, Kenya 2"></button>
         <figcaption>Rift Valley, Kenya 2</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/rift-valley-kenya.webp" loading="lazy" decoding="async" alt="Rift Valley, Kenya">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/rift-valley-kenya.webp"><img src="images/journey/rift-valley-kenya.webp" loading="lazy" decoding="async" alt="Rift Valley, Kenya"></button>
         <figcaption>Rift Valley, Kenya</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/sahara-desert.webp" loading="lazy" decoding="async" alt="Sahara Desert">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/sahara-desert.webp"><img src="images/journey/sahara-desert.webp" loading="lazy" decoding="async" alt="Sahara Desert"></button>
         <figcaption>Sahara Desert</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/thar-desert.webp" loading="lazy" decoding="async" alt="Thar Desert">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/thar-desert.webp"><img src="images/journey/thar-desert.webp" loading="lazy" decoding="async" alt="Thar Desert"></button>
         <figcaption>Thar Desert</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/turtuk-village-sandwiched-between-karakorum-range-and-himala.webp" loading="lazy" decoding="async" alt="Turtuk village sandwiched between Karakorum Range and Himalayas">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/turtuk-village-sandwiched-between-karakorum-range-and-himala.webp"><img src="images/journey/turtuk-village-sandwiched-between-karakorum-range-and-himala.webp" loading="lazy" decoding="async" alt="Turtuk village sandwiched between Karakorum Range and Himalayas"></button>
         <figcaption>Turtuk village sandwiched between Karakorum Range and Himalayas</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/valley-of-flowers-unesco-whs.webp" loading="lazy" decoding="async" alt="Valley of Flowers- UNESCO WHS">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/valley-of-flowers-unesco-whs.webp"><img src="images/journey/valley-of-flowers-unesco-whs.webp" loading="lazy" decoding="async" alt="Valley of Flowers- UNESCO WHS"></button>
         <figcaption>Valley of Flowers- UNESCO WHS</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/high-altitude-cold-desert-landscape-of-ladakh.webp" loading="lazy" decoding="async" alt="high-altitude cold desert landscape of Ladakh">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/high-altitude-cold-desert-landscape-of-ladakh.webp"><img src="images/journey/high-altitude-cold-desert-landscape-of-ladakh.webp" loading="lazy" decoding="async" alt="high-altitude cold desert landscape of Ladakh"></button>
         <figcaption>high-altitude cold desert landscape of Ladakh</figcaption>
       </figure>
     </div>
@@ -3554,268 +3531,202 @@ body{margin:0}
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-      <figure class="vj-shot">
-        <img src="images/journey/dusty-rays.webp" loading="lazy" decoding="async" alt="Dusty rays">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/dusty-rays.webp"><img src="images/journey/dusty-rays.webp" loading="lazy" decoding="async" alt="Dusty rays"></button>
         <figcaption>Dusty rays</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/elephants-of-cholas.webp" loading="lazy" decoding="async" alt="Elephants of Cholas">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/elephants-of-cholas.webp"><img src="images/journey/elephants-of-cholas.webp" loading="lazy" decoding="async" alt="Elephants of Cholas"></button>
         <figcaption>Elephants of Cholas</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/frozen-fish-hampi.webp" loading="lazy" decoding="async" alt="Frozen Fish, Hampi">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/frozen-fish-hampi.webp"><img src="images/journey/frozen-fish-hampi.webp" loading="lazy" decoding="async" alt="Frozen Fish, Hampi"></button>
         <figcaption>Frozen Fish, Hampi</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/green-rays.webp" loading="lazy" decoding="async" alt="Green rays">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/green-rays.webp"><img src="images/journey/green-rays.webp" loading="lazy" decoding="async" alt="Green rays"></button>
         <figcaption>Green rays</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/holy-dip.webp" loading="lazy" decoding="async" alt="Holy dip">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/holy-dip.webp"><img src="images/journey/holy-dip.webp" loading="lazy" decoding="async" alt="Holy dip"></button>
         <figcaption>Holy dip</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-036.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-036.webp"><img src="images/journey/cultural-036.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-037.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-037.webp"><img src="images/journey/cultural-037.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-039.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-039.webp"><img src="images/journey/cultural-039.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-041.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-041.webp"><img src="images/journey/cultural-041.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-042.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-042.webp"><img src="images/journey/cultural-042.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-044.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-044.webp"><img src="images/journey/cultural-044.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-045.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-045.webp"><img src="images/journey/cultural-045.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-048.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-048.webp"><img src="images/journey/cultural-048.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-049.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-049.webp"><img src="images/journey/cultural-049.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-051.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-051.webp"><img src="images/journey/cultural-051.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-053.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-053.webp"><img src="images/journey/cultural-053.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-054.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-054.webp"><img src="images/journey/cultural-054.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-055.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-055.webp"><img src="images/journey/cultural-055.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-060.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-060.webp"><img src="images/journey/cultural-060.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-064.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-064.webp"><img src="images/journey/cultural-064.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-065.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-065.webp"><img src="images/journey/cultural-065.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-071.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-071.webp"><img src="images/journey/cultural-071.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-075.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-075.webp"><img src="images/journey/cultural-075.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-077.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-077.webp"><img src="images/journey/cultural-077.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-078.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-078.webp"><img src="images/journey/cultural-078.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-079.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-079.webp"><img src="images/journey/cultural-079.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-080.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-080.webp"><img src="images/journey/cultural-080.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-093.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-093.webp"><img src="images/journey/cultural-093.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-098.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-098.webp"><img src="images/journey/cultural-098.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-099.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-099.webp"><img src="images/journey/cultural-099.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-103.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-103.webp"><img src="images/journey/cultural-103.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-105.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-105.webp"><img src="images/journey/cultural-105.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-106.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-106.webp"><img src="images/journey/cultural-106.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-107.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-107.webp"><img src="images/journey/cultural-107.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-108.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-108.webp"><img src="images/journey/cultural-108.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-109.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-109.webp"><img src="images/journey/cultural-109.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-110.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-110.webp"><img src="images/journey/cultural-110.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-113.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-113.webp"><img src="images/journey/cultural-113.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-119.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-119.webp"><img src="images/journey/cultural-119.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-120.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-120.webp"><img src="images/journey/cultural-120.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-122.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-122.webp"><img src="images/journey/cultural-122.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-123.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-123.webp"><img src="images/journey/cultural-123.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-124.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-124.webp"><img src="images/journey/cultural-124.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-131.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-131.webp"><img src="images/journey/cultural-131.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-135.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-135.webp"><img src="images/journey/cultural-135.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-136.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-136.webp"><img src="images/journey/cultural-136.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-137.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-137.webp"><img src="images/journey/cultural-137.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-138.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-138.webp"><img src="images/journey/cultural-138.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-141.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-141.webp"><img src="images/journey/cultural-141.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-142.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-142.webp"><img src="images/journey/cultural-142.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-143.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-143.webp"><img src="images/journey/cultural-143.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-144.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-144.webp"><img src="images/journey/cultural-144.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-147.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-147.webp"><img src="images/journey/cultural-147.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-148.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-148.webp"><img src="images/journey/cultural-148.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-150.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-150.webp"><img src="images/journey/cultural-150.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/jaisalmer.webp" loading="lazy" decoding="async" alt="Jaisalmer">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/jaisalmer.webp"><img src="images/journey/jaisalmer.webp" loading="lazy" decoding="async" alt="Jaisalmer"></button>
         <figcaption>Jaisalmer</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/masai-tribe-masai-mara-national-reserve-2.webp" loading="lazy" decoding="async" alt="Masai Tribe, Masai mara national reserve 2">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/masai-tribe-masai-mara-national-reserve-2.webp"><img src="images/journey/masai-tribe-masai-mara-national-reserve-2.webp" loading="lazy" decoding="async" alt="Masai Tribe, Masai mara national reserve 2"></button>
         <figcaption>Masai Tribe, Masai mara national reserve 2</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/masai-tribe-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai Tribe, Masai mara national reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/masai-tribe-masai-mara-national-reserve.webp"><img src="images/journey/masai-tribe-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai Tribe, Masai mara national reserve"></button>
         <figcaption>Masai Tribe, Masai mara national reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/rock-art-mani-stones-of-tibetan-buddhism.webp" loading="lazy" decoding="async" alt="Rock art (Mani Stones) of Tibetan Buddhism">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/rock-art-mani-stones-of-tibetan-buddhism.webp"><img src="images/journey/rock-art-mani-stones-of-tibetan-buddhism.webp" loading="lazy" decoding="async" alt="Rock art (Mani Stones) of Tibetan Buddhism"></button>
         <figcaption>Rock art (Mani Stones) of Tibetan Buddhism</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/rock-art-of-mahabalipuram-unesco-whs.webp" loading="lazy" decoding="async" alt="Rock art of Mahabalipuram- UNESCO WHS">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/rock-art-of-mahabalipuram-unesco-whs.webp"><img src="images/journey/rock-art-of-mahabalipuram-unesco-whs.webp" loading="lazy" decoding="async" alt="Rock art of Mahabalipuram- UNESCO WHS"></button>
         <figcaption>Rock art of Mahabalipuram- UNESCO WHS</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/rock-art-on-tungabhadra-river-bank.webp" loading="lazy" decoding="async" alt="Rock art on Tungabhadra River bank">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/rock-art-on-tungabhadra-river-bank.webp"><img src="images/journey/rock-art-on-tungabhadra-river-bank.webp" loading="lazy" decoding="async" alt="Rock art on Tungabhadra River bank"></button>
         <figcaption>Rock art on Tungabhadra River bank</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ruins-in-southern-rajasthan.webp" loading="lazy" decoding="async" alt="Ruins in Southern Rajasthan">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ruins-in-southern-rajasthan.webp"><img src="images/journey/ruins-in-southern-rajasthan.webp" loading="lazy" decoding="async" alt="Ruins in Southern Rajasthan"></button>
         <figcaption>Ruins in Southern Rajasthan</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/santhal-tribe-of-purulia-west-bengal.webp" loading="lazy" decoding="async" alt="Santhal tribe of Purulia, West Bengal">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/santhal-tribe-of-purulia-west-bengal.webp"><img src="images/journey/santhal-tribe-of-purulia-west-bengal.webp" loading="lazy" decoding="async" alt="Santhal tribe of Purulia, West Bengal"></button>
         <figcaption>Santhal tribe of Purulia, West Bengal</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/tribal-hamlet-in-the-remote-forests-of-upper-subansiri-upper.webp" loading="lazy" decoding="async" alt="Tribal hamlet in the remote forests of Upper Subansiri, Upper Subansiri">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/tribal-hamlet-in-the-remote-forests-of-upper-subansiri-upper.webp"><img src="images/journey/tribal-hamlet-in-the-remote-forests-of-upper-subansiri-upper.webp" loading="lazy" decoding="async" alt="Tribal hamlet in the remote forests of Upper Subansiri, Upper Subansiri"></button>
         <figcaption>Tribal hamlet in the remote forests of Upper Subansiri, Upper Subansiri</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/vernacular-house-rural-dharwad.webp" loading="lazy" decoding="async" alt="Vernacular House, Rural Dharwad">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/vernacular-house-rural-dharwad.webp"><img src="images/journey/vernacular-house-rural-dharwad.webp" loading="lazy" decoding="async" alt="Vernacular House, Rural Dharwad"></button>
         <figcaption>Vernacular House, Rural Dharwad</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/cultural-214.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/cultural-214.webp"><img src="images/journey/cultural-214.webp" loading="lazy" decoding="async" alt="Cultural — photograph from the Visual Journey"></button>
         
       </figure>
     </div>
@@ -3830,52 +3741,40 @@ body{margin:0}
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-      <figure class="vj-shot">
-        <img src="images/journey/geological-043.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-043.webp"><img src="images/journey/geological-043.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-058.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-058.webp"><img src="images/journey/geological-058.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-059.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-059.webp"><img src="images/journey/geological-059.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-074.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-074.webp"><img src="images/journey/geological-074.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-087.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-087.webp"><img src="images/journey/geological-087.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-116.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-116.webp"><img src="images/journey/geological-116.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-117.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-117.webp"><img src="images/journey/geological-117.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/geological-139.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/geological-139.webp"><img src="images/journey/geological-139.webp" loading="lazy" decoding="async" alt="Geological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/polo-forest-aravalli-range.webp" loading="lazy" decoding="async" alt="Polo forest, Aravalli range">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/polo-forest-aravalli-range.webp"><img src="images/journey/polo-forest-aravalli-range.webp" loading="lazy" decoding="async" alt="Polo forest, Aravalli range"></button>
         <figcaption>Polo forest, Aravalli range</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/potholes-crafted-by-river-tungabhadra.webp" loading="lazy" decoding="async" alt="Potholes crafted by River Tungabhadra">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/potholes-crafted-by-river-tungabhadra.webp"><img src="images/journey/potholes-crafted-by-river-tungabhadra.webp" loading="lazy" decoding="async" alt="Potholes crafted by River Tungabhadra"></button>
         <figcaption>Potholes crafted by River Tungabhadra</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/red-sandstone-cliffs-of-badami.webp" loading="lazy" decoding="async" alt="Red sandstone cliffs of Badami">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/red-sandstone-cliffs-of-badami.webp"><img src="images/journey/red-sandstone-cliffs-of-badami.webp" loading="lazy" decoding="async" alt="Red sandstone cliffs of Badami"></button>
         <figcaption>Red sandstone cliffs of Badami</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/white-cliff-of-dover.webp" loading="lazy" decoding="async" alt="White Cliff of Dover">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/white-cliff-of-dover.webp"><img src="images/journey/white-cliff-of-dover.webp" loading="lazy" decoding="async" alt="White Cliff of Dover"></button>
         <figcaption>White Cliff of Dover</figcaption>
       </figure>
     </div>
@@ -3890,80 +3789,61 @@ body{margin:0}
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-3.webp" loading="lazy" decoding="async" alt="Amboseli National Park 3">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-3.webp"><img src="images/journey/amboseli-national-park-3.webp" loading="lazy" decoding="async" alt="Amboseli National Park 3"></button>
         <figcaption>Amboseli National Park 3</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-5.webp" loading="lazy" decoding="async" alt="Amboseli National Park 5">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-5.webp"><img src="images/journey/amboseli-national-park-5.webp" loading="lazy" decoding="async" alt="Amboseli National Park 5"></button>
         <figcaption>Amboseli National Park 5</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/andaman-islands-tropical-evergreen-forests.webp" loading="lazy" decoding="async" alt="Andaman Islands tropical evergreen forests">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/andaman-islands-tropical-evergreen-forests.webp"><img src="images/journey/andaman-islands-tropical-evergreen-forests.webp" loading="lazy" decoding="async" alt="Andaman Islands tropical evergreen forests"></button>
         <figcaption>Andaman Islands tropical evergreen forests</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/coastal-ecosystem-andaman-islands.webp" loading="lazy" decoding="async" alt="Coastal ecosystem Andaman Islands">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/coastal-ecosystem-andaman-islands.webp"><img src="images/journey/coastal-ecosystem-andaman-islands.webp" loading="lazy" decoding="async" alt="Coastal ecosystem Andaman Islands"></button>
         <figcaption>Coastal ecosystem Andaman Islands</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/corbett-national-park-indias-first-national-park.webp" loading="lazy" decoding="async" alt="Corbett National Park - India's first national park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/corbett-national-park-indias-first-national-park.webp"><img src="images/journey/corbett-national-park-indias-first-national-park.webp" loading="lazy" decoding="async" alt="Corbett National Park - India's first national park"></button>
         <figcaption>Corbett National Park - India's first national park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/forest-canopy.webp" loading="lazy" decoding="async" alt="Forest canopy">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/forest-canopy.webp"><img src="images/journey/forest-canopy.webp" loading="lazy" decoding="async" alt="Forest canopy"></button>
         <figcaption>Forest canopy</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-085.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-085.webp"><img src="images/journey/ecological-085.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-104.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-104.webp"><img src="images/journey/ecological-104.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-145.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-145.webp"><img src="images/journey/ecological-145.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-149.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-149.webp"><img src="images/journey/ecological-149.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-153.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-153.webp"><img src="images/journey/ecological-153.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ecological-154.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ecological-154.webp"><img src="images/journey/ecological-154.webp" loading="lazy" decoding="async" alt="Ecological — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/kudremukha-national-park.webp" loading="lazy" decoding="async" alt="Kudremukha National Park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/kudremukha-national-park.webp"><img src="images/journey/kudremukha-national-park.webp" loading="lazy" decoding="async" alt="Kudremukha National Park"></button>
         <figcaption>Kudremukha National Park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/nandadevi-biosphere-reserve.webp" loading="lazy" decoding="async" alt="Nandadevi Biosphere Reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/nandadevi-biosphere-reserve.webp"><img src="images/journey/nandadevi-biosphere-reserve.webp" loading="lazy" decoding="async" alt="Nandadevi Biosphere Reserve"></button>
         <figcaption>Nandadevi Biosphere Reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/nilgiris-biosphere-reserve-2.webp" loading="lazy" decoding="async" alt="Nilgiris Biosphere Reserve 2">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/nilgiris-biosphere-reserve-2.webp"><img src="images/journey/nilgiris-biosphere-reserve-2.webp" loading="lazy" decoding="async" alt="Nilgiris Biosphere Reserve 2"></button>
         <figcaption>Nilgiris Biosphere Reserve 2</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/nilgiris-biosphere-reserve.webp" loading="lazy" decoding="async" alt="Nilgiris Biosphere Reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/nilgiris-biosphere-reserve.webp"><img src="images/journey/nilgiris-biosphere-reserve.webp" loading="lazy" decoding="async" alt="Nilgiris Biosphere Reserve"></button>
         <figcaption>Nilgiris Biosphere Reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/ranganathittu-bird-sanctuary-ramsar-sites.webp" loading="lazy" decoding="async" alt="Ranganathittu bird sanctuary ramsar sites">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/ranganathittu-bird-sanctuary-ramsar-sites.webp"><img src="images/journey/ranganathittu-bird-sanctuary-ramsar-sites.webp" loading="lazy" decoding="async" alt="Ranganathittu bird sanctuary ramsar sites"></button>
         <figcaption>Ranganathittu bird sanctuary ramsar sites</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/salim-ali-bird-sanctuary.webp" loading="lazy" decoding="async" alt="Salim Ali Bird Sanctuary">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/salim-ali-bird-sanctuary.webp"><img src="images/journey/salim-ali-bird-sanctuary.webp" loading="lazy" decoding="async" alt="Salim Ali Bird Sanctuary"></button>
         <figcaption>Salim Ali Bird Sanctuary</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/shola-landscape-of-western-ghats.webp" loading="lazy" decoding="async" alt="Shola Landscape of Western Ghats">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/shola-landscape-of-western-ghats.webp"><img src="images/journey/shola-landscape-of-western-ghats.webp" loading="lazy" decoding="async" alt="Shola Landscape of Western Ghats"></button>
         <figcaption>Shola Landscape of Western Ghats</figcaption>
       </figure>
     </div>
@@ -3978,300 +3858,235 @@ body{margin:0}
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>
     <div class="vj-collage">
-      <figure class="vj-shot">
-        <img src="images/journey/a-very-special-moment.webp" loading="lazy" decoding="async" alt="A very special moment">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/a-very-special-moment.webp"><img src="images/journey/a-very-special-moment.webp" loading="lazy" decoding="async" alt="A very special moment"></button>
         <figcaption>A very special moment</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-2.webp" loading="lazy" decoding="async" alt="Amboseli National Park 2">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-2.webp"><img src="images/journey/amboseli-national-park-2.webp" loading="lazy" decoding="async" alt="Amboseli National Park 2"></button>
         <figcaption>Amboseli National Park 2</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park-7.webp" loading="lazy" decoding="async" alt="Amboseli National Park 7">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park-7.webp"><img src="images/journey/amboseli-national-park-7.webp" loading="lazy" decoding="async" alt="Amboseli National Park 7"></button>
         <figcaption>Amboseli National Park 7</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/amboseli-national-park.webp" loading="lazy" decoding="async" alt="Amboseli National Park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/amboseli-national-park.webp"><img src="images/journey/amboseli-national-park.webp" loading="lazy" decoding="async" alt="Amboseli National Park"></button>
         <figcaption>Amboseli National Park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/bamboo-pit-viper.webp" loading="lazy" decoding="async" alt="Bamboo pit viper">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/bamboo-pit-viper.webp"><img src="images/journey/bamboo-pit-viper.webp" loading="lazy" decoding="async" alt="Bamboo pit viper"></button>
         <figcaption>Bamboo pit viper</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/black-drongo.webp" loading="lazy" decoding="async" alt="Black Drongo">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/black-drongo.webp"><img src="images/journey/black-drongo.webp" loading="lazy" decoding="async" alt="Black Drongo"></button>
         <figcaption>Black Drongo</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/crested-serpent-eagle-lake-naivasha-national-park.webp" loading="lazy" decoding="async" alt="Crested Serpent Eagle, Lake Naivasha National Park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/crested-serpent-eagle-lake-naivasha-national-park.webp"><img src="images/journey/crested-serpent-eagle-lake-naivasha-national-park.webp" loading="lazy" decoding="async" alt="Crested Serpent Eagle, Lake Naivasha National Park"></button>
         <figcaption>Crested Serpent Eagle, Lake Naivasha National Park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/critically-endangered-great-indian-bustard.webp" loading="lazy" decoding="async" alt="Critically Endangered Great Indian Bustard">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/critically-endangered-great-indian-bustard.webp"><img src="images/journey/critically-endangered-great-indian-bustard.webp" loading="lazy" decoding="async" alt="Critically Endangered Great Indian Bustard"></button>
         <figcaption>Critically Endangered Great Indian Bustard</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/crown-crane-kenya.webp" loading="lazy" decoding="async" alt="Crown Crane, Kenya">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/crown-crane-kenya.webp"><img src="images/journey/crown-crane-kenya.webp" loading="lazy" decoding="async" alt="Crown Crane, Kenya"></button>
         <figcaption>Crown Crane, Kenya</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/crown-crane-amboseli-national-park.webp" loading="lazy" decoding="async" alt="Crown crane, Amboseli National Park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/crown-crane-amboseli-national-park.webp"><img src="images/journey/crown-crane-amboseli-national-park.webp" loading="lazy" decoding="async" alt="Crown crane, Amboseli National Park"></button>
         <figcaption>Crown crane, Amboseli National Park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/desert-monitor-lizard.webp" loading="lazy" decoding="async" alt="Desert Monitor lizard">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/desert-monitor-lizard.webp"><img src="images/journey/desert-monitor-lizard.webp" loading="lazy" decoding="async" alt="Desert Monitor lizard"></button>
         <figcaption>Desert Monitor lizard</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/elephats-of-jim-corbett.webp" loading="lazy" decoding="async" alt="Elephants of Jim Corbett">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/elephats-of-jim-corbett.webp"><img src="images/journey/elephats-of-jim-corbett.webp" loading="lazy" decoding="async" alt="Elephants of Jim Corbett"></button>
         <figcaption>Elephants of Jim Corbett</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/emerald-endemisim.webp" loading="lazy" decoding="async" alt="Emerald Endemism">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/emerald-endemisim.webp"><img src="images/journey/emerald-endemisim.webp" loading="lazy" decoding="async" alt="Emerald Endemism"></button>
         <figcaption>Emerald Endemism</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/fast-food.webp" loading="lazy" decoding="async" alt="Fast food">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/fast-food.webp"><img src="images/journey/fast-food.webp" loading="lazy" decoding="async" alt="Fast food"></button>
         <figcaption>Fast food</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/flamingos-at-amboseli-national-park.webp" loading="lazy" decoding="async" alt="Flamingos at amboseli national park">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/flamingos-at-amboseli-national-park.webp"><img src="images/journey/flamingos-at-amboseli-national-park.webp" loading="lazy" decoding="async" alt="Flamingos at amboseli national park"></button>
         <figcaption>Flamingos at amboseli national park</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/garden-lizard.webp" loading="lazy" decoding="async" alt="Garden Lizard">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/garden-lizard.webp"><img src="images/journey/garden-lizard.webp" loading="lazy" decoding="async" alt="Garden Lizard"></button>
         <figcaption>Garden Lizard</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/high-rise-living.webp" loading="lazy" decoding="async" alt="High rise living">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/high-rise-living.webp"><img src="images/journey/high-rise-living.webp" loading="lazy" decoding="async" alt="High rise living"></button>
         <figcaption>High rise living</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-038.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-038.webp"><img src="images/journey/floral-faunal-038.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-040.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-040.webp"><img src="images/journey/floral-faunal-040.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-050.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-050.webp"><img src="images/journey/floral-faunal-050.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-056.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-056.webp"><img src="images/journey/floral-faunal-056.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-061.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-061.webp"><img src="images/journey/floral-faunal-061.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-062.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-062.webp"><img src="images/journey/floral-faunal-062.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-063.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-063.webp"><img src="images/journey/floral-faunal-063.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-066.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-066.webp"><img src="images/journey/floral-faunal-066.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-068.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-068.webp"><img src="images/journey/floral-faunal-068.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-069.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-069.webp"><img src="images/journey/floral-faunal-069.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-070.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-070.webp"><img src="images/journey/floral-faunal-070.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-073.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-073.webp"><img src="images/journey/floral-faunal-073.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-076.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-076.webp"><img src="images/journey/floral-faunal-076.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-081.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-081.webp"><img src="images/journey/floral-faunal-081.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-082.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-082.webp"><img src="images/journey/floral-faunal-082.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-084.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-084.webp"><img src="images/journey/floral-faunal-084.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-086.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-086.webp"><img src="images/journey/floral-faunal-086.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-088.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-088.webp"><img src="images/journey/floral-faunal-088.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-094.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-094.webp"><img src="images/journey/floral-faunal-094.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-095.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-095.webp"><img src="images/journey/floral-faunal-095.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-096.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-096.webp"><img src="images/journey/floral-faunal-096.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-097.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-097.webp"><img src="images/journey/floral-faunal-097.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-100.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-100.webp"><img src="images/journey/floral-faunal-100.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-111.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-111.webp"><img src="images/journey/floral-faunal-111.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-112.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-112.webp"><img src="images/journey/floral-faunal-112.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-118.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-118.webp"><img src="images/journey/floral-faunal-118.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-129.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-129.webp"><img src="images/journey/floral-faunal-129.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-151.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-151.webp"><img src="images/journey/floral-faunal-151.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/indian-chameleon-of-deccan-plateau.webp" loading="lazy" decoding="async" alt="Indian chameleon of Deccan Plateau">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/indian-chameleon-of-deccan-plateau.webp"><img src="images/journey/indian-chameleon-of-deccan-plateau.webp" loading="lazy" decoding="async" alt="Indian chameleon of Deccan Plateau"></button>
         <figcaption>Indian chameleon of Deccan Plateau</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/lizard-western-himalayas.webp" loading="lazy" decoding="async" alt="Lizard, Western Himalayas">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/lizard-western-himalayas.webp"><img src="images/journey/lizard-western-himalayas.webp" loading="lazy" decoding="async" alt="Lizard, Western Himalayas"></button>
         <figcaption>Lizard, Western Himalayas</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve-2.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 2">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve-2.webp"><img src="images/journey/maasai-mara-national-reserve-2.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 2"></button>
         <figcaption>Maasai Mara National Reserve 2</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve-3.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 3">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve-3.webp"><img src="images/journey/maasai-mara-national-reserve-3.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 3"></button>
         <figcaption>Maasai Mara National Reserve 3</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve-4.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 4">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve-4.webp"><img src="images/journey/maasai-mara-national-reserve-4.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 4"></button>
         <figcaption>Maasai Mara National Reserve 4</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve-5.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 5">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve-5.webp"><img src="images/journey/maasai-mara-national-reserve-5.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 5"></button>
         <figcaption>Maasai Mara National Reserve 5</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve-6.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 6">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve-6.webp"><img src="images/journey/maasai-mara-national-reserve-6.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve 6"></button>
         <figcaption>Maasai Mara National Reserve 6</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/maasai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/maasai-mara-national-reserve.webp"><img src="images/journey/maasai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Maasai Mara National Reserve"></button>
         <figcaption>Maasai Mara National Reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/malabar-trogon-harpactes-fasciatus-goa.webp" loading="lazy" decoding="async" alt="Malabar trogon (Harpactes fasciatus), Goa">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/malabar-trogon-harpactes-fasciatus-goa.webp"><img src="images/journey/malabar-trogon-harpactes-fasciatus-goa.webp" loading="lazy" decoding="async" alt="Malabar trogon (Harpactes fasciatus), Goa"></button>
         <figcaption>Malabar trogon (Harpactes fasciatus), Goa</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/marmota-himalayana.webp" loading="lazy" decoding="async" alt="Marmota himalayana">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/marmota-himalayana.webp"><img src="images/journey/marmota-himalayana.webp" loading="lazy" decoding="async" alt="Marmota himalayana"></button>
         <figcaption>Marmota himalayana</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/marsh-fritillary-chefchaouen.webp" loading="lazy" decoding="async" alt="Marsh Fritillary, Chefchaouen">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/marsh-fritillary-chefchaouen.webp"><img src="images/journey/marsh-fritillary-chefchaouen.webp" loading="lazy" decoding="async" alt="Marsh Fritillary, Chefchaouen"></button>
         <figcaption>Marsh Fritillary, Chefchaouen</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/masai-ostriches-maasai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai ostriches, Maasai Mara National Reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/masai-ostriches-maasai-mara-national-reserve.webp"><img src="images/journey/masai-ostriches-maasai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Masai ostriches, Maasai Mara National Reserve"></button>
         <figcaption>Masai ostriches, Maasai Mara National Reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/moroccan-sunset.webp" loading="lazy" decoding="async" alt="Moroccan Sunset">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/moroccan-sunset.webp"><img src="images/journey/moroccan-sunset.webp" loading="lazy" decoding="async" alt="Moroccan Sunset"></button>
         <figcaption>Moroccan Sunset</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/mudskippers-of-goa.webp" loading="lazy" decoding="async" alt="Mudskippers of Goa">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/mudskippers-of-goa.webp"><img src="images/journey/mudskippers-of-goa.webp" loading="lazy" decoding="async" alt="Mudskippers of Goa"></button>
         <figcaption>Mudskippers of Goa</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/on-the-hunt.webp" loading="lazy" decoding="async" alt="On the Hunt">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/on-the-hunt.webp"><img src="images/journey/on-the-hunt.webp" loading="lazy" decoding="async" alt="On the Hunt"></button>
         <figcaption>On the Hunt</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/portable-house.webp" loading="lazy" decoding="async" alt="Portable house">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/portable-house.webp"><img src="images/journey/portable-house.webp" loading="lazy" decoding="async" alt="Portable house"></button>
         <figcaption>Portable house</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/purple-starling-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Purple starling, Masai mara national reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/purple-starling-masai-mara-national-reserve.webp"><img src="images/journey/purple-starling-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Purple starling, Masai mara national reserve"></button>
         <figcaption>Purple starling, Masai mara national reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/saddle-billed-stork-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Saddle-billed stork, Masai mara national reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/saddle-billed-stork-masai-mara-national-reserve.webp"><img src="images/journey/saddle-billed-stork-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Saddle-billed stork, Masai mara national reserve"></button>
         <figcaption>Saddle-billed stork, Masai mara national reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/scorpian-king.webp" loading="lazy" decoding="async" alt="Scorpion King">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/scorpian-king.webp"><img src="images/journey/scorpian-king.webp" loading="lazy" decoding="async" alt="Scorpion King"></button>
         <figcaption>Scorpion King</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/silver-ribbion.webp" loading="lazy" decoding="async" alt="Silver ribbon">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/silver-ribbion.webp"><img src="images/journey/silver-ribbion.webp" loading="lazy" decoding="async" alt="Silver ribbon"></button>
         <figcaption>Silver ribbon</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/sipping-salt.webp" loading="lazy" decoding="async" alt="Sipping salt">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/sipping-salt.webp"><img src="images/journey/sipping-salt.webp" loading="lazy" decoding="async" alt="Sipping salt"></button>
         <figcaption>Sipping salt</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/spoon-bill-ranganathittu-bird-sanctuary.webp" loading="lazy" decoding="async" alt="Spoon Bill, Ranganathittu bird sanctuary">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/spoon-bill-ranganathittu-bird-sanctuary.webp"><img src="images/journey/spoon-bill-ranganathittu-bird-sanctuary.webp" loading="lazy" decoding="async" alt="Spoon Bill, Ranganathittu bird sanctuary"></button>
         <figcaption>Spoon Bill, Ranganathittu bird sanctuary</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/stick-to-the-plan.webp" loading="lazy" decoding="async" alt="Stick to the plan">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/stick-to-the-plan.webp"><img src="images/journey/stick-to-the-plan.webp" loading="lazy" decoding="async" alt="Stick to the plan"></button>
         <figcaption>Stick to the plan</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/superb-starling-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Superb Starling, Masai mara national reserve">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/superb-starling-masai-mara-national-reserve.webp"><img src="images/journey/superb-starling-masai-mara-national-reserve.webp" loading="lazy" decoding="async" alt="Superb Starling, Masai mara national reserve"></button>
         <figcaption>Superb Starling, Masai mara national reserve</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/the-kiang-equus-kiang.webp" loading="lazy" decoding="async" alt="The kiang (Equus kiang)">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/the-kiang-equus-kiang.webp"><img src="images/journey/the-kiang-equus-kiang.webp" loading="lazy" decoding="async" alt="The kiang (Equus kiang)"></button>
         <figcaption>The kiang (Equus kiang)</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/web-of-life.webp" loading="lazy" decoding="async" alt="Web of life">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/web-of-life.webp"><img src="images/journey/web-of-life.webp" loading="lazy" decoding="async" alt="Web of life"></button>
         <figcaption>Web of life</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/western-himalayan-pit-viper-at-13800-ft.webp" loading="lazy" decoding="async" alt="Western himalayan pit viper at 13800 ft">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/western-himalayan-pit-viper-at-13800-ft.webp"><img src="images/journey/western-himalayan-pit-viper-at-13800-ft.webp" loading="lazy" decoding="async" alt="Western himalayan pit viper at 13800 ft"></button>
         <figcaption>Western himalayan pit viper at 13800 ft</figcaption>
       </figure>
-      <figure class="vj-shot">
-        <img src="images/journey/floral-faunal-213.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey">
+      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="images/journey/floral-faunal-213.webp"><img src="images/journey/floral-faunal-213.webp" loading="lazy" decoding="async" alt="Floral and Faunal — photograph from the Visual Journey"></button>
         
       </figure>
     </div>
   </div>
+</div>
+<div class="modal vj-light" data-shot-modal role="dialog" aria-modal="true" aria-label="Photograph" hidden>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="vj-light-inner">
+    <img src="" alt="">
+    <p class="vj-light-cap" hidden></p>
+  </div>
+  <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
 </div>
 </div>
 <div data-page="testimonials" class="project-page testimonials-page">
@@ -4416,14 +4231,10 @@ body{margin:0}
 
 (function(){
   function initHome(){ 
-var lastFocused=null;
-function openModal(id){var m=document.querySelector('[data-service-modal="'+id+'"]');if(!m)return;lastFocused=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)c.focus();}
-function closeModal(m){m.hidden=true;document.body.style.overflow='';if(lastFocused)lastFocused.focus();}
+function openModal(id){var m=document.querySelector('[data-service-modal="'+id+'"]');if(!m)return;memberLast=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)c.focus();}
 document.querySelectorAll('[data-open-service]').forEach(function(b){b.addEventListener('click',function(){openModal(b.getAttribute('data-open-service'));});});
 var mapModal=document.querySelector('[data-map-modal]');
-document.querySelectorAll('[data-open-map]').forEach(function(b){b.addEventListener('click',function(){if(!mapModal)return;lastFocused=document.activeElement;mapModal.hidden=false;document.body.style.overflow='hidden';var c=mapModal.querySelector('.modal-close');if(c)c.focus();});});
-document.querySelectorAll('[data-close-modal]').forEach(function(el){el.addEventListener('click',function(){closeModal(el.closest('.modal'));});});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){var o=document.querySelector('.modal:not([hidden])');if(o)closeModal(o);}});
+document.querySelectorAll('[data-open-map]').forEach(function(b){b.addEventListener('click',function(){if(!mapModal)return;memberLast=document.activeElement;mapModal.hidden=false;document.body.style.overflow='hidden';var c=mapModal.querySelector('.modal-close');if(c)c.focus();});});
 /* contact: handled by the delegated opener below */
 document.querySelectorAll('[data-practice-toggle]').forEach(function(btn){btn.addEventListener('click',function(){var id=btn.getAttribute('data-practice-toggle');var panel=document.querySelector('[data-practice="'+id+'"] .practice-panel');var isOpen=panel.hasAttribute('data-open');document.querySelectorAll('.practice-panel[data-open]').forEach(function(p){p.removeAttribute('data-open');});document.querySelectorAll('[data-practice-toggle]').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){panel.setAttribute('data-open','');btn.setAttribute('aria-expanded','true');}});});
 var toggle=null,drawer=null;
@@ -4447,7 +4258,9 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
   function closeDrawers(){
     document.querySelectorAll('[data-mobile-nav][data-open]').forEach(function(d){d.removeAttribute('data-open');});
     document.querySelectorAll('[data-menu-toggle]').forEach(function(t){t.setAttribute('aria-expanded','false');});
-    document.body.style.overflow='';
+    /* the lock belongs to whatever is still open: Escape reaches this and the
+       modal handler both, and a stacked lightbox leaves its collage behind */
+    if(!document.querySelector('.modal:not([hidden])')) document.body.style.overflow='';
   }
   document.addEventListener('click',function(e){
     var t=e.target.closest&&e.target.closest('[data-menu-toggle]');
@@ -4478,17 +4291,35 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
       var c=m.querySelector('.modal-close'); if(c) c.focus();
       return;
     }
+    var shot=e.target.closest('[data-open-shot]');
+    if(shot){
+      var lb=document.querySelector('[data-shot-modal]');
+      var img=lb.querySelector('img');
+      var cap=shot.closest('.vj-shot').querySelector('figcaption');
+      img.src=shot.getAttribute('data-open-shot');
+      img.alt=shot.querySelector('img').alt;
+      var lc=lb.querySelector('.vj-light-cap');
+      lc.textContent=cap?cap.textContent:''; lc.hidden=!cap;
+      lb.hidden=false; document.body.style.overflow='hidden';
+      var lx=lb.querySelector('.modal-close'); if(lx) lx.focus();
+      return;
+    }
     var close=e.target.closest('[data-close-modal]');
     if(close){
       var mm=close.closest('.modal'); if(!mm) return;
-      mm.hidden=true; document.body.style.overflow='';
+      mm.hidden=true;
+      if(document.querySelector('.modal:not([hidden])')) return;
+      document.body.style.overflow='';
       if(memberLast&&memberLast.focus) memberLast.focus();
     }
   });
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
-    var o=document.querySelector('.modal:not([hidden])');
-    if(o){ o.hidden=true; document.body.style.overflow=''; if(memberLast&&memberLast.focus) memberLast.focus(); }
+    var all=document.querySelectorAll('.modal:not([hidden])');
+    var o=all[all.length-1];
+    if(o){ o.hidden=true;
+      if(!document.querySelector('.modal:not([hidden])')){ document.body.style.overflow='';
+        if(memberLast&&memberLast.focus) memberLast.focus(); } }
   });
 
 
