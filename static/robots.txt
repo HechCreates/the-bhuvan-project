@@ -1,5 +1,16 @@
 # Staging. Crawling is deliberately left open so that crawlers can read the
 # noindex in the page, and so link previews keep working; indexing is
-# refused by the meta tag and the X-Robots-Tag header instead.
+# refused by the meta tag instead.
+#
+# The photographs are the exception. A meta tag cannot reach an image, and
+# GitHub Pages ignores the _headers file that used to carry X-Robots-Tag
+# for them, so refusing the directory is the only lever left. og-image.jpg
+# sits at the root and stays fetchable, so link previews still work.
+#
+# Note: robots.txt is read per-origin, so on a GitHub project page served
+# from /<repo>/ this file is never fetched -- crawlers look at the domain
+# root instead. It only takes effect on the custom domain at launch. Until
+# then the noindex meta tag is what actually holds the pages back.
 User-agent: *
 Allow: /
+Disallow: /images/

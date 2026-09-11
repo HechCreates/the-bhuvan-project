@@ -26,8 +26,11 @@ if (mode !== 'on' && mode !== 'off') {
   console.log('usage: node build/set-indexing.mjs <on|off> [https://new-origin]');
   process.exit(1);
 }
-if (newOrigin && !/^https:\/\/[^/]+$/.test(newOrigin)) {
-  console.log('origin must look like https://example.com with no trailing slash');
+/* a project page lives at https://user.github.io/repo, so a path is allowed;
+   a trailing slash is not, because the references append their own */
+if (newOrigin && !/^https:\/\/[^/]+(\/[^/\s]+)*$/.test(newOrigin)) {
+  console.log('origin must look like https://example.com or');
+  console.log('https://user.github.io/repo, with no trailing slash');
   process.exit(1);
 }
 
@@ -35,7 +38,7 @@ let s = fs.readFileSync(SRC, 'utf8');
 const log = [];
 
 /* ---- current origin, read out of the canonical tag ---- */
-const cur = (s.match(/<link rel="canonical" href="(https:\/\/[^/"]+)\//) || [])[1];
+const cur = (s.match(/<link rel="canonical" href="(https:\/\/[^"]*?)\/">/) || [])[1];
 if (!cur) { console.log('FAIL: could not read the canonical origin'); process.exit(1); }
 const origin = newOrigin || cur;
 
@@ -62,8 +65,18 @@ const robotsTxt = mode === 'on'
   ? `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
   : `# Staging. Crawling is deliberately left open so that crawlers can read the\n`
   + `# noindex in the page, and so link previews keep working; indexing is\n`
-  + `# refused by the meta tag and the X-Robots-Tag header instead.\n`
-  + `User-agent: *\nAllow: /\n`;
+  + `# refused by the meta tag instead.\n`
+  + `#\n`
+  + `# The photographs are the exception. A meta tag cannot reach an image, and\n`
+  + `# GitHub Pages ignores the _headers file that used to carry X-Robots-Tag\n`
+  + `# for them, so refusing the directory is the only lever left. og-image.jpg\n`
+  + `# sits at the root and stays fetchable, so link previews still work.\n`
+  + `#\n`
+  + `# Note: robots.txt is read per-origin, so on a GitHub project page served\n`
+  + `# from /<repo>/ this file is never fetched -- crawlers look at the domain\n`
+  + `# root instead. It only takes effect on the custom domain at launch. Until\n`
+  + `# then the noindex meta tag is what actually holds the pages back.\n`
+  + `User-agent: *\nAllow: /\nDisallow: /images/\n`;
 fs.writeFileSync(path.join(D, 'robots.txt'), robotsTxt);
 log.push(`ok    robots.txt (crawling allowed, sitemap ${mode === 'on' ? 'advertised' : 'withheld'})`);
 
