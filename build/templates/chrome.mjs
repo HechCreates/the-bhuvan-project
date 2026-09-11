@@ -58,18 +58,16 @@ export function footer() {
   const links = site.nav
     .map(n => `<a href="${href(n)}" ${target(n)}>${esc(n.label)}</a>`).join('\n');
   return `<footer class="footer">
+  <nav class="wrap footer-nav" aria-label="Footer">${links}</nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
       <img class="footer-logo" src="${esc(b.logo)}" alt="${esc(b.logoAlt)}">
       <div><span class="footer-name">${esc(b.name)}</span><p class="footer-tag">${esc(b.tagline)}</p></div>
     </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer">${links}</nav>
-      <div class="footer-contact">
-        <p>${esc(c.location)}</p>
-        <a href="mailto:${esc(c.email)}">${esc(c.email)}</a>
-        <button type="button" class="cta footer-cta" data-open-contact>${esc(site.cta.label)}</button>
-      </div>
+    <div class="footer-contact">
+      <p class="footer-place">${esc(c.location)}</p>
+      <a class="footer-mail" href="mailto:${esc(c.email)}">${esc(c.email)}</a>
+      <button type="button" class="cta footer-cta" data-open-contact>${esc(site.cta.label)}</button>
     </div>
   </div>
   <div class="wrap footer-base"><span>${esc(f.copyright)}</span><span>${esc(f.motto)}</span></div>

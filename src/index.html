@@ -239,24 +239,7 @@ body{margin:0}
 @media(max-width:900px){#page-home .collab-item{width:104px;height:56px}}
 @media(max-width:560px){#page-home .collab-item{width:calc(25% - .6rem);height:52px;padding:7px}}
 
-#page-home /* footer */
-.footer{background:var(--bg);color:var(--primary);padding-block:clamp(3.5rem,7vw,5rem) 2rem;position:relative;overflow:hidden}
-#page-home .footer-contour{position:absolute;top:0;left:0;right:0;height:50%;opacity:.4}
-#page-home .footer-contour path{stroke:var(--tertiary)}
-#page-home .footer-inner{position:relative;display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between}
-#page-home .footer-brand{display:flex;align-items:center;gap:.85rem}
-#page-home .footer-logo{width:58px;height:58px;border-radius:50%;object-fit:contain;flex:none}
-#page-home .footer-name{font-family:var(--fd);font-size:1.45rem;font-weight:700}
-#page-home .footer-tag{margin:.3rem 0 0;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;color:var(--secondary);font-weight:600}
-#page-home .footer-cols{display:flex;gap:clamp(2rem,6vw,5rem);flex-wrap:wrap}
-#page-home .footer-nav{display:flex;flex-direction:column;gap:.6rem}
-#page-home .footer-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.75}
-#page-home .footer-nav a:hover{opacity:1;color:var(--clay)}
-#page-home .footer-contact{display:flex;flex-direction:column;gap:.5rem;font-size:.92rem}
-#page-home .footer-cta{align-self:flex-start;margin-top:.6rem;background:var(--secondary);color:var(--light)}
-#page-home .footer-cta:hover{background:var(--clay)}
-#page-home .footer-base{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(55,40,7,.16);font-size:.72rem;letter-spacing:.06em;color:rgba(55,40,7,.6);font-weight:500}
-@media(max-width:560px){#page-home .footer-inner{flex-direction:column}#page-home .footer-cols{width:100%}}#page-home .modal,#page-about .modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:1.25rem}#page-home .modal[hidden],#page-about .modal[hidden]{display:none}#page-home .modal-backdrop,#page-about .modal-backdrop{position:absolute;inset:0;background:rgba(20,15,4,.66);backdrop-filter:blur(4px)}#page-home .modal-panel,#page-about .modal-panel{position:relative;background:var(--bg);color:var(--primary);border-radius:5px;max-width:920px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:42% 1fr;box-shadow:0 40px 90px -30px rgba(20,15,4,.75);animation:mIn .3s ease}
+#page-home .modal,#page-about .modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:1.25rem}#page-home .modal[hidden],#page-about .modal[hidden]{display:none}#page-home .modal-backdrop,#page-about .modal-backdrop{position:absolute;inset:0;background:rgba(20,15,4,.66);backdrop-filter:blur(4px)}#page-home .modal-panel,#page-about .modal-panel{position:relative;background:var(--bg);color:var(--primary);border-radius:5px;max-width:920px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:42% 1fr;box-shadow:0 40px 90px -30px rgba(20,15,4,.75);animation:mIn .3s ease}
 @keyframes mIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}#page-home .modal-media,#page-about .modal-media{position:relative;min-height:240px}#page-home .modal-media img,#page-about .modal-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}#page-home .modal-body,#page-about .modal-body{padding:clamp(1.8rem,3vw,2.8rem)}#page-home .modal-eyebrow,#page-about .modal-eyebrow{color:var(--clay);font-family:var(--fb);font-weight:600;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase}#page-home .modal-title,#page-about .modal-title{font-size:clamp(1.7rem,3vw,2.4rem);margin:.6rem 0 0;max-width:22ch}#page-home .modal-sub,#page-about .modal-sub{font-weight:600;color:var(--secondary);margin:.6rem 0 0}#page-home .modal-para,#page-about .modal-para{margin:1rem 0 0;font-size:.99rem;line-height:1.65}#page-home .modal-close,#page-about .modal-close{position:absolute;top:.8rem;right:1rem;z-index:2;width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;background:var(--bg);color:var(--primary);font-size:1.6rem;line-height:1;box-shadow:0 4px 12px -4px rgba(20,15,4,.4)}#page-home .modal-close:hover,#page-about .modal-close:hover{background:var(--clay);color:var(--light)}
 @media(max-width:820px){#page-home .modal-panel{grid-template-columns:1fr}#page-home .modal-media{height:220px}}
 
@@ -407,23 +390,7 @@ body{margin:0}
 #page-about .closing h2{font-size:clamp(2rem,5vw,3.4rem);max-width:18ch;margin:0 auto 1.5rem}
 #page-about .closing .cta{font-size:.8rem;padding:.9rem 2rem}
 
-#page-about /* footer */
-.footer{background:var(--bg);color:var(--primary);padding-block:clamp(3.5rem,7vw,5rem) 2rem;position:relative;overflow:hidden}
-#page-about .footer-contour{position:absolute;top:0;left:0;right:0;height:50%;opacity:.4}
-#page-about .footer-inner{position:relative;display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between}
-#page-about .footer-brand{display:flex;align-items:center;gap:.85rem}
-#page-about .footer-logo{width:58px;height:58px;border-radius:50%;object-fit:contain;flex:none}
-#page-about .footer-name{font-family:var(--fd);font-size:1.45rem;font-weight:700}
-#page-about .footer-tag{margin:.3rem 0 0;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;color:var(--secondary);font-weight:600}
-#page-about .footer-cols{display:flex;gap:clamp(2rem,6vw,5rem);flex-wrap:wrap}
-#page-about .footer-nav{display:flex;flex-direction:column;gap:.6rem}
-#page-about .footer-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.75}
-#page-about .footer-nav a:hover{opacity:1;color:var(--clay)}
-#page-about .footer-contact{display:flex;flex-direction:column;gap:.5rem;font-size:.92rem}
-#page-about .footer-cta{align-self:flex-start;margin-top:.6rem;background:var(--secondary);color:var(--light)}
-#page-about .footer-cta:hover{background:var(--clay)}
-#page-about .footer-base{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(55,40,7,.16);font-size:.72rem;letter-spacing:.06em;color:rgba(55,40,7,.6);font-weight:500}
-@media(max-width:560px){#page-about .footer-inner{flex-direction:column}#page-about .footer-cols{width:100%}}
+
 
 #page-about /* reveal */
 [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
@@ -483,21 +450,7 @@ body{margin:0}
 .project-page .mobile-link{font-family:var(--fd);font-weight:600;font-size:1.6rem;padding:.7rem 0;border-bottom:1px solid rgba(55,40,7,.14)}
 @media(max-width:880px){.project-page .nav{display:none}.project-page .menu-toggle{display:flex}}
 .project-page .site-header{opacity:0;animation:fadeUp .8s ease forwards .1s}
-.project-page .footer{background:var(--bg);color:var(--primary);padding-block:clamp(3.5rem,7vw,5rem) 2rem;position:relative;overflow:hidden}
-.project-page .footer-inner{position:relative;display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between}
-.project-page .footer-brand{display:flex;align-items:center;gap:.85rem}
-.project-page .footer-logo{width:58px;height:58px;border-radius:50%;object-fit:contain;flex:none}
-.project-page .footer-name{font-family:var(--fd);font-size:1.45rem;font-weight:700}
-.project-page .footer-tag{margin:.3rem 0 0;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;color:var(--secondary);font-weight:600}
-.project-page .footer-cols{display:flex;gap:clamp(2rem,6vw,5rem);flex-wrap:wrap}
-.project-page .footer-nav{display:flex;flex-direction:column;gap:.6rem}
-.project-page .footer-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.75}
-.project-page .footer-nav a:hover{opacity:1;color:var(--clay)}
-.project-page .footer-contact{display:flex;flex-direction:column;gap:.5rem;font-size:.92rem}
-.project-page .footer-cta{align-self:flex-start;margin-top:.6rem;background:var(--secondary);color:var(--light)}
-.project-page .footer-cta:hover{background:var(--clay)}
-.project-page .footer-base{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(55,40,7,.16);font-size:.72rem;letter-spacing:.06em;color:rgba(55,40,7,.6);font-weight:500}
-@media(max-width:560px){.project-page .footer-inner{flex-direction:column}.project-page .footer-cols{width:100%}}
+
 @media(prefers-reduced-motion:reduce){.project-page .site-header{opacity:1;animation:none}}
 
 /* ---------- Project pages ---------- */
@@ -1062,6 +1015,55 @@ body{margin:0}
 /* The co-founder profiles run longer than the practice copy the panel was
    sized for; 92vh clears them at 900 tall without shrinking any type. */
 #page-about .modal-panel{max-height:92vh}
+
+/* ---------- Footer ----------
+   Nav spread across the top, the brand against the place and the button, the
+   base line under a hairline. One block for all three page scopes; :is() takes
+   its specificity from the id, so these land exactly where the three copies
+   they replace did. */
+:is(#page-home,#page-about,.project-page) .footer{background:var(--bg);color:var(--primary);
+  padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+
+:is(#page-home,#page-about,.project-page) .footer-nav{display:flex;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;
+  margin-bottom:clamp(2.5rem,5vw,3.75rem)}
+:is(#page-home,#page-about,.project-page) .footer-nav a{font-family:var(--fb);font-size:.75rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(55,40,7,.72);transition:color .25s}
+:is(#page-home,#page-about,.project-page) .footer-nav a:hover{color:var(--clay)}
+
+:is(#page-home,#page-about,.project-page) .footer-inner{display:flex;flex-wrap:wrap;gap:2rem 2.5rem;
+  justify-content:space-between;align-items:center}
+:is(#page-home,#page-about,.project-page) .footer-brand{display:flex;align-items:center;gap:clamp(1rem,1.8vw,1.6rem)}
+:is(#page-home,#page-about,.project-page) .footer-logo{width:clamp(74px,7vw,100px);height:clamp(74px,7vw,100px);
+  border-radius:50%;object-fit:contain;flex:none}
+:is(#page-home,#page-about,.project-page) .footer-name{display:block;font-family:var(--fd);font-weight:700;
+  font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.1}
+:is(#page-home,#page-about,.project-page) .footer-tag{margin:.55rem 0 0;font-family:var(--fb);font-size:.75rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--secondary)}
+
+:is(#page-home,#page-about,.project-page) .footer-contact{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;
+  text-align:right}
+:is(#page-home,#page-about,.project-page) .footer-place{margin:0;font-size:.95rem;color:rgba(55,40,7,.8)}
+/* The design has no line for the address, but it is the only mailto on the
+   site, so it sits under the place, a step quieter. */
+:is(#page-home,#page-about,.project-page) .footer-mail{font-size:.8rem;color:rgba(55,40,7,.72);transition:color .25s}
+:is(#page-home,#page-about,.project-page) .footer-mail:hover{color:var(--clay)}
+:is(#page-home,#page-about,.project-page) .footer-cta{margin-top:.6rem;background:var(--secondary);color:var(--light);
+  border-radius:var(--radius);padding:.85rem 1.9rem;font-size:.72rem;letter-spacing:.14em;
+  font-weight:700}
+:is(#page-home,#page-about,.project-page) .footer-cta:hover{background:var(--clay)}
+
+:is(#page-home,#page-about,.project-page) .footer-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+  margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.5rem;
+  border-top:1px solid rgba(55,40,7,.16);font-family:var(--fb);font-size:.72rem;
+  font-weight:500;letter-spacing:.06em;color:rgba(55,40,7,.72)}
+
+/* Spread across the full width needs width to spread into: below this the nav
+   runs from the left and the two halves stack. */
+@media(max-width:720px){
+  :is(#page-home,#page-about,.project-page) .footer-nav{justify-content:flex-start;gap:.85rem 1.6rem}
+  :is(#page-home,#page-about,.project-page) .footer-inner{flex-direction:column;align-items:flex-start}
+  :is(#page-home,#page-about,.project-page) .footer-contact{align-items:flex-start;text-align:left}
+}
 </style>
 </head>
 <body>
@@ -1319,25 +1321,23 @@ body{margin:0}
 </section>
 
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 
 
@@ -1614,25 +1614,23 @@ body{margin:0}
 </section>
 
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 
 <div class="modal" data-member-modal="nikhil-udupa" hidden>
@@ -1792,25 +1790,23 @@ body{margin:0}
     </div>
   </section>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-bandipur-tiger-reserve" class="project-page">
@@ -1933,25 +1929,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-ecological-restoration" class="project-page">
@@ -2143,25 +2137,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-mysuru-rail-museum" class="project-page">
@@ -2312,25 +2304,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-nilgiris-biosphere-reserve" class="project-page">
@@ -2468,25 +2458,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-chairmans-bungalow" class="project-page">
@@ -2706,25 +2694,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-karavulapalli-farm" class="project-page">
@@ -2943,25 +2929,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="p-context-responsive-design" class="project-page">
@@ -3142,25 +3126,23 @@ body{margin:0}
     </div>
   </nav>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <div data-page="testimonials" class="project-page testimonials-page">
@@ -3282,25 +3264,23 @@ body{margin:0}
     </div>
   </section>
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
-      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design &middot; Ecology &middot; Resilience</p></div>
-    </div>
-    <div class="footer-cols">
-      <nav class="footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
+  <nav class="wrap footer-nav" aria-label="Footer"><a href="#/" data-route="home">Home</a>
 <a href="#/about" data-route="about">About</a>
 <a href="#/projects" data-route="projects">Projects</a>
 <a href="#/testimonials" data-route="testimonials">Testimonials</a>
 <a href="#/" data-soon="gallery">Gallery</a></nav>
-      <div class="footer-contact">
-        <p>Bengaluru, Karnataka, India</p>
-        <a href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
-        <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
-      </div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-place">Bengaluru, Karnataka, India</p>
+      <a class="footer-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>
+      <button type="button" class="cta footer-cta" data-open-contact>Get in Touch</button>
     </div>
   </div>
-  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild &middot; Restore &middot; Reimagine</span></div>
+  <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
 </div>
 <script>
