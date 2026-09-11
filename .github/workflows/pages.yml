@@ -1,0 +1,59 @@
+# Publish dist/ to GitHub Pages.
+#
+# Does nothing until Pages is enabled for the repository with "GitHub Actions"
+# as the source (Settings -> Pages -> Build and deployment -> Source).
+#
+# GitHub Pages on a PRIVATE repository needs a paid plan. On the free plan the
+# repository has to be public for this to run.
+#
+# Pages ignores _headers and _redirects -- they are Netlify/Cloudflare files.
+# Nothing depends on them: the router is hash-based, so every real request is
+# for the site root, and build.mjs already writes 404.html as a copy of
+# index.html for hosts without rewrite rules. The one thing lost is the
+# X-Robots-Tag header, which covered the photographs; the noindex meta tag
+# still covers every page.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      # sharp is a devDependency and only regenerates images locally
+      - run: npm ci --omit=dev
+      - run: npm run build
+      - run: node build/verify-build.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
