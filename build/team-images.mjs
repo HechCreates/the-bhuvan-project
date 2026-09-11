@@ -1,4 +1,4 @@
-/* Square face crops for the team section, plus the full frames the popups use.
+/* Square face crops for the three collaborators, and full frames for the leads.
 
    sharp's "attention" strategy picked Nikhil's torso over his head, so the
    crops are placed by hand: a face centre and a square side, both as fractions
@@ -29,16 +29,16 @@ for (const [src, slug, fx, fy, sideFrac, kind] of PEOPLE) {
   left = Math.max(0, Math.min(left, m.width - side));
   top = Math.max(0, Math.min(top, m.height - side));
 
-  const target = kind === 'lead' ? 640 : 460;
-  const sq = await sharp(src).extract({ left, top, width: side, height: side })
-    .resize(target, target).webp({ quality: 82, effort: 6 }).toBuffer();
-  fs.writeFileSync(`${OUT}/${slug}.webp`, sq);
+  if (kind === 'member') {      // the collaborator cards are square
+    const target = 460;
+    const sq = await sharp(src).extract({ left, top, width: side, height: side })
+      .resize(target, target).webp({ quality: 82, effort: 6 }).toBuffer();
+    fs.writeFileSync(`${OUT}/${slug}.webp`, sq);
+    console.log('  ' + [`${slug}.webp`.padEnd(24), `crop ${side}px at ${left},${top}`.padEnd(26),
+      `-> ${target}px`, side < target ? `  UPSCALED ${(target / side).toFixed(1)}x` : ''].join(' '));
+  }
 
-  const line = [`${slug}.webp`.padEnd(24), `crop ${side}px at ${left},${top}`.padEnd(26),
-    `-> ${target}px`, side < target ? `  UPSCALED ${(target / side).toFixed(1)}x` : ''].join(' ');
-  console.log('  ' + line);
-
-  if (kind === 'lead') {   // the popup shows the whole frame
+  if (kind === 'lead') {   // the section and the popup both show the whole frame
     const full = await sharp(src).resize({ width: 900, withoutEnlargement: true })
       .webp({ quality: 80, effort: 6 }).toBuffer();
     fs.writeFileSync(`${OUT}/${slug}-full.webp`, full);
