@@ -1,6 +1,9 @@
 order: 4
 name: Rammohan MN
 role: CEO, Monash Molding Solutions
+silhouette:
+  file: monash.webp
+  alt: Two figures shaking hands
 link: null
 quote:
   - >-

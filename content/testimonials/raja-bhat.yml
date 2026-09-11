@@ -1,6 +1,9 @@
 order: 2
 name: Raja Bhat
 role: Organic farm owner
+silhouette:
+  file: raja-bhat.webp
+  alt: A farmer tending a plant
 link: null
 quote:
   - >-

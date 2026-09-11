@@ -1,6 +1,9 @@
 order: 3
 name: A.R Vasavi
 role: Punarchith
+silhouette:
+  file: punarchith.webp
+  alt: A person working the land with a hoe
 link:
   label: Punarchith
   url: https://www.punarchith.org/

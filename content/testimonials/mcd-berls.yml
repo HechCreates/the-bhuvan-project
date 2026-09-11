@@ -1,6 +1,9 @@
 order: 1
 name: Mahesh Basavanna
 role: Director, CEO, McD Berls
+silhouette:
+  file: mcd-berls.webp
+  alt: A standing figure
 link: null
 quote:
   - >-
