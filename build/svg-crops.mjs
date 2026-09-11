@@ -13,9 +13,9 @@ fs.mkdirSync(OUT, { recursive: true });
 
 //  svg                                            source                        slug             max width
 const JOBS = [
-  ['The Team/Member Cards/Group 2.svg',            'The Team/Harshita Nathan.jpeg', 'harshita-nathan', 900],
-  ['The Team/Member Cards/Group 3.svg',            'The Team/Harsha Bhat.jpeg',     'harsha-bhat',     900],
-  ['The Team/Member Cards/Group 4.svg',            'The Team/Aparna Pradeep.jpeg',  'aparna-pradeep',  900],
+  ['The Team/Member Cards/Group 2.svg',            'The Team/Harshita Nathan.jpeg', 'harshita-nathan-card', 900],
+  ['The Team/Member Cards/Group 3.svg',            'The Team/Harsha Bhat.jpeg',     'harsha-bhat-card',     900],
+  ['The Team/Member Cards/Group 4.svg',            'The Team/Aparna Pradeep.jpeg',  'aparna-pradeep-card',  900],
   ['The Team/Co Founders Square Cropped/Rectangle 84.svg', 'The Team/Nikhil Udupa .jpeg',   'nikhil-udupa-sq',   640],
   ['The Team/Co Founders Square Cropped/Rectangle 85.svg', 'The Team/Shilpa Shirish .jpeg', 'shilpa-shirish-sq', 640],
 ];

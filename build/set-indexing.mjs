@@ -101,6 +101,17 @@ ${MARK_B}
 h = h.replace(new RegExp(MARK_A.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       + '[\\s\\S]*?' + MARK_B.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\n*'), '');
 h = block + h;
+
+/* Images revalidate on every view while the design is under review, so a
+   re-crop actually reaches the reviewer. At launch the pictures stop changing
+   and a month of caching is the right trade. */
+const IMG_STAGING = '/images/*\n  Cache-Control: public, max-age=0, must-revalidate';
+const IMG_LIVE = '/images/*\n  Cache-Control: public, max-age=2592000';
+const [from, to] = mode === 'on' ? [IMG_STAGING, IMG_LIVE] : [IMG_LIVE, IMG_STAGING];
+if (h.includes(from)) { h = h.replace(from, to); log.push(`ok    _headers /images/* -> ${mode === 'on' ? 'a month' : 'revalidate'}`); }
+else if (h.includes(to)) log.push(`ok    _headers /images/* already ${mode === 'on' ? 'a month' : 'revalidate'}`);
+else { log.push('FAIL  _headers: no /images/* cache rule found'); process.exitCode = 1; }
+
 fs.writeFileSync(HEAD_FILE, h);
 log.push(`ok    _headers X-Robots-Tag ${mode === 'on' ? 'removed' : 'added'}`);
 

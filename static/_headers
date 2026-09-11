@@ -9,10 +9,13 @@
 /site.webmanifest
   Content-Type: application/manifest+json
 
-# Photographs are stable, but not immutable: a month, so replacing one is not
-# stuck in caches for a year.
+# While the design is being reviewed, images must revalidate. A month of
+# caching meant five different crops shipped under the same filename and no
+# browser that had already seen one ever asked for another -- the site was
+# correct and the reviewer was looking at a stale copy. build/set-indexing.mjs
+# restores the long cache at launch, when the pictures stop changing.
 /images/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=0, must-revalidate
 
 /*.png
   Cache-Control: public, max-age=2592000

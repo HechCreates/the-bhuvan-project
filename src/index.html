@@ -943,7 +943,7 @@ body{margin:0}
 #page-about .lead + .lead{margin-top:clamp(2.5rem,5vw,4rem);padding-top:clamp(2.5rem,5vw,4rem);
   border-top:1px solid rgba(243,239,230,.18)}
 #page-about .lead-row{display:grid;grid-template-columns:clamp(130px,15.3vw,195px) minmax(0,1fr);
-  gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+  gap:clamp(1.5rem,4vw,3.5rem);align-items:stretch}
 /* No aspect-ratio: the frame takes the photograph's own 2:3, so the whole
    picture shows and nothing is cropped to fit. */
 #page-about .lead-media{display:block;width:100%;padding:0;border:0;
@@ -956,18 +956,18 @@ body{margin:0}
   margin:.85rem 0 .15rem;color:var(--light)}
 #page-about .lead-role{font-family:var(--fb);font-weight:600;font-size:.7rem;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(243,239,230,.75);margin:0}
-#page-about .lead-copy{display:flex;flex-direction:column;justify-content:flex-start;
+#page-about .lead-copy{display:flex;flex-direction:column;justify-content:space-between;
   gap:clamp(1.4rem,2.5vw,2rem)}
 #page-about .lead-copy p{margin:0;font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.7;
-  color:rgba(243,239,230,.92);max-width:66ch}
+  color:rgba(243,239,230,.92);max-width:none}
 #page-about .lead-more{align-self:flex-start;background:none;border:0;padding:0;cursor:pointer;
   font-family:var(--fb);font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--light);border-bottom:1px solid rgba(243,239,230,.45);transition:color .25s,border-color .25s}
 #page-about .lead-more:hover{color:#fff;border-color:#fff}
 
 /* the three collaborators: image, name, role, nothing more */
-#page-about .team-members{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2.5rem,5vw,4rem);
+#page-about .team-members{display:grid;grid-template-columns:repeat(3,minmax(0,19rem));
+  justify-content:space-between;gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2.5rem,5vw,4rem);
   padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(243,239,230,.22)}
 #page-about .member{margin:0;background:#CAC7BF;border-radius:var(--radius);padding:5.7%}
 #page-about .member img{width:100%;aspect-ratio:734/643;object-fit:cover;display:block}
@@ -981,7 +981,7 @@ body{margin:0}
   #page-about .lead-row{grid-template-columns:1fr;gap:1.2rem}
   #page-about .lead-media{max-width:175px}
   #page-about .member{padding:.6rem}
-  #page-about .team-members{grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+  #page-about .team-members{grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;justify-content:stretch}
   #page-about .member-name{font-size:.9rem}
   #page-about .member-role{font-size:.6875rem}
 }
@@ -1533,7 +1533,7 @@ body{margin:0}
             <p class="lead-role">Co-founder</p>
           </div>
           <div class="lead-copy">
-            <p>A landscape architect and ecological restoration practitioner with 13+ years in research-based spatial planning. His work spans landscapes across India, joining ecological thinking to cultural sensitivity.</p>
+            <p>A Landscape Architect and ecological restoration practitioner with 13+ years of experience in research-based spatial planning and sustainable design. His work spans a wide range of landscapes across India, integrating ecological thinking with cultural sensitivity to design resilient and inclusive spaces. His core expertise includes nature-based solutions, watershed and natural resource management, ecological restoration, wildlife habitat design, spatial design, master planning and disaster-resilient regional planning.</p>
             <button class="lead-more" type="button" data-open-member="nikhil-udupa">Read more <span aria-hidden="true">&rarr;</span></button>
           </div>
         </div>
@@ -1549,7 +1549,7 @@ body{margin:0}
             <p class="lead-role">Co-founder</p>
           </div>
           <div class="lead-copy">
-            <p>An architect and educator working on climate change and its impacts on ecosystems, settlements and the built environment, from climate-resilient settlements to inclusive spatial planning.</p>
+            <p>An architect and educator currently working on questions around climate change, with a particular interest in understanding its impacts on different ecosystems and on settlements, communities, and the built environment. Her areas of interest include climate-resilient settlements, migration and climate change, informal settlements, urban adaptation, and inclusive spatial planning. She also works on vernacular architecture, heritage documentation, building materials and energy-efficient design.</p>
             <button class="lead-more" type="button" data-open-member="shilpa-shirish">Read more <span aria-hidden="true">&rarr;</span></button>
           </div>
         </div>
@@ -1557,17 +1557,17 @@ body{margin:0}
     </div>
     <div class="team-members" data-reveal>
       <article class="member">
-        <img src="images/team/harshita-nathan.webp" width="460" height="460" loading="lazy" alt="Harshita Nathan, Intern.">
+        <img src="images/team/harshita-nathan-card.webp" width="413" height="362" loading="lazy" alt="Harshita Nathan, Intern.">
         <p class="member-name">Harshita Nathan</p>
         <p class="member-role">Intern</p>
       </article>
       <article class="member">
-        <img src="images/team/aparna-pradeep.webp" width="460" height="460" loading="lazy" alt="Aparna Pradeep, Research Consultant.">
+        <img src="images/team/aparna-pradeep-card.webp" width="900" height="788" loading="lazy" alt="Aparna Pradeep, Research Consultant.">
         <p class="member-name">Aparna Pradeep</p>
         <p class="member-role">Research Consultant</p>
       </article>
       <article class="member">
-        <img src="images/team/harsha-bhat.webp" width="460" height="460" loading="lazy" alt="Harsha Bhat, Web Design and Development Consultant.">
+        <img src="images/team/harsha-bhat-card.webp" width="900" height="788" loading="lazy" alt="Harsha Bhat, Web Design and Development Consultant.">
         <p class="member-name">Harsha Bhat</p>
         <p class="member-role">Web Design &amp; Development Consultant</p>
       </article>
