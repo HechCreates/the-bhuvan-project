@@ -168,8 +168,9 @@ body{margin:0}
 #page-home .practice-row:hover .p-num{color:var(--clay)}
 #page-home .p-icon-wrap{display:inline-flex;position:relative;flex:none}
 #page-home .p-icon{width:42px;height:42px;display:block;transition:transform .25s}
-#page-home .p-icon-hover{position:absolute;inset:0;opacity:0;transition:opacity .25s,transform .25s}
+#page-home .p-icon-hover{position:absolute;inset:0;opacity:0}
 #page-home .practice-row:hover .p-icon{transform:translateY(-1px)}
+#page-home .practice-row:hover .p-icon-base{opacity:0}
 #page-home .practice-row:hover .p-icon-hover{opacity:1}
 #page-home .practice-name{font-family:var(--fd);font-weight:700;font-size:clamp(1.4rem,3.2vw,2.6rem);letter-spacing:-.01em;line-height:1.05}
 #page-home .practice-plus{position:relative;width:22px;height:22px;flex:none}
@@ -942,7 +943,7 @@ body{margin:0}
 #page-about .lead + .lead{margin-top:clamp(2.5rem,5vw,4rem);padding-top:clamp(2.5rem,5vw,4rem);
   border-top:1px solid rgba(243,239,230,.18)}
 #page-about .lead-row{display:grid;grid-template-columns:clamp(130px,15.3vw,195px) minmax(0,1fr);
-  gap:clamp(1.5rem,4vw,3.5rem);align-items:stretch}
+  gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
 /* No aspect-ratio: the frame takes the photograph's own 2:3, so the whole
    picture shows and nothing is cropped to fit. */
 #page-about .lead-media{display:block;width:100%;padding:0;border:0;
@@ -955,7 +956,7 @@ body{margin:0}
   margin:.85rem 0 .15rem;color:var(--light)}
 #page-about .lead-role{font-family:var(--fb);font-weight:600;font-size:.7rem;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(243,239,230,.75);margin:0}
-#page-about .lead-copy{display:flex;flex-direction:column;justify-content:center;
+#page-about .lead-copy{display:flex;flex-direction:column;justify-content:flex-start;
   gap:clamp(1.4rem,2.5vw,2rem)}
 #page-about .lead-copy p{margin:0;font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.7;
   color:rgba(243,239,230,.92);max-width:66ch}
@@ -968,14 +969,13 @@ body{margin:0}
 #page-about .team-members{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2.5rem,5vw,4rem);
   padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(243,239,230,.22)}
-#page-about .member{margin:0;background:var(--light);border-radius:var(--radius);
-  padding:clamp(.8rem,1.4vw,1.1rem)}
-#page-about .member img{width:100%;aspect-ratio:1;object-fit:cover;display:block;
-  border-radius:calc(var(--radius) - 1px)}
-#page-about .member-name{font-family:var(--fd);font-weight:700;font-size:1.02rem;
-  margin:.8rem 0 .12rem;color:var(--primary)}
+#page-about .member{margin:0;background:#CAC7BF;border-radius:var(--radius);padding:5.7%}
+#page-about .member img{width:100%;aspect-ratio:734/643;object-fit:cover;display:block}
+#page-about .member-name{font-family:var(--fd);font-weight:700;font-size:1.05rem;
+  margin:.85rem 0 .22rem;color:var(--primary);line-height:1.2}
+/* .68 measured 3.95:1 on this ground; .78 is 5.08:1 */
 #page-about .member-role{font-family:var(--fb);font-weight:600;font-size:.6875rem;letter-spacing:.12em;
-  text-transform:uppercase;color:rgba(55,40,7,.68);margin:0;line-height:1.35}
+  text-transform:uppercase;color:rgba(55,40,7,.78);margin:0;line-height:1.4}
 
 @media (max-width:620px){
   #page-about .lead-row{grid-template-columns:1fr;gap:1.2rem}
@@ -989,7 +989,7 @@ body{margin:0}
    roles three times. One per row, image beside the name, reads instead. */
 @media (max-width:480px){
   #page-about .team-members{grid-template-columns:1fr;gap:.8rem}
-  #page-about .member{display:grid;grid-template-columns:88px minmax(0,1fr);
+  #page-about .member{display:grid;grid-template-columns:100px minmax(0,1fr);
     column-gap:1rem;row-gap:0;padding:.7rem}
   #page-about .member img{grid-area:1/1/3/2}
   #page-about .member-name{grid-area:1/2/2/3;align-self:end;margin:0 0 .2rem}
@@ -1157,7 +1157,7 @@ body{margin:0}
     <div class="practice-list">
   <div class="practice" data-practice="ecological-restoration">
     <button class="practice-row" data-practice-toggle="ecological-restoration" aria-expanded="true">
-      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/ecological-restoration.webp" width="168" height="168" loading="lazy" alt="Ecological restoration"><img class="p-icon p-icon-hover" src="images/icons/ecological-restoration-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/ecological-restoration.webp" width="168" height="168" loading="lazy" alt="Ecological restoration"><img class="p-icon p-icon-hover" src="images/icons/ecological-restoration-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Ecological Restoration</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1175,7 +1175,7 @@ body{margin:0}
 
   <div class="practice" data-practice="landscape-architecture">
     <button class="practice-row" data-practice-toggle="landscape-architecture" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/landscape-architecture.webp" width="168" height="168" loading="lazy" alt="Landscape architecture"><img class="p-icon p-icon-hover" src="images/icons/landscape-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/landscape-architecture.webp" width="168" height="168" loading="lazy" alt="Landscape architecture"><img class="p-icon p-icon-hover" src="images/icons/landscape-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Landscape Architecture</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1193,7 +1193,7 @@ body{margin:0}
 
   <div class="practice" data-practice="watershed-management">
     <button class="practice-row" data-practice-toggle="watershed-management" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/watershed-management.webp" width="168" height="168" loading="lazy" alt="Resilient watershed management and land master planning"><img class="p-icon p-icon-hover" src="images/icons/watershed-management-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/watershed-management.webp" width="168" height="168" loading="lazy" alt="Resilient watershed management and land master planning"><img class="p-icon p-icon-hover" src="images/icons/watershed-management-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Resilient Watershed Management &amp; Land Master Planning</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1211,7 +1211,7 @@ body{margin:0}
 
   <div class="practice" data-practice="sustainable-architecture">
     <button class="practice-row" data-practice-toggle="sustainable-architecture" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/sustainable-architecture.webp" width="168" height="168" loading="lazy" alt="Sustainable architecture"><img class="p-icon p-icon-hover" src="images/icons/sustainable-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/sustainable-architecture.webp" width="168" height="168" loading="lazy" alt="Sustainable architecture"><img class="p-icon p-icon-hover" src="images/icons/sustainable-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Sustainable Architecture</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1229,7 +1229,7 @@ body{margin:0}
 
   <div class="practice" data-practice="academic-engagement">
     <button class="practice-row" data-practice-toggle="academic-engagement" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/academic-engagement.webp" width="168" height="168" loading="lazy" alt="Academic engagement"><img class="p-icon p-icon-hover" src="images/icons/academic-engagement-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/academic-engagement.webp" width="168" height="168" loading="lazy" alt="Academic engagement"><img class="p-icon p-icon-hover" src="images/icons/academic-engagement-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Academic Engagement</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1527,7 +1527,7 @@ body{margin:0}
           <div class="lead-id">
             <button class="lead-media" type="button" data-open-member="nikhil-udupa"
                     aria-label="Read more about Nikhil Udupa">
-              <img src="images/team/nikhil-udupa-full.webp" width="900" height="1351" loading="lazy" alt="Nikhil Udupa, co-founder of The Bhu.Van Project.">
+              <img src="images/team/nikhil-udupa-sq.webp" width="640" height="640" loading="lazy" alt="Nikhil Udupa, co-founder of The Bhu.Van Project.">
             </button>
             <p class="lead-name">Nikhil Udupa</p>
             <p class="lead-role">Co-founder</p>
@@ -1543,7 +1543,7 @@ body{margin:0}
           <div class="lead-id">
             <button class="lead-media" type="button" data-open-member="shilpa-shirish"
                     aria-label="Read more about Shilpa Shirish">
-              <img src="images/team/shilpa-shirish-full.webp" width="900" height="1351" loading="lazy" alt="Shilpa Shirish, co-founder of The Bhu.Van Project.">
+              <img src="images/team/shilpa-shirish-sq.webp" width="640" height="640" loading="lazy" alt="Shilpa Shirish, co-founder of The Bhu.Van Project.">
             </button>
             <p class="lead-name">Shilpa Shirish</p>
             <p class="lead-role">Co-founder</p>
