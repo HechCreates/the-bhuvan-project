@@ -1059,12 +1059,34 @@ body{margin:0}
   border-top:1px solid rgba(55,40,7,.16);font-family:var(--fb);font-size:.72rem;
   font-weight:500;letter-spacing:.06em;color:rgba(55,40,7,.72)}
 
-/* Spread across the full width needs width to spread into: below this the nav
-   runs from the left and the two halves stack. */
+/* ---------- Footer on a phone ----------
+   Spread across the full width needs width to spread into. Below this the
+   footer becomes one centred column, to "Mobile Footer.png": the nav one item
+   per line, the logo above the brand name rather than beside it, and the base
+   line stacked instead of pushed to the two edges. The spacing is that mock's
+   measured bands at its own scale -- 390px at 3.508x. */
 @media(max-width:720px){
-  :is(#page-home,#page-about,.project-page) .footer-nav{justify-content:flex-start;gap:.85rem 1.6rem}
-  :is(#page-home,#page-about,.project-page) .footer-inner{flex-direction:column;align-items:flex-start}
-  :is(#page-home,#page-about,.project-page) .footer-contact{align-items:flex-start;text-align:left}
+  :is(#page-home,#page-about,.project-page) .footer-nav{flex-direction:column;align-items:center;justify-content:center;
+    gap:.25rem;margin-bottom:1.85rem}
+  /* padding rather than gap carries most of the 35px rhythm, so each link is a
+     31px target instead of a 15px one; 44px cannot fit that rhythm */
+  :is(#page-home,#page-about,.project-page) .footer-nav a{display:block;padding-block:.5rem;font-size:.72rem;letter-spacing:.18em}
+
+  :is(#page-home,#page-about,.project-page) .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:2.1rem}
+  :is(#page-home,#page-about,.project-page) .footer-brand{flex-direction:column;align-items:center;gap:.62rem}
+  :is(#page-home,#page-about,.project-page) .footer-logo{width:71px;height:71px}
+  :is(#page-home,#page-about,.project-page) .footer-name{font-size:1.125rem}
+  /* the mock solves to 9.6px here; held at the 11px floor used site-wide, so
+     this line runs about 14% wider than the drawing */
+  :is(#page-home,#page-about,.project-page) .footer-tag{margin-top:.35rem;font-size:.6875rem;letter-spacing:.14em}
+
+  :is(#page-home,#page-about,.project-page) .footer-contact{align-items:center;text-align:center;gap:.6rem}
+  :is(#page-home,#page-about,.project-page) .footer-place{font-size:.76rem}
+  :is(#page-home,#page-about,.project-page) .footer-mail{font-size:.735rem}
+  :is(#page-home,#page-about,.project-page) .footer-cta{margin-top:.15rem;padding:.85rem 1rem}
+
+  :is(#page-home,#page-about,.project-page) .footer-base{flex-direction:column;align-items:center;text-align:center;
+    gap:1rem;margin-top:2.4rem;padding-top:1.4rem;font-size:.79rem}
 }
 
 /* ---------- Visual Journey ---------- */
