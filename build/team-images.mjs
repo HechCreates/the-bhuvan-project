@@ -19,7 +19,7 @@ fs.mkdirSync(OUT, { recursive: true });
 const PEOPLE = [
   ['The Team/Nikhil Udupa .jpeg',   'nikhil-udupa',    0.47, 0.150, 0.74, 'lead'],
   ['The Team/Shilpa Shirish .jpeg', 'shilpa-shirish',  0.45, 0.270, 0.76, 'lead'],
-  ['The Team/Aparna Pradeep.jpeg',  'aparna-pradeep',  0.490, 0.377, 0.505, 'member'],
+  ['The Team/Aparna Pradeep.jpeg',  'aparna-pradeep',  0.477, 0.371, 0.42, 'member'],
   ['The Team/Harsha Bhat.jpeg',     'harsha-bhat',     0.50, 0.220, 0.70, 'member'],
   ['The Team/Harshita Nathan.jpeg', 'harshita-nathan', 0.55, 0.235, 0.92, 'member'],
 ];

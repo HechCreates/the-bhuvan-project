@@ -166,9 +166,11 @@ body{margin:0}
 #page-home .practice-coord{display:flex;align-items:center;gap:.7rem;min-width:5.2em}
 #page-home .p-num{font-family:var(--fb);font-weight:700;font-size:.7rem;letter-spacing:.12em;color:var(--tertiary)}
 #page-home .practice-row:hover .p-num{color:var(--clay)}
-#page-home .p-icon-wrap{display:inline-flex}
-#page-home .p-icon{width:42px;height:42px;color:var(--secondary);transition:color .25s,transform .25s}
-#page-home .practice-row:hover .p-icon{color:var(--clay);transform:translateY(-1px)}
+#page-home .p-icon-wrap{display:inline-flex;position:relative;flex:none}
+#page-home .p-icon{width:42px;height:42px;display:block;transition:transform .25s}
+#page-home .p-icon-hover{position:absolute;inset:0;opacity:0;transition:opacity .25s,transform .25s}
+#page-home .practice-row:hover .p-icon{transform:translateY(-1px)}
+#page-home .practice-row:hover .p-icon-hover{opacity:1}
 #page-home .practice-name{font-family:var(--fd);font-weight:700;font-size:clamp(1.4rem,3.2vw,2.6rem);letter-spacing:-.01em;line-height:1.05}
 #page-home .practice-plus{position:relative;width:22px;height:22px;flex:none}
 #page-home .practice-plus::before,#page-home .practice-plus::after{content:'';position:absolute;background:currentColor;transition:transform .3s ease}
@@ -184,7 +186,7 @@ body{margin:0}
 #page-home .practice-desc{font-size:1.08rem;line-height:1.6;margin:0 0 1.5rem;max-width:44ch}
 #page-home .practice-more{background:none;border:none;cursor:pointer;font-family:var(--fb);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);padding:0}
 #page-home .practice-more span{display:inline-block;transition:transform .2s}#page-home .practice-more:hover span{transform:translateX(4px)}
-@media(max-width:760px){#page-home .practice-panel-inner{grid-template-columns:1fr}#page-home .practice-panel[data-open]{max-height:1000px}#page-home .practice-media{order:-1}#page-home .p-icon{width:26px;height:26px}}
+@media(max-width:760px){#page-home .practice-panel-inner{grid-template-columns:1fr}#page-home .practice-panel[data-open]{max-height:1000px}#page-home .practice-media{order:-1}#page-home .p-icon{width:26px;height:26px}#page-home .p-icon-wrap{width:26px;height:26px}}
 
 #page-home /* ---------- PROJECTS — all 6 visible,#page-home uniform equal-height cards ---------- */
 .projects{background:var(--soil);color:var(--light);padding-block:clamp(4rem,8vw,6rem);position:relative;overflow:hidden}
@@ -939,7 +941,7 @@ body{margin:0}
 #page-about .lead{margin:0}
 #page-about .lead + .lead{margin-top:clamp(2.5rem,5vw,4rem);padding-top:clamp(2.5rem,5vw,4rem);
   border-top:1px solid rgba(243,239,230,.18)}
-#page-about .lead-row{display:grid;grid-template-columns:clamp(190px,23vw,290px) minmax(0,1fr);
+#page-about .lead-row{display:grid;grid-template-columns:clamp(130px,15.3vw,195px) minmax(0,1fr);
   gap:clamp(1.5rem,4vw,3.5rem);align-items:stretch}
 /* No aspect-ratio: the frame takes the photograph's own 2:3, so the whole
    picture shows and nothing is cropped to fit. */
@@ -977,7 +979,7 @@ body{margin:0}
 
 @media (max-width:620px){
   #page-about .lead-row{grid-template-columns:1fr;gap:1.2rem}
-  #page-about .lead-media{max-width:260px}
+  #page-about .lead-media{max-width:175px}
   #page-about .member{padding:.6rem}
   #page-about .team-members{grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
   #page-about .member-name{font-size:.9rem}
@@ -1022,7 +1024,7 @@ body{margin:0}
    its specificity from the id, so these land exactly where the three copies
    they replace did. */
 :is(#page-home,#page-about,.project-page) .footer{background:var(--bg);color:var(--primary);
-  padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+  padding-block:clamp(1.4rem,2.6vw,2.1rem) 2rem}
 
 :is(#page-home,#page-about,.project-page) .footer-nav{display:flex;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;
   margin-bottom:clamp(2.5rem,5vw,3.75rem)}
@@ -1155,7 +1157,7 @@ body{margin:0}
     <div class="practice-list">
   <div class="practice" data-practice="ecological-restoration">
     <button class="practice-row" data-practice-toggle="ecological-restoration" aria-expanded="true">
-      <span class="practice-coord"><span class="p-icon-wrap"><svg class="p-icon" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.3 26.6 C15.7 22.6 15.8 19.4 16.05 15.4" stroke-width="1.7"/><path d="M16.1 17.4 C14.6 13.4 11.3 11.5 7.4 11.4 C7.2 15.6 10.4 18.7 15.8 17.6" stroke-width="1.5"/><path d="M16.4 20.9 C17.6 17.8 20.6 16 24.4 16.3 C24.5 19.8 21.4 22.3 16.6 21.4" stroke-width="1.5"/><path d="M10.9 26.8 C13.6 26.2 18.7 26.1 21.6 26.9" stroke-width="1.7"/><path d="M15.4 27 C14.3 28.9 12.7 29.8 11 30" stroke-width="1.3"/><path d="M17 27.1 C18 29 19.6 29.9 21.3 29.9" stroke-width="1.3"/><path d="M16.3 26.6 C15.7 22.6 15.8 19.4 16.05 15.4" stroke-width="1.22" opacity=".5" transform="rotate(0.22 16 16) translate(-0.14 -0.29)"/><path d="M16.1 17.4 C14.6 13.4 11.3 11.5 7.4 11.4 C7.2 15.6 10.4 18.7 15.8 17.6" stroke-width="1.08" opacity=".5" transform="rotate(-0.44 16 16) translate(0.14 -0.29)"/><path d="M16.4 20.9 C17.6 17.8 20.6 16 24.4 16.3 C24.5 19.8 21.4 22.3 16.6 21.4" stroke-width="1.08" opacity=".5" transform="rotate(-0.89 16 16) translate(0 -0.57)"/><path d="M10.9 26.8 C13.6 26.2 18.7 26.1 21.6 26.9" stroke-width="1.22" opacity=".5" transform="rotate(-1 16 16) translate(0.43 -0.57)"/><path d="M15.4 27 C14.3 28.9 12.7 29.8 11 30" stroke-width="0.94" opacity=".5" transform="rotate(-0.33 16 16) translate(0.14 -0.43)"/><path d="M17 27.1 C18 29 19.6 29.9 21.3 29.9" stroke-width="0.94" opacity=".5" transform="rotate(0.44 16 16) translate(-0.43 -0.43)"/></svg></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/ecological-restoration.webp" width="168" height="168" loading="lazy" alt="Ecological restoration"><img class="p-icon p-icon-hover" src="images/icons/ecological-restoration-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Ecological Restoration</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1173,7 +1175,7 @@ body{margin:0}
 
   <div class="practice" data-practice="landscape-architecture">
     <button class="practice-row" data-practice-toggle="landscape-architecture" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><svg class="p-icon" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2.9 24.4 C8.2 20.6 14.4 19.4 20.6 21.2 C24.2 22.3 27.1 23.9 29.4 25.6" stroke-width="1.7"/><path d="M4.4 28.9 C10.2 25.9 16.9 25.4 22.9 27.2 C25.6 28 27.6 28.9 29.2 29.9" stroke-width="1.4"/><path d="M7.6 19.4 C11.4 16.9 15.6 16.2 19.4 17.1" stroke-width="1.2"/><path d="M11.4 21.9 C11.2 17.6 11.3 13.9 11.6 10.4" stroke-width="1.6"/><path d="M11.5 14.4 C8.4 13.4 6.4 10.9 6.4 7.6 C10.2 7.4 12.2 9.6 11.7 13.6" stroke-width="1.4"/><path d="M11.7 11.9 C14.6 10.6 16.6 7.9 16.4 4.6 C12.9 5.2 11.2 7.6 11.5 11.4" stroke-width="1.4"/><path d="M23.4 22.6 C23.2 19.4 23.4 17.2 23.6 14.9" stroke-width="1.3"/><path d="M23.6 17.4 C21.9 16.4 20.9 14.6 21.2 12.4 C23.4 12.9 24.2 14.6 23.8 16.9" stroke-width="1.1"/><path d="M2.9 24.4 C8.2 20.6 14.4 19.4 20.6 21.2 C24.2 22.3 27.1 23.9 29.4 25.6" stroke-width="1.22" opacity=".5" transform="rotate(0.22 16 16) translate(-0.43 -0.43)"/><path d="M4.4 28.9 C10.2 25.9 16.9 25.4 22.9 27.2 C25.6 28 27.6 28.9 29.2 29.9" stroke-width="1.01" opacity=".5" transform="rotate(0.44 16 16) translate(0 0)"/><path d="M7.6 19.4 C11.4 16.9 15.6 16.2 19.4 17.1" stroke-width="0.86" opacity=".5" transform="rotate(0 16 16) translate(-0.29 0.29)"/><path d="M11.4 21.9 C11.2 17.6 11.3 13.9 11.6 10.4" stroke-width="1.15" opacity=".5" transform="rotate(-0.56 16 16) translate(0.43 -0.86)"/><path d="M11.5 14.4 C8.4 13.4 6.4 10.9 6.4 7.6 C10.2 7.4 12.2 9.6 11.7 13.6" stroke-width="1.01" opacity=".5" transform="rotate(-1 16 16) translate(0.29 -1)"/><path d="M11.7 11.9 C14.6 10.6 16.6 7.9 16.4 4.6 C12.9 5.2 11.2 7.6 11.5 11.4" stroke-width="1.01" opacity=".5" transform="rotate(-1 16 16) translate(-0.43 -0.86)"/><path d="M23.4 22.6 C23.2 19.4 23.4 17.2 23.6 14.9" stroke-width="0.94" opacity=".5" transform="rotate(0.11 16 16) translate(0.29 0)"/><path d="M23.6 17.4 C21.9 16.4 20.9 14.6 21.2 12.4 C23.4 12.9 24.2 14.6 23.8 16.9" stroke-width="0.79" opacity=".5" transform="rotate(-0.89 16 16) translate(0 -0.43)"/></svg></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/landscape-architecture.webp" width="168" height="168" loading="lazy" alt="Landscape architecture"><img class="p-icon p-icon-hover" src="images/icons/landscape-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Landscape Architecture</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1191,7 +1193,7 @@ body{margin:0}
 
   <div class="practice" data-practice="watershed-management">
     <button class="practice-row" data-practice-toggle="watershed-management" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><svg class="p-icon" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.1 4.6 C16.1 4.6 9.4 12.4 9.6 17.2 C9.8 21.4 12.9 23.8 16.2 23.7 C19.5 23.6 22.5 21 22.5 16.9 C22.5 12.3 16.1 4.6 16.1 4.6 Z" stroke-width="1.7"/><path d="M12.9 15.4 C13.2 18.4 14.4 20.2 16.6 20.8" stroke-width="1.2"/><path d="M4.6 26.2 C8.2 24.6 11.4 24.6 14.8 26 C18.4 27.5 21.8 27.4 25.4 25.8" stroke-width="1.5"/><path d="M6.2 29.6 C9.2 28.4 11.9 28.5 14.8 29.6 C17.6 30.6 20.4 30.5 23.2 29.4" stroke-width="1.3"/><path d="M16.1 4.6 C16.1 4.6 9.4 12.4 9.6 17.2 C9.8 21.4 12.9 23.8 16.2 23.7 C19.5 23.6 22.5 21 22.5 16.9 C22.5 12.3 16.1 4.6 16.1 4.6 Z" stroke-width="1.22" opacity=".5" transform="rotate(0 16 16) translate(0 0.43)"/><path d="M12.9 15.4 C13.2 18.4 14.4 20.2 16.6 20.8" stroke-width="0.86" opacity=".5" transform="rotate(-0.22 16 16) translate(-0.43 -0.43)"/><path d="M4.6 26.2 C8.2 24.6 11.4 24.6 14.8 26 C18.4 27.5 21.8 27.4 25.4 25.8" stroke-width="1.08" opacity=".5" transform="rotate(0.33 16 16) translate(0.43 -0.29)"/><path d="M6.2 29.6 C9.2 28.4 11.9 28.5 14.8 29.6 C17.6 30.6 20.4 30.5 23.2 29.4" stroke-width="0.94" opacity=".5" transform="rotate(-0.78 16 16) translate(-0.29 -0.43)"/></svg></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/watershed-management.webp" width="168" height="168" loading="lazy" alt="Resilient watershed management and land master planning"><img class="p-icon p-icon-hover" src="images/icons/watershed-management-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Resilient Watershed Management &amp; Land Master Planning</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1209,7 +1211,7 @@ body{margin:0}
 
   <div class="practice" data-practice="sustainable-architecture">
     <button class="practice-row" data-practice-toggle="sustainable-architecture" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><svg class="p-icon" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5.9 28.4 C5.7 23.6 5.8 19.4 6.1 15.4 L16.1 7.4 L26.2 15.2 C26.4 19.4 26.4 23.9 26.1 28.4 Z" stroke-width="1.7"/><path d="M6.2 28.6 C12.4 29.1 20.2 29.1 26.2 28.5" stroke-width="1.4"/><path d="M13.2 28.4 C13 25.4 13.1 23.2 13.4 20.9 C15.2 20.6 17.1 20.6 18.9 20.9 C19.1 23.4 19.1 25.6 18.9 28.4" stroke-width="1.4"/><path d="M16.1 18.9 C16 17.2 16.1 16.1 16.3 14.9" stroke-width="1.2"/><path d="M16.2 16.6 C14.4 16.2 13.1 14.9 12.9 12.9 C15 12.5 16.4 13.6 16.5 15.9" stroke-width="1.1"/><path d="M16.3 17.4 C18.2 16.9 19.5 15.4 19.5 13.4 C17.4 13.2 16.1 14.4 16.2 16.6" stroke-width="1.1"/><path d="M5.9 28.4 C5.7 23.6 5.8 19.4 6.1 15.4 L16.1 7.4 L26.2 15.2 C26.4 19.4 26.4 23.9 26.1 28.4 Z" stroke-width="1.22" opacity=".5" transform="rotate(-1.11 16 16) translate(-0.43 -1)"/><path d="M6.2 28.6 C12.4 29.1 20.2 29.1 26.2 28.5" stroke-width="1.01" opacity=".5" transform="rotate(-1.11 16 16) translate(-0.29 -0.43)"/><path d="M13.2 28.4 C13 25.4 13.1 23.2 13.4 20.9 C15.2 20.6 17.1 20.6 18.9 20.9 C19.1 23.4 19.1 25.6 18.9 28.4" stroke-width="1.01" opacity=".5" transform="rotate(-0.89 16 16) translate(0.29 -1.29)"/><path d="M16.1 18.9 C16 17.2 16.1 16.1 16.3 14.9" stroke-width="0.86" opacity=".5" transform="rotate(-1.33 16 16) translate(0.29 -0.43)"/><path d="M16.2 16.6 C14.4 16.2 13.1 14.9 12.9 12.9 C15 12.5 16.4 13.6 16.5 15.9" stroke-width="0.79" opacity=".5" transform="rotate(-0.56 16 16) translate(0.29 -0.86)"/><path d="M16.3 17.4 C18.2 16.9 19.5 15.4 19.5 13.4 C17.4 13.2 16.1 14.4 16.2 16.6" stroke-width="0.79" opacity=".5" transform="rotate(0.11 16 16) translate(0.43 0)"/></svg></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/sustainable-architecture.webp" width="168" height="168" loading="lazy" alt="Sustainable architecture"><img class="p-icon p-icon-hover" src="images/icons/sustainable-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Sustainable Architecture</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
@@ -1227,7 +1229,7 @@ body{margin:0}
 
   <div class="practice" data-practice="academic-engagement">
     <button class="practice-row" data-practice-toggle="academic-engagement" aria-expanded="false">
-      <span class="practice-coord"><span class="p-icon-wrap"><svg class="p-icon" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 9.4 C7.4 8.2 11.4 8.6 15.9 10.9 C20.4 8.5 24.4 8.2 28.4 9.5" stroke-width="1.6"/><path d="M3.6 9.6 C3.3 14.4 3.4 19.2 3.7 24.1 C7.6 22.9 11.6 23.3 15.9 25.6 C20.3 23.2 24.3 22.9 28.3 24.2 C28.6 19.3 28.6 14.4 28.4 9.6" stroke-width="1.6"/><path d="M15.9 11.1 C15.7 16.2 15.7 20.6 15.9 25.4" stroke-width="1.4"/><path d="M16 10.9 C16 8.6 16.1 7.2 16.3 5.6" stroke-width="1.3"/><path d="M16.1 7.4 C14.6 7 13.4 5.9 13.2 4.2 C15 3.8 16.3 4.6 16.4 6.4" stroke-width="1.2"/><path d="M16.2 8 C17.7 7.5 18.8 6.2 18.8 4.6 C17.1 4.4 15.9 5.4 16 7.2" stroke-width="1.2"/><path d="M3.6 9.4 C7.4 8.2 11.4 8.6 15.9 10.9 C20.4 8.5 24.4 8.2 28.4 9.5" stroke-width="1.15" opacity=".5" transform="rotate(0.11 16 16) translate(-0.14 0)"/><path d="M3.6 9.6 C3.3 14.4 3.4 19.2 3.7 24.1 C7.6 22.9 11.6 23.3 15.9 25.6 C20.3 23.2 24.3 22.9 28.3 24.2 C28.6 19.3 28.6 14.4 28.4 9.6" stroke-width="1.15" opacity=".5" transform="rotate(-0.33 16 16) translate(0.14 -0.14)"/><path d="M15.9 11.1 C15.7 16.2 15.7 20.6 15.9 25.4" stroke-width="1.01" opacity=".5" transform="rotate(0.22 16 16) translate(0.43 -0.29)"/><path d="M16 10.9 C16 8.6 16.1 7.2 16.3 5.6" stroke-width="0.94" opacity=".5" transform="rotate(-1 16 16) translate(-0.14 -1.29)"/><path d="M16.1 7.4 C14.6 7 13.4 5.9 13.2 4.2 C15 3.8 16.3 4.6 16.4 6.4" stroke-width="0.86" opacity=".5" transform="rotate(-0.67 16 16) translate(-0.43 -1.29)"/><path d="M16.2 8 C17.7 7.5 18.8 6.2 18.8 4.6 C17.1 4.4 15.9 5.4 16 7.2" stroke-width="0.86" opacity=".5" transform="rotate(-1 16 16) translate(-0.14 -1.29)"/></svg></span></span>
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon" src="images/icons/academic-engagement.webp" width="168" height="168" loading="lazy" alt="Academic engagement"><img class="p-icon p-icon-hover" src="images/icons/academic-engagement-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
       <span class="practice-name">Academic Engagement</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
