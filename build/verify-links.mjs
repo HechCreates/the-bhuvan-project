@@ -44,8 +44,14 @@ const mailto = (s.match(/window.location.href='mailto/g) || []).length;
 check('no per-page mailto bindings left', mailto === 0, `${mailto} left`);
 const openers = (s.match(/data-open-contact/g) || []).length;
 check('Get in Touch buttons wired', openers === 38, `${openers} (37 buttons + 1 delegated selector)`);
-check('endpoint constant present and empty',
-  /var CONTACT_ENDPOINT = '';/.test(s), 'paste the Apps Script /exec URL here to go live');
+{ /* it was empty while the backend did not exist; now it must be a real
+     deployment URL, and /dev instead of /exec is the classic slip */
+  const m = s.match(/var CONTACT_ENDPOINT = '([^']*)';/);
+  const url = m && m[1];
+  check('contact endpoint wired',
+    !!url && /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url),
+    url ? url.slice(0, 58) + String.fromCharCode(8230) : 'empty');
+}
 check('CTA radius overridden to --radius',
   s.includes("#page-home .cta,#page-about .cta,.project-page .cta{border-radius:var(--radius)}"), '');
 for (const id of ['cf-name','cf-email','cf-message'])
