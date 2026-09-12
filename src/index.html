@@ -1230,9 +1230,9 @@ body{margin:0}
   pointer-events:none;user-select:none}
 /* the quote and the attribution always sit over it */
 .tq-body,.tq-more,.tq-by{position:relative;z-index:1}
-/* Below this a card is too narrow for a figure and its attribution to share a
-   line; the silhouette is decoration, the words are not. */
-@media (max-width:760px){ .testimonials-page img.tq-sil{display:none} }
+/* Below 760px a card is too narrow for a figure and its attribution to share
+   a line, so the figure goes below the words instead -- see the phone rules at
+   the end of this stylesheet. */
 
 /* ---------- Context Responsive Design: captions on the image ---------- */
 [data-page="p-context-responsive-design"] .cfig{position:relative}
@@ -1264,6 +1264,22 @@ body{margin:0}
   /* the photograph gives up the width the arrows need: 44px of button and
      8px of inset each side, plus room so they do not graze the edge */
   .vj-light-inner img{max-width:68vw}
+}
+
+/* ---------- Phone: the map inside its frame, the silhouettes under the words ---------- */
+@media (max-width:820px){
+  #page-home .map-panel-figure{max-height:none}
+  /* 300px of frame less its padding and border, and a share of a short screen */
+  #page-home .map-panel-figure img{max-height:min(250px,40svh)}
+}
+@media (max-width:760px){
+  /* the band the figure stands in, above the card's own bottom padding */
+  .testimonials-page .tq-card{--sil-band:68px;padding-bottom:calc(1.6rem + var(--sil-band))}
+  .testimonials-page img.tq-sil{--sil-h:var(--sil-band,68px);
+    /* nothing shares the line now, so there is no floor to clear -- and the
+       per-card --sil-min is desktop pixels, which would collapse the clamp */
+    left:clamp(0px, var(--sil-x,50%),
+               calc(100% - (var(--sil-h) * var(--sil-ar,1)) - 16px))}
 }
 </style>
 </head>
