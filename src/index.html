@@ -548,7 +548,7 @@ body{margin:0}
    the homepage plate sizes (.9rem title, .72rem sub) and the plate grid gap. */
 .projects-index{background:var(--soil);color:#F3EFE6}
 
-.pi-open{padding-block:clamp(9rem,16vh,12rem) clamp(4rem,9vw,7rem)}
+.pi-open{padding-block:clamp(9rem,16vh,12rem) clamp(1.75rem,3.5vw,2.75rem)}
 .pi-quote{margin:0;text-align:center}
 /* Full width, no measure cap: it is the page's opening statement and should
    run edge to edge the way the About hero quote does. */
@@ -562,7 +562,7 @@ body{margin:0}
 .pi-work{padding-block:0 clamp(4rem,9vw,7rem)}
 .projects-index .sec-head{display:flex;align-items:baseline;justify-content:space-between;
   gap:1rem 2rem;flex-wrap:wrap;border-bottom:1px solid rgba(243,239,230,.22);
-  padding-bottom:clamp(.9rem,1.6vw,1.25rem);margin-bottom:clamp(2.5rem,5vw,4rem)}
+  padding-bottom:clamp(.9rem,1.6vw,1.25rem);margin-bottom:clamp(1.5rem,3vw,2.25rem)}
 /* Held below the quote so the opening statement still leads the page. */
 .projects-index .sec-title{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;
   font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.1;color:#F3EFE6;margin:0}
@@ -925,9 +925,13 @@ body{margin:0}
 
 /* ---------- About: the quote now opens Where we work ---------- */
 #page-about .geo-quote{margin:0 0 clamp(3rem,5vw,4.5rem);background:var(--soil);
-  border-radius:var(--radius);padding:clamp(2.5rem,5.5vw,4.5rem) clamp(1.5rem,4vw,3rem);
+  border-radius:var(--radius);padding:clamp(1.5rem,2.6vw,2.1rem) clamp(1.25rem,2.5vw,2rem);
   text-align:center}
-#page-about .geo-quote .quote{color:var(--light);max-width:24ch;margin-inline:auto}
+/* no measure cap and a size that fits the line whole, so it reads as one
+   breath rather than two */
+#page-about .geo-quote .quote{color:var(--light);max-width:none;margin-inline:auto;
+  font-size:clamp(1rem,4.2vw,3.8rem);line-height:1.15}
+#page-about .geo-quote .quote-attr{margin-top:.7rem;font-size:.7rem}
 #page-about .geo-quote .quote-attr{color:rgba(243,239,230,.72)}
 
 /* ---------- About: The Team ----------
@@ -1229,6 +1233,17 @@ body{margin:0}
 /* Below this a card is too narrow for a figure and its attribution to share a
    line; the silhouette is decoration, the words are not. */
 @media (max-width:760px){ .testimonials-page img.tq-sil{display:none} }
+
+/* ---------- Context Responsive Design: captions on the image ---------- */
+[data-page="p-context-responsive-design"] .cfig{position:relative}
+[data-page="p-context-responsive-design"] .ccap{position:absolute;left:0;right:0;bottom:0;
+  margin:0;padding:1.6rem .7rem .55rem;text-align:left;
+  color:rgba(243,239,230,.96);opacity:1;font-weight:600;font-size:.75rem;letter-spacing:.01em;
+  text-shadow:0 1px 3px rgba(20,15,4,.65);pointer-events:none;
+  background:linear-gradient(to top,rgba(20,15,4,.62),rgba(20,15,4,0))}
+@media (max-width:760px){
+  [data-page="p-context-responsive-design"] .ccap{font-size:.8125rem;padding:1.4rem .6rem .5rem}
+}
 </style>
 </head>
 <body>
@@ -1236,7 +1251,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -1380,7 +1395,7 @@ body{margin:0}
     </button>
     <div class="practice-panel">
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="images/home/practice-sustainable-architecture.webp" alt="A contemporary building in exposed local brick with bamboo-patterned windows, set in a dry Deccan landscape." loading="lazy"></div>
+        <div class="practice-media"><img src="images/home/sustainable-architecture-cover.webp" alt="A contemporary building in exposed local brick with bamboo-patterned windows, set in a dry Deccan landscape." loading="lazy"></div>
         <div class="practice-copy">
           <p class="practice-sub">Minimalist, Material-First &amp; Climatically Responsive</p>
           <p class="practice-desc">Buildings that belong to their climate and culture, rooted in the vernacular traditions of South India, quiet and timeless.</p>
@@ -1493,7 +1508,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -1560,7 +1575,7 @@ body{margin:0}
     <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-sustainable-architecture">
       <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
-      <div class="modal-media"><img src="images/home/practice-sustainable-architecture.webp" alt="A contemporary building in exposed local brick with bamboo-patterned windows, set in a dry Deccan landscape."></div>
+      <div class="modal-media"><img src="images/home/sustainable-architecture-cover.webp" alt="A contemporary building in exposed local brick with bamboo-patterned windows, set in a dry Deccan landscape."></div>
       <div class="modal-body">
         <span class="modal-eyebrow">Practice</span>
         <h3 id="mt-sustainable-architecture" class="modal-title">Sustainable Architecture</h3>
@@ -1630,7 +1645,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -1786,7 +1801,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -1833,7 +1848,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -1962,7 +1977,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -1978,7 +1993,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -2101,7 +2116,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -2117,7 +2132,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -2273,9 +2288,6 @@ body{margin:0}
           <span class="czoom"><img src="images/projects/ecological-restoration/21.webp" width="410" height="900" style="aspect-ratio:0.4556"
                loading="lazy" decoding="async" alt="undefined, photograph 21"></span>
         </figure>
-        <span class="cspace" style="flex:1.339 1 0" aria-hidden="true"></span>
-      </div>
-      <div class="crow">
         <figure class="cfig" style="flex:1.7762 1 0">
           <span class="czoom"><img src="images/projects/ecological-restoration/22.webp" width="1000" height="563" style="aspect-ratio:1.7762"
                loading="lazy" decoding="async" alt="Lantana biomass rings used to protect planted areas"></span>
@@ -2286,7 +2298,6 @@ body{margin:0}
                loading="lazy" decoding="async" alt="Native species planted with protection from wild harbivores"></span>
           <figcaption class="ccap">Native species planted with protection from wild harbivores</figcaption>
         </figure>
-        <span class="cspace" style="flex:1.126 1 0" aria-hidden="true"></span>
       </div>
   </section>
   <nav class="proj-steps" aria-label="Other projects">
@@ -2309,7 +2320,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -2325,7 +2336,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -2476,7 +2487,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -2492,7 +2503,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -2630,7 +2641,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -2646,7 +2657,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -2866,7 +2877,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -2882,7 +2893,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -3101,7 +3112,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -3117,7 +3128,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -3149,6 +3160,10 @@ body{margin:0}
   </section>
   <section class="proj-collage" aria-label="Context-Responsive Design, photographs">
       <div class="crow">
+        <figure class="cfig" style="flex:1.5006 1 0">
+          <span class="czoom"><img src="images/home/sustainable-architecture-cover.webp" width="1280" height="853" style="aspect-ratio:1.5006"
+               loading="lazy" decoding="async" alt="Vaulted brick and concrete houses under construction on a terraced slope, with young planting establishing around them"></span>
+        </figure>
         <figure class="cfig" style="flex:3.125 1 0">
           <span class="czoom"><img src="images/projects/context-responsive-design/01.webp" width="750" height="240" style="aspect-ratio:3.125"
                loading="lazy" decoding="async" alt="undefined, photograph 1"></span>
@@ -3157,13 +3172,12 @@ body{margin:0}
           <span class="czoom"><img src="images/projects/context-responsive-design/02.webp" width="750" height="563" style="aspect-ratio:1.3321"
                loading="lazy" decoding="async" alt="undefined, photograph 2"></span>
         </figure>
+      </div>
+      <div class="crow">
         <figure class="cfig" style="flex:1.3345 1 0">
           <span class="czoom"><img src="images/projects/context-responsive-design/03.webp" width="750" height="562" style="aspect-ratio:1.3345"
                loading="lazy" decoding="async" alt="undefined, photograph 3"></span>
         </figure>
-        <span class="cspace" style="flex:0.208 1 0" aria-hidden="true"></span>
-      </div>
-      <div class="crow">
         <figure class="cfig" style="flex:1.3321 1 0">
           <span class="czoom"><img src="images/projects/context-responsive-design/04.webp" width="750" height="563" style="aspect-ratio:1.3321"
                loading="lazy" decoding="async" alt="undefined, photograph 4"></span>
@@ -3298,7 +3312,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -3314,7 +3328,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -3424,7 +3438,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
@@ -4153,7 +4167,7 @@ body{margin:0}
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a class="brand" href="#/" data-route="home" aria-label="The Bhu.Van Project home">
-      <img class="brand-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="brand-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <span class="brand-name">The Bhu.Van Project</span>
     </a>
     <nav class="nav" aria-label="Primary"><a href="#/" class="nav-link" data-route="home">Home</a>
@@ -4280,7 +4294,7 @@ body{margin:0}
 <a href="#/journey" data-route="journey">Visual Journey</a></nav>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo" src="images/site/logo.webp" alt="The Bhu.Van Project logo">
+      <img class="footer-logo" src="images/site/logo-mark.webp" alt="The Bhu.Van Project logo">
       <div><span class="footer-name">The Bhu.Van Project</span><p class="footer-tag">Design · Ecology · Resilience</p></div>
     </div>
     <div class="footer-contact">
