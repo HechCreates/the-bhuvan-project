@@ -26,7 +26,11 @@ let total = 0;
 for (const [file, slug, alt] of JOBS) {
   const src = `${SRC}/${file}`;
   const raw = await sharp(src).metadata();
+  /* The Raja Bhat card has the farmer facing the other way from the source
+     PNG -- the artwork is mirrored, so the asset is too. */
+  const flip = slug === "raja-bhat";
   const { data, info } = await sharp(src).trim({ threshold: 1 })
+    .flop(flip)
     .resize({ height: H, withoutEnlargement: true })
     .webp({ quality: 88, effort: 6 }).toBuffer({ resolveWithObject: true });
   fs.writeFileSync(`${OUT}/${slug}.webp`, data);
