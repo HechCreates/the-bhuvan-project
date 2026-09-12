@@ -1238,11 +1238,32 @@ body{margin:0}
 [data-page="p-context-responsive-design"] .cfig{position:relative}
 [data-page="p-context-responsive-design"] .ccap{position:absolute;left:0;right:0;bottom:0;
   margin:0;padding:1.6rem .7rem .55rem;text-align:left;
-  color:rgba(243,239,230,.96);opacity:1;font-weight:600;font-size:.75rem;letter-spacing:.01em;
+  color:rgba(243,239,230,.75);opacity:1;font-weight:600;font-size:.75rem;letter-spacing:.01em;
   text-shadow:0 1px 3px rgba(20,15,4,.65);pointer-events:none;
   background:linear-gradient(to top,rgba(20,15,4,.62),rgba(20,15,4,0))}
 @media (max-width:760px){
   [data-page="p-context-responsive-design"] .ccap{font-size:.8125rem;padding:1.4rem .6rem .5rem}
+}
+
+/* ---------- Visual Journey: stepping through a collection ----------
+   Vertically centred, so they never meet the Back button in the top-left.
+   Sized as real targets rather than bare glyphs. */
+.vj-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:52px;height:52px;border:1px solid rgba(243,239,230,.28);border-radius:50%;
+  background:rgba(243,239,230,.1);color:var(--light);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;line-height:1;padding:0 0 .18em;
+  transition:background .2s,border-color .2s}
+.vj-nav[hidden]{display:none}
+.vj-nav-prev{left:clamp(.5rem,2vw,1.6rem)}
+.vj-nav-next{right:clamp(.5rem,2vw,1.6rem)}
+.vj-nav:hover{background:rgba(243,239,230,.22);border-color:rgba(243,239,230,.5)}
+.vj-nav:focus-visible{outline:2px solid var(--light);outline-offset:3px}
+@media (max-width:560px){
+  .vj-nav{width:44px;height:44px;font-size:1.6rem}
+  /* the photograph gives up the width the arrows need: 44px of button and
+     8px of inset each side, plus room so they do not graze the edge */
+  .vj-light-inner img{max-width:68vw}
 }
 </style>
 </head>
@@ -1314,7 +1335,7 @@ body{margin:0}
               <svg viewBox="0 0 24 24"><path d="M4 9 V4 H9 M15 4 H20 V9 M20 15 V20 H15 M9 20 H4 V15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
-          <figcaption class="about-cap">Every mark is a place we have worked. Tap the map to see how far the work reaches.</figcaption>
+          <figcaption class="about-cap">Our geographic footprint, mapping projects across India’s diverse landscapes, communities, and ecology</figcaption>
         </figure>
       </div>
     </div>
@@ -1612,7 +1633,7 @@ body{margin:0}
       </div>
       <div class="map-panel-body">
         <h2 id="map-modal-title" class="map-h">Landscapes. Communities. Regenerative Design.</h2>
-        <p class="map-lead">Our geographic footprint, mapping projects across India’s diverse landscapes, communities, and ecology</p>
+        <p class="map-lead">From the high-altitude Himalayas to the southern forests, from river basins to city edges, our work spans India&rsquo;s diverse geographies. Each place is an opportunity to understand its living systems, its communities and its ecological context &mdash; and to design with them rather than against them.</p>
         <div class="map-features">
           <div class="map-feat">
             <img class="map-feat-icon" src="images/icons/map-diverse-geographies.webp" width="152" height="152" loading="lazy" alt="Diverse geographies">
@@ -4157,6 +4178,12 @@ body{margin:0}
     <span class="vj-back-arrow" aria-hidden="true">&larr;</span>
     <span>Back to <span class="vj-back-cat">the collection</span></span>
   </button>
+  <button type="button" class="vj-nav vj-nav-prev" data-shot-step="-1" aria-label="Previous photograph">
+    <span aria-hidden="true">&lsaquo;</span>
+  </button>
+  <button type="button" class="vj-nav vj-nav-next" data-shot-step="1" aria-label="Next photograph">
+    <span aria-hidden="true">&rsaquo;</span>
+  </button>
   <div class="vj-light-inner">
     <img src="" alt="">
     <p class="vj-light-cap" hidden></p>
@@ -4358,12 +4385,30 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
 
   /* ---- team member modals, delegated so they work on any route ---- */
   var memberLast=null;
-  /* which collage a photograph was opened from, so Back can restore it */
-  var shotFrom=null;
+  /* which collage a photograph was opened from, so Back can restore it,
+     and the run of photographs in it that the arrows step through */
+  var shotFrom=null, shotList=[], shotIndex=-1;
+  function showShot(btn){
+    var lb=document.querySelector('[data-shot-modal]');
+    var img=lb.querySelector('img');
+    var cap=btn.closest('.vj-shot').querySelector('figcaption');
+    img.src=btn.getAttribute('data-open-shot');
+    img.alt=btn.querySelector('img').alt;
+    var lc=lb.querySelector('.vj-light-cap');
+    lc.textContent=cap?cap.textContent:''; lc.hidden=!cap;
+  }
+  /* wraps, so the end of a collection runs back to its start rather than
+     dead-ending on a button that does nothing */
+  function shotStep(d){
+    if(shotList.length<2) return;
+    shotIndex=(shotIndex+d+shotList.length)%shotList.length;
+    showShot(shotList[shotIndex]);
+  }
   function shotBack(){
     var lb=document.querySelector('[data-shot-modal]');
     if(!lb || lb.hidden) return false;
     lb.hidden=true;
+    shotList=[]; shotIndex=-1;
     if(shotFrom){
       shotFrom.hidden=false;
       var c=shotFrom.querySelector('.modal-close'); if(c) c.focus();
@@ -4388,14 +4433,13 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
     var shot=e.target.closest('[data-open-shot]');
     if(shot){
       var lb=document.querySelector('[data-shot-modal]');
-      var img=lb.querySelector('img');
-      var cap=shot.closest('.vj-shot').querySelector('figcaption');
-      img.src=shot.getAttribute('data-open-shot');
-      img.alt=shot.querySelector('img').alt;
-      var lc=lb.querySelector('.vj-light-cap');
-      lc.textContent=cap?cap.textContent:''; lc.hidden=!cap;
       /* the photograph replaces the collage; Back puts it again */
       shotFrom=shot.closest('.vj-modal');
+      shotList=shotFrom?[].slice.call(shotFrom.querySelectorAll('[data-open-shot]')):[shot];
+      shotIndex=shotList.indexOf(shot);
+      showShot(shot);
+      lb.querySelector('.vj-nav-prev').hidden=shotList.length<2;
+      lb.querySelector('.vj-nav-next').hidden=shotList.length<2;
       if(shotFrom){
         shotFrom.hidden=true;
         var t=shotFrom.querySelector('.vj-panel-title');
@@ -4405,6 +4449,8 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
       var bk=lb.querySelector('.vj-back'); if(bk) bk.focus();
       return;
     }
+    var step=e.target.closest('[data-shot-step]');
+    if(step){ shotStep(Number(step.getAttribute('data-shot-step'))); return; }
     var back=e.target.closest('[data-shot-back]');
     if(back){ shotBack(); return; }
     var close=e.target.closest('[data-close-modal]');
@@ -4417,6 +4463,10 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
     }
   });
   document.addEventListener('keydown',function(e){
+    var lbOpen=document.querySelector('[data-shot-modal]:not([hidden])');
+    if(lbOpen && (e.key==='ArrowLeft' || e.key==='ArrowRight')){
+      e.preventDefault(); shotStep(e.key==='ArrowLeft'?-1:1); return;
+    }
     if(e.key!=='Escape') return;
     if(shotBack()) return;
     var all=document.querySelectorAll('.modal:not([hidden])');
