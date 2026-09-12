@@ -4,6 +4,9 @@ role: Punarchith
 silhouette:
   file: punarchith.webp
   alt: A person working the land with a hoe
+  x: 43.3
+  ar: 0.712
+  min: 166
 link:
   label: Punarchith
   url: https://www.punarchith.org/

@@ -1217,8 +1217,13 @@ body{margin:0}
 .tq-card{position:relative;overflow:hidden}
 /* img.tq-sil, not .tq-sil: .project-page img{height:auto} is 0,2,0 and would
    otherwise win and leave every figure at its natural 420px. */
-.testimonials-page img.tq-sil{position:absolute;right:clamp(1.35rem,5.4vw,4rem);bottom:0;
-  height:clamp(80px,9vw,116px);width:auto;max-width:none;pointer-events:none;user-select:none}
+.testimonials-page img.tq-sil{--sil-h:clamp(80px,9vw,116px);
+  position:absolute;bottom:0;height:var(--sil-h);width:auto;max-width:none;
+  /* the artwork's x, floored so it clears that card's attribution and ceilinged
+     so the whole figure stays on the card */
+  left:clamp(var(--sil-min,0px), var(--sil-x,50%),
+             calc(100% - (var(--sil-h) * var(--sil-ar,1)) - 16px));
+  pointer-events:none;user-select:none}
 /* the quote and the attribution always sit over it */
 .tq-body,.tq-more,.tq-by{position:relative;z-index:1}
 /* Below this a card is too narrow for a figure and its attribution to share a
@@ -4187,7 +4192,7 @@ body{margin:0}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-1">
           <span class="tq-more-text">Read the full testimonial from Mahesh Basavanna</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="128" height="420" src="images/testimonials/mcd-berls.webp" alt="A standing figure" loading="lazy" decoding="async">
+        <img class="tq-sil" width="128" height="420" src="images/testimonials/mcd-berls.webp" style="--sil-x:80.5%;--sil-ar:0.305;--sil-min:251px" alt="A standing figure" loading="lazy" decoding="async">
         <footer class="tq-by">
           <p class="tq-name">Mahesh Basavanna</p>
           <p class="tq-role">Director, CEO, McD Berls</p>
@@ -4206,7 +4211,7 @@ body{margin:0}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-2">
           <span class="tq-more-text">Read the full testimonial from Raja Bhat</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="288" height="420" src="images/testimonials/raja-bhat.webp" alt="A farmer tending a plant" loading="lazy" decoding="async">
+        <img class="tq-sil" width="288" height="420" src="images/testimonials/raja-bhat.webp" style="--sil-x:17%;--sil-ar:0.686;--sil-min:205px" alt="A farmer tending a plant" loading="lazy" decoding="async">
         <footer class="tq-by">
           <p class="tq-name">Raja Bhat</p>
           <p class="tq-role">Organic farm owner</p>
@@ -4223,7 +4228,7 @@ body{margin:0}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-3">
           <span class="tq-more-text">Read the full testimonial from A.R Vasavi</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="299" height="420" src="images/testimonials/punarchith.webp" alt="A person working the land with a hoe" loading="lazy" decoding="async">
+        <img class="tq-sil" width="299" height="420" src="images/testimonials/punarchith.webp" style="--sil-x:43.3%;--sil-ar:0.712;--sil-min:166px" alt="A person working the land with a hoe" loading="lazy" decoding="async">
         <footer class="tq-by">
           <p class="tq-name">A.R Vasavi</p>
           <p class="tq-role"><a class="tq-site" href="https://www.punarchith.org/" target="_blank" rel="noopener">Punarchith</a></p>
@@ -4242,7 +4247,7 @@ body{margin:0}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-4">
           <span class="tq-more-text">Read the full testimonial from Rammohan MN</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="300" height="420" src="images/testimonials/monash.webp" alt="Two figures shaking hands" loading="lazy" decoding="async">
+        <img class="tq-sil" width="300" height="420" src="images/testimonials/monash.webp" style="--sil-x:90.8%;--sil-ar:0.714;--sil-min:304px" alt="Two figures shaking hands" loading="lazy" decoding="async">
         <footer class="tq-by">
           <p class="tq-name">Rammohan MN</p>
           <p class="tq-role">CEO, Monash Molding Solutions</p>
@@ -4259,7 +4264,7 @@ body{margin:0}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-5">
           <span class="tq-more-text">Read the full testimonial from Muthuraman R</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="829" height="420" src="images/testimonials/muthuraman.webp" alt="A family seated around a table" loading="lazy" decoding="async">
+        <img class="tq-sil" width="829" height="420" src="images/testimonials/muthuraman.webp" style="--sil-x:52.3%;--sil-ar:1.974;--sil-min:449px" alt="A family seated around a table" loading="lazy" decoding="async">
         <footer class="tq-by">
           <p class="tq-name">Muthuraman R</p>
           <p class="tq-role">No 1017, Poornapragna Layout, Uttarahalli, Bangalore</p>

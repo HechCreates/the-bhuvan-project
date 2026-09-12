@@ -4,6 +4,9 @@ role: CEO, Monash Molding Solutions
 silhouette:
   file: monash.webp
   alt: Two figures shaking hands
+  x: 90.8
+  ar: 0.714
+  min: 304
 link: null
 quote:
   - >-

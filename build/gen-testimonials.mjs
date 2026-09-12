@@ -30,7 +30,7 @@ ${paras}
         <button class="tq-more" type="button" aria-expanded="false" aria-controls="${id}">
           <span class="tq-more-text">Read the full testimonial from ${esc(t.name)}</span>${CHEV}
         </button>
-        ${t.silhouette ? `<img class="tq-sil" width="${t.silhouette.w||300}" height="420" src="images/testimonials/${t.silhouette.file}" alt="${esc(t.silhouette.alt)}" loading="lazy" decoding="async">
+        ${t.silhouette ? `<img class="tq-sil" width="${t.silhouette.w||300}" height="420" src="images/testimonials/${t.silhouette.file}" alt="${esc(t.silhouette.alt)}" style="--sil-x:${t.silhouette.x}%;--sil-ar:${t.silhouette.ar};--sil-min:${t.silhouette.min}px" loading="lazy" decoding="async">
         ` : ''}<footer class="tq-by">
           <p class="tq-name">${esc(t.name)}</p>
           <p class="tq-role">${role}</p>

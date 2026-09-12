@@ -4,6 +4,9 @@ role: Director, CEO, McD Berls
 silhouette:
   file: mcd-berls.webp
   alt: A standing figure
+  x: 80.5
+  ar: 0.305
+  min: 251
 link: null
 quote:
   - >-
