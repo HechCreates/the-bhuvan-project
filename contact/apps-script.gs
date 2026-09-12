@@ -11,6 +11,10 @@
  * web app cannot answer an OPTIONS request -- the form would fail in the
  * browser with nothing useful in the console. text/plain is a "simple
  * request", so no preflight is sent. Do not change it to application/json.
+ *
+ * ContentService cannot set a response code either: every reply leaves here as
+ * HTTP 200, including the ones that refused the message. The status below is
+ * advisory, and the page reads it out of the body rather than trusting r.ok.
  */
 
 /** Where the enquiries go. */
