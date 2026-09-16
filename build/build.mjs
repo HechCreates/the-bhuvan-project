@@ -253,6 +253,71 @@ log.push(`static/   ${copyDir('static', DIST)} files copied`);
 fs.mkdirSync(path.join(DIST, 'images'), { recursive: true });
 log.push(`images/   ${copyDir('images', path.join(DIST, 'images'))} files copied`);
 
+/* ---- 8b. redirects from the old Squarespace site ------------------------
+   GitHub Pages cannot issue a 301: there is no server configuration to put
+   one in. So each old URL gets a small HTML stub instead -- a canonical to
+   the new page, an instant meta refresh, and a script fallback. Google treats
+   a zero-delay refresh as a redirect and the canonical carries the signals
+   either way; it is weaker than a real 301 and it is what this host allows.
+
+   The stub is written as <path>.html rather than <path>/index.html so the old
+   extensionless URL is answered in one hop instead of redirecting to a
+   trailing slash first.
+
+   A _redirects file is generated alongside it with genuine 301s. GitHub Pages
+   ignores that file, but Cloudflare Pages and Netlify honour it, so moving
+   the site to either of those upgrades every one of these to a real 301 with
+   no further work.
+
+   No noindex on the stubs: it would contradict the canonical and could stop
+   the signals passing at all. */
+{
+  const { redirects } = load(fs.readFileSync('content/redirects.yml', 'utf8'));
+  const known = new Set(pages.map(p => p.url));
+  let n = 0;
+  const rules = [];
+
+  for (const r of redirects) {
+    if (!known.has(r.to)) {
+      console.error(`FAIL: redirect ${r.from} points at "${r.to}", which is not a page`);
+      process.exitCode = 1; continue;
+    }
+    const target = `/${r.to ? r.to + '/' : ''}`;
+    const absolute = `${ORIGIN}${target}`;
+    /* /portfolio-1 is both a redirect of its own and the parent of eight
+       others, so a portfolio-1.html file would sit beside a portfolio-1/
+       directory and which one a host serves is anyone's guess. Where a path
+       is also a parent, the stub goes inside it as index.html and costs one
+       extra hop; everywhere else it is <path>.html and answers directly. */
+    const bare = r.from.replace(/^\//, '');
+    const isParent = redirects.some(o => o !== r && o.from.startsWith(r.from + '/'));
+    const file = path.join(DIST, isParent ? path.join(bare, 'index.html') : bare + '.html');
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file,
+      `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n`
+      + `<title>Moved — The Bhu.Van Project</title>\n`
+      + `<link rel="canonical" href="${absolute}">\n`
+      + `<meta http-equiv="refresh" content="0; url=${absolute}">\n`
+      + `<script>location.replace(${JSON.stringify(absolute)})</script>\n`
+      + `</head>\n<body>\n`
+      + `<p>This page has moved to <a href="${absolute}">${absolute}</a>.</p>\n`
+      + `</body>\n</html>\n`);
+    rules.push(`${r.from}  ${target}  301`);
+    n++;
+  }
+
+  /* generated rules first: a catch-all placed above them would swallow every
+     one of them before they were ever reached */
+  const existing = fs.existsSync(path.join(DIST, '_redirects'))
+    ? fs.readFileSync(path.join(DIST, '_redirects'), 'utf8') : '';
+  fs.writeFileSync(path.join(DIST, '_redirects'),
+    `# Generated from content/redirects.yml. GitHub Pages ignores this file and\n`
+    + `# uses the .html stubs instead; Cloudflare Pages and Netlify honour it and\n`
+    + `# turn every line below into a real 301.\n`
+    + rules.join('\n') + '\n\n' + existing);
+  log.push(`redirects ${n} old URLs -> stubs + _redirects 301s`);
+}
+
 /* ---- 9. 404 -------------------------------------------------------------
    GitHub Pages serves this for any unknown path. It used to be a copy of the
    whole site, which hands a crawler the homepage at an unlimited number of

@@ -84,6 +84,22 @@ log.push(mode === 'on'
   }
 }
 
+/* ---- 4b. CNAME, for GitHub Pages on a custom domain ---------------------
+   Its presence is what tells GitHub Pages to serve the site at that hostname
+   and to redirect the github.io address to it. Which also means writing it
+   while the site is still staging would take staging offline -- so it is only
+   written for a real domain, never for a *.github.io origin. */
+{
+  const host = origin.replace(/^https:\/\//, '').split('/')[0];
+  const CNAME = path.join(D, 'CNAME');
+  if (host.endsWith('.github.io')) {
+    if (fs.existsSync(CNAME)) { fs.unlinkSync(CNAME); log.push('ok    CNAME removed (origin is a github.io address)'); }
+  } else {
+    fs.writeFileSync(CNAME, host + '\n');
+    log.push(`ok    CNAME -> ${host}`);
+  }
+}
+
 /* ---- 5. X-Robots-Tag, which also covers the images ---- */
 const HEAD_FILE = path.join(D, '_headers');
 let h = fs.readFileSync(HEAD_FILE, 'utf8');

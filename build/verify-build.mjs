@@ -33,6 +33,10 @@ const { pages } = load(fs.readFileSync('content/pages.yml', 'utf8'));
 let failed = 0;
 const fail = m => { console.log('  FAIL  ' + m); failed++; };
 
+/* the origin the build stamped into canonicals, read back from what shipped */
+const ORIGIN_FOR_CHECK = (fs.readFileSync(path.join(DIST, 'index.html'), 'utf8')
+  .match(/<link rel="canonical" href="(https:[^"]*?)\/">/) || [])[1];
+
 const ENT = { middot: '·', copy: '©', amp: '&', rarr: '→', larr: '←', lsaquo: '‹', rsaquo: '›',
               ldquo: '“', rdquo: '”', nbsp: ' ', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘',
               times: '×', hellip: '…', deg: '°', amp_: '&' };
@@ -236,6 +240,35 @@ console.log('\nstructured data');
     .find(n => [].concat(n['@type']).includes('Organization'));
   if (!org.sameAs) console.log('  NOTE  Organization has no sameAs: no third-party profile ties this '
     + 'site to the studio as an entity. Add social/profile URLs to content/site.yml.');
+}
+
+/* ---- 4c. the migration map ----
+   Every old Squarespace URL must have a stub, and every stub must point at a
+   page that exists. A redirect into a 404 is worse than no redirect: it
+   throws away the signal AND costs the visitor a dead end. */
+console.log('\nredirects from the old site');
+{
+  const { redirects } = load(fs.readFileSync('content/redirects.yml', 'utf8'));
+  const known = new Set(pages.map(p => p.url));
+  let ok = 0;
+  for (const r of redirects) {
+    if (!known.has(r.to)) { fail(`${r.from} points at "${r.to}", which is not a page in content/pages.yml`); continue; }
+    // a path that is also the parent of other redirects keeps its stub inside
+    // it, so a .html file never sits beside a directory of the same name
+    const bare = r.from.replace(/^\//, '');
+    const isParent = redirects.some(o => o !== r && o.from.startsWith(r.from + '/'));
+    const stub = path.join(DIST, isParent ? path.join(bare, 'index.html') : bare + '.html');
+    if (!fs.existsSync(stub)) { fail(`${r.from} has no stub at ${path.relative(DIST, stub)}`); continue; }
+    const html = fs.readFileSync(stub, 'utf8');
+    const target = `${ORIGIN_FOR_CHECK}/${r.to ? r.to + '/' : ''}`;
+    if (!html.includes(`<link rel="canonical" href="${target}">`)) fail(`${r.from} stub canonical is not ${target}`);
+    else if (!html.includes(`content="0; url=${target}"`)) fail(`${r.from} stub does not refresh to ${target}`);
+    else ok++;
+  }
+  /* a redirect must never point at another redirect */
+  const froms = new Set(redirects.map(r => r.from.replace(/^\//, '')));
+  for (const r of redirects) if (froms.has(r.to)) fail(`${r.from} redirects to ${r.to}, which is itself a redirect`);
+  console.log(`  ${ok}/${redirects.length} old URLs resolve to a real page in one hop`);
 }
 
 /* ---- 5. nothing shipped that nothing asks for ---- */

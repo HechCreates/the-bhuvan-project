@@ -24,6 +24,9 @@ http.createServer((req, res) => {
   // directory path without the trailing slash redirects to one, which is what
   // GitHub Pages does -- worth reproducing so relative paths break here first
   let f = path.join(ROOT, p);
+  /* extensionless path -> foo.html, which is what GitHub Pages does and what
+     the old-URL redirect stubs rely on to answer in a single hop */
+  if (!path.extname(p) && !fs.existsSync(f) && fs.existsSync(f + '.html')) f += '.html';
   if (f.startsWith(ROOT) && fs.existsSync(f) && fs.statSync(f).isDirectory()) {
     if (!p.endsWith('/')) {
       res.writeHead(301, { Location: p + '/' });

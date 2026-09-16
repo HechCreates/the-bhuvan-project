@@ -1,0 +1,63 @@
+# Old Squarespace URL -> new URL. The migration map.
+#
+# thebhuvanproject.com has been a Squarespace site, and whatever Google has
+# learned about those URLs is the only search equity this studio currently
+# owns. Pointing each old URL at its successor is what carries that across;
+# letting them 404 throws it away and starts from zero.
+#
+# NOT LISTED, DELIBERATELY: /about, /contact and /testimonials. Those paths
+# exist on the new site as directories, and a static host already answers
+# /about with a 301 to /about/. Adding a rule would mean a second redirect
+# hop, or an ambiguous about.html sitting next to about/index.html.
+#
+# The four /new-page* URLs are empty Squarespace drafts -- four blocks, no
+# heading, a boilerplate description. They go to the homepage because there is
+# nothing more specific to send them to, not because the homepage is a good
+# answer.
+#
+# `to` is relative to the site root. Every target must be a real page in
+# content/pages.yml; build/verify-build.mjs enforces that, so a typo here
+# cannot ship as a redirect into a 404.
+
+redirects:
+  # the Squarespace homepage duplicate
+  - from: /home
+    to: ""
+
+  # the portfolio index
+  - from: /portfolio-1
+    to: projects
+
+  # Squarespace's generated project slugs. Matched to the new pages by page
+  # title, not by position -- the slug names are meaningless and two of them
+  # ("project-one-...-wjrdx-bflbe") are deeper edits of an earlier page.
+  - from: /portfolio-1/project-two-ky966-3cebt            # Hydro-Ecological Restoration, Junglescapes
+    to: projects/hydro-ecological-restoration-bandipur
+  - from: /portfolio-1/project-one-f5w4d-2g6bb            # Wildlife Habitat Restoration, Bandipur
+    to: projects/wildlife-habitat-restoration-bandipur
+  - from: /portfolio-1/project-three-sng7y-kb7hl          # Mysuru Rail Museum
+    to: projects/mysuru-rail-museum
+  - from: /portfolio-1/project-one-f5w4d-2g6bb-wjrdx      # Blue-Green Infrastructure, Nilgiri tea landscape
+    to: projects/tea-estate-watershed-nilgiris
+  - from: /portfolio-1/project-one-f5w4d-2g6bb-wjrdx-bflbe # Heritage Estate Landscape, Nilgiris
+    to: projects/chairmans-bungalow-nilgiris
+  - from: /portfolio-1/project-three-sng7y-kb7hl-zjbnf    # Biome Farms, Karavulapalli
+    to: projects/regenerative-farm-karavulapalli
+  - from: /portfolio-1/project-one-f5w4d-2g6bb-wjrdx-bflbe-d8bs4  # Context-Responsive Design
+    to: projects/context-responsive-design
+  - from: /portfolio-1/project-five-748cx-rzxwh           # A Visual Journal of Living Landscapes
+    to: visual-journey
+
+  # a second, older testimonials page
+  - from: /new-page-4
+    to: testimonials
+
+  # empty drafts, no better target than home
+  - from: /new-page
+    to: ""
+  - from: /new-page-1
+    to: ""
+  - from: /new-page-2
+    to: ""
+  - from: /new-page-3
+    to: ""
