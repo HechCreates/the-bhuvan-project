@@ -35,3 +35,61 @@ contact:
 footer:
   copyright: "© 2026 The Bhu.Van Project"
   motto: "Rewild · Restore · Reimagine"
+
+# ---------------------------------------------------------------------------
+# What the site tells search engines and AI answer engines about the studio as
+# an entity. This becomes the schema.org graph on every page.
+#
+# Google, Perplexity and ChatGPT Search all build an internal picture of "who
+# is The Bhu.Van Project" from whatever they can parse. Prose alone leaves
+# them guessing; this states it. Everything here must be TRUE and checkable --
+# a wrong claim in structured data is worse than no claim.
+organization:
+  legalName: The Bhu.Van Project
+  # one sentence, no marketing: this is the line an AI is most likely to quote
+  description: >-
+    The Bhu.Van Project is an ecological restoration and landscape architecture
+    studio based in Bengaluru, India, working on habitat restoration, watershed
+    management, regenerative farm landscapes and context-responsive architecture
+    across India.
+  founder: Nikhil Udupa
+  # The studio has no published street address. addressLocality and
+  # addressRegion are true and are what a local search actually matches on;
+  # a street line can be added here the day there is one to publish.
+  address:
+    locality: Bengaluru
+    region: Karnataka
+    country: IN
+  areaServed: India
+  # the five practices named on the homepage, verbatim
+  services:
+    - Ecological Restoration
+    - Landscape Architecture
+    - Resilient Watershed Management & Land Master Planning
+    - Sustainable Architecture
+    - Academic Engagement
+  # topics the studio demonstrably works in, drawn from the project pages
+  knowsAbout:
+    - Ecological restoration
+    - Landscape architecture
+    - Watershed management
+    - Habitat restoration
+    - Native planting
+    - Rewilding
+    - Regenerative agriculture
+    - Sustainable architecture
+    - Climate adaptation
+  # Third-party profiles that prove this entity is real. EMPTY IS A REAL GAP:
+  # sameAs is the single strongest signal for entity recognition, and with
+  # nothing here an AI engine has no way to connect this site to any other
+  # mention of the studio. Add Instagram, LinkedIn and the Google Business
+  # Profile here as soon as they exist.
+  sameAs: []
+
+# Third-party profiles for the people, same purpose as organization.sameAs:
+# they tie a name on this site to a name somewhere independent. Nikhil's
+# Ecological Restoration Alliance India profile is already linked from the
+# About page, so it is a verified fact, not a claim.
+people:
+  nikhilSameAs:
+    - https://era-india.org/community/nikhil-udupa/

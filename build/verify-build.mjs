@@ -84,7 +84,8 @@ for (const p of pages) {
 /* ---- 2. every path resolves, from that page's own depth ---- */
 console.log('\npath resolution');
 let refs = 0, broken = 0;
-const htmlFiles = [...pages.map(p => [p.url, path.join(DIST, p.url, 'index.html')]), ['', path.join(DIST, '404.html')]];
+const htmlFiles = [...pages.map(p => [`/${p.url ? p.url + '/' : ''}`, path.join(DIST, p.url, 'index.html')]),
+                   ['404.html', path.join(DIST, '404.html')]];
 for (const [url, file] of htmlFiles) {
   if (!fs.existsSync(file)) continue;
   const html = fs.readFileSync(file, 'utf8');
@@ -95,7 +96,7 @@ for (const [url, file] of htmlFiles) {
     refs++;
     // a directory URL ("about/", "../") is served as its index.html
     const target = v.endsWith('/') ? path.join(dir, v, 'index.html') : path.join(dir, v);
-    if (!fs.existsSync(target)) { fail(`/${url ? url + '/' : ''} -> ${v}  (looked for ${path.relative(DIST, target)})`); broken++; }
+    if (!fs.existsSync(target)) { fail(`${url} -> ${v}  (looked for ${path.relative(DIST, target)})`); broken++; }
   }
 }
 console.log(`  ${refs} src/href references checked, ${broken} broken`);
@@ -118,7 +119,7 @@ for (const [url, file] of htmlFiles) {
     other++; kinds.add(m[1]);
     if (!fs.existsSync(path.join(dir, m[2]))) {
       otherBroken++;
-      if (otherBroken <= 3) fail(`/${url ? url + '/' : ''} ${m[1]}="${m[2]}" does not resolve`);
+      if (otherBroken <= 3) fail(`${url} ${m[1]}="${m[2]}" does not resolve`);
     }
   }
 }
@@ -126,7 +127,7 @@ console.log(`  ${other} checked in ${[...kinds].join(', ') || 'no other attribut
 
 /* ---- 3. no hash links survive ---- */
 const stale = htmlFiles.filter(([, f]) => fs.existsSync(f) && /href="#\//.test(fs.readFileSync(f, 'utf8')));
-if (stale.length) fail(`hash links left in: ${stale.map(s => s[0] || '/').join(', ')}`);
+if (stale.length) fail(`hash links left in: ${stale.map(s => s[0]).join(', ')}`);
 else console.log('  no "#/" links remain');
 
 /* ---- 4. head uniqueness ---- */
@@ -155,6 +156,58 @@ for (const p of pages) {
   if (h1 !== 1) fail(`/${p.url || ''} has ${h1} <h1> elements (want exactly 1)`);
 }
 console.log(`  ${seen.title.size} distinct titles, ${seen.desc.size} distinct descriptions, ${seen.canonical.size} distinct canonicals`);
+
+/* ---- 4b. the schema.org graph ----
+   A graph is only as good as its references. An @id pointing at a node that
+   was never declared is invisible in the rendered page, valid JSON, and
+   silently useless to the engine reading it -- so every reference is resolved
+   against the nodes actually present on that page. */
+console.log('\nstructured data');
+{
+  let nodes = 0, refs = 0;
+  for (const [url, file] of htmlFiles) {
+    if (!fs.existsSync(file)) continue;
+    const blocks = [...fs.readFileSync(file, 'utf8')
+      .matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+    const where = url;
+    // the 404 is noindex and carries no schema on purpose
+    if (url === '404.html') continue;
+    if (blocks.length !== 1) { fail(`${where} has ${blocks.length} ld+json blocks (want 1)`); continue; }
+    let graph;
+    try { graph = JSON.parse(blocks[0][1])['@graph']; }
+    catch (e) { fail(`${where} ld+json does not parse: ${e.message}`); continue; }
+    if (!Array.isArray(graph) || !graph.length) { fail(`${where} has an empty @graph`); continue; }
+
+    /* A node is DECLARED wherever it is spelled out, which in JSON-LD includes
+       nested objects -- the Organization's logo is an ImageObject with its own
+       @id sitting inside the logo property, and it is a real declaration. A
+       REFERENCE is the other shape: an object whose only key is @id. */
+    const declared = new Set(), seenRefs = [];
+    (function walk(v) {
+      if (Array.isArray(v)) return v.forEach(walk);
+      if (!v || typeof v !== 'object') return;
+      const keys = Object.keys(v);
+      if (keys.length === 1 && keys[0] === '@id') { seenRefs.push(v['@id']); return; }
+      if (v['@id']) declared.add(v['@id']);
+      keys.forEach(k => walk(v[k]));
+    })(graph);
+    for (const r of new Set(seenRefs)) {
+      if (!declared.has(r)) fail(`${where} references ${r} but no node declares it`);
+    }
+    nodes += graph.length; refs += seenRefs.length;
+
+    const o = graph.find(n => [].concat(n['@type']).includes('Organization'));
+    if (!o) fail(`${where} declares no Organization`);
+    else for (const req of ['name', 'url', 'description', 'logo', 'address'])
+      if (!o[req]) fail(`${where} Organization is missing ${req}`);
+  }
+  console.log(`  ${nodes} nodes across ${htmlFiles.length} pages, ${refs} @id references, all resolved`);
+  const org = JSON.parse(fs.readFileSync(path.join(DIST, 'index.html'), 'utf8')
+    .match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph']
+    .find(n => [].concat(n['@type']).includes('Organization'));
+  if (!org.sameAs) console.log('  NOTE  Organization has no sameAs: no third-party profile ties this '
+    + 'site to the studio as an entity. Add social/profile URLs to content/site.yml.');
+}
 
 /* ---- 5. nothing shipped that nothing asks for ---- */
 const used = new Set();

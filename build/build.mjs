@@ -28,6 +28,7 @@ import fs from 'fs';
 import path from 'path';
 import { load } from 'js-yaml';
 import { header, footer, site, esc } from './templates/chrome.mjs';
+import { schemaFor } from './templates/schema.mjs';
 
 const SRC = 'src/index.html';
 const DIST = 'dist';
@@ -197,7 +198,10 @@ let written = 0, bytes = 0;
 for (const p of pages) {
   const depth = depthOf(p.url);
   const body = markActive(withChrome(markup.get(p.key), p.key));
-  const doc = pageHead(p, depth) + '</head>' + bodyTag + rewrite(body + '\n' + tail, depth);
+  /* the schema reads the page's own markup, so it is generated from the body
+     that is actually shipped -- never from a second description of it */
+  const doc = pageHead(p, depth) + schemaFor(ORIGIN, p, body) + '</head>'
+    + bodyTag + rewrite(body + '\n' + tail, depth);
   const dir = p.url ? path.join(DIST, p.url) : DIST;
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), doc);
