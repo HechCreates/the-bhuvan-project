@@ -80,22 +80,20 @@ const robotsTxt = mode === 'on'
 fs.writeFileSync(path.join(D, 'robots.txt'), robotsTxt);
 log.push(`ok    robots.txt (crawling allowed, sitemap ${mode === 'on' ? 'advertised' : 'withheld'})`);
 
-/* ---- 4. sitemap only when indexable ---- */
-const sitemapPath = path.join(D, 'sitemap.xml');
-if (mode === 'on') {
-  fs.writeFileSync(sitemapPath, `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${origin}/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
-`);
-  log.push('ok    sitemap.xml written');
-} else if (fs.existsSync(sitemapPath)) {
-  fs.unlinkSync(sitemapPath);
-  log.push('ok    sitemap.xml removed');
+/* ---- 4. the sitemap belongs to the build --------------------------------
+   It used to be written here, as a single URL for a single-URL site. There are
+   twelve pages now and build/build.mjs generates the sitemap from
+   content/pages.yml on every build, so a page cannot be published without
+   being listed. This file only decides whether robots.txt advertises it.
+
+   A stale static/sitemap.xml would be copied over the generated one by the
+   build's static passthrough, so remove it if an older run left it behind. */
+{
+  const stale = path.join(D, 'sitemap.xml');
+  if (fs.existsSync(stale)) {
+    fs.unlinkSync(stale);
+    log.push('ok    removed the old one-URL static/sitemap.xml; the build generates it now');
+  }
 }
 
 /* ---- 5. X-Robots-Tag, which also covers the images ---- */

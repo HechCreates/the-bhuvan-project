@@ -1,55 +1,184 @@
-/* Compare the built page against the source it was assembled from.
+/* Prove the build did not change the site, only where it lives.
 
-   The only intended difference is that the 22 header and footer blocks are now
-   rendered from content/site.yml instead of being 22 hand-maintained copies.
-   Everything else must survive untouched. Both sides are normalised for
-   whitespace and HTML entities before comparing -- neither can hide a changed
-   element, attribute or word.                                               */
+   src/index.html holds twelve pages in one document; dist/ holds them as
+   twelve documents at twelve paths. Two things have to be true for that to be
+   a safe transformation, and this checks both.
+
+   1. NOTHING CHANGED BUT THE PATHS.
+      For each page, take its markup out of the source and out of the built
+      file, remove the chrome (which is rendered from content/site.yml on
+      purpose) and blank out every src= and href= VALUE -- those are the only
+      things the build is allowed to rewrite. What is left is text, tags,
+      classes, alt text, inline styles, ARIA. It must match byte for byte
+      after whitespace and entity normalisation. A dropped paragraph, a
+      reordered section, a mangled attribute or a lost image all fail here.
+
+   2. EVERY PATH RESOLVES.
+      The paths the first check blanked out are then checked on their own:
+      every relative src and href in every built page must point at a file
+      that exists, from that page's own depth. This is what catches a missing
+      ../ -- the single likeliest way to break a site by moving its pages.
+
+   Plus the things that are only true once pages are separate: one canonical
+   per page and all of them distinct, one <title> per page and all distinct,
+   exactly one <h1>, and no leftover "#/" links from the router era.        */
 
 import fs from 'fs';
 import path from 'path';
+import { load } from 'js-yaml';
 
 const SRC = 'src/index.html';
-const OUT = 'dist/index.html';
+const DIST = 'dist';
+const { pages } = load(fs.readFileSync('content/pages.yml', 'utf8'));
+let failed = 0;
+const fail = m => { console.log('  FAIL  ' + m); failed++; };
 
-const ENT = { middot: '·', copy: '©', amp: '&', rarr: '→', larr: '←',
-              ldquo: '“', rdquo: '”', nbsp: ' ', mdash: '—', ndash: '–' };
-const norm = t => t
+const ENT = { middot: '·', copy: '©', amp: '&', rarr: '→', larr: '←', lsaquo: '‹', rsaquo: '›',
+              ldquo: '“', rdquo: '”', nbsp: ' ', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘',
+              times: '×', hellip: '…', deg: '°', amp_: '&' };
+
+/* the chrome is rendered from content/site.yml, so it is expected to differ */
+const stripChrome = t => t
+  .replace(/<header class="site-header"[\s\S]*?<\/header>/g, '')
+  .replace(/<footer class="footer">[\s\S]*?<\/footer>/g, '');
+
+const norm = t => stripChrome(t)
+  .replace(/(src|href|data-open-shot)="[^"]*"/g, '$1=""')  // the build rewrites these by design
+  .replace(/ data-route="[^"]*"/g, '')           // and strips these
   .replace(/&([a-z]+);/g, (m, n) => ENT[n] ?? m)
   .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
 
-const a = norm(fs.readFileSync(SRC, 'utf8'));
-const b = norm(fs.readFileSync(OUT, 'utf8'));
+/* ---- pull each page out of the source ---- */
+const src = fs.readFileSync(SRC, 'utf8');
+const marks = [...src.matchAll(/<div (?:id="[^"]*" )?data-page="([a-z0-9-]+)"/g)];
+const tailStart = src.indexOf('<script>', marks[marks.length - 1].index);
+const srcPage = new Map();
+marks.forEach((m, i) => srcPage.set(m[1], src.slice(m.index, i + 1 < marks.length ? marks[i + 1].index : tailStart)));
 
-console.log('source  ' + a.length.toLocaleString() + ' chars (normalised)');
-console.log('built   ' + b.length.toLocaleString() + ' chars (normalised)');
+/* ---- 1. content identity ---- */
+console.log('content identity (chrome and paths excluded)');
+for (const p of pages) {
+  const file = path.join(DIST, p.url, 'index.html');
+  if (!fs.existsSync(file)) { fail(`${p.key}: ${file} was not built`); continue; }
+  const built = fs.readFileSync(file, 'utf8');
 
-if (a === b) {
-  console.log('\nIDENTICAL — the build reproduces the deployed page exactly.');
-} else {
-  let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++;
-  console.log('\nDIFFERS at char ' + i.toLocaleString() + ':');
-  console.log('  source …' + a.slice(Math.max(0, i - 100), i + 100));
-  console.log('  built  …' + b.slice(Math.max(0, i - 100), i + 100));
-  process.exitCode = 1;
+  // the page div runs from <body> to the shared script
+  const a = built.indexOf('<div ', built.indexOf('<body'));
+  const b = built.indexOf('<script>', a);
+  if (a < 0 || b < 0) { fail(`${p.key}: could not find the page div in the built file`); continue; }
+
+  // is-active is added by the build: either as a new class attribute on a page
+  // div that had none, or appended to the class list of one that did
+  const got = norm(built.slice(a, b))
+    .replace(/ class="is-active"/, '')
+    .replace(/ is-active"/, '"');
+  const want = norm(srcPage.get(p.key));
+  if (got === want) { console.log(`  ok    /${p.url ? p.url + '/' : ''}`.padEnd(52) + `${want.length.toLocaleString()} chars`); continue; }
+
+  let i = 0; while (i < got.length && i < want.length && got[i] === want[i]) i++;
+  fail(`${p.key}: content differs at char ${i.toLocaleString()}`);
+  console.log('        source …' + want.slice(Math.max(0, i - 90), i + 90));
+  console.log('        built  …' + got.slice(Math.max(0, i - 90), i + 90));
 }
 
-/* every asset the page asks for must exist in dist/ */
-const html = fs.readFileSync(OUT, 'utf8');
-const refs = [...new Set([...html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|data:)[^"]+)"/g)].map(m => m[1]))];
-const missing = refs.filter(r => !fs.existsSync(path.join('dist', r)));
-console.log(`\nassets referenced: ${refs.length}`);
-console.log(`missing in dist/ : ${missing.length ? '\n  ' + missing.join('\n  ') : 'none'}`);
-if (missing.length) process.exitCode = 1;
+/* ---- 2. every path resolves, from that page's own depth ---- */
+console.log('\npath resolution');
+let refs = 0, broken = 0;
+const htmlFiles = [...pages.map(p => [p.url, path.join(DIST, p.url, 'index.html')]), ['', path.join(DIST, '404.html')]];
+for (const [url, file] of htmlFiles) {
+  if (!fs.existsSync(file)) continue;
+  const html = fs.readFileSync(file, 'utf8');
+  const dir = path.dirname(file);
+  for (const m of html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
+    const v = m[1];
+    if (v === '') continue;
+    refs++;
+    // a directory URL ("about/", "../") is served as its index.html
+    const target = v.endsWith('/') ? path.join(dir, v, 'index.html') : path.join(dir, v);
+    if (!fs.existsSync(target)) { fail(`/${url ? url + '/' : ''} -> ${v}  (looked for ${path.relative(DIST, target)})`); broken++; }
+  }
+}
+console.log(`  ${refs} src/href references checked, ${broken} broken`);
 
-/* nothing shipped that nothing asks for */
-const shipped = [];
+/* An image path does not have to live in a src attribute. The Visual Journey
+   lightbox keeps 214 of them in data-open-shot, and JS reads that attribute
+   straight into img.src -- so it needs the same ../ the markup got, and
+   nothing in the src/href pass above would ever have noticed it missing.
+   This checks EVERY attribute value that points into images/, whatever it is
+   called, so the next such attribute is caught the day it is added. */
+console.log('\nimage paths in other attributes');
+let other = 0, otherBroken = 0;
+const kinds = new Set();
+for (const [url, file] of htmlFiles) {
+  if (!fs.existsSync(file)) continue;
+  const html = fs.readFileSync(file, 'utf8');
+  const dir = path.dirname(file);
+  for (const m of html.matchAll(/([a-z-]+)="((?:\.\.\/)*images\/[^"]*)"/g)) {
+    if (m[1] === 'src' || m[1] === 'href') continue;
+    other++; kinds.add(m[1]);
+    if (!fs.existsSync(path.join(dir, m[2]))) {
+      otherBroken++;
+      if (otherBroken <= 3) fail(`/${url ? url + '/' : ''} ${m[1]}="${m[2]}" does not resolve`);
+    }
+  }
+}
+console.log(`  ${other} checked in ${[...kinds].join(', ') || 'no other attributes'}, ${otherBroken} broken`);
+
+/* ---- 3. no hash links survive ---- */
+const stale = htmlFiles.filter(([, f]) => fs.existsSync(f) && /href="#\//.test(fs.readFileSync(f, 'utf8')));
+if (stale.length) fail(`hash links left in: ${stale.map(s => s[0] || '/').join(', ')}`);
+else console.log('  no "#/" links remain');
+
+/* ---- 4. head uniqueness ---- */
+console.log('\nhead');
+const seen = { canonical: new Map(), title: new Map(), desc: new Map() };
+for (const p of pages) {
+  const file = path.join(DIST, p.url, 'index.html');
+  if (!fs.existsSync(file)) continue;
+  const html = fs.readFileSync(file, 'utf8');
+  const head = html.slice(0, html.indexOf('</head>'));
+  const one = (re, what) => {
+    const all = [...head.matchAll(re)];
+    if (all.length !== 1) fail(`/${p.url} has ${all.length} ${what}`);
+    return all.length ? all[0][1] : null;
+  };
+  const c = one(/<link rel="canonical" href="([^"]*)">/g, 'canonical tags');
+  const t = one(/<title>([^<]*)<\/title>/g, '<title> tags');
+  const d = one(/<meta name="description" content="([^"]*)">/g, 'meta descriptions');
+  for (const [k, v] of [['canonical', c], ['title', t], ['desc', d]]) {
+    if (v == null) continue;
+    if (seen[k].has(v)) fail(`duplicate ${k} on /${p.url} and /${seen[k].get(v)}: "${v.slice(0, 60)}"`);
+    else seen[k].set(v, p.url);
+  }
+  if (c && !c.endsWith(p.url ? p.url + '/' : '/')) fail(`/${p.url} canonical points at ${c}`);
+  const h1 = (html.match(/<h1[ >]/g) || []).length;
+  if (h1 !== 1) fail(`/${p.url || ''} has ${h1} <h1> elements (want exactly 1)`);
+}
+console.log(`  ${seen.title.size} distinct titles, ${seen.desc.size} distinct descriptions, ${seen.canonical.size} distinct canonicals`);
+
+/* ---- 5. nothing shipped that nothing asks for ---- */
+const used = new Set();
+for (const [, file] of htmlFiles) {
+  if (!fs.existsSync(file)) continue;
+  const html = fs.readFileSync(file, 'utf8');
+  const dir = path.dirname(file);
+  for (const m of html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
+    if (m[1] && !m[1].endsWith('/')) used.add(path.relative(DIST, path.join(dir, m[1])).replace(/\\/g, '/'));
+  }
+}
+const orphans = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    const p = path.join(d, e.name);
-    if (e.isDirectory()) walk(p);
-    else shipped.push(path.relative('dist', p).split(path.sep).join('/'));
+    const f = path.join(d, e.name);
+    if (e.isDirectory()) walk(f);
+    else {
+      const rel = path.relative(DIST, f).replace(/\\/g, '/');
+      if (rel.startsWith('images/') && !used.has(rel)) orphans.push(rel);
+    }
   }
-})('dist/images');
-const orphans = shipped.filter(f => !refs.includes(f));
-console.log(`orphaned images  : ${orphans.length ? orphans.length + ' — ' + orphans.slice(0, 3).join(', ') : 'none'}`);
+})(DIST);
+console.log(`\norphaned images: ${orphans.length ? orphans.length + '\n  ' + orphans.slice(0, 10).join('\n  ') : 'none'}`);
+if (orphans.length) failed++;
+
+console.log(failed ? `\n${failed} check(s) FAILED` : '\nAll checks passed — the split changed where the pages live, nothing else.');
+if (failed) process.exitCode = 1;

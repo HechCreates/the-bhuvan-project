@@ -1706,7 +1706,7 @@ body{margin:0}
 <section class="about-hero">
   <div class="wrap">
     <span class="label about-eyebrow">About the studio</span>
-    <p class="about-lede">An ecological restoration and landscape architecture studio, designing with nature, culture and context across India.</p>
+    <h1 class="about-lede">An ecological restoration and landscape architecture studio, designing with nature, culture and context across India.</h1>
   </div>
 </section>
 
@@ -4587,7 +4587,7 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
     var payload = { name: form.querySelector('#cf-name').value.trim(),
                     email: form.querySelector('#cf-email').value.trim(),
                     message: form.querySelector('#cf-message').value.trim(),
-                    page: location.hash || '#/', sent: new Date().toISOString() };
+                    page: location.pathname + location.search, sent: new Date().toISOString() };
     function ok(){ var el = cfEls(); el.main.hidden = true; el.done.hidden = false; el.panel.scrollTop = 0;
                    var c = el.done.querySelector('.cf-send'); if(c) c.focus(); }
     if(!CONTACT_ENDPOINT){
@@ -4656,36 +4656,18 @@ if(toggle&&drawer){toggle.addEventListener('click',function(){var open=drawer.ha
     var hdr=page.querySelector('[data-header]');
     if(hdr){hdr.classList.add('stuck');}
   }
-  var inited={};
-  function show(route){
-    if(!document.querySelector('[data-page="'+route+'"]')) route='home';
-    document.querySelectorAll('[data-page]').forEach(function(p){
-      p.classList.toggle('is-active', p.getAttribute('data-page')===route);
-    });
-    if(!inited[route]){ try{ if(route==='about'){initAbout();}else if(route==='home'){initHome();}else{initProject();} }catch(e){console.error(e);} inited[route]=true; }
-    window.scrollTo(0,0);
-    var pt=document.querySelector('[data-page="'+route+'"] .proj-title');
-    document.title = pt ? (pt.textContent.trim()+', The Bhu.Van Project')
-      : (route==='journey' ? 'Visual Journey, The Bhu.Van Project'
-      : route==='about' ? 'About, The Bhu.Van Project'
-      : route==='testimonials' ? 'Testimonials, The Bhu.Van Project'
-      : route==='projects' ? 'Projects, The Bhu.Van Project' : 'The Bhu.Van Project');
-  }
-  function routeFromHash(){
-    var h=(location.hash||'').replace(/^#\/?/,'').replace(/\/$/,'');
-    if(h.indexOf('projects/')===0){h='p-'+h.slice(9);}
-    show(h||'home');
-  }
+  /* One document, one page. The build has already marked it active and put
+     the right <title> in the head, so all that is left is to run the code the
+     page needs. */
+  var el=document.querySelector('[data-page]');
+  var route=el?el.getAttribute('data-page'):'home';
+  try{ if(route==='about'){initAbout();}else if(route==='home'){initHome();}else{initProject();} }
+  catch(e){console.error(e);}
+  /* a link that was never built goes home */
   document.addEventListener('click',function(e){
-    var a=e.target.closest('a[data-route]');
-    if(a){ if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return; e.preventDefault(); var r=a.getAttribute('data-route');
-      var nh = r==='about'?'#/about':(r==='projects'?'#/projects':(r==='testimonials'?'#/testimonials':(r==='journey'?'#/journey':(r.indexOf('p-')===0?('#/projects/'+r.slice(2)):'#/'))));
-      if(location.hash===nh){show(r);}else{location.hash=nh;} }
-    var s=e.target.closest('a[data-soon]');
-    if(s){ e.preventDefault(); location.hash='#/'; } // pages not built yet -> home
+    var a=e.target.closest('a[data-soon]');
+    if(a){ e.preventDefault(); location.href=a.getAttribute('href'); }
   });
-  window.addEventListener('hashchange', routeFromHash);
-  routeFromHash();
 })();
 
 </script>

@@ -1,7 +1,13 @@
 import fs from 'fs';
+import { load } from 'js-yaml';
 import { ORDER, META } from './projects-content.mjs';
 
-const s = fs.readFileSync('dist/index.html', 'utf8');
+/* Reads the SOURCE, not the build. src/index.html is where all twelve pages
+   still live in one document and where the links are still authored as "#/"
+   routes; build/build.mjs is what turns them into twelve files with real
+   paths. That the paths then resolve is build/verify-build.mjs's job -- this
+   file checks that the wiring is there to be rewritten in the first place. */
+const s = fs.readFileSync('src/index.html', 'utf8');
 let bad = 0;
 const check = (label, cond, detail = '') => {
   console.log((cond ? 'ok    ' : 'FAIL  ') + label + (detail ? '   ' + detail : ''));
@@ -19,7 +25,7 @@ const soonT = (s.match(/data-soon="testimonials"/g) || []).length;
 const routeT = (s.match(/data-route="testimonials"/g) || []).length;
 check('nav Testimonials wired', soonT === 0 && routeT >= 30, `${routeT} routed, ${soonT} placeholders left`);
 check('testimonials page present', s.includes('data-page="testimonials"'), '');
-check('testimonials route in the hash map', s.includes("r==='testimonials'?'#/testimonials'"), '');
+check('testimonials has a nav entry that resolves', /data-route="testimonials"/.test(s), '');
 const tCards = (s.match(/class="tq-card"/g) || []).length;
 check('testimonial cards', tCards === 5, `${tCards} cards`);
 const tNames = (s.match(/class="tq-name"/g) || []).length;
@@ -82,8 +88,17 @@ const cardRefs = [...s.matchAll(/src="(images\/cards\/[^"]+)"/g)].map(m => m[1])
 const missingCards = cardRefs.filter(r => !fs.existsSync(r));
 check('card images resolve', missingCards.length === 0, `${cardRefs.length} refs, ${missingCards.length} missing`);
 
-// router handles the index route
-check('router maps projects route to a hash', /r==='projects'\?'#\/projects'/.test(s));
+// every project key in the source has a published URL, and no two share one
+{
+  const { pages } = load(fs.readFileSync('content/pages.yml', 'utf8'));
+  const urls = new Map(pages.map(p => [p.key, p.url]));
+  const missing = ORDER.filter(slug => !urls.has('p-' + slug));
+  check('every project has a published URL', missing.length === 0,
+    missing.length ? 'no URL for: ' + missing.join(', ') : `${ORDER.length} mapped`);
+  const all = pages.map(p => p.url);
+  check('no two pages share a URL', new Set(all).size === all.length,
+    `${new Set(all).size} distinct of ${all.length}`);
+}
 
 // index page contents
 const i = s.indexOf('data-page="projects"');

@@ -16,10 +16,23 @@ const TYPES = {
 
 http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
-  // mimic a static host: "/" serves index.html where one exists
-  if (p === '/') p = '/index.html';
-  const f = path.join(ROOT, p);
+  // mimic a static host: a directory serves its index.html, and a bare
+  // directory path without the trailing slash redirects to one, which is what
+  // GitHub Pages does -- worth reproducing so relative paths break here first
+  let f = path.join(ROOT, p);
+  if (f.startsWith(ROOT) && fs.existsSync(f) && fs.statSync(f).isDirectory()) {
+    if (!p.endsWith('/')) {
+      res.writeHead(301, { Location: p + '/' });
+      return res.end();
+    }
+    f = path.join(f, 'index.html');
+  }
   if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) {
+    const nf = path.join(ROOT, '404.html');
+    if (fs.existsSync(nf)) {
+      res.writeHead(404, { 'Content-Type': TYPES['.html'] });
+      return res.end(fs.readFileSync(nf));
+    }
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     return res.end('not found: ' + p);
   }

@@ -1,0 +1,112 @@
+# Every page on the site: its URL, and what search engines and AI answer
+# engines are told about it.
+#
+# This is the single source for four things that used to be one thing or
+# nothing at all: the path the page is published at, its <title> and meta
+# description, its entry in sitemap.xml, and the schema.org type the build
+# wraps it in. Change a URL here and the nav, the footer, the in-page links,
+# the canonical, the sitemap and the redirect stubs all follow.
+#
+# `key`   the data-page attribute in src/index.html -- how the build finds the
+#         markup. These are historical and two of them are misleading
+#         (p-bandipur-tiger-reserve is the Junglescapes project; the Rewilding
+#         Earth one is p-ecological-restoration). The URLs below are correct
+#         even where the keys are not; do not "fix" a key to match a URL
+#         without renaming it in src/index.html at the same time.
+# `url`   published path, no leading or trailing slash. "" is the site root.
+#         Once a URL is live it is a promise -- change one and you owe it a
+#         redirect in content/redirects.yml.
+# `title` what shows in a search result. Aim for 50-60 characters; Google
+#         truncates around 580px, which is roughly that.
+# `desc`  the meta description, 150-160 characters. Not a ranking factor, but
+#         it is the sentence that decides whether anyone clicks.
+# `type`  schema.org type the build emits for the page.
+
+pages:
+  - key: home
+    url: ""
+    title: "The Bhu.Van Project — Ecological Restoration, Bengaluru"
+    desc: "Ecological restoration and landscape architecture studio in Bengaluru, designing with water, soil and native ecology across India. Rewild, restore, reimagine."
+    type: WebPage
+    priority: "1.0"
+
+  - key: about
+    url: "about"
+    title: "About the Studio — The Bhu.Van Project"
+    desc: "Who we are: an ecological restoration and landscape architecture studio in Bengaluru, led by Nikhil Udupa, working across India's diverse landscapes."
+    type: AboutPage
+    priority: "0.9"
+
+  - key: projects
+    url: "projects"
+    title: "Projects — Ecological Restoration & Landscape Design"
+    desc: "Seven projects across India: hydro-ecological restoration at Bandipur, watershed management in the Nilgiris, regenerative farm landscapes and heritage estates."
+    type: CollectionPage
+    priority: "0.9"
+
+  - key: testimonials
+    url: "testimonials"
+    title: "Testimonials — The Bhu.Van Project"
+    desc: "Clients, collaborators and landowners on working with The Bhu.Van Project, from Bandipur forest restoration to farm landscapes and estates in the Nilgiris."
+    type: WebPage
+    priority: "0.7"
+
+  - key: journey
+    url: "visual-journey"
+    title: "Visual Journey — Landscape Photography from India"
+    desc: "Photographs from years of travel across India's landscapes: ecology, geology, culture, flora and fauna, seen through the studio's lens."
+    type: ImageGallery
+    priority: "0.6"
+
+  # ---- projects -----------------------------------------------------------
+  # Slugs carry the words a person would actually search for. Two of them
+  # deliberately differ from their historical `key`; see the note above.
+
+  - key: p-bandipur-tiger-reserve
+    url: "projects/hydro-ecological-restoration-bandipur"
+    title: "Hydro-Ecological Restoration, Bandipur Tiger Reserve"
+    desc: "Restoring the hydro-ecological integrity of 1,500 acres of degraded forest in the Bandipur Tiger Reserve buffer and elephant corridor, with Junglescapes."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-ecological-restoration
+    url: "projects/wildlife-habitat-restoration-bandipur"
+    title: "Wildlife Habitat Restoration, Bandipur Landscape"
+    desc: "A 60-acre restoration of dry deciduous forest and semi-arid savanna in the Bandipur rain shadow, reviving a fragmented stream and wetland with Rewilding Earth."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-mysuru-rail-museum
+    url: "projects/mysuru-rail-museum"
+    title: "Mysuru Rail Museum — Heritage Landscape Design"
+    desc: "Reimagining India's earliest outdoor railway museum, established in 1979, as a biodiverse public space for South Western Railway in Mysuru, Karnataka."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-nilgiris-biosphere-reserve
+    url: "projects/tea-estate-watershed-nilgiris"
+    title: "Tea Estate Watershed Restoration, Nilgiris"
+    desc: "Integrated watershed management and ecological restoration across a high-altitude Nilgiris tea estate, addressing soil erosion, slope instability and water."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-chairmans-bungalow
+    url: "projects/chairmans-bungalow-nilgiris"
+    title: "Chairman's Bungalow Landscape, Nilgiris"
+    desc: "A landscape design set among mist-laden tea hills and shola forest in the Nilgiris, built on sustainability, ecological sensitivity and a sense of place."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-karavulapalli-farm
+    url: "projects/regenerative-farm-karavulapalli"
+    title: "Regenerative Farm Landscapes, Karavulapalli"
+    desc: "A 60-acre biodiverse community landscape in drought-prone Rayalaseema, designed for climate resilience, water security and regenerative agriculture."
+    type: CreativeWork
+    priority: "0.8"
+
+  - key: p-context-responsive-design
+    url: "projects/context-responsive-design"
+    title: "Context-Responsive Design — Architecture Rooted in Place"
+    desc: "Minimal, rooted, sensory architecture: stone, brick, wood and earth shaped by light, craft and culture, designed for the climate and culture of each site."
+    type: CreativeWork
+    priority: "0.7"

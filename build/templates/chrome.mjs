@@ -22,15 +22,15 @@ export const esc = s => String(s ?? '')
 const href = n => n.route === 'home' ? '#/' : n.soon ? '#/' : `#/${n.route}`;
 const target = n => n.soon ? `data-soon="${esc(n.soon)}"` : `data-route="${esc(n.route)}"`;
 
-/* `current` marks the nav item for the page being rendered. Today only the
-   About page does this, and its .is-current rule is scoped to #page-about, so
-   the other pages have neither the markup nor the styling. Threading the route
-   through keeps that reproducible while leaving the door open to making it
-   consistent across the site. */
+/* `current` marks the nav item for the page being rendered. The .is-current
+   rule is scoped to #page-about, so on every other page the class is inert --
+   which is why marking it everywhere is safe and changes nothing visually.
+   aria-current is the part that is not inert: it is how a screen reader, and
+   any crawler reading the accessibility tree, knows where in the site it is. */
 const navLinks = (cls, current) => site.nav
   .map(n => {
-    const on = current && n.route === current;
-    return `<a href="${href(n)}" class="${cls}${on ? ' is-current' : ''}" ${target(n)}>${esc(n.label)}</a>`;
+    const on = Boolean(current) && n.route === current;
+    return `<a href="${href(n)}" class="${cls}${on ? ' is-current' : ''}"${on ? ' aria-current="page"' : ''} ${target(n)}>${esc(n.label)}</a>`;
   })
   .join('\n');
 
