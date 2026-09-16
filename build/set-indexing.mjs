@@ -16,6 +16,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { robotsTxt, AI_AGENTS } from './templates/robots.mjs';
 
 const SRC = 'src/index.html';
 const D = 'static';
@@ -60,25 +61,12 @@ if (newOrigin && newOrigin !== cur) {
 fs.writeFileSync(SRC, s);
 log.push('ok    src/index.html updated; run `npm run build` to publish');
 
-/* ---- 3. robots.txt: crawling stays open either way ---- */
-const robotsTxt = mode === 'on'
-  ? `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
-  : `# Staging. Crawling is deliberately left open so that crawlers can read the\n`
-  + `# noindex in the page, and so link previews keep working; indexing is\n`
-  + `# refused by the meta tag instead.\n`
-  + `#\n`
-  + `# The photographs are the exception. A meta tag cannot reach an image, and\n`
-  + `# GitHub Pages ignores the _headers file that used to carry X-Robots-Tag\n`
-  + `# for them, so refusing the directory is the only lever left. og-image.jpg\n`
-  + `# sits at the root and stays fetchable, so link previews still work.\n`
-  + `#\n`
-  + `# Note: robots.txt is read per-origin, so on a GitHub project page served\n`
-  + `# from /<repo>/ this file is never fetched -- crawlers look at the domain\n`
-  + `# root instead. It only takes effect on the custom domain at launch. Until\n`
-  + `# then the noindex meta tag is what actually holds the pages back.\n`
-  + `User-agent: *\nAllow: /\nDisallow: /images/\n`;
-fs.writeFileSync(path.join(D, 'robots.txt'), robotsTxt);
-log.push(`ok    robots.txt (crawling allowed, sitemap ${mode === 'on' ? 'advertised' : 'withheld'})`);
+/* ---- 3. robots.txt -- both postures live in templates/robots.mjs ---- */
+const robots = robotsTxt(mode, origin);
+fs.writeFileSync(path.join(D, 'robots.txt'), robots);
+log.push(mode === 'on'
+  ? `ok    robots.txt (open to all, ${AI_AGENTS.length} answer engines named, sitemap advertised, images released)`
+  : 'ok    robots.txt (staging: crawling allowed, indexing refused, images withheld)');
 
 /* ---- 4. the sitemap belongs to the build --------------------------------
    It used to be written here, as a single URL for a single-URL site. There are
