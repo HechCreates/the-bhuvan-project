@@ -100,8 +100,25 @@ const ABS = /^(?:https?:|mailto:|tel:|data:|#|\/)/;
    page, and prefixing it a second time is how /about/ ends up asking for
    ../../about/. Hash links start with "#", so this pass skips them. */
 const prefixAssets = (html, depth) => depth === 0 ? html
-  : html.replace(/(src|href|data-open-shot)="([^"]+)"/g, (m, a, v) =>
-      ABS.test(v) ? m : `${a}="${'../'.repeat(depth)}${v}"`);
+  : html
+    .replace(/(src|href|data-open-shot)="([^"]+)"/g, (m, a, v) =>
+      ABS.test(v) ? m : `${a}="${'../'.repeat(depth)}${v}"`)
+    /* srcset is a comma-separated list of "url descriptor" pairs, so each
+       candidate needs lifting on its own -- treating the whole attribute as
+       one path silently breaks every image in the set */
+    /* CSS url() in the inline stylesheet -- the self-hosted @font-face rules
+       point at images/fonts/, and a font path is no more absolute than an
+       image one. Missing this leaves every page below the root rendering in
+       the fallback typeface, which looks like a design bug, not a path bug. */
+    .replace(/url\((images\/[^)'"]+)\)/g, (m, v) => `url(${'../'.repeat(depth)}${v})`)
+    .replace(/srcset="([^"]+)"/g, (m, v) => 'srcset="' + v.split(',').map(part => {
+      const t = part.trim();
+      if (!t) return t;
+      const sp = t.indexOf(' ');
+      const url = sp < 0 ? t : t.slice(0, sp);
+      const rest = sp < 0 ? '' : t.slice(sp);
+      return (ABS.test(url) ? url : '../'.repeat(depth) + url) + rest;
+    }).join(', ') + '"');
 
 const resolveLinks = (html, depth) => html
   .replace(/href="(#\/[^"]*)"/g, (m, h) => {

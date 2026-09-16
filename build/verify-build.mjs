@@ -114,16 +114,45 @@ for (const [url, file] of htmlFiles) {
   if (!fs.existsSync(file)) continue;
   const html = fs.readFileSync(file, 'utf8');
   const dir = path.dirname(file);
+  /* CSS url() in the inline stylesheet: the self-hosted @font-face rules live
+     here, and a wrong depth means the page silently renders in the fallback
+     typeface on every URL below the root. */
+  for (const m of html.matchAll(/url\(((?:\.\.\/)*images\/[^)'"]+)\)/g)) {
+    other++; kinds.add('css url()');
+    if (!fs.existsSync(path.join(dir, m[1]))) {
+      otherBroken++;
+      if (otherBroken <= 3) fail(`${url} url(${m[1]}) does not resolve`);
+    }
+  }
   for (const m of html.matchAll(/([a-z-]+)="((?:\.\.\/)*images\/[^"]*)"/g)) {
     if (m[1] === 'src' || m[1] === 'href') continue;
-    other++; kinds.add(m[1]);
-    if (!fs.existsSync(path.join(dir, m[2]))) {
-      otherBroken++;
-      if (otherBroken <= 3) fail(`${url} ${m[1]}="${m[2]}" does not resolve`);
+    kinds.add(m[1]);
+    /* srcset holds a list of "url descriptor" pairs, not one path; every
+       candidate has to resolve or some screen widths get a broken image */
+    const candidates = m[1] === 'srcset'
+      ? m[2].split(',').map(p => p.trim().split(/\s+/)[0]).filter(Boolean)
+      : [m[2]];
+    for (const c of candidates) {
+      other++;
+      if (!fs.existsSync(path.join(dir, c))) {
+        otherBroken++;
+        if (otherBroken <= 3) fail(`${url} ${m[1]} candidate "${c}" does not resolve`);
+      }
     }
   }
 }
 console.log(`  ${other} checked in ${[...kinds].join(', ') || 'no other attributes'}, ${otherBroken} broken`);
+
+/* ---- 2c. nothing third-party in the critical path ----
+   The typefaces are self-hosted so that no page waits on fonts.googleapis.com
+   before it can paint. A single stray link would quietly put that round trip
+   back, on whichever page it crept into. */
+{
+  const offenders = htmlFiles.filter(([, f]) => fs.existsSync(f)
+    && /fonts\.(googleapis|gstatic)\.com/.test(fs.readFileSync(f, 'utf8')));
+  if (offenders.length) fail(`third-party font requests on: ${offenders.map(o => o[0]).join(', ')}`);
+  else console.log('  no third-party font requests');
+}
 
 /* ---- 3. no hash links survive ---- */
 const stale = htmlFiles.filter(([, f]) => fs.existsSync(f) && /href="#\//.test(fs.readFileSync(f, 'utf8')));
@@ -217,6 +246,16 @@ for (const [, file] of htmlFiles) {
   const dir = path.dirname(file);
   for (const m of html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
     if (m[1] && !m[1].endsWith('/')) used.add(path.relative(DIST, path.join(dir, m[1])).replace(/\\/g, '/'));
+  }
+  // a font reached only through a CSS url() is still in use
+  for (const m of html.matchAll(/url\(((?:\.\.\/)*images\/[^)'"]+)\)/g)) {
+    used.add(path.relative(DIST, path.join(dir, m[1])).split(path.sep).join('/'));
+  }
+  // an image reached only through srcset or data-open-shot is still in use
+  for (const m of html.matchAll(/(?:srcset|data-open-shot)="([^"]+)"/g)) {
+    for (const p of m[1].split(',').map(x => x.trim().split(/\s+/)[0]).filter(Boolean)) {
+      used.add(path.relative(DIST, path.join(dir, p)).replace(/\\/g, '/'));
+    }
   }
 }
 const orphans = [];
