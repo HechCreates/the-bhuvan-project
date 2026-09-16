@@ -55,7 +55,11 @@ export function header(current) {
 
 export function footer() {
   const b = site.brand, c = site.contact, f = site.footer;
-  const links = site.nav
+  /* footerExtra carries the pages that are deliberately not in the header:
+     /faq/ and /contact/ need one internal link each to be discoverable, and
+     the footer is both where a person looks for them and the place that does
+     not change the approved five-item navigation. */
+  const links = [...site.nav, ...(site.footerExtra || [])]
     .map(n => `<a href="${href(n)}" ${target(n)}>${esc(n.label)}</a>`).join('\n');
   return `<footer class="footer">
   <nav class="wrap footer-nav" aria-label="Footer">${links}</nav>

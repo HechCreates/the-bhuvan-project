@@ -110,3 +110,22 @@ pages:
     desc: "Minimal, rooted, sensory architecture: stone, brick, wood and earth shaped by light, craft and culture, designed for the climate and culture of each site."
     type: CreativeWork
     priority: "0.7"
+
+  # ---- added for answer engines and for local search ----------------------
+  # Neither is in content/site.yml's `nav`: adding them would turn the
+  # approved five-item header into a seven-item one. They are linked from the
+  # footer and listed here, which is what a crawler needs.
+
+  - key: faq
+    url: "faq"
+    title: "FAQ — Ecological Restoration & Landscape Design"
+    desc: "What ecological restoration is, what Bhu.Van means, where the studio works and what it costs you to ask. Ten questions answered plainly."
+    type: FAQPage
+    priority: "0.7"
+
+  - key: contact
+    url: "contact"
+    title: "Contact — The Bhu.Van Project, Bengaluru"
+    desc: "Get in touch with The Bhu.Van Project, an ecological restoration and landscape architecture studio in Bengaluru working on sites across India."
+    type: ContactPage
+    priority: "0.8"

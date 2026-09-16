@@ -1281,6 +1281,32 @@ body{margin:0}
     left:clamp(0px, var(--sil-x,50%),
                calc(100% - (var(--sil-h) * var(--sil-ar,1)) - 16px))}
 }
+
+/* ---------- FAQ and Contact ----------
+   Answers are always visible, never behind an accordion: a featured snippet
+   and an AI answer are both extraction problems, and hidden text is a weaker
+   candidate for both. The measure is held near 68 characters, which is where
+   a long answer stays readable. */
+.faq-list{background:var(--bg);padding-block:clamp(2rem,4vw,3.5rem) clamp(4rem,9vw,7rem)}
+.faq-item{max-width:68ch;padding-block:clamp(1.6rem,3vw,2.2rem);border-top:1px solid rgba(55,40,7,.16)}
+.faq-item:first-child{border-top:0;padding-top:0}
+.faq-page .faq-q{font-family:var(--fd);font-weight:700;color:var(--primary);
+  font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.2;margin:0 0 .7rem}
+.faq-page .faq-a{font-family:var(--fb);font-size:1.0625rem;line-height:1.68;
+  color:var(--secondary);margin:0}
+.faq-page .faq-a em{font-style:italic}
+.faq-mail{color:var(--clay);text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:rgba(180,112,58,.5);transition:color .25s ease}
+.faq-mail:hover{color:var(--primary)}
+.faq-foot{max-width:68ch;margin:clamp(2.2rem,4vw,3rem) 0 0;padding-top:clamp(1.6rem,3vw,2.2rem);
+  border-top:1px solid rgba(55,40,7,.16);font-family:var(--fb);font-size:1.0625rem;
+  line-height:1.68;color:var(--secondary)}
+.faq-cta{font:inherit;color:var(--clay);background:none;border:0;padding:0;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(180,112,58,.5)}
+.faq-cta:hover{color:var(--primary)}
+.faq-cta:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.contact-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;margin:clamp(2rem,4vw,2.75rem) 0 0}
+.contact-page .contact-alt{font-family:var(--fb);font-size:.9375rem}
 </style>
 </head>
 <body>
@@ -4348,6 +4374,91 @@ body{margin:0}
   </div>
   <div class="wrap footer-base"><span>© 2026 The Bhu.Van Project</span><span>Rewild · Restore · Reimagine</span></div>
 </footer>
+</div>
+
+<div data-page="faq" class="project-page faq-page">
+<header class="site-header" data-header></header>
+  <section class="proj-intro">
+    <div class="wrap">
+      <a class="proj-back" href="#/"><span aria-hidden="true">&larr;</span> <span>Home</span></a>
+      <h1 class="proj-title">Questions, answered</h1>
+      <div class="proj-copy">
+        <p>What the studio does, how it works, and what the words mean &mdash; for anyone deciding whether their land is the kind of place we can help.</p>
+      </div>
+    </div>
+  </section>
+  <section class="faq-list" aria-label="Frequently asked questions">
+    <div class="wrap">
+      <article class="faq-item">
+        <h2 class="faq-q">What does &ldquo;Bhu.Van&rdquo; mean?</h2>
+        <p class="faq-a">The name is rooted in the Sanskrit word <em>Bhuvan</em>, meaning the world &mdash; the realm between sky and earth. The studio takes its scope from that idea: designing with land, water and the living systems between them, rather than treating a site as a surface to be decorated.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">What is ecological restoration?</h2>
+        <p class="faq-a">Ecological restoration is the practice of assisting the recovery of a degraded ecosystem &mdash; rebuilding its hydrology, biodiversity and soil health until it can sustain itself again. At The Bhu.Van Project it means weaving restoration science together with design, on degraded landscapes across South India.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">What does The Bhu.Van Project do?</h2>
+        <p class="faq-a">The Bhu.Van Project is an ecological restoration and landscape architecture studio based in Bengaluru. It works on habitat restoration, watershed management, regenerative farm landscapes and context-responsive architecture, helping places regain strength through thoughtful planning and field-based experience.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">Where is the studio based, and where does it work?</h2>
+        <p class="faq-a">The studio is based in Bengaluru, Karnataka, and works across India. Projects have run from the high-altitude valleys of Ladakh to the tea gardens of the Nilgiris, and from the remote forests of Arunachal Pradesh to the urban landscapes of Ahmedabad.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">Who founded The Bhu.Van Project?</h2>
+        <p class="faq-a">Nikhil Udupa, a landscape architect and ecological restoration practitioner with over fourteen years of experience in research-based spatial planning and sustainable design. His expertise covers nature-based solutions, watershed and natural resource management, wildlife habitat design, master planning and disaster-resilient regional planning.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">What services does the studio offer?</h2>
+        <p class="faq-a">Five practices: ecological restoration, landscape architecture, resilient watershed management and land master planning, sustainable architecture, and academic engagement. Most projects draw on several at once, because a degraded landscape rarely has only one thing wrong with it.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">What is the difference between landscape architecture and ecological restoration?</h2>
+        <p class="faq-a">Landscape architecture designs how a place is used and experienced &mdash; biodiverse, barrier-free and regenerative spaces rooted in local material, water and culture. Ecological restoration repairs how a place <em>functions</em>, rebuilding hydrology, soil and habitat. The studio treats them as one continuous practice rather than two services.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">What kinds of sites does the studio work on?</h2>
+        <p class="faq-a">Fragile ecosystems and protected areas, productive estates and farms, institutional campuses, community commons and urban developments. Scales run from a few acres to entire watersheds &mdash; from a 60-acre farm landscape in Rayalaseema to 1,500 acres of forest in the Bandipur Tiger Reserve buffer.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">How does the studio approach a project?</h2>
+        <p class="faq-a">Every site is treated as a living system with its own memory and potential. The approach is guided by rootedness, resilience and renewal, integrating scientific research, local knowledge and participatory processes to arrive at design that is specific to the place rather than applied to it.</p>
+      </article>
+      <article class="faq-item">
+        <h2 class="faq-q">How do I start a project with The Bhu.Van Project?</h2>
+        <p class="faq-a">Use the Get in Touch form anywhere on this site, or write to <a class="faq-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a>. It helps to include where the site is, roughly how large it is, and what you have noticed going wrong with it &mdash; erosion, water loss, invasive species, or simply land that no longer holds life.</p>
+      </article>
+      <p class="faq-foot">Still unsure whether a site is a candidate? <button type="button" class="faq-cta" data-open-contact>Get in touch</button> and describe it.</p>
+    </div>
+  </section>
+<footer class="footer"></footer>
+</div>
+
+<div data-page="contact" class="project-page contact-page">
+<header class="site-header" data-header></header>
+  <section class="proj-intro">
+    <div class="wrap">
+      <a class="proj-back" href="#/"><span aria-hidden="true">&larr;</span> <span>Home</span></a>
+      <h1 class="proj-title">Get in touch</h1>
+      <div class="proj-meta">
+        <dl class="proj-facts">
+          <div class="proj-fact"><dt>Studio</dt><dd>Bengaluru, Karnataka, India</dd></div>
+          <div class="proj-fact"><dt>Email</dt><dd><a class="faq-mail" href="mailto:nikhiludupa4@gmail.com">nikhiludupa4@gmail.com</a></dd></div>
+          <div class="proj-fact"><dt>Working across</dt><dd>India</dd></div>
+        </dl>
+      </div>
+      <div class="proj-copy">
+        <p>The Bhu.Van Project works with landowners, farms and estates, institutions, trusts and public bodies on landscapes that need repairing as much as designing. Projects have ranged from a single terrace garden to fifteen hundred acres of forest.</p>
+        <p>Tell us where the site is, roughly how large it is, and what you have noticed going wrong with it &mdash; erosion, water that no longer stays, invasive species, or land that has simply stopped holding life. That is enough to start a conversation.</p>
+      </div>
+      <p class="contact-actions">
+        <button type="button" class="cta" data-open-contact>Send a message</button>
+        <a class="faq-mail contact-alt" href="mailto:nikhiludupa4@gmail.com">or email directly</a>
+      </p>
+    </div>
+  </section>
+<footer class="footer"></footer>
 </div>
 <script>
 

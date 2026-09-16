@@ -137,6 +137,20 @@ function pageNode(origin, page, html) {
     inLanguage: 'en-IN',
     breadcrumb: page.url ? { '@id': `${url}#breadcrumb` } : undefined,
   });
+
+  /* An FAQPage is only worth anything to Google or an answer engine if it
+     carries the questions. They are read out of the rendered markup, so the
+     schema cannot answer a question the page does not visibly ask. */
+  if (page.type === 'FAQPage') {
+    const items = [...html.matchAll(/<h2 class="faq-q">([\s\S]*?)<\/h2>\s*<p class="faq-a">([\s\S]*?)<\/p>/g)];
+    base.mainEntity = items.map(m => ({
+      '@type': 'Question',
+      name: text(m[1]),
+      acceptedAnswer: { '@type': 'Answer', text: text(m[2]) },
+    }));
+    return [base];
+  }
+
   if (page.type !== 'CreativeWork') return [base];
 
   const f = projectFacts(html);
@@ -163,7 +177,10 @@ function pageNode(origin, page, html) {
 
 const text = h => h.replace(/<[^>]*>/g, ' ').replace(/&([a-z]+);/g,
   (m, n) => ({ amp: '&', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', mdash: '—', ndash: '–', nbsp: ' ' }[n] ?? m))
-  .replace(/\s+/g, ' ').trim();
+  .replace(/\s+/g, ' ')
+  // stripping an inline tag leaves "Bhuvan , meaning"; this is text an answer
+  // engine may quote verbatim, so it should read like a sentence
+  .replace(/\s+([,.;:!?])/g, '$1').trim();
 
 const extras = {
   /* The team, as Person nodes. Nikhil already exists as the founder node, so

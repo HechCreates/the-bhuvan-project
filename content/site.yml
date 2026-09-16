@@ -93,3 +93,13 @@ organization:
 people:
   nikhilSameAs:
     - https://era-india.org/community/nikhil-udupa/
+
+# Pages linked from the footer only. They are deliberately NOT in `nav` above:
+# putting them in the header would turn the approved five-item navigation into
+# a seven-item one. A footer link plus the sitemap is all a crawler needs, and
+# it is where a person looks for these two anyway.
+footerExtra:
+  - label: FAQ
+    route: faq
+  - label: Contact
+    route: contact
