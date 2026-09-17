@@ -1338,6 +1338,27 @@ body{margin:0}
 .faq-cta:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
 .contact-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;margin:clamp(2rem,4vw,2.75rem) 0 0}
 .contact-page .contact-alt{font-family:var(--fb);font-size:.9375rem}
+
+/* ---------- Founder and co-founder popups ---------- */
+/* the section's link is cream for its dark ground; the popup panel is cream */
+#page-about .modal-body .founder-link{color:var(--clay);border-bottom-color:rgba(180,112,58,.45)}
+#page-about .modal-body .founder-link:hover{color:var(--primary);border-color:var(--primary)}
+
+/* On a phone: one column, the approved square crop at the section's 175px,
+   then role, name and profile in the section's own type scale. */
+@media (max-width:760px){
+  #page-about .modal{padding:.75rem}
+  #page-about .modal-panel{display:block;max-height:calc(100svh - 1.5rem);overflow-x:hidden;overflow-y:auto}
+  #page-about .modal-media{position:static;min-height:0;width:175px;aspect-ratio:1/1;margin:1.5rem 0 0 1.5rem}
+  #page-about .modal-media picture{display:block;width:100%;height:100%}
+  #page-about .modal-media img{position:static;display:block;width:100%;height:100%;object-fit:cover}
+  #page-about .modal-body{padding:1.25rem 1.5rem 1.75rem}
+  #page-about .modal-eyebrow{font-size:.7rem;letter-spacing:.18em}
+  #page-about .modal-title{font-size:1.75rem;line-height:1.1;margin-top:.4rem;max-width:none}
+  #page-about .modal-para{font-size:.9375rem;line-height:1.65;margin-top:.9rem}
+  #page-about .modal-body .founder-link{margin-top:1.4rem}
+  #page-about .modal-close{top:.75rem;right:.75rem}
+}
 </style>
 </head>
 <body>
@@ -1916,7 +1937,7 @@ body{margin:0}
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mm-nikhil-udupa">
     <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <div class="modal-media"><img src="images/team/nikhil-udupa-full.webp" alt="Nikhil Udupa, founder of The Bhu.Van Project."></div>
+    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/nikhil-udupa-sq.webp"><img src="images/team/nikhil-udupa-full.webp" width="900" height="1351" alt="Nikhil Udupa, founder of The Bhu.Van Project."></picture></div>
     <div class="modal-body">
       <span class="modal-eyebrow">Founder</span>
       <h3 id="mm-nikhil-udupa" class="modal-title">Nikhil Udupa</h3>
@@ -1932,7 +1953,7 @@ body{margin:0}
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mm-shilpa-shirish">
     <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <div class="modal-media"><img src="images/team/shilpa-shirish-full.webp" alt="Shilpa Shirish, co-founder of The Bhu.Van Project."></div>
+    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/shilpa-shirish-sq.webp"><img src="images/team/shilpa-shirish-full.webp" width="900" height="1351" alt="Shilpa Shirish, co-founder of The Bhu.Van Project."></picture></div>
     <div class="modal-body">
       <span class="modal-eyebrow">Co-founder</span>
       <h3 id="mm-shilpa-shirish" class="modal-title">Shilpa Shirish</h3>

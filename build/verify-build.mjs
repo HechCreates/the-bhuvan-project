@@ -47,7 +47,7 @@ const stripChrome = t => t
   .replace(/<footer class="footer">[\s\S]*?<\/footer>/g, '');
 
 const norm = t => stripChrome(t)
-  .replace(/(src|href|data-open-shot)="[^"]*"/g, '$1=""')  // the build rewrites these by design
+  .replace(/(src|href|srcset|data-open-shot)="[^"]*"/g, '$1=""')  // the build rewrites these by design
   .replace(/ data-route="[^"]*"/g, '')           // and strips these
   .replace(/&([a-z]+);/g, (m, n) => ENT[n] ?? m)
   .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
