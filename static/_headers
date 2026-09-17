@@ -1,9 +1,3 @@
-# --- indexing (managed by build/set-indexing.mjs) ---
-# Covers og-image.jpg and the photographs too, which a meta tag cannot reach.
-/*
-  X-Robots-Tag: noindex, nofollow
-# --- end indexing ---
-
 # Browsers reject a manifest served as octet-stream; Netlify does not know the
 # .webmanifest extension on its own.
 /site.webmanifest
@@ -15,7 +9,7 @@
 # correct and the reviewer was looking at a stale copy. build/set-indexing.mjs
 # restores the long cache at launch, when the pictures stop changing.
 /images/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=2592000
 
 /*.png
   Cache-Control: public, max-age=2592000

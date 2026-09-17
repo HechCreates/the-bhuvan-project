@@ -1,16 +1,35 @@
-# Staging. Crawling is deliberately left open so that crawlers can read the
-# noindex in the page, and so link previews keep working; indexing is
-# refused by the meta tag instead.
+# https://www.thebhuvanproject.com
 #
-# The photographs are the exception. A meta tag cannot reach an image, and
-# GitHub Pages ignores the _headers file that used to carry X-Robots-Tag
-# for them, so refusing the directory is the only lever left. og-image.jpg
-# sits at the root and stays fetchable, so link previews still work.
-#
-# Note: robots.txt is read per-origin, so on a GitHub project page served
-# from /<repo>/ this file is never fetched -- crawlers look at the domain
-# root instead. It only takes effect on the custom domain at launch. Until
-# then the noindex meta tag is what actually holds the pages back.
+# Open to ordinary crawlers and to answer engines alike. The work is the
+# reason anyone would cite this studio; hiding it from the places people
+# now ask their questions would be self-defeating.
+
 User-agent: *
 Allow: /
-Disallow: /images/
+
+# Answer engines and AI search, named so the intent is on the record
+# rather than resting on the wildcard above. See build/templates/robots.mjs
+# for which of these to change if the position on training ever differs
+# from the position on search.
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: YouBot
+User-agent: Amazonbot
+User-agent: Meta-ExternalAgent
+User-agent: cohere-ai
+User-agent: Diffbot
+User-agent: Bytespider
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.thebhuvanproject.com/sitemap.xml
