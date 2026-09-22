@@ -28,7 +28,14 @@ const check = process.argv.includes('--check');
 
 const before = fs.readFileSync(SRC, 'utf8');
 let s = before;
-const crlf = t => t.replace(/\r?\n/g, '\r\n');
+
+/* Match the file's own line endings rather than always writing CRLF. The
+   working copy on Windows is CRLF; git stores LF and checks out LF on the
+   Linux runner, so a generator that hard-codes CRLF differs from the file by
+   exactly one character per line and --check fails in CI while passing
+   locally. */
+const eol = /\r\n/.test(before) ? '\r\n' : '\n';
+const crlf = t => t.replace(/\r?\n/g, eol);
 
 const projects = fs.readdirSync('content/projects')
   .filter(f => f.endsWith('.yml'))
