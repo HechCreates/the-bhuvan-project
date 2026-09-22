@@ -47,7 +47,12 @@ cannot touch your other repositories, your account, or anyone else's work.
 
 ## 2. Make the password
 
-In a terminal, in the `site` folder:
+In a terminal. The repository is the `site` folder, so start by going into
+it -- running this from the folder above will say "Cannot find module":
+
+```bash
+cd "D:\Harsha\The Bhu.van Project\site"
+```
 
 ```bash
 node service/hash-password.mjs
