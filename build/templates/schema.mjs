@@ -191,7 +191,11 @@ const extras = {
      he is extended there rather than declared twice under a second @id. */
   about(origin, html) {
     const out = [];
-    const leads = [...html.matchAll(/<p class="lead-name">([^<]+)<\/p>\s*<p class="lead-role">([^<]+)<\/p>/g)];
+    /* [^>]* on the opening tags: these carry data-edit attributes now that
+       the page is generated from content/about.yml. The same omission on the
+       project pages' <dt>/<dd> had already cost every project its location
+       and status in the structured data. */
+    const leads = [...html.matchAll(/<p class="lead-name"[^>]*>([^<]+)<\/p>\s*<p class="lead-role"[^>]*>([^<]+)<\/p>/g)];
     for (const [, name, role] of leads) {
       if (name.trim() === org.founder) continue;   // already the founder node
       out.push(drop({
@@ -201,7 +205,7 @@ const extras = {
         worksFor: { '@id': `${origin}/#organization` },
       }));
     }
-    for (const m of html.matchAll(/<p class="member-name">([^<]+)<\/p>\s*<p class="member-role">([^<]+)<\/p>/g)) {
+    for (const m of html.matchAll(/<p class="member-name"[^>]*>([^<]+)<\/p>\s*<p class="member-role"[^>]*>([^<]+)<\/p>/g)) {
       out.push(drop({
         '@type': 'Person',
         '@id': `${origin}/about/#${m[1].trim().toLowerCase().replace(/[^a-z]+/g, '-')}`,

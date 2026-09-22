@@ -262,6 +262,18 @@ console.log('\nstructured data');
       }
     }
 
+    /* Everyone named on the page must be named in the graph. The schema is
+       read out of the markup, so a change to how that markup is written can
+       silently drop people while the page still shows them -- which is
+       exactly what happened twice while the pages were being made editable. */
+    {
+      const onPage = (html.match(/class="(?:lead|member)-name"/g) || []).length;
+      const inGraph = graph.filter(n => n['@type'] === 'Person').length;
+      if (onPage && inGraph < onPage) {
+        fail(`${where} shows ${onPage} people but the graph declares ${inGraph}`);
+      }
+    }
+
     const o = graph.find(n => [].concat(n['@type']).includes('Organization'));
     if (!o) fail(`${where} declares no Organization`);
     else for (const req of ['name', 'url', 'description', 'logo', 'address'])

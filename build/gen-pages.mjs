@@ -22,6 +22,8 @@ import path from 'path';
 import { load } from 'js-yaml';
 import { header, footer } from './templates/chrome.mjs';
 import { projectPage } from './templates/project.mjs';
+import { render } from './templates/render.mjs';
+import { SPEC } from './page-spec.mjs';
 
 const SRC = 'src/index.html';
 const check = process.argv.includes('--check');
@@ -49,28 +51,40 @@ const log = [];
 for (let i = marks().length - 1; i >= 0; i--) {
   const all = marks();
   const key = all[i][1];
-  if (!key.startsWith('p-')) continue;
-
-  const slug = key.slice(2);
-  const n = projects.findIndex(p => p.slug === slug);
-  if (n < 0) { console.error(`FAIL: no content file for ${key}`); process.exit(1); }
+  const isProject = key.startsWith('p-');
+  const isTemplated = Boolean(SPEC[key]);
+  if (!isProject && !isTemplated) continue;
 
   const start = all[i].index;
   const end = i + 1 < all.length ? all[i + 1].index : s.indexOf('<script>', start);
   const old = s.slice(start, end);
 
-  /* the chrome is rendered in, exactly as it sits in the file today; the
-     build re-renders it per page anyway, this just keeps src self-consistent */
-  const page = crlf(projectPage(projects[n], {
-    prev: projects[n - 1], next: projects[n + 1],
-    header: header(''), footer: footer(),
-  }));
+  let page;
+  if (isProject) {
+    const slug = key.slice(2);
+    const n = projects.findIndex(p => p.slug === slug);
+    if (n < 0) { console.error(`FAIL: no content file for ${key}`); process.exit(1); }
+    /* the chrome is rendered in, exactly as it sits in the file today; the
+       build re-renders it per page anyway, this just keeps src self-consistent */
+    page = crlf(projectPage(projects[n], {
+      prev: projects[n - 1], next: projects[n + 1],
+      header: header(''), footer: footer(),
+    }));
+  } else {
+    /* home and about: the page's own markup as a template, with the values
+       put back in from content/<page>.yml */
+    const tplFile = `build/templates/${key}.tpl.html`;
+    if (!fs.existsSync(tplFile)) { console.error(`FAIL: ${tplFile} is missing`); process.exit(1); }
+    page = crlf(render(fs.readFileSync(tplFile, 'utf8'), load(fs.readFileSync(`content/${key}.yml`, 'utf8')))
+      .replace('<header class="site-header" data-header></header>', header(key === 'about' ? 'about' : 'home'))
+      .replace('<footer class="footer"></footer>', footer()));
+  }
 
   /* keep whatever blank space separated this page from the next */
   const gap = old.match(/\s*$/)[0];
   const next = page.replace(/\s*$/, '') + gap;
 
-  if (next !== old) log.push(`  ${slug}: ${old.length} -> ${next.length} chars`);
+  if (next !== old) log.push(`  ${key}: ${old.length} -> ${next.length} chars`);
   s = s.slice(0, start) + next + s.slice(end);
 }
 

@@ -1,0 +1,304 @@
+<div id="page-home" data-page="home">
+<header class="site-header" data-header></header>
+
+<section class="hero" data-hero>
+  <picture>
+      <source type="image/webp"
+              srcset="images/site/hero-1000.webp 1000w, images/site/hero-1600.webp 1600w, images/site/hero-2200.webp 2200w"
+              sizes="100vw">
+      <img class="hero-img" src="{{hero.image.src}}" width="2200" height="1467" alt="{{hero.image.alt}}" fetchpriority="high" data-edit="hero.image.src">
+    </picture>
+  <div class="hero-band-top"></div>
+  <div class="hero-band-bottom"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-top">
+      <h1 class="hero-statement" data-edit="hero.statement">{{hero.statement}}</h1>
+      <p class="hero-lede" data-edit="hero.lede">{{hero.lede}}</p>
+    </div>
+    <div class="hero-bottom">
+      <span class="label hero-eyebrow" data-edit="hero.eyebrow">{{hero.eyebrow}}</span>
+      <div class="hero-tagpills">
+        {{#each hero.tags}}<span class="hero-tag" data-edit="hero.tags.{{@i}}.label">{{label}}</span>{{/each}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meaning" id="meaning">
+  <div class="wrap">
+    <p class="meaning-text" data-edit="meaning.text">{{meaning.text}}</p>
+  </div>
+</section>
+
+<section class="about" id="about-teaser">
+  <div class="about-top">
+    <div class="wrap">
+      <div class="about-inner">
+        <div class="about-content" data-reveal>
+          <span class="label about-eyebrow" data-edit="aboutTeaser.eyebrow">{{aboutTeaser.eyebrow}}</span>
+          <p class="about-statement" data-edit="aboutTeaser.statement">{{aboutTeaser.statement}}</p>
+          <a class="about-link" href="#/about" data-route="about"><span data-edit="aboutTeaser.linkLabel">{{aboutTeaser.linkLabel}}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="arrow"><path d="M7 17 L17 7 M9 7 L17 7 L17 15" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <figure class="about-figure" data-reveal>
+          <button type="button" class="map-btn" data-open-map aria-label="Explore where we work across India">
+            <img src="{{aboutTeaser.map.src}}" alt="{{aboutTeaser.map.alt}}" data-edit="aboutTeaser.map.src">
+            <span class="map-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 9 V4 H9 M15 4 H20 V9 M20 15 V20 H15 M9 20 H4 V15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <figcaption class="about-cap" data-edit="aboutTeaser.map.caption">{{aboutTeaser.map.caption}}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="about-bottom">
+    <div class="wrap">
+      <p class="label collab-head" data-edit="collaborators.heading">{{collaborators.heading}}</p>
+      <div class="collab-grid" data-reveal>{{#each collaborators.logos}}<div class="collab-item"><img src="{{image}}" alt="{{alt}}" loading="lazy" data-edit="collaborators.logos.{{@i}}"></div>{{/each}}</div>
+    </div>
+  </div>
+</section>
+
+<section class="practices" id="what-we-do">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title" data-edit="practices.heading">{{practices.heading}}<span class="sec-kicker">.</span></h2>
+    </div>
+    <div class="practice-list">
+  <div class="practice" data-practice="ecological-restoration">
+    <button class="practice-row" data-practice-toggle="ecological-restoration" aria-expanded="true">
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/ecological-restoration.webp" width="168" height="168" loading="lazy" alt="Ecological restoration"><img class="p-icon p-icon-hover" src="images/icons/ecological-restoration-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-name" data-edit="practices.items.ecological-restoration.name">{{practices.items.ecological-restoration.name}}</span>
+      <span class="practice-plus" aria-hidden="true"></span>
+    </button>
+    <div class="practice-panel" data-open>
+      <div class="practice-panel-inner">
+        <div class="practice-media"><img src="{{practices.items.ecological-restoration.image}}" alt="{{practices.items.ecological-restoration.imageAlt}}" loading="lazy" data-edit="practices.items.ecological-restoration.image"></div>
+        <div class="practice-copy">
+          
+          <p class="practice-desc" data-edit="practices.items.ecological-restoration.description">{{practices.items.ecological-restoration.description}}</p>
+          <button class="practice-more" data-open-service="ecological-restoration" data-edit="practices.items.ecological-restoration.moreLabel">{{practices.items.ecological-restoration.moreLabel}}<span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice" data-practice="landscape-architecture">
+    <button class="practice-row" data-practice-toggle="landscape-architecture" aria-expanded="false">
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/landscape-architecture.webp" width="168" height="168" loading="lazy" alt="Landscape architecture"><img class="p-icon p-icon-hover" src="images/icons/landscape-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-name" data-edit="practices.items.landscape-architecture.name">{{practices.items.landscape-architecture.name}}</span>
+      <span class="practice-plus" aria-hidden="true"></span>
+    </button>
+    <div class="practice-panel">
+      <div class="practice-panel-inner">
+        <div class="practice-media"><img src="{{practices.items.landscape-architecture.image}}" alt="{{practices.items.landscape-architecture.imageAlt}}" loading="lazy" data-edit="practices.items.landscape-architecture.image"></div>
+        <div class="practice-copy">
+          <p class="practice-sub">Designing landscapes that heal, engage, and adapt.</p>
+          <p class="practice-desc" data-edit="practices.items.landscape-architecture.description">{{practices.items.landscape-architecture.description}}</p>
+          <button class="practice-more" data-open-service="landscape-architecture" data-edit="practices.items.landscape-architecture.moreLabel">{{practices.items.landscape-architecture.moreLabel}}<span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice" data-practice="watershed-management">
+    <button class="practice-row" data-practice-toggle="watershed-management" aria-expanded="false">
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/watershed-management.webp" width="168" height="168" loading="lazy" alt="Resilient watershed management and land master planning"><img class="p-icon p-icon-hover" src="images/icons/watershed-management-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-name" data-edit="practices.items.watershed-management.name">{{practices.items.watershed-management.name}}</span>
+      <span class="practice-plus" aria-hidden="true"></span>
+    </button>
+    <div class="practice-panel">
+      <div class="practice-panel-inner">
+        <div class="practice-media"><img src="{{practices.items.watershed-management.image}}" alt="{{practices.items.watershed-management.imageAlt}}" loading="lazy" data-edit="practices.items.watershed-management.image"></div>
+        <div class="practice-copy">
+          
+          <p class="practice-desc" data-edit="practices.items.watershed-management.description">{{practices.items.watershed-management.description}}</p>
+          <button class="practice-more" data-open-service="watershed-management" data-edit="practices.items.watershed-management.moreLabel">{{practices.items.watershed-management.moreLabel}}<span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice" data-practice="sustainable-architecture">
+    <button class="practice-row" data-practice-toggle="sustainable-architecture" aria-expanded="false">
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/sustainable-architecture.webp" width="168" height="168" loading="lazy" alt="Sustainable architecture"><img class="p-icon p-icon-hover" src="images/icons/sustainable-architecture-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-name" data-edit="practices.items.sustainable-architecture.name">{{practices.items.sustainable-architecture.name}}</span>
+      <span class="practice-plus" aria-hidden="true"></span>
+    </button>
+    <div class="practice-panel">
+      <div class="practice-panel-inner">
+        <div class="practice-media"><img src="{{practices.items.sustainable-architecture.image}}" alt="{{practices.items.sustainable-architecture.imageAlt}}" loading="lazy" data-edit="practices.items.sustainable-architecture.image"></div>
+        <div class="practice-copy">
+          <p class="practice-sub">Minimalist, Material-First &amp; Climatically Responsive</p>
+          <p class="practice-desc" data-edit="practices.items.sustainable-architecture.description">{{practices.items.sustainable-architecture.description}}</p>
+          <button class="practice-more" data-open-service="sustainable-architecture" data-edit="practices.items.sustainable-architecture.moreLabel">{{practices.items.sustainable-architecture.moreLabel}}<span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice" data-practice="academic-engagement">
+    <button class="practice-row" data-practice-toggle="academic-engagement" aria-expanded="false">
+      <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="images/icons/academic-engagement.webp" width="168" height="168" loading="lazy" alt="Academic engagement"><img class="p-icon p-icon-hover" src="images/icons/academic-engagement-clay.webp" width="168" height="168" loading="lazy" alt="" aria-hidden="true"></span></span>
+      <span class="practice-name" data-edit="practices.items.academic-engagement.name">{{practices.items.academic-engagement.name}}</span>
+      <span class="practice-plus" aria-hidden="true"></span>
+    </button>
+    <div class="practice-panel">
+      <div class="practice-panel-inner">
+        <div class="practice-media"><img src="{{practices.items.academic-engagement.image}}" alt="{{practices.items.academic-engagement.imageAlt}}" loading="lazy" data-edit="practices.items.academic-engagement.image"></div>
+        <div class="practice-copy">
+          <p class="practice-sub">Workshops &amp; Collaboration</p>
+          <p class="practice-desc" data-edit="practices.items.academic-engagement.description">{{practices.items.academic-engagement.description}}</p>
+          <button class="practice-more" data-open-service="academic-engagement" data-edit="practices.items.academic-engagement.moreLabel">{{practices.items.academic-engagement.moreLabel}}<span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title" data-edit="projects.heading">{{projects.heading}}<span class="sec-kicker">.</span></h2>
+      <a class="projects-view-all" href="#/projects" data-route="projects" data-edit="projects.viewAllLabel">{{projects.viewAllLabel}}</a>
+    </div>
+    <div class="plate-grid">{{#each projects.plates}}
+  <article class="plate" data-reveal>
+    <a href="#/projects/{{slug}}" data-route="p-{{slug}}" class="plate-link">
+      <div class="plate-media"><img src="{{image}}" alt="{{alt}}" loading="lazy" data-edit="projects.plates.{{@i}}"><span class="plate-index" data-edit="projects.plates.{{@i}}.index">{{index}}</span></div>
+      <div class="plate-foot">
+        <h3 class="plate-title" data-edit="projects.plates.{{@i}}.title">{{title}}</h3>
+        <p class="plate-sub" data-edit="projects.plates.{{@i}}.subtitle">{{subtitle}}</p>
+        <span class="plate-cue">{{cue}}<span aria-hidden="true">&rarr;</span></span>
+      </div>
+    </a>
+  </article>{{/each}}</div>
+  </div>
+</section>
+
+<footer class="footer"></footer>
+
+
+  <div class="modal" data-service-modal="ecological-restoration" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-ecological-restoration">
+      <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="modal-media"><img src="images/home/practice-ecological-restoration.webp" alt="A restored forest stream running clear through dense native vegetation in the Western Ghats."></div>
+      <div class="modal-body">
+        <span class="modal-eyebrow">Practice</span>
+        <h3 id="mt-ecological-restoration" class="modal-title">Ecological Restoration</h3>
+        
+        <p class="modal-para">Ecological restoration lies at the heart of our practice, an evolving process of assisting the recovery of ecosystems that have been degraded, damaged, or destroyed. Our approach combines the science of restoration ecology with the sensitivity of design, rooted in a deep understanding of landscape processes, cultural relationships, and community stewardship.</p>
+        <p class="modal-para">We work across South India's major eco-regions, from the dry deciduous forests and savannas of the Deccan Plateau to the moist forests of the South Western Ghats, wetlands, and working agricultural lands, restoring hydrology, biodiversity, and soil health while strengthening local ecological and community resilience.</p>
+        <p class="modal-para">Each project is grounded in field research, adaptive management, and partnerships with local communities and field experts, aligning ecological recovery with social and climate adaptation goals.</p>
+        <p class="modal-para">Our ecological restoration philosophy emphasises rewilding through water, soil, flora, and community, creating living landscapes that regenerate themselves over time and nurture coexistence between people and nature.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" data-service-modal="landscape-architecture" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-landscape-architecture">
+      <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="modal-media"><img src="images/home/practice-landscape-architecture.webp" alt="A rewilded garden of native flowering plants and pollinators beside a heritage brick structure."></div>
+      <div class="modal-body">
+        <span class="modal-eyebrow">Practice</span>
+        <h3 id="mt-landscape-architecture" class="modal-title">Landscape Architecture</h3>
+        <p class="modal-sub">Designing landscapes that heal, engage, and adapt.</p>
+        <p class="modal-para">We craft landscape architecture solutions that enhance both the ecological integrity and experiential quality of place. Each project draws upon local materials, nature-based solutions, and the cultural context of the site, creating spaces that are barrier-free, biodiverse, and regenerative.</p>
+        <p class="modal-para">Our focus lies in reviving soil and mycelial health, supporting pollinators and frugivores, and restoring ecological functions while celebrating the sensory beauty and productivity of the land. Our approach integrates hydro-ecological landscape design, where water management, ecological restoration, permaculture, and sustainable land use converge.</p>
+        <p class="modal-para">We work across scales, from site planning and soil and water conservation to the synthesis of scientific and traditional knowledge systems. Projects emphasise climate-adaptive design, productive landscapes, and biodiversity, framed within a vision of borrowed landscapes that visually and functionally connect to their larger ecosystems.</p>
+        <p class="modal-para">Through site-based observation, design dialogue, and collaboration, we create living landscapes that nurture water security, soil vitality, and long-term ecological balance, resilient systems that evolve with time and change.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" data-service-modal="watershed-management" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-watershed-management">
+      <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="modal-media"><img src="images/home/practice-watershed-management.webp" alt="A restored farm pond fringed with grasses and native planting, holding water within an agricultural landscape."></div>
+      <div class="modal-body">
+        <span class="modal-eyebrow">Practice</span>
+        <h3 id="mt-watershed-management" class="modal-title">Resilient Watershed Management &amp; Land Master Planning</h3>
+        
+        <p class="modal-para">Across landscapes shaped by agriculture, forestry, and settlement, resilient watershed management forms the foundation for climate adaptation and ecological renewal. Our approach integrates hydrology, ecology, and design to reimagine land as a living system, one that captures, stores, and circulates water naturally.</p>
+        <p class="modal-para">Working with individual farms, institutions, corporate and spiritual campuses, estates, community commons, and conservation agencies, we develop watershed masterplans that combine field-based knowledge, scientific understanding, and sustainable land use design.</p>
+        <p class="modal-para">Each project aims to restore watershed function, enhance soil, water, and food security, regenerate biodiversity, and create resilient systems that support both livelihood and ecology.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" data-service-modal="sustainable-architecture" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-sustainable-architecture">
+      <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="modal-media"><img src="images/home/sustainable-architecture-cover.webp" alt="A contemporary building in exposed local brick with bamboo-patterned windows, set in a dry Deccan landscape."></div>
+      <div class="modal-body">
+        <span class="modal-eyebrow">Practice</span>
+        <h3 id="mt-sustainable-architecture" class="modal-title">Sustainable Architecture</h3>
+        <p class="modal-sub">Minimalist, Material-First &amp; Climatically Responsive</p>
+        <p class="modal-para">At The Bhu.Van Project studio, our architectural approach is grounded in minimalism, rootedness, and sensory engagement. We design spaces that breathe, where light and shadow, texture, material, craft, and culture shape the experience of place. Each project seeks to reveal the essence of local materials, celebrating the tactile warmth of stone, brick, wood, and earth.</p>
+        <p class="modal-para">Our process emphasises resource efficiency, passive design, and contextual design, creating buildings that belong to their climate and culture. By integrating local art, craft traditions, and community knowledge, we create sustainable architecture that is both aesthetically refined and ecologically responsible.</p>
+        <p class="modal-para">Rooted in vernacular architecture principles of South India, the outcome is a quiet, timeless architecture that supports life, evokes emotion, and endures change.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" data-service-modal="academic-engagement" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mt-academic-engagement">
+      <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="modal-media"><img src="images/home/practice-academic-engagement.webp" alt="Students and practitioners gathered around a facilitator at a hands-on landscape design field workshop."></div>
+      <div class="modal-body">
+        <span class="modal-eyebrow">Practice</span>
+        <h3 id="mt-academic-engagement" class="modal-title">Academic Engagement</h3>
+        <p class="modal-sub">Workshops &amp; Collaboration</p>
+        <p class="modal-para">We enjoy collaborating with architectural and design institutions to explore how ecology and culture shape the landscapes around us. Through lectures, field studios, and hands-on landscape design workshops, we invite students and practitioners to slow down, observe, and work with natural systems rather than against them.</p>
+        <p class="modal-para">Our recent workshop on Hydro-Ecological Landscape Design is one example of how we bring these ideas to life, encouraging curiosity, care, and a deeper connection with the living world.</p>
+      </div>
+    </div>
+  </div>
+
+<div class="modal map-modal" data-map-modal hidden>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="map-panel-grid">
+      <div class="map-panel-figure">
+        <img src="images/home/india-map.png" alt="A dotted map of India marking the studio’s project sites across the country, concentrated in the south.">
+      </div>
+      <div class="map-panel-body">
+        <h2 id="map-modal-title" class="map-h">Landscapes. Communities. Regenerative Design.</h2>
+        <p class="map-lead">From the high-altitude Himalayas to the southern forests, from river basins to city edges, our work spans India&rsquo;s diverse geographies. Each place is an opportunity to understand its living systems, its communities and its ecological context &mdash; and to design with them rather than against them.</p>
+        <div class="map-features">
+          <div class="map-feat">
+            <img class="map-feat-icon" src="images/icons/map-diverse-geographies.webp" width="152" height="152" loading="lazy" alt="Diverse geographies">
+            <h3>Diverse Geographies</h3>
+            <p>Agrarian, protected, urban, peri-urban landscapes and community commons.</p>
+          </div>
+          <div class="map-feat">
+            <img class="map-feat-icon" src="images/icons/map-living-systems.webp" width="152" height="152" loading="lazy" alt="Living systems">
+            <h3>Living Systems</h3>
+            <p>Soil, water, vegetation and people at the core.</p>
+          </div>
+          <div class="map-feat">
+            <img class="map-feat-icon" src="images/icons/map-integrated-approach.webp" width="152" height="152" loading="lazy" alt="Integrated approach">
+            <h3>Integrated Approach</h3>
+            <p>Ecology, research, local knowledge and collaboration.</p>
+          </div>
+          <div class="map-feat">
+            <img class="map-feat-icon" src="images/icons/map-regenerative-outcomes.webp" width="152" height="152" loading="lazy" alt="Regenerative outcomes">
+            <h3>Regenerative Outcomes</h3>
+            <p>Resilient, climate responsive and contextual solutions.</p>
+          </div>
+        </div>
+        <p class="map-keywords">Design &middot; Ecology &middot; Resilience</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

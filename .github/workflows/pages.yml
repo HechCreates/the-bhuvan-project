@@ -48,6 +48,7 @@ jobs:
       # in, and it would make the admin interface edit the wrong thing.
       - run: node build/gen-pages.mjs --check
       - run: node build/verify-projects-render.mjs
+      - run: node build/verify-pages-render.mjs
       - run: npm run build
       - run: node build/verify-build.mjs
       - run: node build/verify-links.mjs
