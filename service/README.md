@@ -62,7 +62,8 @@ four or five unrelated words is better than a short jumble.
 
 1. Sign in at **[dash.deno.com](https://dash.deno.com)** with GitHub.
 2. **New Project → link this repository**.
-3. Entry point: `site/service/main.ts`
+3. Entry point: `service/main.ts`
+   (the repository's root IS the `site` folder, so there is no `site/` prefix)
 4. Before the first deploy, add these under **Settings → Environment
    Variables**:
 
