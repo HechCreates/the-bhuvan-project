@@ -66,9 +66,14 @@ four or five unrelated words is better than a short jumble.
 ## 3. Deploy
 
 1. Sign in at **[dash.deno.com](https://dash.deno.com)** with GitHub.
-2. **New Project → link this repository**.
-3. Entry point: `service/main.ts`
-   (the repository's root IS the `site` folder, so there is no `site/` prefix)
+2. **+ New app** (older versions of the dashboard called this "New Project"),
+   then connect GitHub and pick `hechcreates/the-bhuvan-project`.
+3. Branch `main`, entry point `service/main.ts`.
+
+   The repository's root IS the `site` folder, so there is no `site/` prefix.
+   Deno's dashboard changes often and these two settings move around -- they
+   may be under a "Build configuration" or "Advanced" heading, and the entry
+   point may be part of a run command rather than a field of its own.
 4. Before the first deploy, add these under **Settings → Environment
    Variables**:
 
