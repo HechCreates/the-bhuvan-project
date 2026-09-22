@@ -1,28 +1,40 @@
+# Generated from the live markup by build/extract-projects.mjs, and from
+# now on the source of truth for this page: build/gen-pages.mjs renders the
+# markup back out of it. Edit here (or through /admin/), never in the HTML.
+#
+# gallery.rows is the collage exactly as it stands. The grouping was tuned
+# by hand -- rows merged to close gaps, a figure moved, a cover inserted --
+# and cannot be recomputed from the aspect ratios. `ratio` is both the
+# figure's flex growth and its aspect-ratio; a row's figures therefore
+# share one height, and `spacer` absorbs the width left over.
+
 order: 5
 slug: chairmans-bungalow
 title: Chairman's Bungalow Landscape
 subtitle: Nilgiris
-location: Nilgiris
-status: Completed
-link: null
+facts:
+  - label: Location
+    value: Nilgiris
+  - label: Status
+    value: Completed
 body:
   - >-
-    The landscape design of the Chairman’s Bungalow within the Nilgiris, where mist- laden
-    tea covered hills and shola forests frame a distinctive agro-ecological setting. The
-    design approach in collaboration with studio souk and Fuzzy boundaries draws upon
-    principles of sustainability, aesthetics and ecological sensitivity, aiming to create a
-    landscape that integrates seamlessly with its natural surroundings while enriching the
-    sensory experience of daily life.
+    The landscape design of the Chairman’s Bungalow within the Nilgiris, where mist- laden tea
+    covered hills and shola forests frame a distinctive agro-ecological setting. The design
+    approach in collaboration with studio souk and Fuzzy boundaries draws upon principles of
+    sustainability, aesthetics and ecological sensitivity, aiming to create a landscape that
+    integrates seamlessly with its natural surroundings while enriching the sensory experience
+    of daily life.
   - >-
     Guided by the heritage character of the bungalow and the site’s topography, the external
-    spaces are carefully crafted around viewsheds, seasonal variation, and the rhythm of
-    sunrise and sunset. The entire roof and surface runoff water is managed through a series
-    of passive, non-intrusive water conservation systems, enhancing both functionality and
-    resilience. The planting palette draws from endemic species of shola’s, Montane
-    grasslands and the Western Ghats, reviving native biodiversity while creating an
-    immersive, layered landscape experience. The project aspires to become a demonstrative
-    model of sustainable design within the ’ unique geo-climatic context - where heritage,
-    ecology, and contemporary design coexist in harmony.
+    spaces are carefully crafted around viewsheds, seasonal variation, and the rhythm of sunrise
+    and sunset. The entire roof and surface runoff water is managed through a series of passive,
+    non-intrusive water conservation systems, enhancing both functionality and resilience. The
+    planting palette draws from endemic species of shola’s, Montane grasslands and the Western
+    Ghats, reviving native biodiversity while creating an immersive, layered landscape
+    experience. The project aspires to become a demonstrative model of sustainable design within
+    the ’ unique geo-climatic context - where heritage, ecology, and contemporary design coexist
+    in harmony.
 card:
   number: '05'
   title: Chairman's Bungalow Landscape
@@ -30,143 +42,226 @@ card:
   image: images/cards/chairmans-bungalow.webp
   alt: A lit stone water feature at dusk in the Chairman's Bungalow garden.
 gallery:
-  - image: images/projects/chairmans-bungalow/01.webp
-    caption: ''
-    width: 691
-    height: 227
-  - image: images/projects/chairmans-bungalow/02.webp
-    caption: ''
-    width: 678
-    height: 217
-  - image: images/projects/chairmans-bungalow/03.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/04.webp
-    caption: ''
-    width: 750
-    height: 532
-  - image: images/projects/chairmans-bungalow/05.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/06.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/07.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/chairmans-bungalow/08.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/09.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/chairmans-bungalow/10.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/11.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/12.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/13.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/14.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/15.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/16.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/17.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/chairmans-bungalow/18.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/19.webp
-    caption: ''
-    width: 600
-    height: 900
-  - image: images/projects/chairmans-bungalow/20.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/21.webp
-    caption: ''
-    width: 750
-    height: 500
-  - image: images/projects/chairmans-bungalow/22.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/chairmans-bungalow/23.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/24.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/25.webp
-    caption: ''
-    width: 750
-    height: 245
-  - image: images/projects/chairmans-bungalow/26.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/27.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/28.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/29.webp
-    caption: ''
-    width: 750
-    height: 470
-  - image: images/projects/chairmans-bungalow/30.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/31.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/32.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/33.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/34.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/chairmans-bungalow/35.webp
-    caption: ''
-    width: 675
-    height: 900
+  rows:
+    - figures:
+        - image: images/projects/chairmans-bungalow/01.webp
+          width: 691
+          height: 227
+          ratio: '3.0441'
+          alt: Chairman's Bungalow Landscape, photograph 1
+          caption: ''
+        - image: images/projects/chairmans-bungalow/02.webp
+          width: 678
+          height: 217
+          ratio: '3.1244'
+          alt: Chairman's Bungalow Landscape, photograph 2
+          caption: ''
+      spacer: '0.467'
+    - figures:
+        - image: images/projects/chairmans-bungalow/03.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 3
+          caption: ''
+        - image: images/projects/chairmans-bungalow/04.webp
+          width: 750
+          height: 532
+          ratio: '1.4098'
+          alt: Chairman's Bungalow Landscape, photograph 4
+          caption: ''
+        - image: images/projects/chairmans-bungalow/05.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 5
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/06.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 6
+          caption: ''
+        - image: images/projects/chairmans-bungalow/07.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Chairman's Bungalow Landscape, photograph 7
+          caption: ''
+        - image: images/projects/chairmans-bungalow/08.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 8
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/09.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Chairman's Bungalow Landscape, photograph 9
+          caption: ''
+        - image: images/projects/chairmans-bungalow/10.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 10
+          caption: ''
+        - image: images/projects/chairmans-bungalow/11.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 11
+          caption: ''
+        - image: images/projects/chairmans-bungalow/12.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 12
+          caption: ''
+        - image: images/projects/chairmans-bungalow/13.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 13
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/14.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 14
+          caption: ''
+        - image: images/projects/chairmans-bungalow/15.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 15
+          caption: ''
+        - image: images/projects/chairmans-bungalow/16.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 16
+          caption: ''
+        - image: images/projects/chairmans-bungalow/17.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Chairman's Bungalow Landscape, photograph 17
+          caption: ''
+        - image: images/projects/chairmans-bungalow/18.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 18
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/19.webp
+          width: 600
+          height: 900
+          ratio: '0.6667'
+          alt: Chairman's Bungalow Landscape, photograph 19
+          caption: ''
+        - image: images/projects/chairmans-bungalow/20.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 20
+          caption: ''
+        - image: images/projects/chairmans-bungalow/21.webp
+          width: 750
+          height: 500
+          ratio: '1.5'
+          alt: Chairman's Bungalow Landscape, photograph 21
+          caption: ''
+        - image: images/projects/chairmans-bungalow/22.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Chairman's Bungalow Landscape, photograph 22
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/23.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 23
+          caption: ''
+        - image: images/projects/chairmans-bungalow/24.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 24
+          caption: ''
+        - image: images/projects/chairmans-bungalow/25.webp
+          width: 750
+          height: 245
+          ratio: '3.0612'
+          alt: Chairman's Bungalow Landscape, photograph 25
+          caption: ''
+        - image: images/projects/chairmans-bungalow/26.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 26
+          caption: ''
+      spacer: '0.566'
+    - figures:
+        - image: images/projects/chairmans-bungalow/27.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 27
+          caption: ''
+        - image: images/projects/chairmans-bungalow/28.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 28
+          caption: ''
+        - image: images/projects/chairmans-bungalow/29.webp
+          width: 750
+          height: 470
+          ratio: '1.5957'
+          alt: Chairman's Bungalow Landscape, photograph 29
+          caption: ''
+        - image: images/projects/chairmans-bungalow/30.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 30
+          caption: ''
+        - image: images/projects/chairmans-bungalow/31.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 31
+          caption: ''
+    - figures:
+        - image: images/projects/chairmans-bungalow/32.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 32
+          caption: ''
+        - image: images/projects/chairmans-bungalow/33.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 33
+          caption: ''
+        - image: images/projects/chairmans-bungalow/34.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 34
+          caption: ''
+        - image: images/projects/chairmans-bungalow/35.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Chairman's Bungalow Landscape, photograph 35
+          caption: ''
+      spacer: '1.235'

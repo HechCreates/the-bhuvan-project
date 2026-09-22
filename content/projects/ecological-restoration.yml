@@ -1,39 +1,50 @@
+# Generated from the live markup by build/extract-projects.mjs, and from
+# now on the source of truth for this page: build/gen-pages.mjs renders the
+# markup back out of it. Edit here (or through /admin/), never in the HTML.
+#
+# gallery.rows is the collage exactly as it stands. The grouping was tuned
+# by hand -- rows merged to close gaps, a figure moved, a cover inserted --
+# and cannot be recomputed from the aspect ratios. `ratio` is both the
+# figure's flex growth and its aspect-ratio; a row's figures therefore
+# share one height, and `spacer` absorbs the width left over.
+
 order: 2
 slug: ecological-restoration
 title: Ecological Restoration of Degraded Wildlife Habitat
 subtitle: In collaboration with Rewilding Earth Foundation, Bandipur Landscape (On Going)
-location: Bandipur Landscape, Karnataka
-status: On-going
-link: null
+facts:
+  - label: Location
+    value: Bandipur Landscape, Karnataka
+  - label: Status
+    value: On-going
 body:
   - >-
     Located within the rain-shadow region of the Bandipur Tiger Reserve, this 60 Acre
-    restoration initiative seeks to heal a degraded stretch of the South Deccan Plateau’s
-    dry deciduous forests and semi-arid savanna grasslands. The site had lost much of its
-    native character due to soil erosion, invasive species and the cumulative impacts of
-    past anthropogenic and geo-climatic factors.
+    restoration initiative seeks to heal a degraded stretch of the South Deccan Plateau’s dry
+    deciduous forests and semi-arid savanna grasslands. The site had lost much of its native
+    character due to soil erosion, invasive species and the cumulative impacts of past
+    anthropogenic and geo-climatic factors.
   - >-
-    The restoration process focuses on reviving a fragmented secondary stream and developing
-    a downstream wetland complex to enhance the hydrological connectivity of the Hirekere
-    wetland. A mosaic of habitats including semi-arid grasslands, scrublands, tree savannas,
-    and riparian groves is being re-established to support a diverse range of flora and
-    fauna. The project engages 20+ members of local Adivasi communities, including the
-    Soliga and Kaadu Kuruba tribes, who play a central role in Lantana C and Seena S
-    (Invasive Alien Species) and resource stewardship. The deep ecological understanding of
-    the landscape is integrated into the process ensuring a contextually grounded and
-    resilient approach. The site also serves as a living demonstration for climate
-    adaptation in protected areas, IAS management, and future-ready wildlife habitats.
-    Restoration actions include hydrological interventions such as hybrid bunds and wetland
-    complexes, management of Invasive Alien Species (IAS), and Assisted Natural Regeneration
-    (ANR) using locally sourced seeds of native species from reference sites. Early
-    indicators including the regeneration of native grasses, fungi and increased movement of
-    wildlife and birdlife around the wetland complex which reflect the landscape’s gradual
-    ecological recovery.
+    The restoration process focuses on reviving a fragmented secondary stream and developing a
+    downstream wetland complex to enhance the hydrological connectivity of the Hirekere wetland.
+    A mosaic of habitats including semi-arid grasslands, scrublands, tree savannas, and riparian
+    groves is being re-established to support a diverse range of flora and fauna. The project
+    engages 20+ members of local Adivasi communities, including the Soliga and Kaadu Kuruba
+    tribes, who play a central role in Lantana C and Seena S (Invasive Alien Species) and
+    resource stewardship. The deep ecological understanding of the landscape is integrated into
+    the process ensuring a contextually grounded and resilient approach. The site also serves as
+    a living demonstration for climate adaptation in protected areas, IAS management, and
+    future-ready wildlife habitats. Restoration actions include hydrological interventions such
+    as hybrid bunds and wetland complexes, management of Invasive Alien Species (IAS), and
+    Assisted Natural Regeneration (ANR) using locally sourced seeds of native species from
+    reference sites. Early indicators including the regeneration of native grasses, fungi and
+    increased movement of wildlife and birdlife around the wetland complex which reflect the
+    landscape’s gradual ecological recovery.
   - >-
     Rooted in the principles of rewilding and community stewardship, the project integrates
     nature-based solutions, landscape design and traditional knowledge to restore ecological
-    balance within one of India’s most biodiverse regions, the Nilgiri Biosphere Reserve,
-    the country’s first UNESCO-designated Man and the Biosphere site.
+    balance within one of India’s most biodiverse regions, the Nilgiri Biosphere Reserve, the
+    country’s first UNESCO-designated Man and the Biosphere site.
 card:
   number: '02'
   title: Ecological Restoration of Degraded Wildlife Habitat
@@ -41,95 +52,150 @@ card:
   image: images/cards/ecological-restoration.webp
   alt: A hand-drawn restoration masterplan showing wetlands, groves and grassland zones.
 gallery:
-  - image: images/projects/ecological-restoration/01.webp
-    caption: Wetland complex with the catchment area in the background
-    width: 1000
-    height: 563
-  - image: images/projects/ecological-restoration/02.webp
-    caption: Formulating the site-specific restoration plan
-    width: 1000
-    height: 750
-  - image: images/projects/ecological-restoration/03.webp
-    caption: On Site Marking the proposed wetland complex
-    width: 1000
-    height: 562
-  - image: images/projects/ecological-restoration/04.webp
-    caption: Site during dry season
-    width: 1000
-    height: 562
-  - image: images/projects/ecological-restoration/05.webp
-    caption: Site under restoration activities following the monsoon
-    width: 1000
-    height: 562
-  - image: images/projects/ecological-restoration/06.webp
-    caption: Documenting biodiversity within the restoration site
-    width: 1000
-    height: 708
-  - image: images/projects/ecological-restoration/07.webp
-    caption: Documenting and monitoring the Restoration process
-    width: 1000
-    height: 708
-  - image: images/projects/ecological-restoration/08.webp
-    caption: ''
-    width: 1000
-    height: 529
-  - image: images/projects/ecological-restoration/09.webp
-    caption: Implementation of soil and water conservation measures
-    width: 1000
-    height: 750
-  - image: images/projects/ecological-restoration/10.webp
-    caption: Wild dogs (dholes, Cuon alpinus) traversing through the restoration site
-    width: 1000
-    height: 613
-  - image: images/projects/ecological-restoration/11.webp
-    caption: Documenting Grasses
-    width: 916
-    height: 900
-  - image: images/projects/ecological-restoration/12.webp
-    caption: Invasive Alien Species Managment
-    width: 1000
-    height: 800
-  - image: images/projects/ecological-restoration/13.webp
-    caption: Freshwater crabs observed within the restoration site
-    width: 1000
-    height: 800
-  - image: images/projects/ecological-restoration/14.webp
-    caption: Manual removal of Lantana C
-    width: 1000
-    height: 750
-  - image: images/projects/ecological-restoration/15.webp
-    caption: Documenting the mycelial network across the restoration area
-    width: 1000
-    height: 750
-  - image: images/projects/ecological-restoration/16.webp
-    caption: Seed collection of Dodonaea viscosa
-    width: 1000
-    height: 800
-  - image: images/projects/ecological-restoration/17.webp
-    caption: Newly developed wildlife wetland complex
-    width: 1000
-    height: 643
-  - image: images/projects/ecological-restoration/18.webp
-    caption: Tribal community empowerment
-    width: 1000
-    height: 450
-  - image: images/projects/ecological-restoration/19.webp
-    caption: Wildlife movement showing positive signs of Restoration
-    width: 764
-    height: 900
-  - image: images/projects/ecological-restoration/20.webp
-    caption: Preparation for ANR
-    width: 410
-    height: 900
-  - image: images/projects/ecological-restoration/21.webp
-    caption: ''
-    width: 410
-    height: 900
-  - image: images/projects/ecological-restoration/22.webp
-    caption: Lantana biomass rings used to protect planted areas
-    width: 1000
-    height: 563
-  - image: images/projects/ecological-restoration/23.webp
-    caption: Native species planted with protection from wild harbivores
-    width: 1000
-    height: 750
+  rows:
+    - figures:
+        - image: images/projects/ecological-restoration/01.webp
+          width: 1000
+          height: 563
+          ratio: '1.7762'
+          alt: Wetland complex with the catchment area in the background
+          caption: Wetland complex with the catchment area in the background
+        - image: images/projects/ecological-restoration/02.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Formulating the site-specific restoration plan
+          caption: Formulating the site-specific restoration plan
+        - image: images/projects/ecological-restoration/03.webp
+          width: 1000
+          height: 562
+          ratio: '1.7794'
+          alt: On Site Marking the proposed wetland complex
+          caption: On Site Marking the proposed wetland complex
+    - figures:
+        - image: images/projects/ecological-restoration/04.webp
+          width: 1000
+          height: 562
+          ratio: '1.7794'
+          alt: Site during dry season
+          caption: Site during dry season
+        - image: images/projects/ecological-restoration/05.webp
+          width: 1000
+          height: 562
+          ratio: '1.7794'
+          alt: Site under restoration activities following the monsoon
+          caption: Site under restoration activities following the monsoon
+        - image: images/projects/ecological-restoration/06.webp
+          width: 1000
+          height: 708
+          ratio: '1.4124'
+          alt: Documenting biodiversity within the restoration site
+          caption: Documenting biodiversity within the restoration site
+    - figures:
+        - image: images/projects/ecological-restoration/07.webp
+          width: 1000
+          height: 708
+          ratio: '1.4124'
+          alt: Documenting and monitoring the Restoration process
+          caption: Documenting and monitoring the Restoration process
+        - image: images/projects/ecological-restoration/08.webp
+          width: 1000
+          height: 529
+          ratio: '1.8904'
+          alt: Ecological Restoration of Degraded Wildlife Habitat, photograph 8
+          caption: ''
+        - image: images/projects/ecological-restoration/09.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Implementation of soil and water conservation measures
+          caption: Implementation of soil and water conservation measures
+    - figures:
+        - image: images/projects/ecological-restoration/10.webp
+          width: 1000
+          height: 613
+          ratio: '1.6313'
+          alt: Wild dogs (dholes, Cuon alpinus) traversing through the restoration site
+          caption: Wild dogs (dholes, Cuon alpinus) traversing through the restoration site
+        - image: images/projects/ecological-restoration/11.webp
+          width: 916
+          height: 900
+          ratio: '1.0178'
+          alt: Documenting Grasses
+          caption: Documenting Grasses
+        - image: images/projects/ecological-restoration/12.webp
+          width: 1000
+          height: 800
+          ratio: '1.25'
+          alt: Invasive Alien Species Managment
+          caption: Invasive Alien Species Managment
+        - image: images/projects/ecological-restoration/13.webp
+          width: 1000
+          height: 800
+          ratio: '1.25'
+          alt: Freshwater crabs observed within the restoration site
+          caption: Freshwater crabs observed within the restoration site
+    - figures:
+        - image: images/projects/ecological-restoration/14.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Manual removal of Lantana C
+          caption: Manual removal of Lantana C
+        - image: images/projects/ecological-restoration/15.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Documenting the mycelial network across the restoration area
+          caption: Documenting the mycelial network across the restoration area
+        - image: images/projects/ecological-restoration/16.webp
+          width: 1000
+          height: 800
+          ratio: '1.25'
+          alt: Seed collection of Dodonaea viscosa
+          caption: Seed collection of Dodonaea viscosa
+      spacer: '0.319'
+    - figures:
+        - image: images/projects/ecological-restoration/17.webp
+          width: 1000
+          height: 643
+          ratio: '1.5552'
+          alt: Newly developed wildlife wetland complex
+          caption: Newly developed wildlife wetland complex
+        - image: images/projects/ecological-restoration/18.webp
+          width: 1000
+          height: 450
+          ratio: '2.2222'
+          alt: Tribal community empowerment
+          caption: Tribal community empowerment
+        - image: images/projects/ecological-restoration/19.webp
+          width: 764
+          height: 900
+          ratio: '0.8489'
+          alt: Wildlife movement showing positive signs of Restoration
+          caption: Wildlife movement showing positive signs of Restoration
+    - figures:
+        - image: images/projects/ecological-restoration/20.webp
+          width: 410
+          height: 900
+          ratio: '0.4556'
+          alt: Preparation for ANR
+          caption: Preparation for ANR
+        - image: images/projects/ecological-restoration/21.webp
+          width: 410
+          height: 900
+          ratio: '0.4556'
+          alt: Ecological Restoration of Degraded Wildlife Habitat, photograph 21
+          caption: ''
+        - image: images/projects/ecological-restoration/22.webp
+          width: 1000
+          height: 563
+          ratio: '1.7762'
+          alt: Lantana biomass rings used to protect planted areas
+          caption: Lantana biomass rings used to protect planted areas
+        - image: images/projects/ecological-restoration/23.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Native species planted with protection from wild harbivores
+          caption: Native species planted with protection from wild harbivores

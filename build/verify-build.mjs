@@ -248,6 +248,20 @@ console.log('\nstructured data');
     }
     nodes += graph.length; refs += seenRefs.length;
 
+    /* A project page states its location and status in a <dl> on the page;
+       the CreativeWork node must carry them too. They are read out of the
+       markup, so a change to how that markup is written can silently empty
+       them while the page still looks right. */
+    const html = fs.readFileSync(file, 'utf8');
+    const cw = graph.find(n => [].concat(n['@type']).includes('CreativeWork'));
+    if (cw && /class="proj-fact"/.test(html)) {
+      for (const [label, prop] of [['Location', 'locationCreated'], ['Status', 'creativeWorkStatus']]) {
+        if (new RegExp(`<dt[^>]*>${label}</dt>`).test(html) && !cw[prop]) {
+          fail(`${where} shows ${label} on the page but its CreativeWork has no ${prop}`);
+        }
+      }
+    }
+
     const o = graph.find(n => [].concat(n['@type']).includes('Organization'));
     if (!o) fail(`${where} declares no Organization`);
     else for (const req of ['name', 'url', 'description', 'logo', 'address'])

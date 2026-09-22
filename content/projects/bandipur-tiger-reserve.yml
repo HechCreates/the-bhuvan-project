@@ -1,39 +1,52 @@
+# Generated from the live markup by build/extract-projects.mjs, and from
+# now on the source of truth for this page: build/gen-pages.mjs renders the
+# markup back out of it. Edit here (or through /admin/), never in the HTML.
+#
+# gallery.rows is the collage exactly as it stands. The grouping was tuned
+# by hand -- rows merged to close gaps, a figure moved, a cover inserted --
+# and cannot be recomputed from the aspect ratios. `ratio` is both the
+# figure's flex growth and its aspect-ratio; a row's figures therefore
+# share one height, and `spacer` absorbs the width left over.
+
 order: 1
 slug: bandipur-tiger-reserve
 title: Hydro-Ecological Restoration in collaboration with Junglescapes Charitable Trust
 subtitle: Bandipur Tiger Reserve, Karnataka
-location: Bandipur Tiger Reserve, Karnataka
-status: Ongoing
-link:
-  label: Junglescapes
-  url: https://www.junglescapes.org/communitymc.html
+facts:
+  - label: Location
+    value: Bandipur Tiger Reserve, Karnataka
+  - label: Status
+    value: Ongoing
 body:
   - >-
     Located along the northern boundary of the Bandipur Tiger Reserve in the Western Ghats
-    (global bio-diversity hotspot), this ongoing initiative with Junglescapes Charitable
-    Trust focuses on restoring the hydro-ecological integrity of a 1500 Acre degraded forest
-    landscape within the critical buffer zone also a narrow elephant corridor. Years of soil
-    erosion, invasive species, and disrupted drainage had weakened the natural water systems
-    that sustain both wildlife and native vegetation.
+    (global bio-diversity hotspot), this ongoing initiative with Junglescapes Charitable Trust
+    focuses on restoring the hydro-ecological integrity of a 1500 Acre degraded forest landscape
+    within the critical buffer zone also a narrow elephant corridor. Years of soil erosion,
+    invasive species, and disrupted drainage had weakened the natural water systems that sustain
+    both wildlife and native vegetation.
   - >-
     The project aimed to rebuild the hydrological and ecological processes that define this
-    landscape, restoring soil-water balance, enhancing native vegetation, and improving
-    habitat connectivity. Restoration interventions include contour bunds, check dams, and
-    earthen swales that slow runoff and increase groundwater recharge. These are
-    complemented by the management of Invasive Alien Species (IAS) such as Lantana, and
-    Assisted Natural Regeneration (ANR) using locally collected native seeds.
+    landscape, restoring soil-water balance, enhancing native vegetation, and improving habitat
+    connectivity. Restoration interventions include contour bunds, check dams, and earthen
+    swales that slow runoff and increase groundwater recharge. These are complemented by the
+    management of Invasive Alien Species (IAS) such as Lantana, and Assisted Natural
+    Regeneration (ANR) using locally collected native seeds.
   - >-
-    Working closely with local tribal woman SHG’s, the project combines ecological design
-    and traditional stewardship. Their participation in soil and water conservation works,
-    IAS management, seed collection, and site maintenance has been central to restoring the
-    land’s natural resilience. Native grass and woody species regeneration and increased
-    wildlife presence within the forest, Seasonal streams hold water for longer durations,
-    waterholes provide relief for wildlife during extreme dry periods are signs of recovery
-    and reflect the gradual return of balance.
+    Working closely with local tribal woman SHG’s, the project combines ecological design and
+    traditional stewardship. Their participation in soil and water conservation works, IAS
+    management, seed collection, and site maintenance has been central to restoring the land’s
+    natural resilience. Native grass and woody species regeneration and increased wildlife
+    presence within the forest, Seasonal streams hold water for longer durations, waterholes
+    provide relief for wildlife during extreme dry periods are signs of recovery and reflect the
+    gradual return of balance.
   - >-
     Grounded in the shared philosophy of rewilding through water, soil, and community, this
-    collaboration demonstrates how restoration can reconnect natural systems and livelihoods
-    in one of India’s most vital ecological corridors.
+    collaboration demonstrates how restoration can reconnect natural systems and livelihoods in
+    one of India’s most vital ecological corridors.
+link:
+  label: Junglescapes
+  url: https://www.junglescapes.org/communitymc.html
 card:
   number: '01'
   title: Bandipur Tiger Reserve, Karnataka
@@ -41,47 +54,75 @@ card:
   image: images/cards/bandipur-tiger-reserve.webp
   alt: A restored waterhole holding water within the degraded forest landscape at Bandipur.
 gallery:
-  - image: images/projects/bandipur-tiger-reserve/01.webp
-    caption: Heterogeneous habitats emerging as the watershed recovers
-    width: 1500
-    height: 750
-  - image: images/projects/bandipur-tiger-reserve/02.webp
-    caption: Hydro-Eco Restoration work being implemented by tribal women SHGs
-    width: 1500
-    height: 841
-  - image: images/projects/bandipur-tiger-reserve/03.webp
-    caption: Documenting the process
-    width: 1000
-    height: 750
-  - image: images/projects/bandipur-tiger-reserve/04.webp
-    caption: Before and after the interventions
-    width: 1000
-    height: 708
-  - image: images/projects/bandipur-tiger-reserve/05.webp
-    caption: Stable stream flow during dry season
-    width: 640
-    height: 360
-  - image: images/projects/bandipur-tiger-reserve/06.webp
-    caption: Critical water source for wildlife
-    width: 640
-    height: 360
-  - image: images/projects/bandipur-tiger-reserve/07.webp
-    caption: Mapping the watershed of the region
-    width: 750
-    height: 373
-  - image: images/projects/bandipur-tiger-reserve/08.webp
-    caption: Natural recovery processes taking over the intervention area
-    width: 750
-    height: 375
-  - image: images/projects/bandipur-tiger-reserve/09.webp
-    caption: Habitat Recovering observed in 2024
-    width: 500
-    height: 560
-  - image: images/projects/bandipur-tiger-reserve/10.webp
-    caption: Indicators of habitat recovery
-    width: 500
-    height: 375
-  - image: images/projects/bandipur-tiger-reserve/11.webp
-    caption: Perennial water body with high cultural and ecological value for the region
-    width: 750
-    height: 375
+  rows:
+    - figures:
+        - image: images/projects/bandipur-tiger-reserve/01.webp
+          width: 1500
+          height: 750
+          ratio: '2'
+          alt: Heterogeneous habitats emerging as the watershed recovers
+          caption: Heterogeneous habitats emerging as the watershed recovers
+        - image: images/projects/bandipur-tiger-reserve/02.webp
+          width: 1500
+          height: 841
+          ratio: '1.7836'
+          alt: Hydro-Eco Restoration work being implemented by tribal women SHGs
+          caption: Hydro-Eco Restoration work being implemented by tribal women SHGs
+        - image: images/projects/bandipur-tiger-reserve/03.webp
+          width: 1000
+          height: 750
+          ratio: '1.3333'
+          alt: Documenting the process
+          caption: Documenting the process
+    - figures:
+        - image: images/projects/bandipur-tiger-reserve/04.webp
+          width: 1000
+          height: 708
+          ratio: '1.4124'
+          alt: Before and after the interventions
+          caption: Before and after the interventions
+        - image: images/projects/bandipur-tiger-reserve/05.webp
+          width: 640
+          height: 360
+          ratio: '1.7778'
+          alt: Stable stream flow during dry season
+          caption: Stable stream flow during dry season
+        - image: images/projects/bandipur-tiger-reserve/06.webp
+          width: 640
+          height: 360
+          ratio: '1.7778'
+          alt: Critical water source for wildlife
+          caption: Critical water source for wildlife
+    - figures:
+        - image: images/projects/bandipur-tiger-reserve/07.webp
+          width: 750
+          height: 373
+          ratio: '2.0107'
+          alt: Mapping the watershed of the region
+          caption: Mapping the watershed of the region
+        - image: images/projects/bandipur-tiger-reserve/08.webp
+          width: 750
+          height: 375
+          ratio: '2'
+          alt: Natural recovery processes taking over the intervention area
+          caption: Natural recovery processes taking over the intervention area
+        - image: images/projects/bandipur-tiger-reserve/09.webp
+          width: 500
+          height: 560
+          ratio: '0.8929'
+          alt: Habitat Recovering observed in 2024
+          caption: Habitat Recovering observed in 2024
+    - figures:
+        - image: images/projects/bandipur-tiger-reserve/10.webp
+          width: 500
+          height: 375
+          ratio: '1.3333'
+          alt: Indicators of habitat recovery
+          caption: Indicators of habitat recovery
+        - image: images/projects/bandipur-tiger-reserve/11.webp
+          width: 750
+          height: 375
+          ratio: '2'
+          alt: Perennial water body with high cultural and ecological value for the region
+          caption: Perennial water body with high cultural and ecological value for the region
+      spacer: '0.902'

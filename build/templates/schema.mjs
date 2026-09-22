@@ -28,7 +28,11 @@ const org = site.organization;
    keeping a second copy of them somewhere that can fall out of step. */
 export const projectFacts = html => {
   const facts = {};
-  for (const m of html.matchAll(/<dt>([^<]+)<\/dt><dd>([\s\S]*?)<\/dd>/g)) {
+  /* [^>]* on both tags: these carry data-edit attributes now that the page is
+     generated from content, and a regex expecting bare <dt> silently matched
+     nothing -- which cost every project its location and status in the
+     structured data while the page itself looked unchanged. */
+  for (const m of html.matchAll(/<dt[^>]*>([^<]+)<\/dt><dd[^>]*>([\s\S]*?)<\/dd>/g)) {
     facts[m[1].trim().toLowerCase()] = m[2].replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
   }
   const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1];

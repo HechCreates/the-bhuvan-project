@@ -1,0 +1,81 @@
+/* Render the content files back into src/index.html.
+
+   This is the step that makes content/ the source of truth. src/index.html
+   stays exactly what it has always been -- the one document holding every
+   page, which build.mjs then cuts into the published site -- but the parts of
+   it that have been extracted are now WRITTEN by this script rather than
+   edited by hand.
+
+   Run it two ways:
+
+     node build/gen-pages.mjs          rewrite the pages from content/
+     node build/gen-pages.mjs --check  fail if that would change anything
+
+   The --check form is the guard. If someone edits the markup directly, or
+   edits a content file without regenerating, the two disagree and CI stops.
+   Without it the content files would quietly drift into being a stale copy
+   of the site -- which is exactly what had already happened to the old
+   content/projects/*.yml before this work started.                        */
+
+import fs from 'fs';
+import path from 'path';
+import { load } from 'js-yaml';
+import { header, footer } from './templates/chrome.mjs';
+import { projectPage } from './templates/project.mjs';
+
+const SRC = 'src/index.html';
+const check = process.argv.includes('--check');
+
+const before = fs.readFileSync(SRC, 'utf8');
+let s = before;
+const crlf = t => t.replace(/\r?\n/g, '\r\n');
+
+const projects = fs.readdirSync('content/projects')
+  .filter(f => f.endsWith('.yml'))
+  .map(f => load(fs.readFileSync(path.join('content/projects', f), 'utf8')))
+  .sort((a, b) => a.order - b.order);
+
+/* back to front, so the offsets of the pages still to do stay valid */
+const marks = () => [...s.matchAll(/<div (?:id="[^"]*" )?data-page="([a-z0-9-]+)"/g)];
+const log = [];
+
+for (let i = marks().length - 1; i >= 0; i--) {
+  const all = marks();
+  const key = all[i][1];
+  if (!key.startsWith('p-')) continue;
+
+  const slug = key.slice(2);
+  const n = projects.findIndex(p => p.slug === slug);
+  if (n < 0) { console.error(`FAIL: no content file for ${key}`); process.exit(1); }
+
+  const start = all[i].index;
+  const end = i + 1 < all.length ? all[i + 1].index : s.indexOf('<script>', start);
+  const old = s.slice(start, end);
+
+  /* the chrome is rendered in, exactly as it sits in the file today; the
+     build re-renders it per page anyway, this just keeps src self-consistent */
+  const page = crlf(projectPage(projects[n], {
+    prev: projects[n - 1], next: projects[n + 1],
+    header: header(''), footer: footer(),
+  }));
+
+  /* keep whatever blank space separated this page from the next */
+  const gap = old.match(/\s*$/)[0];
+  const next = page.replace(/\s*$/, '') + gap;
+
+  if (next !== old) log.push(`  ${slug}: ${old.length} -> ${next.length} chars`);
+  s = s.slice(0, start) + next + s.slice(end);
+}
+
+if (s === before) {
+  console.log(`${SRC} is already in step with content/ (${projects.length} projects)`);
+} else if (check) {
+  console.log('FAIL: src/index.html does not match content/\n');
+  console.log(log.join('\n'));
+  console.log('\nRun `npm run content` to regenerate, or put the change in content/ instead.');
+  process.exitCode = 1;
+} else {
+  fs.writeFileSync(SRC, s);
+  console.log(log.join('\n'));
+  console.log(`\n${SRC}: ${before.length} -> ${s.length} chars`);
+}

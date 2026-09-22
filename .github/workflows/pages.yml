@@ -41,8 +41,16 @@ jobs:
           cache: npm
       # sharp is a devDependency and only regenerates images locally
       - run: npm ci --omit=dev
+      # content/ is the source of truth for the project pages. Fail if the
+      # markup in src/index.html has drifted from it -- otherwise the content
+      # files quietly become a stale copy of the site, which is exactly what
+      # had happened to the old content/projects/*.yml before they were wired
+      # in, and it would make the admin interface edit the wrong thing.
+      - run: node build/gen-pages.mjs --check
+      - run: node build/verify-projects-render.mjs
       - run: npm run build
       - run: node build/verify-build.mjs
+      - run: node build/verify-links.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

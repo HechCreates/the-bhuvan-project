@@ -1,23 +1,30 @@
+# Generated from the live markup by build/extract-projects.mjs, and from
+# now on the source of truth for this page: build/gen-pages.mjs renders the
+# markup back out of it. Edit here (or through /admin/), never in the HTML.
+#
+# gallery.rows is the collage exactly as it stands. The grouping was tuned
+# by hand -- rows merged to close gaps, a figure moved, a cover inserted --
+# and cannot be recomputed from the aspect ratios. `ratio` is both the
+# figure's flex growth and its aspect-ratio; a row's figures therefore
+# share one height, and `spacer` absorbs the width left over.
+
 order: 7
 slug: context-responsive-design
 title: Context-Responsive Design
-subtitle: ''
-location: ''
-status: ''
-link: null
+facts: []
 body:
   - >-
     At The Bhu.Van Project studio, our architectural approach is grounded in minimalism,
-    rootedness and sensory engagement. We design spaces that breathe, where light and
-    shadow, texture, material, craft and culture shape the experience of place. Each project
-    seeks to reveal the essence of local materials, celebrating the tactile warmth of stone,
-    brick, wood and earth.
+    rootedness and sensory engagement. We design spaces that breathe, where light and shadow,
+    texture, material, craft and culture shape the experience of place. Each project seeks to
+    reveal the essence of local materials, celebrating the tactile warmth of stone, brick, wood
+    and earth.
   - >-
-    Our process emphasizes resource efficiency, passive comfort and contextual design,
-    creating buildings that belong to their climate and culture. By integrating local art,
-    craft traditions and community knowledge, we create architecture that is both
-    aesthetically refined and ecologically responsible. The outcome is a quiet, timeless
-    architecture that supports life, evokes emotion, and endures change.
+    Our process emphasizes resource efficiency, passive comfort and contextual design, creating
+    buildings that belong to their climate and culture. By integrating local art, craft
+    traditions and community knowledge, we create architecture that is both aesthetically
+    refined and ecologically responsible. The outcome is a quiet, timeless architecture that
+    supports life, evokes emotion, and endures change.
 card:
   number: '07'
   title: Context-Responsive Design
@@ -27,115 +34,188 @@ card:
   image: images/cards/context-responsive-design.webp
   alt: Context-Responsive Design, project photograph.
 gallery:
-  - image: images/projects/context-responsive-design/01.webp
-    caption: ''
-    width: 750
-    height: 240
-  - image: images/projects/context-responsive-design/02.webp
-    caption: ''
-    width: 750
-    height: 563
-  - image: images/projects/context-responsive-design/03.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/04.webp
-    caption: ''
-    width: 750
-    height: 563
-  - image: images/projects/context-responsive-design/05.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/06.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/07.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/08.webp
-    caption: Terrace Garden @ Inde
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/09.webp
-    caption: Terrace Garden @ Inde
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/10.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/11.webp
-    caption: Terrace Garden @ Inde
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/12.webp
-    caption: Terrace Garden @ Inde
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/13.webp
-    caption: ''
-    width: 720
-    height: 540
-  - image: images/projects/context-responsive-design/14.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/15.webp
-    caption: ''
-    width: 750
-    height: 563
-  - image: images/projects/context-responsive-design/16.webp
-    caption: ''
-    width: 719
-    height: 837
-  - image: images/projects/context-responsive-design/17.webp
-    caption: ''
-    width: 674
-    height: 900
-  - image: images/projects/context-responsive-design/18.webp
-    caption: ''
-    width: 691
-    height: 900
-  - image: images/projects/context-responsive-design/19.webp
-    caption: ''
-    width: 720
-    height: 534
-  - image: images/projects/context-responsive-design/20.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/21.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/22.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/23.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/24.webp
-    caption: ''
-    width: 675
-    height: 900
-  - image: images/projects/context-responsive-design/25.webp
-    caption: ''
-    width: 750
-    height: 572
-  - image: images/projects/context-responsive-design/26.webp
-    caption: ''
-    width: 677
-    height: 900
-  - image: images/projects/context-responsive-design/27.webp
-    caption: ''
-    width: 750
-    height: 562
-  - image: images/projects/context-responsive-design/28.webp
-    caption: ''
-    width: 750
-    height: 563
+  rows:
+    - figures:
+        - image: images/home/sustainable-architecture-cover.webp
+          width: 1280
+          height: 853
+          ratio: '1.5006'
+          alt: >-
+            Vaulted brick and concrete houses under construction on a terraced slope, with young
+            planting establishing around them
+          caption: ''
+        - image: images/projects/context-responsive-design/01.webp
+          width: 750
+          height: 240
+          ratio: '3.125'
+          alt: Context-Responsive Design, photograph 1
+          caption: ''
+        - image: images/projects/context-responsive-design/02.webp
+          width: 750
+          height: 563
+          ratio: '1.3321'
+          alt: Context-Responsive Design, photograph 2
+          caption: ''
+    - figures:
+        - image: images/projects/context-responsive-design/03.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Context-Responsive Design, photograph 3
+          caption: ''
+        - image: images/projects/context-responsive-design/04.webp
+          width: 750
+          height: 563
+          ratio: '1.3321'
+          alt: Context-Responsive Design, photograph 4
+          caption: ''
+        - image: images/projects/context-responsive-design/05.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 5
+          caption: ''
+        - image: images/projects/context-responsive-design/06.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 6
+          caption: ''
+        - image: images/projects/context-responsive-design/07.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 7
+          caption: ''
+        - image: images/projects/context-responsive-design/08.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Terrace Garden @ Inde
+          caption: Terrace Garden @ Inde
+    - figures:
+        - image: images/projects/context-responsive-design/09.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Terrace Garden @ Inde
+          caption: Terrace Garden @ Inde
+        - image: images/projects/context-responsive-design/10.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Context-Responsive Design, photograph 10
+          caption: ''
+        - image: images/projects/context-responsive-design/11.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Terrace Garden @ Inde
+          caption: Terrace Garden @ Inde
+        - image: images/projects/context-responsive-design/12.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Terrace Garden @ Inde
+          caption: Terrace Garden @ Inde
+    - figures:
+        - image: images/projects/context-responsive-design/13.webp
+          width: 720
+          height: 540
+          ratio: '1.3333'
+          alt: Context-Responsive Design, photograph 13
+          caption: ''
+        - image: images/projects/context-responsive-design/14.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 14
+          caption: ''
+        - image: images/projects/context-responsive-design/15.webp
+          width: 750
+          height: 563
+          ratio: '1.3321'
+          alt: Context-Responsive Design, photograph 15
+          caption: ''
+        - image: images/projects/context-responsive-design/16.webp
+          width: 719
+          height: 837
+          ratio: '0.859'
+          alt: Context-Responsive Design, photograph 16
+          caption: ''
+    - figures:
+        - image: images/projects/context-responsive-design/17.webp
+          width: 674
+          height: 900
+          ratio: '0.7489'
+          alt: Context-Responsive Design, photograph 17
+          caption: ''
+        - image: images/projects/context-responsive-design/18.webp
+          width: 691
+          height: 900
+          ratio: '0.7678'
+          alt: Context-Responsive Design, photograph 18
+          caption: ''
+        - image: images/projects/context-responsive-design/19.webp
+          width: 720
+          height: 534
+          ratio: '1.3483'
+          alt: Context-Responsive Design, photograph 19
+          caption: ''
+        - image: images/projects/context-responsive-design/20.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 20
+          caption: ''
+        - image: images/projects/context-responsive-design/21.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Context-Responsive Design, photograph 21
+          caption: ''
+    - figures:
+        - image: images/projects/context-responsive-design/22.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 22
+          caption: ''
+        - image: images/projects/context-responsive-design/23.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 23
+          caption: ''
+        - image: images/projects/context-responsive-design/24.webp
+          width: 675
+          height: 900
+          ratio: '0.75'
+          alt: Context-Responsive Design, photograph 24
+          caption: ''
+        - image: images/projects/context-responsive-design/25.webp
+          width: 750
+          height: 572
+          ratio: '1.3112'
+          alt: Context-Responsive Design, photograph 25
+          caption: ''
+        - image: images/projects/context-responsive-design/26.webp
+          width: 677
+          height: 900
+          ratio: '0.7522'
+          alt: Context-Responsive Design, photograph 26
+          caption: ''
+    - figures:
+        - image: images/projects/context-responsive-design/27.webp
+          width: 750
+          height: 562
+          ratio: '1.3345'
+          alt: Context-Responsive Design, photograph 27
+          caption: ''
+        - image: images/projects/context-responsive-design/28.webp
+          width: 750
+          height: 563
+          ratio: '1.3321'
+          alt: Context-Responsive Design, photograph 28
+          caption: ''
+      spacer: '1.374'
