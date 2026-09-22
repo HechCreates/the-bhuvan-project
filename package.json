@@ -5,7 +5,7 @@
   "description": "The Bhu.Van Project — ecological restoration and landscape architecture studio, Bengaluru",
   "type": "module",
   "scripts": {
-    "build": "node build/build.mjs",
+    "build": "node build/gen-pages.mjs && node build/build.mjs",
     "verify": "node build/gen-pages.mjs --check && node build/verify-projects-render.mjs && node build/verify-pages-render.mjs && node build/verify-build.mjs && node build/verify-links.mjs",
     "assets": "node build/gen-brand-assets.mjs",
     "serve": "node build/serve.mjs",
