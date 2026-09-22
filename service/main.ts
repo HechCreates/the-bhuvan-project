@@ -36,7 +36,24 @@ const env = (k: string, fallback?: string): string => {
   return v;
 };
 
-const kv = await Deno.openKv();
+/* Failed-login counts live in Deno's key-value store when there is one, so
+   they survive restarts and are shared across instances. Not every Deno
+   Deploy plan or platform version provides it, and a service that refuses to
+   start because its rate-limit store is missing would be a worse failure than
+   a rate limit that forgets sooner. So: use KV if it is there, otherwise keep
+   the counts in memory.
+
+   In memory they reset when the instance does, which weakens the lockout --
+   acceptable because the thing behind it is a 12-character minimum password
+   hashed at 210,000 iterations, not a 4-digit code. */
+let kv: Deno.Kv | null = null;
+try {
+  kv = await Deno.openKv();
+} catch {
+  console.warn("Deno KV unavailable; failed-login counts will be kept in memory only.");
+}
+
+const memory = new Map<string, { value: number; until: number }>();
 
 /* ---------- small helpers ---------- */
 
@@ -104,14 +121,19 @@ const MAX_FAILURES = 8;
 const LOCK_FOR_MS = 15 * 60 * 1000;
 
 async function failures(ip: string): Promise<number> {
-  return (await kv.get<number>(["login-failures", ip])).value ?? 0;
+  if (kv) return (await kv.get<number>(["login-failures", ip])).value ?? 0;
+  const hit = memory.get(ip);
+  if (!hit || hit.until < Date.now()) { memory.delete(ip); return 0; }
+  return hit.value;
 }
 async function noteFailure(ip: string) {
   const n = (await failures(ip)) + 1;
-  await kv.set(["login-failures", ip], n, { expireIn: LOCK_FOR_MS });
+  if (kv) await kv.set(["login-failures", ip], n, { expireIn: LOCK_FOR_MS });
+  else memory.set(ip, { value: n, until: Date.now() + LOCK_FOR_MS });
 }
 async function clearFailures(ip: string) {
-  await kv.delete(["login-failures", ip]);
+  if (kv) await kv.delete(["login-failures", ip]);
+  else memory.delete(ip);
 }
 
 /* ---------- GitHub ---------- */
