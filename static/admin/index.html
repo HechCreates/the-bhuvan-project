@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Edit the site — The Bhu.Van Project</title>
+<!--
+  The admin interface.
+
+  It is the site, not a copy of it: the real published page loads in a frame
+  and this page draws editing on top. Every element the build generated from a
+  content file carries a data-edit attribute naming that field, which is what
+  lets a click on a paragraph become a change to a line in a YAML file.
+
+  Nothing here knows the design. It reads data-edit and nothing else, so a
+  change to the layout cannot break it, and it can never let anyone move an
+  element somewhere the design did not put it.
+
+  Saving posts to SAVE_URL: on a laptop that is the dev server writing files
+  directly; in production it is a service that checks who is asking and
+  commits to the repository. Identical payloads either way.
+-->
+<style>
+  :root{
+    --ink:#2A1F08; --paper:#F3EFE6; --line:rgba(42,31,8,.16);
+    --clay:#B4703A; --good:#3F7A4F; --bad:#B23A34;
+    --ui:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:var(--ui);color:var(--ink);background:#E9E5D9;
+    display:flex;flex-direction:column;overflow:hidden}
+
+  /* ---------- toolbar ---------- */
+  .bar{display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;
+    background:var(--ink);color:var(--paper);flex:none;box-shadow:0 2px 14px rgba(20,15,4,.3);z-index:2}
+  .bar h1{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 .5rem 0 0;opacity:.85}
+  select,.btn{font:inherit;font-size:.82rem;border-radius:3px;border:1px solid rgba(243,239,230,.28);
+    background:rgba(243,239,230,.08);color:var(--paper);padding:.4rem .7rem;cursor:pointer}
+  select{padding-right:1.5rem}
+  .btn:hover:not(:disabled){background:rgba(243,239,230,.2)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn-primary{background:var(--clay);border-color:var(--clay);font-weight:700}
+  .btn-primary:hover:not(:disabled){background:#c87f45}
+  .spacer{flex:1}
+  .count{font-size:.78rem;opacity:.8;min-width:7.5rem}
+  .status{font-size:.78rem;padding:.25rem .6rem;border-radius:2px;display:none}
+  .status.show{display:inline-block}
+  .status.ok{background:var(--good);color:#fff}
+  .status.err{background:var(--bad);color:#fff}
+  .status.busy{background:rgba(243,239,230,.18)}
+
+  /* ---------- the site ---------- */
+  .stage{flex:1;position:relative;min-height:0}
+  iframe{width:100%;height:100%;border:0;background:var(--paper);display:block}
+
+  .hint{position:absolute;left:0;right:0;bottom:0;padding:.45rem .9rem;
+    background:rgba(42,31,8,.86);color:var(--paper);font-size:.74rem;letter-spacing:.02em}
+
+  /* ---------- the changes drawer ---------- */
+  .drawer{position:absolute;top:0;right:0;bottom:0;width:min(400px,86vw);
+    background:var(--paper);border-left:1px solid var(--line);
+    transform:translateX(100%);transition:transform .22s ease;overflow:auto;padding:1rem}
+  .drawer.open{transform:none}
+  .drawer h2{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .8rem;opacity:.7}
+  .chg{border-top:1px solid var(--line);padding:.6rem 0;font-size:.8rem}
+  .chg code{font-size:.7rem;opacity:.65;display:block;margin-bottom:.25rem;word-break:break-all}
+  .chg .was{text-decoration:line-through;opacity:.5}
+  .chg .now{color:var(--clay)}
+  .chg button{float:right;font-size:.7rem;background:none;border:0;color:var(--bad);cursor:pointer;text-decoration:underline}
+  .empty{opacity:.6;font-size:.82rem}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>Edit</h1>
+  <select id="page" aria-label="Page to edit"></select>
+  <button class="btn" id="undo" disabled>Undo</button>
+  <button class="btn" id="review" disabled>Changes</button>
+  <div class="spacer"></div>
+  <span class="count" id="count"></span>
+  <span class="status" id="status"></span>
+  <button class="btn" id="discard" disabled>Discard all</button>
+  <button class="btn btn-primary" id="save" disabled>Publish</button>
+</div>
+
+<div class="stage">
+  <iframe id="site" title="The site"></iframe>
+  <div class="hint" id="hint">Click any text to edit it. Click a photograph to replace it.</div>
+  <aside class="drawer" id="drawer" aria-label="Unsaved changes">
+    <h2>Unsaved changes</h2>
+    <div id="changes"><p class="empty">Nothing changed yet.</p></div>
+  </aside>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Where saves go. On a laptop this is the dev server; in production the
+     build rewrites it to the live service. */
+  var SAVE_URL = window.location.origin + '/__save';
+
+  /* The pages that are generated from content files, and the content file
+     each one belongs to. Anything not listed is not editable yet. */
+  var PAGES = [
+    { label: 'Home',            url: '../',                                            scope: 'home' },
+    { label: 'About',           url: '../about/',                                      scope: 'about' },
+    { label: 'Visual Journey',  url: '../visual-journey/',                             scope: 'journey' },
+    { label: 'Project — Bandipur (Junglescapes)', url: '../projects/hydro-ecological-restoration-bandipur/', scope: 'projects/bandipur-tiger-reserve' },
+    { label: 'Project — Bandipur (Rewilding Earth)', url: '../projects/wildlife-habitat-restoration-bandipur/', scope: 'projects/ecological-restoration' },
+    { label: 'Project — Mysuru Rail Museum', url: '../projects/mysuru-rail-museum/',   scope: 'projects/mysuru-rail-museum' },
+    { label: 'Project — Nilgiris tea estate', url: '../projects/tea-estate-watershed-nilgiris/', scope: 'projects/nilgiris-biosphere-reserve' },
+    { label: "Project — Chairman's Bungalow", url: '../projects/chairmans-bungalow-nilgiris/', scope: 'projects/chairmans-bungalow' },
+    { label: 'Project — Karavulapalli farm', url: '../projects/regenerative-farm-karavulapalli/', scope: 'projects/karavulapalli-farm' },
+    { label: 'Project — Context-Responsive Design', url: '../projects/context-responsive-design/', scope: 'projects/context-responsive-design' }
+  ];
+
+  var el = {
+    page: document.getElementById('page'),
+    site: document.getElementById('site'),
+    save: document.getElementById('save'),
+    discard: document.getElementById('discard'),
+    undo: document.getElementById('undo'),
+    review: document.getElementById('review'),
+    drawer: document.getElementById('drawer'),
+    changes: document.getElementById('changes'),
+    count: document.getElementById('count'),
+    status: document.getElementById('status'),
+    hint: document.getElementById('hint')
+  };
+
+  /* every pending change, keyed "scope:path" so editing the same thing twice
+     replaces rather than stacks */
+  var pending = {};
+  var order = [];
+  var images = {};
+
+  function key(scope, path) { return scope + ':' + path; }
+
+  function record(scope, path, was, now, image) {
+    var k = key(scope, path);
+    if (!(k in pending)) order.push(k);
+    if (was === now) { delete pending[k]; order = order.filter(function (x) { return x !== k; }); }
+    else pending[k] = { scope: scope, path: path, was: was, now: now, image: image || null };
+    paint();
+  }
+
+  function paint() {
+    var n = order.filter(function (k) { return pending[k]; }).length;
+    el.count.textContent = n ? (n + (n === 1 ? ' change' : ' changes')) : '';
+    el.save.disabled = el.discard.disabled = el.review.disabled = el.undo.disabled = !n;
+
+    if (!n) { el.changes.innerHTML = '<p class="empty">Nothing changed yet.</p>'; return; }
+    el.changes.innerHTML = '';
+    order.forEach(function (k) {
+      var c = pending[k];
+      if (!c) return;
+      var d = document.createElement('div');
+      d.className = 'chg';
+      var b = document.createElement('button');
+      b.textContent = 'undo';
+      b.onclick = function () { revert(k); };
+      d.appendChild(b);
+      var code = document.createElement('code');
+      code.textContent = c.scope + ' → ' + c.path;
+      d.appendChild(code);
+      var was = document.createElement('div');
+      was.className = 'was';
+      was.textContent = String(c.was).replace(/<[^>]*>/g, '').slice(0, 120) || '(empty)';
+      var now = document.createElement('div');
+      now.className = 'now';
+      now.textContent = c.image ? ('new photograph: ' + c.image.filename)
+        : (String(c.now).replace(/<[^>]*>/g, '').slice(0, 120) || '(empty)');
+      d.appendChild(was); d.appendChild(now);
+      el.changes.appendChild(d);
+    });
+  }
+
+  function revert(k) {
+    var c = pending[k];
+    if (!c) return;
+    var doc = el.site.contentDocument;
+    var node = doc && doc.querySelector('[data-edit="' + cssEscape(c.path) + '"]');
+    if (node) {
+      if (c.image) { /* image reverts on reload */ }
+      else if (node.tagName === 'IMG') node.setAttribute('alt', c.was);
+      else node.innerHTML = c.was;
+    }
+    delete pending[k];
+    order = order.filter(function (x) { return x !== k; });
+    if (c.image) delete images[c.image.id];
+    paint();
+    if (c.image) el.site.contentWindow.location.reload();
+  }
+
+  function cssEscape(s) { return s.replace(/"/g, '\\"'); }
+
+  function setStatus(text, kind) {
+    el.status.textContent = text;
+    el.status.className = 'status show ' + (kind || 'busy');
+    if (kind === 'ok') setTimeout(function () { el.status.className = 'status'; }, 4000);
+  }
+
+  /* ---------- the editing layer, injected into the site ---------- */
+  function attach() {
+    var doc = el.site.contentDocument;
+    if (!doc) return;
+    var scope = el.page.options[el.page.selectedIndex].dataset.scope;
+
+    var style = doc.createElement('style');
+    style.textContent =
+      '[data-edit]{outline:1px dashed rgba(180,112,58,.55);outline-offset:2px;cursor:text;transition:outline-color .15s}' +
+      '[data-edit]:hover{outline:2px solid #B4703A}' +
+      'img[data-edit]{cursor:zoom-in}' +
+      '[data-edit][contenteditable="true"]{outline:2px solid #B4703A;background:rgba(180,112,58,.08)}' +
+      '[data-edit].edited{outline:2px solid #3F7A4F}';
+    doc.head.appendChild(style);
+
+    var fields = doc.querySelectorAll('[data-edit]');
+    el.hint.textContent = fields.length + ' editable things on this page. '
+      + 'Click text to change it, click a photograph to replace it. Nothing is live until you press Publish.';
+
+    Array.prototype.forEach.call(fields, function (node) {
+      var path = node.getAttribute('data-edit');
+
+      if (node.tagName === 'IMG') {
+        node.addEventListener('click', function (e) {
+          e.preventDefault(); e.stopPropagation();
+          pickImage(node, scope, path);
+        });
+        return;
+      }
+
+      node.addEventListener('click', function (e) {
+        if (node.getAttribute('contenteditable') === 'true') return;
+        e.preventDefault(); e.stopPropagation();
+        node.dataset.was = node.innerHTML;
+        node.setAttribute('contenteditable', 'true');
+        node.focus();
+      });
+
+      node.addEventListener('blur', function () {
+        if (node.getAttribute('contenteditable') !== 'true') return;
+        node.removeAttribute('contenteditable');
+        var was = node.dataset.was;
+        var now = node.innerHTML.trim();
+        if (now !== was) node.classList.add('edited');
+        record(scope, path, was, now);
+      });
+
+      /* Enter commits, Escape abandons -- a heading is not a paragraph and
+         a stray line break inside one would be invisible until it shipped */
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); node.blur(); }
+        if (e.key === 'Escape') { node.innerHTML = node.dataset.was; node.blur(); }
+      });
+    });
+
+    /* clicking a link inside the editor would navigate away from the page
+       being edited; the page selector is how you move around */
+    doc.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (a) e.preventDefault();
+    }, true);
+  }
+
+  /* ---------- replacing a photograph ---------- */
+  var picker = document.createElement('input');
+  picker.type = 'file';
+  picker.accept = 'image/*';
+
+  function pickImage(node, scope, path) {
+    picker.value = '';
+    picker.onchange = function () {
+      var file = picker.files && picker.files[0];
+      if (!file) return;
+      setStatus('preparing photograph…');
+      toWebp(file, function (out) {
+        var current = node.getAttribute('src').replace(/^(\.\.\/)+/, '');
+        var dir = current.slice(0, current.lastIndexOf('/'));
+        var base = file.name.replace(/\.[^.]+$/, '').toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'photograph';
+        var name = base + '-' + Date.now().toString(36) + '.webp';
+        var id = dir + '/' + name;
+
+        images[id] = { dir: dir, filename: name, base64: out.base64 };
+        node.src = out.dataUrl;
+        node.classList.add('edited');
+        record(scope, path + '.image', current.split('/').pop(), name,
+          { id: id, filename: name });
+        setStatus('photograph ready — press Publish', 'ok');
+      });
+    };
+    picker.click();
+  }
+
+  /* Resized and converted in the browser, so a 6 MB phone photograph does
+     not become a 6 MB file in the repository. 2000px is larger than any
+     place the site displays one. */
+  function toWebp(file, done) {
+    var img = new Image();
+    img.onload = function () {
+      var max = 2000;
+      var w = img.naturalWidth, h = img.naturalHeight;
+      if (w > max || h > max) { var s = Math.min(max / w, max / h); w = Math.round(w * s); h = Math.round(h * s); }
+      var c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      var dataUrl = c.toDataURL('image/webp', 0.82);
+      done({ dataUrl: dataUrl, base64: dataUrl.split(',')[1], width: w, height: h });
+    };
+    img.src = URL.createObjectURL(file);
+  }
+
+  /* ---------- saving ---------- */
+  el.save.onclick = function () {
+    var changes = order.filter(function (k) { return pending[k]; }).map(function (k) {
+      var c = pending[k];
+      return { scope: c.scope, path: c.path, value: c.now };
+    });
+    var imgs = Object.keys(images).map(function (id) { return images[id]; });
+
+    el.save.disabled = true;
+    setStatus('publishing…');
+    fetch(SAVE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ changes: changes, images: imgs })
+    }).then(function (r) { return r.json().catch(function () { return { ok: false, error: 'bad reply' }; }); })
+      .then(function (out) {
+        if (!out.ok) throw new Error(out.error || 'refused');
+        pending = {}; order = []; images = {};
+        paint();
+        setStatus('published', 'ok');
+        el.site.contentWindow.location.reload();
+      })
+      .catch(function (e) {
+        setStatus('not saved: ' + e.message, 'err');
+        el.save.disabled = false;
+      });
+  };
+
+  el.discard.onclick = function () {
+    if (!confirm('Throw away every unsaved change on this page?')) return;
+    pending = {}; order = []; images = {};
+    paint();
+    el.site.contentWindow.location.reload();
+  };
+
+  el.undo.onclick = function () {
+    for (var i = order.length - 1; i >= 0; i--) if (pending[order[i]]) return revert(order[i]);
+  };
+
+  el.review.onclick = function () { el.drawer.classList.toggle('open'); };
+
+  /* ---------- pages ---------- */
+  PAGES.forEach(function (p, i) {
+    var o = document.createElement('option');
+    o.value = p.url; o.textContent = p.label; o.dataset.scope = p.scope;
+    el.page.appendChild(o);
+  });
+
+  function loadPage() {
+    if (order.filter(function (k) { return pending[k]; }).length
+        && !confirm('You have unsaved changes. Leave this page and lose them?')) {
+      return;
+    }
+    pending = {}; order = []; images = {};
+    paint();
+    el.site.src = el.page.value;
+  }
+
+  el.page.onchange = loadPage;
+  el.site.addEventListener('load', attach);
+  el.site.src = PAGES[0].url;
+
+  window.addEventListener('beforeunload', function (e) {
+    if (order.filter(function (k) { return pending[k]; }).length) { e.preventDefault(); e.returnValue = ''; }
+  });
+})();
+</script>
+</body>
+</html>

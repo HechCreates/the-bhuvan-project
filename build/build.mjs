@@ -250,6 +250,16 @@ const copyDir = (from, to) => {
   return n;
 };
 log.push(`static/   ${copyDir('static', DIST)} files copied`);
+
+/* The admin interface is built locally but NOT published, until it has a way
+   to check who is asking. It cannot save to the live site -- there is no
+   endpoint there yet, so Publish would simply fail -- but an editor sitting
+   open on a public URL invites people to try, and there is no reason to
+   invite that before the lock is fitted. CI sets CI=true; a laptop does not. */
+if (process.env.CI === 'true' && fs.existsSync(path.join(DIST, 'admin'))) {
+  fs.rmSync(path.join(DIST, 'admin'), { recursive: true, force: true });
+  log.push('admin/    withheld from this build (no authentication yet)');
+}
 fs.mkdirSync(path.join(DIST, 'images'), { recursive: true });
 log.push(`images/   ${copyDir('images', path.join(DIST, 'images'))} files copied`);
 
