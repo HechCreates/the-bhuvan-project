@@ -20,8 +20,23 @@ Setting it up is four steps and about fifteen minutes, once.
 1. **github.com → your photo → Settings → Developer settings →
    Personal access tokens → Fine-grained tokens → Generate new token**
 2. Name: `bhuvan admin service`
-3. Expiration: **1 year** (put a reminder in your calendar — when it expires,
-   publishing stops working until you make a new one)
+3. Expiration: **No expiration**.
+
+   That sounds wrong and is the right answer here. The token's entire reach is
+   "edit files in this one repository" — it cannot touch the account, other
+   repositories, settings, or Actions secrets, and the worst a leak could do
+   is make unwanted commits, which are visible in the history and revertible.
+   An expiring token buys a bound on how long a silently stolen one stays
+   useful; it costs publishing breaking in twelve months with no obvious
+   explanation, long after anyone remembers why. For a two-person studio the
+   second is much likelier than the first.
+
+   What protects it instead: the narrow scope below, and knowing how to
+   revoke. Revoking is the same page — open the token, press **Revoke**, and
+   it dies instantly. Do that, make a new one and update `GITHUB_TOKEN` in
+   Deno Deploy if the token is ever pasted somewhere by accident, if someone
+   else gets into the GitHub or Deno account, or if anyone who had access
+   stops working on the site.
 4. Repository access: **Only select repositories** → `the-bhuvan-project`
 5. Permissions → Repository permissions → **Contents: Read and write**.
    Nothing else. Leave every other permission alone.
@@ -106,5 +121,7 @@ and works from any browser, including a phone.
 - **"Your session has expired"** — sessions last eight hours. Sign in again.
 - **Published but the site has not changed** — look at the Actions tab in
   GitHub. The commit is made; the build is what publishes it.
-- **Everything fails at once, a year in** — the GitHub token expired. Step 1
-  again.
+- **Everything fails at once, suddenly** — the likeliest cause is the GitHub
+  token: revoked, or deleted along with something else. Step 1 again, then
+  update `GITHUB_TOKEN` in Deno Deploy. Nothing on the site is lost either
+  way; the token only controls whether new edits can be committed.
