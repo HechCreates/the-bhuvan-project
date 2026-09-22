@@ -10,6 +10,7 @@ import fs from 'fs';
 import { load } from 'js-yaml';
 import { render } from './templates/render.mjs';
 import { SPEC } from './page-spec.mjs';
+import { journeyPage } from './templates/journey.mjs';
 
 const SRC = 'src/index.html';
 const src = fs.readFileSync(SRC, 'utf8');
@@ -66,6 +67,36 @@ for (const page of Object.keys(SPEC)) {
   console.log('        src      …' + JSON.stringify(a.slice(Math.max(0, i - 90), i + 90)));
   console.log('        rendered …' + JSON.stringify(b.slice(Math.max(0, i - 90), i + 90)));
   failed++;
+}
+
+/* ---- the Visual Journey ----
+   A hand-written template like the project pages, not a tokenised copy of
+   the markup, because its content was already structured. Compared with
+   whitespace between tags normalised, for the same reason as above: 214
+   repeated figures cannot reproduce incidental indentation. */
+{
+  const at = all.findIndex(m => m[1] === 'journey');
+  const start = all[at].index;
+  const end = at + 1 < all.length ? all[at + 1].index : src.indexOf('<script>', start);
+
+  const norm = t => t
+    .replace(/<header class="site-header"[\s\S]*?<\/header>/, '')
+    .replace(/<footer class="footer">[\s\S]*?<\/footer>/, '')
+    .replace(/ data-edit="[^"]*"/g, '')
+    .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
+
+  const want = norm(src.slice(start, end));
+  const got = norm(journeyPage(load(fs.readFileSync('content/journey.yml', 'utf8'))));
+
+  if (got === want) {
+    console.log(`  ok    journey    ${want.length.toLocaleString()} chars, 214 photographs`);
+  } else {
+    let i = 0; while (i < got.length && i < want.length && got[i] === want[i]) i++;
+    console.log(`  FAIL  journey: differs at char ${i.toLocaleString()} (src ${want.length}, rendered ${got.length})`);
+    console.log('        src      …' + JSON.stringify(want.slice(Math.max(0, i - 100), i + 100)));
+    console.log('        rendered …' + JSON.stringify(got.slice(Math.max(0, i - 100), i + 100)));
+    failed++;
+  }
 }
 
 console.log(failed ? `\n${failed} page(s) do not round-trip` : '\nEvery extracted page round-trips exactly.');

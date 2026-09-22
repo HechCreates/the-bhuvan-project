@@ -23,6 +23,7 @@ import { load } from 'js-yaml';
 import { header, footer } from './templates/chrome.mjs';
 import { projectPage } from './templates/project.mjs';
 import { render } from './templates/render.mjs';
+import { journeyPage } from './templates/journey.mjs';
 import { SPEC } from './page-spec.mjs';
 
 const SRC = 'src/index.html';
@@ -53,7 +54,8 @@ for (let i = marks().length - 1; i >= 0; i--) {
   const key = all[i][1];
   const isProject = key.startsWith('p-');
   const isTemplated = Boolean(SPEC[key]);
-  if (!isProject && !isTemplated) continue;
+  const isJourney = key === 'journey';
+  if (!isProject && !isTemplated && !isJourney) continue;
 
   const start = all[i].index;
   const end = i + 1 < all.length ? all[i + 1].index : s.indexOf('<script>', start);
@@ -68,6 +70,10 @@ for (let i = marks().length - 1; i >= 0; i--) {
        build re-renders it per page anyway, this just keeps src self-consistent */
     page = crlf(projectPage(projects[n], {
       prev: projects[n - 1], next: projects[n + 1],
+      header: header(''), footer: footer(),
+    }));
+  } else if (isJourney) {
+    page = crlf(journeyPage(load(fs.readFileSync('content/journey.yml', 'utf8')), {
       header: header(''), footer: footer(),
     }));
   } else {
