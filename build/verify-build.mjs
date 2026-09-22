@@ -158,6 +158,25 @@ console.log(`  ${other} checked in ${[...kinds].join(', ') || 'no other attribut
   else console.log('  no third-party font requests');
 }
 
+/* ---- 2d. no placeholder alt text ----
+   115 images once shipped as alt="undefined, photograph 12", because a
+   template read a variable that was not set. It is invisible on the page,
+   passes any "does this image have alt text" check, and is what a blind
+   visitor actually hears. Templating accidents spell themselves the same
+   way every time, so they are worth naming. */
+{
+  let bad = 0;
+  for (const [url, file] of htmlFiles) {
+    if (!fs.existsSync(file)) continue;
+    for (const m of fs.readFileSync(file, 'utf8').matchAll(/\balt="([^"]*)"/g)) {
+      if (!/\b(undefined|null|NaN|\[object Object\])\b/.test(m[1])) continue;
+      bad++;
+      if (bad <= 3) fail(`${url} has placeholder alt text: "${m[1].slice(0, 60)}"`);
+    }
+  }
+  console.log(bad ? `  ${bad} placeholder alt attributes` : '  no placeholder alt text');
+}
+
 /* ---- 3. no hash links survive ---- */
 const stale = htmlFiles.filter(([, f]) => fs.existsSync(f) && /href="#\//.test(fs.readFileSync(f, 'utf8')));
 if (stale.length) fail(`hash links left in: ${stale.map(s => s[0]).join(', ')}`);
