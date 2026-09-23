@@ -68,12 +68,33 @@ four or five unrelated words is better than a short jumble.
 1. Sign in at **[dash.deno.com](https://dash.deno.com)** with GitHub.
 2. **+ New app** (older versions of the dashboard called this "New Project"),
    then connect GitHub and pick `hechcreates/the-bhuvan-project`.
-3. Branch `main`, entry point `service/main.ts`.
+3. Set three things, under **Edit app config** / **App Directory**:
 
-   The repository's root IS the `site` folder, so there is no `site/` prefix.
-   Deno's dashboard changes often and these two settings move around -- they
-   may be under a "Build configuration" or "Advanced" heading, and the entry
-   point may be part of a run command rather than a field of its own.
+   | Setting | Value |
+   |---|---|
+   | App Directory | `service` |
+   | Entrypoint | `main.ts` |
+   | Install command | **empty** |
+
+   **App Directory matters.** Run it from the repository root instead and the
+   build fails with:
+
+   ```
+   error: Could not find "js-yaml" in a node_modules folder.
+   ```
+
+   The root holds a `package.json` for the site's own build scripts. Deno
+   finds it, switches into Node compatibility mode, and then wants a
+   `node_modules` folder that nothing created. Running from `service/`, next
+   to its own `deno.json`, keeps the site's tooling and this service apart.
+
+   Leave the install command empty on purpose: the site's `package.json`
+   pulls in `sharp`, a large native image library used only for generating
+   images locally. Installing it here would make every deploy slow and could
+   fail outright. Deno fetches this service's one dependency itself.
+
+   Deno's dashboard changes often and these settings move around — they may
+   sit under "Build configuration" or "Advanced".
 4. Before the first deploy, add these under **Settings → Environment
    Variables**:
 

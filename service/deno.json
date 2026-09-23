@@ -1,0 +1,22 @@
+{
+  "//": [
+    "The repository root has a package.json, for the site's own build scripts.",
+    "Deno sees it while resolving this service, switches into Node compatibility",
+    "mode, and then refuses to start because there is no node_modules folder:",
+    "",
+    "  error: Could not find \"js-yaml\" in a node_modules folder.",
+    "",
+    "The service does not want that mode. It has one dependency, js-yaml, and",
+    "Deno can fetch it straight from npm into its own cache -- no node_modules,",
+    "no install step, nothing for the site's tooling to collide with. That is",
+    "what nodeModulesDir: none says.",
+    "",
+    "Running the app from this folder rather than the repository root keeps the",
+    "two worlds apart: the site's package.json belongs to the site's build, and",
+    "this file belongs to the service."
+  ],
+  "nodeModulesDir": "none",
+  "imports": {
+    "js-yaml": "npm:js-yaml@4.1.0"
+  }
+}

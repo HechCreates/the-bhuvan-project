@@ -241,7 +241,9 @@ async function readFile(path: string): Promise<string> {
 
 /* ---------- content files ---------- */
 
-import { load, dump } from "npm:js-yaml@4.1.0";
+/* mapped to npm:js-yaml@4.1.0 in service/deno.json, which also turns off
+   Node compatibility mode -- see the note in that file */
+import { load, dump } from "js-yaml";
 
 /* Keep the comment header. js-yaml drops comments on dump, and these files
    open with the explanation of what they are -- including the note that an
