@@ -83,9 +83,11 @@ four or five unrelated words is better than a short jumble.
    | `GITHUB_REPO` | `hechcreates/the-bhuvan-project` |
    | `ADMIN_EMAIL` | the email that may sign in |
    | `ADMIN_PASSWORD` | the `pbkdf2$…` line from step 2 |
+   | `SESSION_SECRET` | the second line from step 2 |
+   | `ALLOWED_ORIGIN` | `https://www.thebhuvanproject.com` |
 
-   **For more than one person**, leave those two out and set `ADMIN_USERS`
-   instead — each person with their own password:
+   **For more than one person**, leave `ADMIN_EMAIL` and `ADMIN_PASSWORD` out
+   and set `ADMIN_USERS` instead — each person with their own password:
 
    ```
    nikhil@example.com:pbkdf2$210000$…,harsha@example.com:pbkdf2$210000$…
@@ -104,8 +106,6 @@ four or five unrelated words is better than a short jumble.
    service makes records who made it — a shared password makes every edit
    anonymous, and removing one person's access means changing everyone's.
    To remove someone, delete their entry and redeploy.
-   | `SESSION_SECRET` | the second line from step 2 |
-   | `ALLOWED_ORIGIN` | `https://www.thebhuvanproject.com` |
 
 5. Deploy. Deno gives the project a URL like
    `https://bhuvan-admin-xxxx.deno.dev`.
