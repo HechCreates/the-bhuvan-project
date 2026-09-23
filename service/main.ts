@@ -86,6 +86,46 @@ async function passwordMatches(password: string, stored: string): Promise<boolea
   return sameBytes(got, unb64(hash));
 }
 
+/* Who may sign in.
+ *
+ * ADMIN_USERS holds one or more people, each with their OWN password:
+ *
+ *   nikhil@example.com:pbkdf2$210000$…,harsha@example.com:pbkdf2$210000$…
+ *
+ * Entries separated by a comma or a newline, email and hash by a colon --
+ * neither appears in base64, so neither can split a hash by accident.
+ *
+ * Separate passwords rather than a shared one, because the commit this
+ * service makes records who made it. A shared password would make every
+ * edit anonymous and mean that removing one person's access means changing
+ * everyone's password.
+ *
+ * ADMIN_EMAIL and ADMIN_PASSWORD still work for a single person.
+ */
+function users(): Map<string, string> {
+  const map = new Map<string, string>();
+  const raw = Deno.env.get("ADMIN_USERS");
+  if (raw && raw.trim()) {
+    for (const entry of raw.split(/[,\n]/)) {
+      const t = entry.trim();
+      if (!t) continue;
+      const at = t.indexOf(":");
+      if (at < 0) continue;
+      map.set(t.slice(0, at).trim().toLowerCase(), t.slice(at + 1).trim());
+    }
+    if (!map.size) throw new Error("ADMIN_USERS is set but no entries parsed");
+    return map;
+  }
+  map.set(env("ADMIN_EMAIL").trim().toLowerCase(), env("ADMIN_PASSWORD"));
+  return map;
+}
+
+/* A real-shaped hash that no password matches. An unknown email is checked
+   against this so that a wrong email costs the same work as a wrong
+   password -- otherwise the time taken would say which addresses exist. */
+const DUMMY_HASH = "pbkdf2$210000$AAAAAAAAAAAAAAAAAAAAAA==$" +
+  "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+
 /* ---------- session tokens ---------- */
 
 async function hmac(data: string): Promise<string> {
@@ -269,9 +309,12 @@ Deno.serve(async (req) => {
       password = String(body.password ?? "");
     } catch { /* falls through to the failure below */ }
 
-    const ok = email === env("ADMIN_EMAIL").trim().toLowerCase()
-      && password.length > 0
-      && await passwordMatches(password, env("ADMIN_PASSWORD"));
+    const known = users();
+    const stored = known.get(email);
+    /* always hash, even for an email nobody has, so the answer takes the
+       same time either way */
+    const matched = password.length > 0 && await passwordMatches(password, stored ?? DUMMY_HASH);
+    const ok = Boolean(stored) && matched;
 
     if (!ok) {
       await noteFailure(ip);

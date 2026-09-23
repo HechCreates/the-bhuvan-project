@@ -83,6 +83,27 @@ four or five unrelated words is better than a short jumble.
    | `GITHUB_REPO` | `hechcreates/the-bhuvan-project` |
    | `ADMIN_EMAIL` | the email that may sign in |
    | `ADMIN_PASSWORD` | the `pbkdf2$…` line from step 2 |
+
+   **For more than one person**, leave those two out and set `ADMIN_USERS`
+   instead — each person with their own password:
+
+   ```
+   nikhil@example.com:pbkdf2$210000$…,harsha@example.com:pbkdf2$210000$…
+   ```
+
+   Run step 2 once per person, with their email after the command:
+
+   ```bash
+   node service/hash-password.mjs nikhil@example.com
+   ```
+
+   It prints the whole `email:hash` line ready to paste. Separate people with
+   a comma or a newline.
+
+   Separate passwords rather than a shared one, because the commit this
+   service makes records who made it — a shared password makes every edit
+   anonymous, and removing one person's access means changing everyone's.
+   To remove someone, delete their entry and redeploy.
    | `SESSION_SECRET` | the second line from step 2 |
    | `ALLOWED_ORIGIN` | `https://www.thebhuvanproject.com` |
 
@@ -114,7 +135,8 @@ and works from any browser, including a phone.
 
 ## What is deliberately not here
 
-- **No account creation.** One email, set by you, changed by redeploying.
+- **No account creation.** The people who may sign in are set by you in
+  ADMIN_USERS, and changed by redeploying.
 - **No password reset by email.** Run step 2 again and update the variable.
 - **No file browser or arbitrary writes.** It will only write
   `content/*.yml`, `content/projects/*.yml` and files under `images/`.

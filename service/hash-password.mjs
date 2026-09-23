@@ -89,10 +89,25 @@ if (password.length < MIN_LENGTH) {
 
 const salt = crypto.randomBytes(16);
 const hash = crypto.pbkdf2Sync(password, salt, ITERATIONS, 32, 'sha256');
+const stored = `pbkdf2$${ITERATIONS}$${salt.toString('base64')}$${hash.toString('base64')}`;
 
-console.log('\nPaste this into Deno Deploy as the value of ADMIN_PASSWORD:\n');
-console.log('  ' + `pbkdf2$${ITERATIONS}$${salt.toString('base64')}$${hash.toString('base64')}`);
-console.log('\nAnd this as the value of SESSION_SECRET:\n');
+/* Given an email, print the line ADMIN_USERS wants, so that adding a second
+   person is a copy and a paste rather than assembling a string by hand:
+       node service/hash-password.mjs nikhil@example.com                    */
+const email = (process.argv[2] || '').trim();
+
+if (email) {
+  console.log(`\nAdd this to ADMIN_USERS in Deno Deploy. If there is already`);
+  console.log('someone in there, put a comma between them:\n');
+  console.log('  ' + email.toLowerCase() + ':' + stored);
+} else {
+  console.log('\nPaste this into Deno Deploy as the value of ADMIN_PASSWORD:\n');
+  console.log('  ' + stored);
+  console.log('\n(For more than one person, run this again with an email after the');
+  console.log(' command and use ADMIN_USERS instead -- see service/README.md.)');
+}
+
+console.log('\nAnd this as the value of SESSION_SECRET, if you do not have one yet:\n');
 console.log('  ' + crypto.randomBytes(32).toString('base64'));
 console.log('\nNeither is stored on this machine. Close the terminal when you are done.');
 process.exit(0);
