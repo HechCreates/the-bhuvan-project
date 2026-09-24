@@ -29,7 +29,7 @@ const TYPES = {
    and commits to the repository instead. The editor sends identical payloads
    to both, so the difference is one URL.                                   */
 const applyChanges = async body => {
-  const { readYaml, writeYaml, set, fileFor } = await import('./content-io.mjs');
+  const { readYaml, writeYaml, apply, fileFor } = await import('./content-io.mjs');
   const { changes = [], images = [] } = body;
   const touched = new Set();
 
@@ -43,10 +43,13 @@ const applyChanges = async body => {
     fs.writeFileSync(path.join(dir, im.filename), Buffer.from(im.base64, 'base64'));
   }
 
+  /* strictly in the order they were made: an insert shifts every item after
+     it, so an edit recorded before it and an edit recorded after it mean
+     different rows of the same list */
   for (const c of changes) {
     const file = fileFor(c.scope);
     const { data } = readYaml(file);
-    set(data, c.path, c.value);
+    apply(data, c);
     writeYaml(file, data);
     touched.add(file);
   }

@@ -268,9 +268,60 @@ function setPath(data: any, path: string, value: unknown) {
   o[last] = value;
 }
 
+/* Adding to and removing from a list. The same rules as
+   build/content-io.mjs, which is what the local dev server uses -- the
+   editor sends identical requests to both, so they have to agree.
+
+   An insert COPIES the item it was pressed on: a testimonial carries the
+   framing measured from its own silhouette and a project card carries a
+   photograph, and a blank item would render a hole. `values` then overwrites
+   the fields the editor knows about, so a copy taken after an unsaved edit
+   shows what the screen showed.
+
+   A list cannot be emptied from here: removing the last item would leave a
+   section with nothing in it and no way back. */
+// deno-lint-ignore no-explicit-any
+function splicePath(data: any, path: string, op: string, values?: Record<string, unknown>) {
+  const keys = path.split(".");
+  const at = Number(keys[keys.length - 1]);
+  const listPath = keys.slice(0, -1).join(".");
+  // deno-lint-ignore no-explicit-any
+  const list = listPath.split(".").reduce((o: any, k) => (o == null ? o : o[k]), data);
+
+  if (!Array.isArray(list)) throw new Error(`not a list: ${listPath}`);
+  if (!Number.isInteger(at) || at < 0 || at >= list.length) {
+    throw new Error(`no item ${keys[keys.length - 1]} in ${listPath} (${list.length} items)`);
+  }
+
+  if (op === "remove") {
+    if (list.length <= 1) {
+      throw new Error(`${listPath} has one item left; removing it would empty the section`);
+    }
+    list.splice(at, 1);
+    return;
+  }
+
+  const copy = structuredClone(list[at]);
+  for (const [field, value] of Object.entries(values ?? {})) setPath(copy, field, value);
+  list.splice(at + 1, 0, copy);
+}
+
+// deno-lint-ignore no-explicit-any
+function applyChange(data: any, c: { op?: string; path: string; value?: unknown; values?: Record<string, unknown> }) {
+  if (c.op === "insert" || c.op === "remove") splicePath(data, c.path, c.op, c.values);
+  else setPath(data, c.path, c.value);
+}
+
+/* Every page generated from a template. Four were missing -- faq, contact,
+   projects and testimonials -- so those pages could be edited on screen and
+   then refused at the moment of saving. content/site.yml stays out on
+   purpose: it carries comments among its values, and writing it back would
+   drop them. */
+const EDITABLE = ["home", "about", "journey", "faq", "contact", "projects", "testimonials"];
+
 function fileFor(scope: string): string {
   if (/^projects\/[a-z0-9-]+$/.test(scope)) return `content/${scope}.yml`;
-  if (["home", "about", "journey"].includes(scope)) return `content/${scope}.yml`;
+  if (EDITABLE.includes(scope)) return `content/${scope}.yml`;
   throw new Error(`not an editable scope: ${scope}`);
 }
 
@@ -347,9 +398,13 @@ Deno.serve(async (req) => {
         files.push({ path: `${im.dir}/${im.filename}`, content: im.base64, encoding: "base64" });
       }
 
-      /* edits are grouped per file so each one is read, changed and written
-         once, however many fields on it were touched */
-      const byFile = new Map<string, { scope: string; path: string; value: unknown }[]>();
+      /* Edits are grouped per file so each one is read, changed and written
+         once, however many fields on it were touched. Within a file they
+         keep the order they were made in, which matters as soon as one of
+         them adds or removes a list item: an edit recorded before the insert
+         and one recorded after it mean different rows of the same list. */
+      // deno-lint-ignore no-explicit-any
+      const byFile = new Map<string, any[]>();
       for (const c of changes) {
         const file = fileFor(String(c.scope));
         if (!byFile.has(file)) byFile.set(file, []);
@@ -361,7 +416,7 @@ Deno.serve(async (req) => {
         const { header, body } = splitHeader(text);
         if (/^\s*#/m.test(body)) throw new Error(`${file} has comments among its values`);
         const data = load(body) ?? {};
-        for (const e of edits) setPath(data, e.path, e.value);
+        for (const e of edits) applyChange(data, e);
         files.push({
           path: file,
           content: (header ? header.replace(/\s*$/, "") + "\n\n" : "")

@@ -9,131 +9,144 @@
 # position -- so they can be read, but they are not promises: re-extracting
 # after a layout change can rename them.
 
-tq-card:
-  tq-role:
-    '0': Director, CEO, McD Berls
-    '1': Organic farm owner
-    '2': >-
-      <a class="tq-site" href="https://www.punarchith.org/" target="_blank"
-      rel="noopener">Punarchith</a>
-    '3': CEO, Monash Molding Solutions
-    '4': No 1017, Poornapragna Layout, Uttarahalli, Bangalore
-  tq-name:
-    '0': Mahesh Basavanna
-    '1': Raja Bhat
-    '2': A.R Vasavi
-    '3': Rammohan MN
-    '4': Muthuraman R
-  tq-sil:
-    '0':
-      src: images/testimonials/mcd-berls.webp
-      alt: A standing figure
-    '1':
-      src: images/testimonials/raja-bhat.webp
-      alt: A farmer tending a plant
-    '2':
-      src: images/testimonials/punarchith.webp
-      alt: A person working the land with a hoe
-    '3':
-      src: images/testimonials/monash.webp
-      alt: Two figures shaking hands
-    '4':
-      src: images/testimonials/muthuraman.webp
-      alt: A family seated around a table
-  tq-more-text:
-    '0': Read the full testimonial from Mahesh Basavanna
-    '1': Read the full testimonial from Raja Bhat
-    '2': Read the full testimonial from A.R Vasavi
-    '3': Read the full testimonial from Rammohan MN
-    '4': Read the full testimonial from Muthuraman R
-  p:
-    '0': >-
-      It was great working with Nikhil. He brings a rare balance of ecological depth and design
-      clarity, he reads the landscape carefully, respects local culture and real-world constraints,
-      and then translates the vision into practical, phase-wise actions that teams can actually
-      implement on ground. He also brings extraordinary attention to detail in the drawings making
-      the design intent unambiguous and execution-ready.
-    '1': >-
-      Working with Nikhil has been a truly enriching experience. He helped us transform our 12-acre
-      dry farmland on the edge of a reserve forest into a living, sustainable landscape. From the
-      survey to the masterplan, his approach was deeply thoughtful and rooted in ecology. His
-      understanding of water and ecology changed the way our land holds and moves water.
-    '2': >-
-      What we appreciated most was his holistic thinking. He guided us toward native species, used
-      local materials, and designed our farm structures to work with the land rather than against
-      it. The mud-block cabin, stone cowshed and erosion-control works all grew out of what the site
-      itself offered.
-    '3': >-
-      Nikhil is not just a skilled landscape architect but someone who genuinely cares for the land
-      and its long-term health. We’re grateful for his clarity, sensitivity and commitment, and
-      wholeheartedly recommend him to anyone looking to build a resilient and meaningful project.
-    '4': >-
-      Nikhil helped us design our land, Angarike Maala (in Chamarajanagar district, Karnataka), so
-      as to make it possible for us to restore and inhabit a once highly degraded piece of land. As
-      an endeavour to set up a ‘living lab’, where rural citizens, especially youth, come to learn
-      about community-based land use and sustainability, Nikhil Udupa has also facilitated us to
-      live and work in a manner where we co-inhabit the place with local flora and fauna and where a
-      sense of place predominates over that of living in a building.
-    '5': >-
-      I would like to express my sincere appreciation for your exceptional work as a space designer.
-      Your remarkable ability to adapt to design concepts and your innovative contributions to
-      architectural themes are truly commendable.
-    '6': >-
-      Your consistent punctuality in delivering designs, along with your patience contributes to a
-      harmonious and productive team environment. During the construction of my villa, your creative
-      thought process was greatly admired by myself, my relatives, friends, and family members.
-    '7': >-
-      I wish you continued success in all your endeavors, so that more individuals may have the
-      opportunity to experience your unique creativity and passionate contributions.
-    '8': >-
-      I would like to appreciate Nikhil for his exceptional work on our home project. The design,
-      attention to detail &amp; quality of work were excellent. He listened to all our ideas, gave
-      thoughtful suggestions, and delivered exactly what we were hoping for. Throughout the process,
-      he was professional, reliable, and maintained great communication. We are satisfied with the
-      final design and quality. Great experience working with him.
-  tq-lede:
-    '0': >-
-      It was great working with Nikhil. He brings a rare balance of ecological depth and design
-      clarity, he reads the landscape carefully, respects local culture and real-world constraints,
-      and then translates the vision into practical, phase-wise actions that teams can actually
-      implement on ground. He also brings extraordinary attention to detail in the drawings making
-      the design intent unambiguous and execution-ready.
-    '1': >-
-      Working with Nikhil has been a truly enriching experience. He helped us transform our 12-acre
-      dry farmland on the edge of a reserve forest into a living, sustainable landscape. From the
-      survey to the masterplan, his approach was deeply thoughtful and rooted in ecology. His
-      understanding of water and ecology changed the way our land holds and moves water. What we
-      appreciated most was his holistic thinking. He guided us toward native species, used local
-      materials, and designed our farm structures to work with the land rather than against it. The
-      mud-block cabin, stone cowshed and erosion-control works all grew out of what the site itself
-      offered. Nikhil is not just a skilled landscape architect but someone who genuinely cares for
-      the land and its long-term health. We’re grateful for his clarity, sensitivity and commitment,
-      and wholeheartedly recommend him to anyone looking to build a resilient and meaningful
-      project.
-    '2': >-
-      Nikhil helped us design our land, Angarike Maala (in Chamarajanagar district, Karnataka), so
-      as to make it possible for us to restore and inhabit a once highly degraded piece of land. As
-      an endeavour to set up a ‘living lab’, where rural citizens, especially youth, come to learn
-      about community-based land use and sustainability, Nikhil Udupa has also facilitated us to
-      live and work in a manner where we co-inhabit the place with local flora and fauna and where a
-      sense of place predominates over that of living in a building.
-    '3': >-
-      I would like to express my sincere appreciation for your exceptional work as a space designer.
-      Your remarkable ability to adapt to design concepts and your innovative contributions to
-      architectural themes are truly commendable. Your consistent punctuality in delivering designs,
-      along with your patience contributes to a harmonious and productive team environment. During
-      the construction of my villa, your creative thought process was greatly admired by myself, my
-      relatives, friends, and family members. I wish you continued success in all your endeavors, so
-      that more individuals may have the opportunity to experience your unique creativity and
-      passionate contributions.
-    '4': >-
-      I would like to appreciate Nikhil for his exceptional work on our home project. The design,
-      attention to detail &amp; quality of work were excellent. He listened to all our ideas, gave
-      thoughtful suggestions, and delivered exactly what we were hoping for. Throughout the process,
-      he was professional, reliable, and maintained great communication. We are satisfied with the
-      final design and quality. Great experience working with him.
 tst-intro:
   tst-title:
     '0': Testimonials<span class="tst-kicker">.</span>
   label:
     '0': In their words
+tst:
+  cards:
+    - lede: >-
+        It was great working with Nikhil. He brings a rare balance of ecological depth and design
+        clarity, he reads the landscape carefully, respects local culture and real-world
+        constraints, and then translates the vision into practical, phase-wise actions that teams
+        can actually implement on ground. He also brings extraordinary attention to detail in the
+        drawings making the design intent unambiguous and execution-ready.
+      body:
+        - >-
+          It was great working with Nikhil. He brings a rare balance of ecological depth and design
+          clarity, he reads the landscape carefully, respects local culture and real-world
+          constraints, and then translates the vision into practical, phase-wise actions that teams
+          can actually implement on ground. He also brings extraordinary attention to detail in the
+          drawings making the design intent unambiguous and execution-ready.
+      more: Read the full testimonial from Mahesh Basavanna
+      silWidth: '128'
+      silHeight: '420'
+      silImage: images/testimonials/mcd-berls.webp
+      silStyle: '--sil-x:80.5%;--sil-ar:0.305;--sil-min:251px'
+      silAlt: A standing figure
+      name: Mahesh Basavanna
+      role: Director, CEO, McD Berls
+    - lede: >-
+        Working with Nikhil has been a truly enriching experience. He helped us transform our
+        12-acre dry farmland on the edge of a reserve forest into a living, sustainable landscape.
+        From the survey to the masterplan, his approach was deeply thoughtful and rooted in ecology.
+        His understanding of water and ecology changed the way our land holds and moves water. What
+        we appreciated most was his holistic thinking. He guided us toward native species, used
+        local materials, and designed our farm structures to work with the land rather than against
+        it. The mud-block cabin, stone cowshed and erosion-control works all grew out of what the
+        site itself offered. Nikhil is not just a skilled landscape architect but someone who
+        genuinely cares for the land and its long-term health. We’re grateful for his clarity,
+        sensitivity and commitment, and wholeheartedly recommend him to anyone looking to build a
+        resilient and meaningful project.
+      body:
+        - >-
+          Working with Nikhil has been a truly enriching experience. He helped us transform our
+          12-acre dry farmland on the edge of a reserve forest into a living, sustainable landscape.
+          From the survey to the masterplan, his approach was deeply thoughtful and rooted in
+          ecology. His understanding of water and ecology changed the way our land holds and moves
+          water.
+        - >-
+          What we appreciated most was his holistic thinking. He guided us toward native species,
+          used local materials, and designed our farm structures to work with the land rather than
+          against it. The mud-block cabin, stone cowshed and erosion-control works all grew out of
+          what the site itself offered.
+        - >-
+          Nikhil is not just a skilled landscape architect but someone who genuinely cares for the
+          land and its long-term health. We’re grateful for his clarity, sensitivity and commitment,
+          and wholeheartedly recommend him to anyone looking to build a resilient and meaningful
+          project.
+      more: Read the full testimonial from Raja Bhat
+      silWidth: '288'
+      silHeight: '420'
+      silImage: images/testimonials/raja-bhat.webp
+      silStyle: '--sil-x:17%;--sil-ar:0.686;--sil-min:205px'
+      silAlt: A farmer tending a plant
+      name: Raja Bhat
+      role: Organic farm owner
+    - lede: >-
+        Nikhil helped us design our land, Angarike Maala (in Chamarajanagar district, Karnataka), so
+        as to make it possible for us to restore and inhabit a once highly degraded piece of land.
+        As an endeavour to set up a ‘living lab’, where rural citizens, especially youth, come to
+        learn about community-based land use and sustainability, Nikhil Udupa has also facilitated
+        us to live and work in a manner where we co-inhabit the place with local flora and fauna and
+        where a sense of place predominates over that of living in a building.
+      body:
+        - >-
+          Nikhil helped us design our land, Angarike Maala (in Chamarajanagar district, Karnataka),
+          so as to make it possible for us to restore and inhabit a once highly degraded piece of
+          land. As an endeavour to set up a ‘living lab’, where rural citizens, especially youth,
+          come to learn about community-based land use and sustainability, Nikhil Udupa has also
+          facilitated us to live and work in a manner where we co-inhabit the place with local flora
+          and fauna and where a sense of place predominates over that of living in a building.
+      more: Read the full testimonial from A.R Vasavi
+      silWidth: '299'
+      silHeight: '420'
+      silImage: images/testimonials/punarchith.webp
+      silStyle: '--sil-x:43.3%;--sil-ar:0.712;--sil-min:166px'
+      silAlt: A person working the land with a hoe
+      name: A.R Vasavi
+      role: >-
+        <a class="tq-site" href="https://www.punarchith.org/" target="_blank"
+        rel="noopener">Punarchith</a>
+    - lede: >-
+        I would like to express my sincere appreciation for your exceptional work as a space
+        designer. Your remarkable ability to adapt to design concepts and your innovative
+        contributions to architectural themes are truly commendable. Your consistent punctuality in
+        delivering designs, along with your patience contributes to a harmonious and productive team
+        environment. During the construction of my villa, your creative thought process was greatly
+        admired by myself, my relatives, friends, and family members. I wish you continued success
+        in all your endeavors, so that more individuals may have the opportunity to experience your
+        unique creativity and passionate contributions.
+      body:
+        - >-
+          I would like to express my sincere appreciation for your exceptional work as a space
+          designer. Your remarkable ability to adapt to design concepts and your innovative
+          contributions to architectural themes are truly commendable.
+        - >-
+          Your consistent punctuality in delivering designs, along with your patience contributes to
+          a harmonious and productive team environment. During the construction of my villa, your
+          creative thought process was greatly admired by myself, my relatives, friends, and family
+          members.
+        - >-
+          I wish you continued success in all your endeavors, so that more individuals may have the
+          opportunity to experience your unique creativity and passionate contributions.
+      more: Read the full testimonial from Rammohan MN
+      silWidth: '300'
+      silHeight: '420'
+      silImage: images/testimonials/monash.webp
+      silStyle: '--sil-x:90.8%;--sil-ar:0.714;--sil-min:304px'
+      silAlt: Two figures shaking hands
+      name: Rammohan MN
+      role: CEO, Monash Molding Solutions
+    - lede: >-
+        I would like to appreciate Nikhil for his exceptional work on our home project. The design,
+        attention to detail &amp; quality of work were excellent. He listened to all our ideas, gave
+        thoughtful suggestions, and delivered exactly what we were hoping for. Throughout the
+        process, he was professional, reliable, and maintained great communication. We are satisfied
+        with the final design and quality. Great experience working with him.
+      body:
+        - >-
+          I would like to appreciate Nikhil for his exceptional work on our home project. The
+          design, attention to detail &amp; quality of work were excellent. He listened to all our
+          ideas, gave thoughtful suggestions, and delivered exactly what we were hoping for.
+          Throughout the process, he was professional, reliable, and maintained great communication.
+          We are satisfied with the final design and quality. Great experience working with him.
+      more: Read the full testimonial from Muthuraman R
+      silWidth: '829'
+      silHeight: '420'
+      silImage: images/testimonials/muthuraman.webp
+      silStyle: '--sil-x:52.3%;--sil-ar:1.974;--sil-min:449px'
+      silAlt: A family seated around a table
+      name: Muthuraman R
+      role: No 1017, Poornapragna Layout, Uttarahalli, Bangalore

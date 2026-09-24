@@ -10,47 +10,11 @@
     </div>
   </section>
   <section class="faq-list" aria-label="Frequently asked questions">
-    <div class="wrap">
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.0">{{faq-item.faq-q.0}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.0">{{faq-item.faq-a.0}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.1">{{faq-item.faq-q.1}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.1">{{faq-item.faq-a.1}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.2">{{faq-item.faq-q.2}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.2">{{faq-item.faq-a.2}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.3">{{faq-item.faq-q.3}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.3">{{faq-item.faq-a.3}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.4">{{faq-item.faq-q.4}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.4">{{faq-item.faq-a.4}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.5">{{faq-item.faq-q.5}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.5">{{faq-item.faq-a.5}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.6">{{faq-item.faq-q.6}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.6">{{faq-item.faq-a.6}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.7">{{faq-item.faq-q.7}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.7">{{faq-item.faq-a.7}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.8">{{faq-item.faq-q.8}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.8">{{faq-item.faq-a.8}}</p>
-      </article>
-      <article class="faq-item">
-        <h2 class="faq-q" data-edit="faq-item.faq-q.9">{{faq-item.faq-q.9}}</h2>
-        <p class="faq-a" data-edit="faq-item.faq-a.9">{{faq-item.faq-a.9}}</p>
-      </article>
+    <div class="wrap">{{#each faq.items}}
+      <article class="faq-item" data-item="faq.items.{{@i}}">
+        <h2 class="faq-q" data-edit="faq.items.{{@i}}.q">{{q}}</h2>
+        <p class="faq-a" data-edit="faq.items.{{@i}}.a">{{a}}</p>
+      </article>{{/each}}
       <p class="faq-foot">Still unsure whether a site is a candidate? <button type="button" class="faq-cta" data-open-contact data-edit="faq-list.faq-cta.0">{{faq-list.faq-cta.0}}</button> and describe it.</p>
     </div>
   </section>

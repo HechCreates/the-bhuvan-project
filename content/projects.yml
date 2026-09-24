@@ -9,53 +9,6 @@
 # position -- so they can be read, but they are not promises: re-extracting
 # after a layout change can rename them.
 
-pi-card:
-  pi-sub:
-    '0': Hydro-ecological restoration with Junglescapes Charitable Trust
-    '1': Reviving dry deciduous forest and savanna, with Rewilding Earth Foundation
-    '2': Reimagining a heritage railway museum as a biodiverse public space
-    '3': Watershed management and ecological restoration of a tea estate
-    '4': A sustainable, ecologically sensitive bungalow landscape in the Nilgiris
-    '5': A biodiverse, regenerative community farm with Biome Farms
-    '6': Journey through our design process grounded in minimalism, rootedness and sensory engagement.
-  pi-title:
-    '0': Bandipur Tiger Reserve, Karnataka
-    '1': Ecological Restoration of Degraded Wildlife Habitat
-    '2': Mysuru Rail Museum
-    '3': Nilgiris Biosphere Reserve
-    '4': Chairman's Bungalow Landscape
-    '5': Regenerative Farm Landscapes, Karavulapalli
-    '6': Context-Responsive Design
-  img:
-    '0':
-      src: images/cards/bandipur-tiger-reserve.webp
-      alt: A restored waterhole holding water within the degraded forest landscape at Bandipur.
-    '1':
-      src: images/cards/ecological-restoration.webp
-      alt: A hand-drawn restoration masterplan showing wetlands, groves and grassland zones.
-    '2':
-      src: images/cards/mysuru-rail-museum.webp
-      alt: The landscape masterplan drawing for the Mysuru Rail Museum revitalisation.
-    '3':
-      src: images/cards/nilgiris-biosphere-reserve.webp
-      alt: An Indian gaur emerging from dense tea-estate vegetation at night in the Nilgiris.
-    '4':
-      src: images/cards/chairmans-bungalow.webp
-      alt: A lit stone water feature at dusk in the Chairman's Bungalow garden.
-    '5':
-      src: images/cards/karavulapalli-farm.webp
-      alt: A restored stone-lined stream running through a regenerating semi-arid farm landscape.
-    '6':
-      src: images/cards/context-responsive-design.webp
-      alt: Context-Responsive Design, project photograph.
-  pi-index:
-    '0': '01'
-    '1': '02'
-    '2': '03'
-    '3': '04'
-    '4': '05'
-    '5': '06'
-    '6': '07'
 pi-work:
   sec-title:
     '0': Projects<span class="sec-kicker">.</span>
@@ -66,3 +19,70 @@ pi-open:
     '0': >-
       <span class="mark">&ldquo;</span>The Earth is what we all have in common.<span
       class="mark">&rdquo;</span>
+work:
+  cards:
+    - slug: bandipur-tiger-reserve
+      index: '01'
+      image: images/cards/bandipur-tiger-reserve.webp
+      width: '560'
+      height: '593'
+      alt: A restored waterhole holding water within the degraded forest landscape at Bandipur.
+      title: Bandipur Tiger Reserve, Karnataka
+      subtitle: Hydro-ecological restoration with Junglescapes Charitable Trust
+      cue: 'View project '
+    - slug: ecological-restoration
+      index: '02'
+      image: images/cards/ecological-restoration.webp
+      width: '560'
+      height: '593'
+      alt: A hand-drawn restoration masterplan showing wetlands, groves and grassland zones.
+      title: Ecological Restoration of Degraded Wildlife Habitat
+      subtitle: Reviving dry deciduous forest and savanna, with Rewilding Earth Foundation
+      cue: 'View project '
+    - slug: mysuru-rail-museum
+      index: '03'
+      image: images/cards/mysuru-rail-museum.webp
+      width: '560'
+      height: '593'
+      alt: The landscape masterplan drawing for the Mysuru Rail Museum revitalisation.
+      title: Mysuru Rail Museum
+      subtitle: Reimagining a heritage railway museum as a biodiverse public space
+      cue: 'View project '
+    - slug: nilgiris-biosphere-reserve
+      index: '04'
+      image: images/cards/nilgiris-biosphere-reserve.webp
+      width: '560'
+      height: '593'
+      alt: An Indian gaur emerging from dense tea-estate vegetation at night in the Nilgiris.
+      title: Nilgiris Biosphere Reserve
+      subtitle: Watershed management and ecological restoration of a tea estate
+      cue: 'View project '
+    - slug: chairmans-bungalow
+      index: '05'
+      image: images/cards/chairmans-bungalow.webp
+      width: '560'
+      height: '593'
+      alt: A lit stone water feature at dusk in the Chairman's Bungalow garden.
+      title: Chairman's Bungalow Landscape
+      subtitle: A sustainable, ecologically sensitive bungalow landscape in the Nilgiris
+      cue: 'View project '
+    - slug: karavulapalli-farm
+      index: '06'
+      image: images/cards/karavulapalli-farm.webp
+      width: '560'
+      height: '593'
+      alt: A restored stone-lined stream running through a regenerating semi-arid farm landscape.
+      title: Regenerative Farm Landscapes, Karavulapalli
+      subtitle: A biodiverse, regenerative community farm with Biome Farms
+      cue: 'View project '
+    - slug: context-responsive-design
+      index: '07'
+      image: images/cards/context-responsive-design.webp
+      width: '560'
+      height: '593'
+      alt: Context-Responsive Design, project photograph.
+      title: Context-Responsive Design
+      subtitle: >-
+        Journey through our design process grounded in minimalism, rootedness and sensory
+        engagement.
+      cue: 'View project '

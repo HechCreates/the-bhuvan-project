@@ -15,8 +15,18 @@
    Two forms, and deliberately no more:
 
      {{path.to.value}}            substitute a value
-     {{#each list}}…{{/each}}     repeat for each item; inside, {{field}} is
-                                  the item's own field and {{@i}} its index
+     {{#each list}}…{{/each}}     repeat for each item
+
+   Inside a loop: {{field}} is the item's own field, {{@i}} its index from
+   zero and {{@n}} from one (the testimonial cards' id="tq-body-3" and the
+   aria-controls that points at it), {{@value}} the item itself when it is a
+   plain string rather than an object, and {{@parent}} the index of the loop
+   one level out. The enclosing scope is still visible, so an absolute path
+   resolves inside a loop as well.
+
+   Loops NEST. A testimonial is an item in a list whose own body is a list of
+   paragraphs -- one card has three, the next has one -- and without nesting
+   the cards could not be a list at all, which is what add and remove need.
 
    Values are inserted raw. They were captured from the markup already
    escaped, so escaping again would double it -- and the round-trip check
@@ -24,28 +34,62 @@
 
 /* hyphens are allowed in a path: the practice keys are slugs
    ("practices.items.ecological-restoration.name") */
-const EACH = /\{\{#each ([\w.-]+)\}\}([\s\S]*?)\{\{\/each\}\}/g;
+const OPEN = /\{\{#each ([\w.-]+)\}\}/g;
+const EITHER = /\{\{#each [\w.-]+\}\}|\{\{\/each\}\}/g;
 const TOKEN = /\{\{([@\w.-]+)\}\}/g;
 
 const dig = (obj, path) => path.split('.').reduce((o, k) => (o == null ? o : o[k]), obj);
 
-const fill = (tpl, scope, missing) => tpl.replace(TOKEN, (m, path) => {
-  const v = dig(scope, path);
-  if (v === undefined || v === null) { missing.push(path); return m; }
-  return String(v);
-});
+/* The {{/each}} that closes the block whose body starts at `from`, counting
+   the ones that open and close in between. A non-greedy regex would stop at
+   the first {{/each}} and hand the inner loop's closing tag to the outer. */
+function closeOf(tpl, from) {
+  const step = new RegExp(EITHER.source, 'g');
+  step.lastIndex = from;
+  let depth = 1, m;
+  while ((m = step.exec(tpl))) {
+    depth += m[0] === '{{/each}}' ? -1 : 1;
+    if (!depth) return { start: m.index, end: step.lastIndex };
+  }
+  return null;
+}
+
+function scopeFor(outer, item, i) {
+  const own = item && typeof item === 'object' && !Array.isArray(item) ? item : { '@value': item };
+  return { ...outer, ...own, '@i': i, '@n': i + 1, '@parent': outer['@i'] };
+}
+
+function expand(tpl, scope, missing) {
+  const open = new RegExp(OPEN.source, 'g');
+  let out = '', at = 0, m;
+  while ((m = open.exec(tpl))) {
+    const bodyAt = m.index + m[0].length;
+    const close = closeOf(tpl, bodyAt);
+    if (!close) break;                       // unbalanced; left alone and reported below
+    out += tpl.slice(at, m.index);
+    const list = dig(scope, m[1]);
+    if (!Array.isArray(list)) {
+      missing.push(m[1] + ' (not a list)');
+      out += tpl.slice(m.index, close.end);
+    } else {
+      const body = tpl.slice(bodyAt, close.start);
+      out += list.map((item, i) => expand(body, scopeFor(scope, item, i), missing)).join('');
+    }
+    at = close.end;
+    open.lastIndex = close.end;
+  }
+  out += tpl.slice(at);
+
+  return out.replace(TOKEN, (whole, path) => {
+    const v = dig(scope, path);
+    if (v === undefined || v === null) { missing.push(path); return whole; }
+    return String(v);
+  });
+}
 
 export function render(tpl, data) {
   const missing = [];
-
-  const out = tpl.replace(EACH, (m, listPath, itemTpl) => {
-    const list = dig(data, listPath);
-    if (!Array.isArray(list)) { missing.push(listPath + ' (not a list)'); return m; }
-    return list.map((item, i) => fill(itemTpl, { ...item, '@i': i }, missing)).join('');
-  });
-
-  const filled = fill(out, data, missing);
-
+  const filled = expand(tpl, data, missing);
   if (missing.length) {
     throw new Error('template has values with nothing to fill them:\n  ' + [...new Set(missing)].join('\n  '));
   }

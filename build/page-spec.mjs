@@ -83,11 +83,100 @@ export const SPEC = {
     ],
   },
 
-  /* No lists yet -- everything on these is found by the walker. Adding and
-     removing FAQ entries and project cards comes next; editing them works
-     now. */
-  faq: { lists: [] },
+  faq: {
+    lists: [
+      {
+        /* The container ends at the "Still unsure…" line, not at the wrap's
+           closing tag: that paragraph sits among the entries but is not one,
+           and a container that swallowed it would repeat it once per
+           question. */
+        path: 'faq.items',
+        skipClass: 'faq-item',
+        container: /(<section class="faq-list"[^>]*>\s*<div class="wrap">)([\s\S]*?)(\s*<p class="faq-foot">)/,
+        item: /\s*<article class="faq-item"[^>]*>\s*<h2 class="faq-q"[^>]*>([\s\S]*?)<\/h2>\s*<p class="faq-a"[^>]*>([\s\S]*?)<\/p>\s*<\/article>/g,
+        fields: ['q', 'a'],
+        template: `
+      <article class="faq-item" data-item="faq.items.{{@i}}">
+        <h2 class="faq-q" data-edit="faq.items.{{@i}}.q">{{q}}</h2>
+        <p class="faq-a" data-edit="faq.items.{{@i}}.a">{{a}}</p>
+      </article>`,
+      },
+    ],
+  },
+
   contact: { lists: [] },
-  projects: { lists: [] },
-  testimonials: { lists: [] },
+
+  projects: {
+    lists: [
+      {
+        /* The cards on the projects index. The route is derived from the
+           slug rather than stored beside it: two copies of the same fact is
+           how a card comes to link at one project and be labelled another. */
+        path: 'work.cards',
+        skipClass: 'pi-card',
+        container: /(<div class="pi-grid">)([\s\S]*?)(\s*<\/div>\s*<\/div>\s*<\/section>)/,
+        item: /\s*<article class="pi-card"[^>]*>\s*<a class="pi-link" href="#\/projects\/([a-z0-9-]+)" data-route="p-[a-z0-9-]+">\s*<span class="pi-index"[^>]*>([^<]*)<\/span>\s*<div class="pi-media">\s*<img src="([^"]+)" width="(\d+)" height="(\d+)" loading="lazy" decoding="async"\s*alt="([^"]*)"[^>]*>\s*<\/div>\s*<h2 class="pi-title"[^>]*>([\s\S]*?)<\/h2>\s*<p class="pi-sub"[^>]*>([\s\S]*?)<\/p>\s*<span class="pi-cue">([\s\S]*?)<span aria-hidden="true">&rarr;<\/span><\/span>\s*<\/a>\s*<\/article>/g,
+        fields: ['slug', 'index', 'image', 'width', 'height', 'alt', 'title', 'subtitle', 'cue'],
+        template: `
+      <article class="pi-card" data-item="work.cards.{{@i}}">
+        <a class="pi-link" href="#/projects/{{slug}}" data-route="p-{{slug}}">
+          <span class="pi-index" data-edit="work.cards.{{@i}}.index">{{index}}</span>
+          <div class="pi-media">
+            <img src="{{image}}" width="{{width}}" height="{{height}}" loading="lazy" decoding="async"
+                 alt="{{alt}}" data-edit-src="work.cards.{{@i}}.image" data-edit-alt="work.cards.{{@i}}.alt">
+          </div>
+          <h2 class="pi-title" data-edit="work.cards.{{@i}}.title">{{title}}</h2>
+          <p class="pi-sub" data-edit="work.cards.{{@i}}.subtitle">{{subtitle}}</p>
+          <span class="pi-cue">{{cue}}<span aria-hidden="true">&rarr;</span></span>
+        </a>
+      </article>`,
+      },
+    ],
+  },
+
+  testimonials: {
+    lists: [
+      {
+        /* The only list whose items contain a list of their own: one
+           testimonial runs to three paragraphs, the next to one. `map`
+           exists for that -- the body is captured as markup and split, so
+           the paragraphs stay separately editable and can themselves be
+           added to.
+
+           The silhouette's width, height and --sil-* custom properties are
+           stored with the photograph because they were measured FROM it:
+           they frame that particular cut-out. Copying a card copies its
+           framing, which is right until the photograph is replaced. */
+        path: 'tst.cards',
+        skipClass: 'tq-card',
+        container: /(<div class="wrap tst-stack">)([\s\S]*?)(\s*<\/div>\s*<\/section>)/,
+        item: /\s*<article class="tq-card"[^>]*>\s*<span class="tq-mark" aria-hidden="true">&ldquo;<\/span>\s*<div class="tq-body" id="tq-body-\d+">\s*<p class="tq-lede" aria-hidden="true"[^>]*>([\s\S]*?)<\/p>\s*<div class="tq-full">([\s\S]*?)<\/div>\s*<\/div>\s*<button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-\d+">\s*<span class="tq-more-text"[^>]*>([\s\S]*?)<\/span><svg class="tq-chev"[\s\S]*?<\/svg>\s*<\/button>\s*<img class="tq-sil" width="(\d+)" height="(\d+)" src="([^"]+)" style="([^"]*)" alt="([^"]*)" loading="lazy" decoding="async"[^>]*>\s*<footer class="tq-by">\s*<p class="tq-name"[^>]*>([\s\S]*?)<\/p>\s*<p class="tq-role"[^>]*>([\s\S]*?)<\/p>\s*<\/footer>\s*<\/article>/g,
+        map: m => ({
+          lede: m[1],
+          body: [...m[2].matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map(p => p[1]),
+          more: m[3],
+          silWidth: m[4], silHeight: m[5], silImage: m[6], silStyle: m[7], silAlt: m[8],
+          name: m[9], role: m[10],
+        }),
+        template: `
+      <article class="tq-card" data-item="tst.cards.{{@i}}">
+        <span class="tq-mark" aria-hidden="true">&ldquo;</span>
+        <div class="tq-body" id="tq-body-{{@n}}">
+          <p class="tq-lede" aria-hidden="true" data-edit="tst.cards.{{@i}}.lede">{{lede}}</p>
+          <div class="tq-full">{{#each body}}
+            <p data-edit="tst.cards.{{@parent}}.body.{{@i}}">{{@value}}</p>{{/each}}
+          </div>
+        </div>
+        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-{{@n}}">
+          <span class="tq-more-text" data-edit="tst.cards.{{@i}}.more">{{more}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <img class="tq-sil" width="{{silWidth}}" height="{{silHeight}}" src="{{silImage}}" style="{{silStyle}}" alt="{{silAlt}}" loading="lazy" decoding="async" data-edit-src="tst.cards.{{@i}}.silImage" data-edit-alt="tst.cards.{{@i}}.silAlt">
+        <footer class="tq-by">
+          <p class="tq-name" data-edit="tst.cards.{{@i}}.name">{{name}}</p>
+          <p class="tq-role" data-edit="tst.cards.{{@i}}.role">{{role}}</p>
+        </footer>
+      </article>`,
+      },
+    ],
+  },
 };

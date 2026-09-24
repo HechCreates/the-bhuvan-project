@@ -7,96 +7,24 @@
     </div>
   </section>
   <section class="tst-list" aria-label="Testimonials">
-    <div class="wrap tst-stack">
-      <article class="tq-card">
+    <div class="wrap tst-stack">{{#each tst.cards}}
+      <article class="tq-card" data-item="tst.cards.{{@i}}">
         <span class="tq-mark" aria-hidden="true">&ldquo;</span>
-        <div class="tq-body" id="tq-body-1">
-          <p class="tq-lede" aria-hidden="true" data-edit="tq-card.tq-lede.0">{{tq-card.tq-lede.0}}</p>
-          <div class="tq-full">
-            <p data-edit="tq-card.p.0">{{tq-card.p.0}}</p>
+        <div class="tq-body" id="tq-body-{{@n}}">
+          <p class="tq-lede" aria-hidden="true" data-edit="tst.cards.{{@i}}.lede">{{lede}}</p>
+          <div class="tq-full">{{#each body}}
+            <p data-edit="tst.cards.{{@parent}}.body.{{@i}}">{{@value}}</p>{{/each}}
           </div>
         </div>
-        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-1">
-          <span class="tq-more-text" data-edit="tq-card.tq-more-text.0">{{tq-card.tq-more-text.0}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-{{@n}}">
+          <span class="tq-more-text" data-edit="tst.cards.{{@i}}.more">{{more}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <img class="tq-sil" width="128" height="420" src="{{tq-card.tq-sil.0.src}}" style="--sil-x:80.5%;--sil-ar:0.305;--sil-min:251px" alt="{{tq-card.tq-sil.0.alt}}" loading="lazy" decoding="async" data-edit-src="tq-card.tq-sil.0.src" data-edit-alt="tq-card.tq-sil.0.alt">
+        <img class="tq-sil" width="{{silWidth}}" height="{{silHeight}}" src="{{silImage}}" style="{{silStyle}}" alt="{{silAlt}}" loading="lazy" decoding="async" data-edit-src="tst.cards.{{@i}}.silImage" data-edit-alt="tst.cards.{{@i}}.silAlt">
         <footer class="tq-by">
-          <p class="tq-name" data-edit="tq-card.tq-name.0">{{tq-card.tq-name.0}}</p>
-          <p class="tq-role" data-edit="tq-card.tq-role.0">{{tq-card.tq-role.0}}</p>
+          <p class="tq-name" data-edit="tst.cards.{{@i}}.name">{{name}}</p>
+          <p class="tq-role" data-edit="tst.cards.{{@i}}.role">{{role}}</p>
         </footer>
-      </article>
-      <article class="tq-card">
-        <span class="tq-mark" aria-hidden="true">&ldquo;</span>
-        <div class="tq-body" id="tq-body-2">
-          <p class="tq-lede" aria-hidden="true" data-edit="tq-card.tq-lede.1">{{tq-card.tq-lede.1}}</p>
-          <div class="tq-full">
-            <p data-edit="tq-card.p.1">{{tq-card.p.1}}</p>
-            <p data-edit="tq-card.p.2">{{tq-card.p.2}}</p>
-            <p data-edit="tq-card.p.3">{{tq-card.p.3}}</p>
-          </div>
-        </div>
-        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-2">
-          <span class="tq-more-text" data-edit="tq-card.tq-more-text.1">{{tq-card.tq-more-text.1}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <img class="tq-sil" width="288" height="420" src="{{tq-card.tq-sil.1.src}}" style="--sil-x:17%;--sil-ar:0.686;--sil-min:205px" alt="{{tq-card.tq-sil.1.alt}}" loading="lazy" decoding="async" data-edit-src="tq-card.tq-sil.1.src" data-edit-alt="tq-card.tq-sil.1.alt">
-        <footer class="tq-by">
-          <p class="tq-name" data-edit="tq-card.tq-name.1">{{tq-card.tq-name.1}}</p>
-          <p class="tq-role" data-edit="tq-card.tq-role.1">{{tq-card.tq-role.1}}</p>
-        </footer>
-      </article>
-      <article class="tq-card">
-        <span class="tq-mark" aria-hidden="true">&ldquo;</span>
-        <div class="tq-body" id="tq-body-3">
-          <p class="tq-lede" aria-hidden="true" data-edit="tq-card.tq-lede.2">{{tq-card.tq-lede.2}}</p>
-          <div class="tq-full">
-            <p data-edit="tq-card.p.4">{{tq-card.p.4}}</p>
-          </div>
-        </div>
-        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-3">
-          <span class="tq-more-text" data-edit="tq-card.tq-more-text.2">{{tq-card.tq-more-text.2}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <img class="tq-sil" width="299" height="420" src="{{tq-card.tq-sil.2.src}}" style="--sil-x:43.3%;--sil-ar:0.712;--sil-min:166px" alt="{{tq-card.tq-sil.2.alt}}" loading="lazy" decoding="async" data-edit-src="tq-card.tq-sil.2.src" data-edit-alt="tq-card.tq-sil.2.alt">
-        <footer class="tq-by">
-          <p class="tq-name" data-edit="tq-card.tq-name.2">{{tq-card.tq-name.2}}</p>
-          <p class="tq-role" data-edit="tq-card.tq-role.2">{{tq-card.tq-role.2}}</p>
-        </footer>
-      </article>
-      <article class="tq-card">
-        <span class="tq-mark" aria-hidden="true">&ldquo;</span>
-        <div class="tq-body" id="tq-body-4">
-          <p class="tq-lede" aria-hidden="true" data-edit="tq-card.tq-lede.3">{{tq-card.tq-lede.3}}</p>
-          <div class="tq-full">
-            <p data-edit="tq-card.p.5">{{tq-card.p.5}}</p>
-            <p data-edit="tq-card.p.6">{{tq-card.p.6}}</p>
-            <p data-edit="tq-card.p.7">{{tq-card.p.7}}</p>
-          </div>
-        </div>
-        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-4">
-          <span class="tq-more-text" data-edit="tq-card.tq-more-text.3">{{tq-card.tq-more-text.3}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <img class="tq-sil" width="300" height="420" src="{{tq-card.tq-sil.3.src}}" style="--sil-x:90.8%;--sil-ar:0.714;--sil-min:304px" alt="{{tq-card.tq-sil.3.alt}}" loading="lazy" decoding="async" data-edit-src="tq-card.tq-sil.3.src" data-edit-alt="tq-card.tq-sil.3.alt">
-        <footer class="tq-by">
-          <p class="tq-name" data-edit="tq-card.tq-name.3">{{tq-card.tq-name.3}}</p>
-          <p class="tq-role" data-edit="tq-card.tq-role.3">{{tq-card.tq-role.3}}</p>
-        </footer>
-      </article>
-      <article class="tq-card">
-        <span class="tq-mark" aria-hidden="true">&ldquo;</span>
-        <div class="tq-body" id="tq-body-5">
-          <p class="tq-lede" aria-hidden="true" data-edit="tq-card.tq-lede.4">{{tq-card.tq-lede.4}}</p>
-          <div class="tq-full">
-            <p data-edit="tq-card.p.8">{{tq-card.p.8}}</p>
-          </div>
-        </div>
-        <button class="tq-more" type="button" aria-expanded="false" aria-controls="tq-body-5">
-          <span class="tq-more-text" data-edit="tq-card.tq-more-text.4">{{tq-card.tq-more-text.4}}</span><svg class="tq-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5 L12 15.5 L18 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <img class="tq-sil" width="829" height="420" src="{{tq-card.tq-sil.4.src}}" style="--sil-x:52.3%;--sil-ar:1.974;--sil-min:449px" alt="{{tq-card.tq-sil.4.alt}}" loading="lazy" decoding="async" data-edit-src="tq-card.tq-sil.4.src" data-edit-alt="tq-card.tq-sil.4.alt">
-        <footer class="tq-by">
-          <p class="tq-name" data-edit="tq-card.tq-name.4">{{tq-card.tq-name.4}}</p>
-          <p class="tq-role" data-edit="tq-card.tq-role.4">{{tq-card.tq-role.4}}</p>
-        </footer>
-      </article>
+      </article>{{/each}}
     </div>
   </section>
 <footer class="footer"></footer>

@@ -123,7 +123,11 @@ function extract(page) {
       continue;
     }
 
-    put(L.path, items.map(m => Object.fromEntries(L.fields.map((f, i) => [f, m[i + 1]]))));
+    /* `fields` names one capture group each, which covers every list but
+       one. A testimonial's body is a run of paragraphs inside a single
+       group, so that list brings its own `map` to split it. */
+    put(L.path, items.map(m =>
+      L.map ? L.map(m) : Object.fromEntries(L.fields.map((f, i) => [f, m[i + 1]]))));
     tpl = tpl.replace(L.container, `$1{{#each ${L.path}}}${L.template}{{/each}}$3`);
     listCount++;
     console.log(`  list  ${L.path.padEnd(26)} ${items.length} items`);

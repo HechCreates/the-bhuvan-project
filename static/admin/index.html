@@ -92,6 +92,7 @@
   .chg .acts{float:right;display:flex;gap:.5rem}
   .chg .acts button{font:inherit;font-size:.72rem;background:none;border:0;
     cursor:pointer;text-decoration:underline;padding:0}
+  .chg.structural{border-left:3px solid var(--clay-solid);padding-left:.5rem}
   .chg .acts .undo{color:var(--bad)}
   .chg .acts .pub{color:var(--good)}
   .chg .acts button:disabled{opacity:.45;cursor:not-allowed;text-decoration:none}
@@ -193,7 +194,15 @@
   var pending = {}, order = [], images = {};
   var scope = '';
 
-  function key(s, p) { return s + ':' + p; }
+  /* Editing the same field twice should leave ONE change, so a change is
+     keyed by the field it writes. But adding or removing an item renumbers
+     every item after it, so "faq.items.5.q" before an insert and
+     "faq.items.5.q" after it are two different questions. The epoch counts
+     the adds and removes, and belongs to the key -- which keeps the earlier
+     edit from being silently swallowed by the later one. */
+  var epoch = 0;
+
+  function key(s, p) { return epoch + '|' + s + ':' + p; }
 
   function record(s, p, was, now, image) {
     var k = key(s, p);
@@ -207,6 +216,22 @@
     paint();
   }
 
+  /* Adding and removing are recorded whole rather than as a set of field
+     changes: the server copies the item it was pressed on, so the fields the
+     editor never marked -- a testimonial's silhouette framing, a card's
+     width and height -- come along without the editor having to know they
+     exist. `values` carries what IS marked, so a copy taken after an unsaved
+     edit says what the screen said. */
+  function structural(s, op, path, values, label) {
+    var k = key(s, '!' + op + ':' + path);
+    order.push(k);
+    pending[k] = { scope: s, path: path, op: op, values: values || null, label: label, was: '', now: '' };
+    epoch++;
+    paint();
+  }
+
+  function isStructural(c) { return c.op === 'insert' || c.op === 'remove'; }
+
   function liveCount() { return order.filter(function (k) { return pending[k]; }).length; }
 
   function paint() {
@@ -218,37 +243,65 @@
 
     if (!n) { el.changes.innerHTML = '<p class="empty">Nothing changed yet.</p>'; return; }
     el.changes.innerHTML = '';
+    /* Once an add or a remove is waiting, everything below it is numbered
+       from the list that change makes -- so it cannot go to the site first. */
+    var blocked = false;
     order.forEach(function (k) {
       var c = pending[k];
       if (!c) return;
       var d = document.createElement('div');
-      d.className = 'chg';
+      d.className = 'chg' + (isStructural(c) ? ' structural' : '');
 
       var acts = document.createElement('div');
       acts.className = 'acts';
       /* Publishing one change is the same request as publishing all of them,
          with one entry in it -- so there is only one code path that writes. */
-      acts.appendChild(action('pub', 'publish', function () { publish([k]); }));
-      acts.appendChild(action('undo', 'undo', function () { revert(k); }));
+      var pub = action('pub', 'publish', function () { publish([k]); });
+      if (blocked) {
+        pub.disabled = true;
+        pub.title = 'Publish the add or remove above this one first: this change counts from it.';
+      }
+      acts.appendChild(pub);
+      var undo = action('undo', 'undo', function () { revert(k); });
+      var after = order.slice(order.indexOf(k) + 1).filter(function (x) { return pending[x]; }).length;
+      if (after) undo.title = 'Undoes this and the ' + after + ' change' + (after === 1 ? '' : 's') + ' after it.';
+      acts.appendChild(undo);
       d.appendChild(acts);
 
       var what = document.createElement('span');
       what.className = 'what';
-      what.textContent = capitalise(friendly(c.path));
+      what.textContent = c.label || capitalise(friendly(c.path));
       d.appendChild(what);
 
       var code = document.createElement('code');
       code.textContent = c.path;
       d.appendChild(code);
-      var was = document.createElement('div');
-      was.className = 'was';
-      was.textContent = plain(c.was) || '(empty)';
-      var now = document.createElement('div');
-      now.className = 'now';
-      now.textContent = c.image ? ('new photograph: ' + c.image.filename) : (plain(c.now) || '(empty)');
-      d.appendChild(was); d.appendChild(now);
+
+      if (isStructural(c)) {
+        var note = document.createElement('div');
+        note.className = 'now';
+        note.textContent = c.op === 'insert'
+          ? 'a copy, to edit — everything after it moves down one'
+          : 'everything after it moves up one';
+        d.appendChild(note);
+      } else {
+        var was = document.createElement('div');
+        was.className = 'was';
+        was.textContent = plain(c.was) || '(empty)';
+        var now = document.createElement('div');
+        now.className = 'now';
+        now.textContent = c.image ? ('new photograph: ' + c.image.filename) : (plain(c.now) || '(empty)');
+        d.appendChild(was); d.appendChild(now);
+      }
+
       el.changes.appendChild(d);
+      if (isStructural(c)) blocked = true;
     });
+
+    /* the bar along the bottom counts the unsaved changes too, and saying
+       "1 unsaved" while the drawer lists three is exactly the kind of thing
+       that makes a tool feel untrustworthy */
+    if (!hovering) peek(null);
   }
 
   function action(cls, label, fn) {
@@ -267,14 +320,34 @@
 
   function plain(v) { return String(v == null ? '' : v).replace(/<[^>]*>/g, '').trim().slice(0, 140); }
 
+  /* Undo is a stack, not a pick-and-choose.
+   *
+   * Adding or removing an item renumbers every item after it, so a change
+   * made afterwards is described in terms of the list that change created.
+   * Undoing it and keeping the later ones would leave those later ones
+   * pointing at rows that had moved -- an edit landing on the wrong
+   * testimonial, which is the kind of mistake nobody would spot until it was
+   * published. So undoing a change undoes everything made after it too, and
+   * says how many that was.
+   *
+   * Publishing, unlike undoing, can still take one change on its own -- as
+   * long as no add or remove sits above it. paint() disables the ones where
+   * it does.
+   */
   function revert(k) {
-    var c = pending[k];
-    if (!c) return;
-    delete pending[k];
-    order = order.filter(function (x) { return x !== k; });
-    if (c.image) delete images[c.image.id];
+    if (!pending[k]) return;
+    var from = order.indexOf(k);
+    var dropped = order.slice(from).filter(function (x) { return pending[x]; });
+
+    dropped.forEach(function (x) {
+      if (pending[x].image) delete images[pending[x].image.id];
+      delete pending[x];
+    });
+    order = order.slice(0, from);
+
     paint();
-    reload();               // simplest honest undo: show what is actually stored
+    reload();               // the stored page, with whatever is left replayed on top
+    if (dropped.length > 1) setStatus('undid ' + dropped.length + ' changes', 'ok');
   }
 
   function setStatus(text, kind) {
@@ -298,7 +371,14 @@
     'meaning-text': 'the Sanskrit line', 'label': 'small label', 'about-cap': 'caption',
     'practice-name': 'practice name', 'practice-desc': 'practice description',
     'body': 'paragraph', 'caption': 'caption', 'alt': 'description for screen readers',
-    'image': 'photograph', 'src': 'photograph', 'file': 'photograph', 'title': 'title'
+    'image': 'photograph', 'src': 'photograph', 'file': 'photograph', 'title': 'title',
+    /* the lists that can be added to and removed from */
+    'faq': 'FAQ', 'items': 'entry', 'q': 'question', 'a': 'answer',
+    'work': 'projects', 'cards': 'card', 'subtitle': 'subtitle', 'index': 'number',
+    'tst': 'testimonial', 'lede': 'summary line', 'more': 'read-more label',
+    'silImage': 'silhouette', 'silAlt': 'silhouette description',
+    'hero': 'hero', 'tags': 'tag', 'plates': 'card', 'logos': 'logo',
+    'members': 'member', 'team': 'team', 'collaborators': 'collaborators'
   };
 
   function friendly(path) {
@@ -328,7 +408,10 @@
 
   function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
+  var hovering = false;
+
   function peek(info) {
+    hovering = Boolean(info);
     if (!info) {
       var n = liveCount();
       el.peekWhat.textContent = countEditable() + ' things you can change on this page';
@@ -369,14 +452,15 @@
       '.bhv-tools{position:absolute;top:2px;left:2px;z-index:9;display:flex;gap:2px;' +
         'background:#241B06;border-radius:4px;padding:2px;opacity:0;transition:opacity .12s}' +
       '[data-item]:hover .bhv-tools{opacity:1}' +
-      '.bhv-tools button{font:600 12px/1 system-ui;color:#F3EFE6;background:transparent;' +
-        'border:0;padding:4px 7px;cursor:pointer;border-radius:3px}' +
-      '.bhv-tools button:hover{background:#8F5628}';
+      '.bhv-tools button{font:600 13px/1 system-ui;color:#F3EFE6;background:transparent;' +
+        'border:0;padding:5px 8px;cursor:pointer;border-radius:3px}' +
+      '.bhv-tools button:hover{background:#8F5628}' +
+      /* removing is the one that cannot be pressed by accident and shrugged
+         off, so it is the one that looks different */
+      '.bhv-tools button:last-child:hover{background:#B23A34}';
     doc.head.appendChild(style);
 
-    doc.querySelectorAll('[data-edit]').forEach(wireText);
-    doc.querySelectorAll('[data-edit-src]').forEach(wireImage);
-    doc.querySelectorAll('[data-item]').forEach(wireItem);
+    wire(doc);
 
     /* links would navigate away from the page being edited */
     doc.addEventListener('click', function (e) {
@@ -386,16 +470,39 @@
     }, true);
 
     doc.addEventListener('mouseover', function (e) {
-      var n = e.target.closest && e.target.closest('[data-edit],[data-edit-src]');
-      peek(describe(n));
+      if (!e.target.closest) return;
+      /* the tool bar first: its buttons sit INSIDE an item, so the item
+         would otherwise answer for them and the bar would name the wrong
+         thing -- the whole point of the bar is that it says what you are
+         about to press */
+      var tool = e.target.closest('[data-peek]');
+      if (tool) {
+        var owner = tool.closest('[data-item]');
+        return peek({ what: tool.getAttribute('data-peek'), hint: '',
+                      path: owner ? owner.getAttribute('data-item') : '' });
+      }
+      peek(describe(e.target.closest('[data-edit],[data-edit-src]')));
     });
     doc.addEventListener('mouseleave', function () { peek(null); });
 
+    replay();
     peek(null);
   }
 
+  /* Everything editable inside `root`, and `root` itself if it is editable.
+     Called once for the whole document on load, and again for each copy an
+     editor adds -- cloneNode copies markup, never the listeners on it. */
+  function wire(root) {
+    var self = root.matches ? root : null;
+    if (self && root.matches('[data-edit]')) wireText(root);
+    if (self && root.matches('[data-edit-src]')) wireImage(root);
+    root.querySelectorAll('[data-edit]').forEach(wireText);
+    root.querySelectorAll('[data-edit-src]').forEach(wireImage);
+    if (self && root.matches('[data-item]')) wireItem(root);
+    root.querySelectorAll('[data-item]').forEach(wireItem);
+  }
+
   function wireText(node) {
-    var path = node.getAttribute('data-edit');
     node.addEventListener('click', function (e) {
       if (node.getAttribute('contenteditable') === 'true') return;
       e.preventDefault(); e.stopPropagation();
@@ -409,7 +516,11 @@
       node.removeAttribute('contenteditable');
       var was = node.dataset.bhvWas, now = node.innerHTML.trim();
       if (now !== was) node.classList.add('bhv-edited');
-      record(scope, path, was, now);
+      /* read the field NOW, not when this element was wired. Moving an item,
+         or adding one above it, renames every field below -- and a path read
+         once at wiring would still be the old name, so the edit landed on
+         whichever item had taken this one's place. */
+      record(scope, node.getAttribute('data-edit'), was, now);
     });
     node.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); node.blur(); }
@@ -529,22 +640,186 @@
     img.src = URL.createObjectURL(file);
   }
 
-  /* ---------- items in a list: move and remove ----------
-     Only lists declare data-item, because only a list can be reordered
-     without inventing a layout the design does not have. */
+  /* ---------- items in a list: move, add, remove ----------
+     Only lists declare data-item, because only a list can be added to or
+     reordered without inventing a layout the design does not have. */
   function wireItem(node) {
     var doc = el.site.contentDocument;
+    if (node.querySelector(':scope > .bhv-tools')) return;   // a clone brings one with it
     var tools = doc.createElement('div');
     tools.className = 'bhv-tools';
     tools.setAttribute('contenteditable', 'false');
 
-    [['←', -1, 'Move earlier'], ['→', 1, 'Move later']].forEach(function (spec) {
+    [['←', 'Move earlier', function () { move(node, -1); }],
+     ['→', 'Move later', function () { move(node, 1); }],
+     ['+', 'Add a copy of this one after it', function () { addCopy(node); }],
+     ['−', 'Remove this one', function () { removeItem(node); }]
+    ].forEach(function (spec) {
       var b = doc.createElement('button');
-      b.type = 'button'; b.textContent = spec[0]; b.title = spec[2];
-      b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); move(node, spec[1]); };
+      b.type = 'button';
+      b.textContent = spec[0];
+      b.title = spec[1];
+      /* the hover bar names it too: a title attribute takes a second to
+         appear and this is the tool bar someone said they could not read */
+      b.setAttribute('data-peek', spec[1]);
+      b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); spec[2](); };
       tools.appendChild(b);
     });
     node.appendChild(tools);
+  }
+
+  /* ---------- keeping the page's paths and its order in step ----------
+     Every item's fields are named by its position -- "faq.items.3.q" -- so
+     the moment the order changes, or an item appears or disappears, the
+     names on the page are stale. renumber() walks the list in the order it
+     is now ON SCREEN and gives each item the name of the place it occupies.
+     Without it, moving an item and then editing it wrote the edit into the
+     item it had traded places with. */
+  var PATH_ATTRS = ['data-item', 'data-edit', 'data-edit-src', 'data-edit-alt'];
+
+  function rebase(node, from, to) {
+    if (from === to) return;
+    var nodes = [node].concat(Array.prototype.slice.call(
+      node.querySelectorAll('[data-item],[data-edit],[data-edit-src],[data-edit-alt]')));
+    nodes.forEach(function (n) {
+      PATH_ATTRS.forEach(function (a) {
+        var v = n.getAttribute(a);
+        if (v === from) n.setAttribute(a, to);
+        else if (v && v.indexOf(from + '.') === 0) n.setAttribute(a, to + v.slice(from.length));
+      });
+    });
+  }
+
+  /* The items of the list this one belongs to, in screen order. Siblings
+     only, and only those in the SAME list: two lists can sit in one parent. */
+  function listOf(node) {
+    var base = node.getAttribute('data-item');
+    var prefix = base.slice(0, base.lastIndexOf('.'));
+    var items = Array.prototype.filter.call(node.parentNode.children, function (n) {
+      var p = n.getAttribute && n.getAttribute('data-item');
+      return p && p.slice(0, p.lastIndexOf('.')) === prefix;
+    });
+    return { prefix: prefix, items: items, at: items.indexOf(node) };
+  }
+
+  function renumber(list) {
+    list.items.forEach(function (n, i) {
+      rebase(n, n.getAttribute('data-item'), list.prefix + '.' + i);
+    });
+  }
+
+  /* A copy carries its original's ids, and two elements with one id means
+     the copy's "read the full testimonial" button expands the original.
+     Only in the preview -- the published page is numbered by the template --
+     but it looks broken, so the copy gets its own. */
+  function freshIds(clone) {
+    var stamp = Date.now().toString(36);
+    Array.prototype.slice.call(clone.querySelectorAll('[id]')).forEach(function (n) {
+      var was = n.id, now = was + '-' + stamp;
+      Array.prototype.slice.call(clone.querySelectorAll(
+        '[aria-controls="' + was + '"],[for="' + was + '"],[href="#' + was + '"]'
+      )).forEach(function (r) {
+        if (r.getAttribute('aria-controls') === was) r.setAttribute('aria-controls', now);
+        if (r.getAttribute('for') === was) r.setAttribute('for', now);
+        if (r.getAttribute('href') === '#' + was) r.setAttribute('href', '#' + now);
+      });
+      n.id = now;
+    });
+  }
+
+  /* The two halves are kept apart on purpose. insertDom/removeDom change
+     what is on the screen and nothing else, so replay() can put the screen
+     back together after a reload without recording the same change twice. */
+  function insertDom(node, values) {
+    var clone = node.cloneNode(true);
+    /* the original's tool bar comes across as markup with no listeners on
+       it; wire() puts a live one back */
+    Array.prototype.slice.call(clone.querySelectorAll('.bhv-tools')).forEach(function (t) { t.remove(); });
+    freshIds(clone);
+    node.parentNode.insertBefore(clone, node.nextSibling);
+    renumber(listOf(clone));
+    wire(clone);
+    clone.classList.add('bhv-edited');
+    if (values) {
+      var base = clone.getAttribute('data-item');
+      Object.keys(values).forEach(function (f) { putField(clone, base + '.' + f, values[f]); });
+    }
+    return clone;
+  }
+
+  function removeDom(node) {
+    var list = listOf(node);
+    var parent = node.parentNode;
+    node.remove();
+    var rest = Array.prototype.filter.call(parent.children, function (n) {
+      var p = n.getAttribute && n.getAttribute('data-item');
+      return p && p.slice(0, p.lastIndexOf('.')) === list.prefix;
+    });
+    renumber({ prefix: list.prefix, items: rest });
+  }
+
+  function addCopy(node) {
+    var base = node.getAttribute('data-item');
+    /* recorded BEFORE the page is renumbered: the index in the change is the
+       one the list has now, which is the one the server will splice into */
+    structural(scope, 'insert', base, fieldsOf(node, base), 'Added a copy of ' + friendly(base));
+    insertDom(node, null).scrollIntoView({ block: 'center', behavior: 'smooth' });
+    setStatus('copy added — edit it, then press Publish', 'ok');
+  }
+
+  function removeItem(node) {
+    if (listOf(node).items.length <= 1) {
+      setStatus('this is the last one; removing it would leave the section empty', 'err');
+      return;
+    }
+    var base = node.getAttribute('data-item');
+    if (!confirm('Remove ' + friendly(base) + '? You can undo it before publishing.')) return;
+    structural(scope, 'remove', base, null, 'Removed ' + friendly(base));
+    removeDom(node);
+    setStatus('removed — press Publish to keep it, or Undo', 'ok');
+  }
+
+  /* ---------- putting a value back on the page ----------
+     One field, wherever it lives: the words of a paragraph, the file a
+     photograph points at, or the description that travels with it. */
+  function putField(root, path, value) {
+    var sel = '[data-edit="' + path + '"],[data-edit-src="' + path + '"],[data-edit-alt="' + path + '"]';
+    var n = (root.matches && root.matches(sel)) ? root : root.querySelector(sel);
+    if (!n) return false;
+
+    if (n.getAttribute('data-edit') === path) n.innerHTML = value;
+    else if (n.getAttribute('data-edit-alt') === path) n.setAttribute('alt', value);
+    else {
+      /* a photograph waiting to be published has no file on the server yet,
+         so the picture to show is the one still in the browser */
+      var held = images[value];
+      var prefix = (n.getAttribute('src').match(/^(\.\.\/)*/) || [''])[0];
+      n.setAttribute('src', held ? 'data:image/webp;base64,' + held.base64 : prefix + value);
+    }
+    n.classList.add('bhv-edited');
+    return true;
+  }
+
+  /* After the frame reloads it shows what is STORED. Everything still
+     waiting to be published is put back on top, in the order it was made, so
+     the page and the list of changes never disagree -- which matters most
+     for an added item, which would otherwise vanish from the screen while
+     still being queued to appear on the site. */
+  function replay() {
+    var doc = el.site.contentDocument;
+    if (!doc) return;
+    order.forEach(function (k) {
+      var c = pending[k];
+      if (!c) return;
+      if (isStructural(c)) {
+        var node = doc.querySelector('[data-item="' + c.path + '"]');
+        if (!node) return;
+        if (c.op === 'insert') insertDom(node, c.values);
+        else removeDom(node);
+      } else {
+        putField(doc.documentElement, c.path, c.now);
+      }
+    });
   }
 
   /* Reordering is expressed as a set of field changes -- item A takes item
@@ -572,6 +847,14 @@
     /* show it immediately by moving the element */
     if (delta < 0) other.parentNode.insertBefore(node, other);
     else other.parentNode.insertBefore(other, node);
+
+    /* and give both items the name of the place they now occupy. The values
+       above were recorded against the OLD names, which is why that happens
+       first. Without this the element kept the name of where it used to be,
+       so editing an item after moving it wrote the edit into the item it had
+       traded places with. */
+    renumber(listOf(node));
+
     node.classList.add('bhv-edited');
     setStatus('moved — press Publish to keep it', 'ok');
   }
@@ -608,13 +891,22 @@
 
     var changes = take.map(function (k) {
       var c = pending[k];
-      return { scope: c.scope, path: c.path, value: c.now };
+      return isStructural(c)
+        ? { scope: c.scope, path: c.path, op: c.op, values: c.values }
+        : { scope: c.scope, path: c.path, value: c.now };
     });
-    /* only the photographs these changes actually point at */
-    var imgs = take.map(function (k) { return pending[k].image; })
-      .filter(Boolean)
-      .map(function (i) { return images[i.id]; })
-      .filter(Boolean);
+    /* Only the photographs these changes actually point at -- including the
+       ones an added copy carries, which would otherwise be a filename in a
+       content file with no file behind it. */
+    var imgs = [], seen = {};
+    take.forEach(function (k) {
+      var c = pending[k], ids = [];
+      if (c.image) ids.push(c.image.id);
+      if (c.values) Object.keys(c.values).forEach(function (f) { ids.push(c.values[f]); });
+      ids.forEach(function (id) {
+        if (images[id] && !seen[id]) { seen[id] = 1; imgs.push(images[id]); }
+      });
+    });
 
     el.save.disabled = true;
     Array.prototype.forEach.call(el.changes.querySelectorAll('button'), function (b) { b.disabled = true; });

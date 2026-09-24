@@ -26,11 +26,17 @@ const routeT = (s.match(/data-route="testimonials"/g) || []).length;
 check('nav Testimonials wired', soonT === 0 && routeT >= 30, `${routeT} routed, ${soonT} placeholders left`);
 check('testimonials page present', s.includes('data-page="testimonials"'), '');
 check('testimonials has a nav entry that resolves', /data-route="testimonials"/.test(s), '');
+/* Counted against each other, not against a number written here.
+   Testimonials can now be added and removed from /admin/, and a check that
+   insisted on five would stop the site deploying the first time someone
+   added a sixth -- with nothing on screen to say why. What must stay true is
+   that every card still carries its attribution. */
 const tCards = (s.match(/class="tq-card"/g) || []).length;
-check('testimonial cards', tCards === 5, `${tCards} cards`);
+check('testimonial cards present', tCards >= 1, `${tCards} cards`);
 const tNames = (s.match(/class="tq-name"/g) || []).length;
 const tRoles = (s.match(/class="tq-role"/g) || []).length;
-check('every card keeps its attribution', tNames === 5 && tRoles === 5, `${tNames} names, ${tRoles} roles`);
+check('every card keeps its attribution', tNames === tCards && tRoles === tCards,
+  `${tCards} cards, ${tNames} names, ${tRoles} roles`);
 check('expand handler present', s.includes('function tqMeasure()') && s.includes('function tqToggle('), '');
 
 // nav "Projects" no longer a dead placeholder
@@ -68,10 +74,23 @@ check('only gallery still a placeholder',
   [...new Set(soon)].every(x => x === 'testimonials' || x === 'gallery'),
   [...new Set(soon)].join(', ') || 'none');
 
-// every project has a card on the index pointing at it
-for (const slug of ORDER) {
-  const n = (s.match(new RegExp(`data-route="p-${slug}"`, 'g')) || []).length;
-  check(`link -> p-${slug}`, n >= 1, `${n} link(s)`);
+/* Links from the cards, checked in the direction that can break the site.
+ *
+ * A card pointing at a project page that does not exist is a dead link and
+ * fails. A project page with no card pointing at it is an orphan -- worth
+ * saying out loud, because nothing will find it, but it is a choice someone
+ * may have made in /admin/ and not a reason to stop the site deploying. The
+ * check used to be the other way round, which would have frozen every
+ * deploy the moment a project was taken off the index. */
+{
+  const linked = new Set([...s.matchAll(/data-route="p-([a-z0-9-]+)"/g)].map(m => m[1]));
+  const known = new Set(ORDER);
+  const dead = [...linked].filter(slug => !known.has(slug));
+  check('every project link points at a project that exists', dead.length === 0,
+    dead.length ? 'no page for: ' + dead.join(', ') : `${linked.size} linked`);
+  const orphans = ORDER.filter(slug => !linked.has(slug));
+  if (orphans.length) console.log(`  NOTE  nothing links to: ${orphans.join(', ')} `
+    + '-- the page is published but no card points at it');
 }
 
 // back links point at the index, not home
@@ -103,9 +122,16 @@ check('card images resolve', missingCards.length === 0, `${cardRefs.length} refs
 // index page contents
 const i = s.indexOf('data-page="projects"');
 const block = s.slice(i, s.indexOf('data-page="p-', i));
-check('index has the Wendell Berry quote', /Wendell Berry/.test(block) && /The Earth is what we all have in common/.test(block));
-check('index has 7 cards', (block.match(/class="pi-card"/g) || []).length === 7,
-  (block.match(/class="pi-card"/g) || []).length + ' cards');
+/* The quote and the number of cards are both content now: the quote can be
+   rewritten and cards added or removed from /admin/. What is checked is that
+   the page still HAS its opening quote and still has cards, each one whole. */
+check('index opens with a quote', /<blockquote[^>]*>[\s\S]{40,}?<\/blockquote>/.test(block));
+const piCards = (block.match(/class="pi-card"/g) || []).length;
+const piLinks = (block.match(/class="pi-link"/g) || []).length;
+const piTitles = (block.match(/class="pi-title"/g) || []).length;
+check('index has cards', piCards >= 1, `${piCards} cards`);
+check('every card has a link and a title', piLinks === piCards && piTitles === piCards,
+  `${piCards} cards, ${piLinks} links, ${piTitles} titles`);
 
 console.log('');
 console.log(bad ? `${bad} check(s) failed` : 'all link wiring checks passed');
