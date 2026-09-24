@@ -28,7 +28,7 @@ const ENT = { middot: '·', copy: '©', amp: '&', rarr: '→', larr: '←', lsaq
 const norm = t => t
   .replace(/<header class="site-header"[\s\S]*?<\/header>/g, '')
   .replace(/<footer class="footer">[\s\S]*?<\/footer>/g, '')
-  .replace(/ data-edit="[^"]*"/g, '')
+  .replace(/ data-(edit|edit-src|edit-alt|item)="[^"]*"/g, '')
   .replace(/&([a-z]+);/g, (m, n) => ENT[n] ?? m)
   .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
 

@@ -27,7 +27,7 @@ export const esc = s => String(s ?? '')
    what stops two portraits being stretched to fill a whole row. */
 const figure = (f, path) => `        <figure class="cfig" style="flex:${f.ratio} 1 0">
           <span class="czoom"><img src="${esc(f.image)}" width="${f.width}" height="${f.height}" style="aspect-ratio:${f.ratio}"
-               loading="lazy" decoding="async" alt="${esc(f.alt)}" data-edit="${path}.alt"></span>
+               loading="lazy" decoding="async" alt="${esc(f.alt)}" data-edit-src="${path}.image" data-edit-alt="${path}.alt"></span>
 ${f.caption ? `          <figcaption class="ccap" data-edit="${path}.caption">${f.caption}</figcaption>\n` : ''}        </figure>
 `;
 

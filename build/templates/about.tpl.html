@@ -3,27 +3,27 @@
 
 <section class="about-hero">
   <div class="wrap">
-    <span class="label about-eyebrow" data-edit="hero.eyebrow">{{hero.eyebrow}}</span>
-    <h1 class="about-lede" data-edit="hero.lede">{{hero.lede}}</h1>
+    <span class="label about-eyebrow" data-edit="hero.eyebrow">{{about-hero.label.0}}</span>
+    <h1 class="about-lede" data-edit="hero.lede">{{about-hero.about-lede.0}}</h1>
   </div>
 </section>
 
 <section class="section philo" data-reveal>
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="philosophy.heading">{{philosophy.heading}}<span class="sec-kicker">.</span></h2>
-      <span class="sec-label" data-edit="philosophy.label">{{philosophy.label}}</span>
+      <h2 class="sec-title" data-edit="philosophy.heading">{{philo.sec-title.0}}</h2>
+      <span class="sec-label" data-edit="philosophy.label">{{philo.sec-label.0}}</span>
     </div>
     <div class="philo-grid">
       <div class="philo-imgs">
-        <img src="images/about/still-water-tank.webp" alt="A still water tank reflecting its stone surrounds.">
-        <img src="images/about/restored-wetland-reflecting.webp" alt="A restored wetland reflecting a bright, cloud-filled sky.">
-        <img src="images/about/circular-stone-stepwell.webp" alt="A circular stone stepwell holding green water.">
+        <img src="{{philo.img.0.src}}" alt="{{philo.img.0.alt}}" data-edit-src="philo.img.0.src" data-edit-alt="philo.img.0.alt">
+        <img src="{{philo.img.1.src}}" alt="{{philo.img.1.alt}}" data-edit-src="philo.img.1.src" data-edit-alt="philo.img.1.alt">
+        <img src="{{philo.img.2.src}}" alt="{{philo.img.2.alt}}" data-edit-src="philo.img.2.src" data-edit-alt="philo.img.2.alt">
       </div>
       <div class="philo-body">
-        <p>The Bhu.Van Project is where design, ecology and resilience meet. Science shows that many natural systems are nearing climate tipping points, and this makes climate-adaptive, nature-based solutions more important than ever.</p>
-        <p>We work in landscape architecture, ecological restoration and sustainable design, helping places regain strength through thoughtful planning and field-based experience. Our approach is guided by rootedness, resilience and renewal. We see every site as a living system with its own memory and potential.</p>
-        <p>For us, minimalism means focusing on what truly matters, and helping support landscapes that can thrive in a changing climate.</p>
+        <p data-edit="philo.p.0">{{philo.p.0}}</p>
+        <p data-edit="philo.p.1">{{philo.p.1}}</p>
+        <p data-edit="philo.p.2">{{philo.p.2}}</p>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
 <section class="section team on-dark">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="team.heading">{{team.heading}}<span class="sec-kicker">.</span></h2>
+      <h2 class="sec-title" data-edit="team.heading">{{team.sec-title.0}}</h2>
     </div>
     <div class="team-leads" data-reveal>
       <article class="lead">
@@ -40,14 +40,14 @@
           <div class="lead-id">
             <button class="lead-media" type="button" data-open-member="nikhil-udupa"
                     aria-label="Read more about Nikhil Udupa">
-              <img src="images/team/nikhil-udupa-sq.webp" width="640" height="640" loading="lazy" alt="Nikhil Udupa, founder of The Bhu.Van Project.">
+              <img src="{{lead.img.0.src}}" width="640" height="640" loading="lazy" alt="{{lead.img.0.alt}}" data-edit-src="lead.img.0.src" data-edit-alt="lead.img.0.alt">
             </button>
-            <p class="lead-name">Nikhil Udupa</p>
-            <p class="lead-role">Founder</p>
+            <p class="lead-name" data-edit="lead.lead-name.0">{{lead.lead-name.0}}</p>
+            <p class="lead-role" data-edit="lead.lead-role.0">{{lead.lead-role.0}}</p>
           </div>
           <div class="lead-copy">
-            <p>A Landscape Architect and ecological restoration practitioner with 14+ years of experience in research-based spatial planning and sustainable design. His work spans a wide range of landscapes across India, integrating ecological thinking with cultural sensitivity to design resilient and inclusive spaces. His core expertise includes nature-based solutions, watershed and natural resource management, ecological restoration, wildlife habitat design, spatial design, master planning and disaster-resilient regional planning.</p>
-            <button class="lead-more" type="button" data-open-member="nikhil-udupa">Read more <span aria-hidden="true">&rarr;</span></button>
+            <p data-edit="lead.p.0">{{lead.p.0}}</p>
+            <button class="lead-more" type="button" data-open-member="nikhil-udupa" data-edit="lead.lead-more.0">{{lead.lead-more.0}}</button>
           </div>
         </div>
       </article>
@@ -56,21 +56,21 @@
           <div class="lead-id">
             <button class="lead-media" type="button" data-open-member="shilpa-shirish"
                     aria-label="Read more about Shilpa Shirish">
-              <img src="images/team/shilpa-shirish-sq.webp" width="640" height="640" loading="lazy" alt="Shilpa Shirish, co-founder of The Bhu.Van Project.">
+              <img src="{{lead.img.1.src}}" width="640" height="640" loading="lazy" alt="{{lead.img.1.alt}}" data-edit-src="lead.img.1.src" data-edit-alt="lead.img.1.alt">
             </button>
-            <p class="lead-name">Shilpa Shirish</p>
-            <p class="lead-role">Co-founder</p>
+            <p class="lead-name" data-edit="lead.lead-name.1">{{lead.lead-name.1}}</p>
+            <p class="lead-role" data-edit="lead.lead-role.1">{{lead.lead-role.1}}</p>
           </div>
           <div class="lead-copy">
-            <p>An architect and educator working at the intersection of climate change, the built environment and the ways in which people and places respond to a changing environment. Her work focuses on climate adaptation in urban areas, climate change and migration and inclusive spatial planning, with a particular interest in the ways vulnerable communities experience and respond to climate impacts.</p>
-            <button class="lead-more" type="button" data-open-member="shilpa-shirish">Read more <span aria-hidden="true">&rarr;</span></button>
+            <p data-edit="lead.p.1">{{lead.p.1}}</p>
+            <button class="lead-more" type="button" data-open-member="shilpa-shirish" data-edit="lead.lead-more.1">{{lead.lead-more.1}}</button>
           </div>
         </div>
       </article>
     </div>
     <div class="team-members" data-reveal>{{#each team.members}}
-      <article class="member">
-        <img src="{{image}}" width="{{width}}" height="{{height}}" loading="lazy" alt="{{alt}}" data-edit="team.members.{{@i}}">
+      <article class="member" data-item="team.members.{{@i}}">
+        <img src="{{image}}" width="{{width}}" height="{{height}}" loading="lazy" alt="{{alt}}" data-edit-src="team.members.{{@i}}.image" data-edit-alt="team.members.{{@i}}.alt">
         <p class="member-name" data-edit="team.members.{{@i}}.name">{{name}}</p>
         <p class="member-role" data-edit="team.members.{{@i}}.role">{{role}}</p>
       </article>{{/each}}
@@ -81,21 +81,21 @@
 <section class="section geo" data-reveal>
   <div class="wrap">
     <figure class="geo-quote">
-      <blockquote class="quote"><span class="mark">&ldquo;</span>When we heal the land, we heal ourselves<span class="mark">&rdquo;</span></blockquote>
-      <figcaption class="quote-attr">&mdash; Sir David Attenborough</figcaption>
+      <blockquote class="quote" data-edit="geo.quote.0">{{geo.quote.0}}</blockquote>
+      <figcaption class="quote-attr" data-edit="geo.quote-attr.0">{{geo.quote-attr.0}}</figcaption>
     </figure>
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="geography.heading">{{geography.heading}}<span class="sec-kicker">.</span></h2>
-      <span class="sec-label" data-edit="geography.label">{{geography.label}}</span>
+      <h2 class="sec-title" data-edit="geography.heading">{{geo.sec-title.0}}</h2>
+      <span class="sec-label" data-edit="geography.label">{{geo.sec-label.0}}</span>
     </div>
     <div class="geo-grid">
       <figure class="geo-figure">
-        <img src="images/home/india-map.png" alt="{{geography.map.alt}}">
+        <img src="{{geo.img.0.src}}" alt="{{geo.img.0.alt}}" data-edit-src="geo.img.0.src" data-edit-alt="geo.img.0.alt">
       </figure>
       <div class="geo-body">
-        <p>From the high-altitude valleys of Ladakh to the tea gardens of the Nilgiris, and from the remote forests of Arunachal Pradesh to the dynamic urban landscapes of Ahmedabad, our work experience spans the ecological and cultural diversity of India.</p>
-        <p>Based in Bengaluru, The Bhu.Van Project engages with landscapes across varied climates, geographies and communities, from fragile ecosystems and protected areas to productive estates, institutional campuses, and urban developments. Each project is an opportunity to understand the living systems of soil, water, vegetation and people, and to design with them.</p>
-        <p>Our experience bridges disciplines of landscape architecture, ecological restoration, watershed management, sustainable design and climate adaptation. Working across scales from a few acres to entire watersheds, we integrate scientific research, local knowledge, and participatory processes to evolve site-specific, resilient, and regenerative design solutions.</p>
+        <p data-edit="geo.p.0">{{geo.p.0}}</p>
+        <p data-edit="geo.p.1">{{geo.p.1}}</p>
+        <p data-edit="geo.p.2">{{geo.p.2}}</p>
       </div>
     </div>
   </div>
@@ -104,17 +104,17 @@
 <section class="section collab-sec on-dark" data-reveal>
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="collaborators.heading">{{collaborators.heading}}<span class="sec-kicker">.</span></h2>
-      <span class="sec-label" data-edit="collaborators.label">{{collaborators.label}}</span>
+      <h2 class="sec-title" data-edit="collaborators.heading">{{collab-sec.sec-title.0}}</h2>
+      <span class="sec-label" data-edit="collaborators.label">{{collab-sec.sec-label.0}}</span>
     </div>
-    <div class="collab-grid"><div class="collab-item"><img src="images/partners/01.png" alt="Souk" loading="lazy"></div><div class="collab-item"><img src="images/partners/02.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/03.png" alt="apt" loading="lazy"></div><div class="collab-item"><img src="images/partners/04.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/05.png" alt="Collaborator logo" loading="lazy"></div><div class="collab-item"><img src="images/partners/18.png" alt="Landartistry Solutions" loading="lazy"></div><div class="collab-item"><img src="images/partners/19.png" alt="DA Architects" loading="lazy"></div><div class="collab-item"><img src="images/partners/06.png" alt="Junglescapes" loading="lazy"></div><div class="collab-item"><img src="images/partners/07.png" alt="Punarchith" loading="lazy"></div><div class="collab-item"><img src="images/partners/08.png" alt="Biome Farms" loading="lazy"></div><div class="collab-item"><img src="images/partners/09.png" alt="Ananda Marga Pracaraka Samgha" loading="lazy"></div><div class="collab-item"><img src="images/partners/15.png" alt="South Western Railway, Indian Railways" loading="lazy"></div><div class="collab-item"><img src="images/partners/16.png" alt="Brahma Kumaris" loading="lazy"></div><div class="collab-item"><img src="images/partners/17.png" alt="Tophills77" loading="lazy"></div><div class="collab-item"><img src="images/partners/20.png" alt="Deshpande Foundation" loading="lazy"></div><div class="collab-item"><img src="images/partners/10.png" alt="Wadiyar Centre for Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/11.png" alt="DSCA" loading="lazy"></div><div class="collab-item"><img src="images/partners/12.png" alt="BMS College of Architecture" loading="lazy"></div><div class="collab-item"><img src="images/partners/13.png" alt="Bangalore University" loading="lazy"></div><div class="collab-item"><img src="images/partners/14.png" alt="BVBCET, KLE Society" loading="lazy"></div><div class="collab-item"><img src="images/partners/21.png" alt="Christ University" loading="lazy"></div></div>
+    <div class="collab-grid"><div class="collab-item"><img src="{{collab-sec.img.0.src}}" alt="{{collab-sec.img.0.alt}}" loading="lazy" data-edit-src="collab-sec.img.0.src" data-edit-alt="collab-sec.img.0.alt"></div><div class="collab-item"><img src="{{collab-sec.img.1.src}}" alt="{{collab-sec.img.1.alt}}" loading="lazy" data-edit-src="collab-sec.img.1.src" data-edit-alt="collab-sec.img.1.alt"></div><div class="collab-item"><img src="{{collab-sec.img.2.src}}" alt="{{collab-sec.img.2.alt}}" loading="lazy" data-edit-src="collab-sec.img.2.src" data-edit-alt="collab-sec.img.2.alt"></div><div class="collab-item"><img src="{{collab-sec.img.3.src}}" alt="{{collab-sec.img.3.alt}}" loading="lazy" data-edit-src="collab-sec.img.3.src" data-edit-alt="collab-sec.img.3.alt"></div><div class="collab-item"><img src="{{collab-sec.img.4.src}}" alt="{{collab-sec.img.4.alt}}" loading="lazy" data-edit-src="collab-sec.img.4.src" data-edit-alt="collab-sec.img.4.alt"></div><div class="collab-item"><img src="{{collab-sec.img.5.src}}" alt="{{collab-sec.img.5.alt}}" loading="lazy" data-edit-src="collab-sec.img.5.src" data-edit-alt="collab-sec.img.5.alt"></div><div class="collab-item"><img src="{{collab-sec.img.6.src}}" alt="{{collab-sec.img.6.alt}}" loading="lazy" data-edit-src="collab-sec.img.6.src" data-edit-alt="collab-sec.img.6.alt"></div><div class="collab-item"><img src="{{collab-sec.img.7.src}}" alt="{{collab-sec.img.7.alt}}" loading="lazy" data-edit-src="collab-sec.img.7.src" data-edit-alt="collab-sec.img.7.alt"></div><div class="collab-item"><img src="{{collab-sec.img.8.src}}" alt="{{collab-sec.img.8.alt}}" loading="lazy" data-edit-src="collab-sec.img.8.src" data-edit-alt="collab-sec.img.8.alt"></div><div class="collab-item"><img src="{{collab-sec.img.9.src}}" alt="{{collab-sec.img.9.alt}}" loading="lazy" data-edit-src="collab-sec.img.9.src" data-edit-alt="collab-sec.img.9.alt"></div><div class="collab-item"><img src="{{collab-sec.img.10.src}}" alt="{{collab-sec.img.10.alt}}" loading="lazy" data-edit-src="collab-sec.img.10.src" data-edit-alt="collab-sec.img.10.alt"></div><div class="collab-item"><img src="{{collab-sec.img.11.src}}" alt="{{collab-sec.img.11.alt}}" loading="lazy" data-edit-src="collab-sec.img.11.src" data-edit-alt="collab-sec.img.11.alt"></div><div class="collab-item"><img src="{{collab-sec.img.12.src}}" alt="{{collab-sec.img.12.alt}}" loading="lazy" data-edit-src="collab-sec.img.12.src" data-edit-alt="collab-sec.img.12.alt"></div><div class="collab-item"><img src="{{collab-sec.img.13.src}}" alt="{{collab-sec.img.13.alt}}" loading="lazy" data-edit-src="collab-sec.img.13.src" data-edit-alt="collab-sec.img.13.alt"></div><div class="collab-item"><img src="{{collab-sec.img.14.src}}" alt="{{collab-sec.img.14.alt}}" loading="lazy" data-edit-src="collab-sec.img.14.src" data-edit-alt="collab-sec.img.14.alt"></div><div class="collab-item"><img src="{{collab-sec.img.15.src}}" alt="{{collab-sec.img.15.alt}}" loading="lazy" data-edit-src="collab-sec.img.15.src" data-edit-alt="collab-sec.img.15.alt"></div><div class="collab-item"><img src="{{collab-sec.img.16.src}}" alt="{{collab-sec.img.16.alt}}" loading="lazy" data-edit-src="collab-sec.img.16.src" data-edit-alt="collab-sec.img.16.alt"></div><div class="collab-item"><img src="{{collab-sec.img.17.src}}" alt="{{collab-sec.img.17.alt}}" loading="lazy" data-edit-src="collab-sec.img.17.src" data-edit-alt="collab-sec.img.17.alt"></div><div class="collab-item"><img src="{{collab-sec.img.18.src}}" alt="{{collab-sec.img.18.alt}}" loading="lazy" data-edit-src="collab-sec.img.18.src" data-edit-alt="collab-sec.img.18.alt"></div><div class="collab-item"><img src="{{collab-sec.img.19.src}}" alt="{{collab-sec.img.19.alt}}" loading="lazy" data-edit-src="collab-sec.img.19.src" data-edit-alt="collab-sec.img.19.alt"></div><div class="collab-item"><img src="{{collab-sec.img.20.src}}" alt="{{collab-sec.img.20.alt}}" loading="lazy" data-edit-src="collab-sec.img.20.src" data-edit-alt="collab-sec.img.20.alt"></div></div>
   </div>
 </section>
 
 <section class="closing">
   <div class="wrap">
-    <h2 data-edit="closing.heading">{{closing.heading}}</h2>
-    <button type="button" class="cta" data-open-contact>Get in Touch</button>
+    <h2 data-edit="closing.heading">{{closing.h2.0}}</h2>
+    <button type="button" class="cta" data-open-contact data-edit="closing.cta.0">{{closing.cta.0}}</button>
   </div>
 </section>
 
@@ -124,13 +124,13 @@
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mm-nikhil-udupa">
     <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/nikhil-udupa-sq.webp"><img src="images/team/nikhil-udupa-full.webp" width="900" height="1351" alt="Nikhil Udupa, founder of The Bhu.Van Project."></picture></div>
+    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/nikhil-udupa-sq.webp"><img src="{{page.img.0.src}}" width="900" height="1351" alt="{{page.img.0.alt}}" data-edit-src="page.img.0.src" data-edit-alt="page.img.0.alt"></picture></div>
     <div class="modal-body">
-      <span class="modal-eyebrow">Founder</span>
-      <h3 id="mm-nikhil-udupa" class="modal-title">Nikhil Udupa</h3>
-      <p class="modal-para">A Landscape Architect and ecological restoration practitioner with 14+ years of experience in research-based spatial planning and sustainable design. His work spans a wide range of landscapes across India, integrating ecological thinking with cultural sensitivity to design resilient and inclusive spaces.</p>
-      <p class="modal-para">His core expertise includes nature-based solutions, watershed and natural resource management, ecological restoration, wildlife habitat design, spatial design, master planning and disaster-resilient regional planning. He has collaborated with communities, government bodies, institutions, NGOs, and interdisciplinary teams to implement regenerative, context-sensitive design strategies.</p>
-      <p class="modal-para">As a visiting faculty at leading institutions, Nikhil actively contributes to academic discourse and knowledge sharing. His passion for nature, community engagement, and hands-on implementation drives his commitment to preserving ecological and cultural heritage through landscape architecture. Outside of work, he is a naturalist and avid traveller, with interests in birding, photography, trekking, yoga, boxing and collecting minerals and fossils.</p>
+      <span class="modal-eyebrow" data-edit="page.modal-eyebrow.0">{{page.modal-eyebrow.0}}</span>
+      <h3 id="mm-nikhil-udupa" class="modal-title" data-edit="page.modal-title.0">{{page.modal-title.0}}</h3>
+      <p class="modal-para" data-edit="page.modal-para.0">{{page.modal-para.0}}</p>
+      <p class="modal-para" data-edit="page.modal-para.1">{{page.modal-para.1}}</p>
+      <p class="modal-para" data-edit="page.modal-para.2">{{page.modal-para.2}}</p>
       <a class="founder-link" href="https://era-india.org/community/nikhil-udupa/" target="_blank" rel="noopener">Read the full profile <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
@@ -140,12 +140,12 @@
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mm-shilpa-shirish">
     <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/shilpa-shirish-sq.webp"><img src="images/team/shilpa-shirish-full.webp" width="900" height="1351" alt="Shilpa Shirish, co-founder of The Bhu.Van Project."></picture></div>
+    <div class="modal-media"><picture><source media="(max-width:760px)" srcset="images/team/shilpa-shirish-sq.webp"><img src="{{page.img.1.src}}" width="900" height="1351" alt="{{page.img.1.alt}}" data-edit-src="page.img.1.src" data-edit-alt="page.img.1.alt"></picture></div>
     <div class="modal-body">
-      <span class="modal-eyebrow">Co-founder</span>
-      <h3 id="mm-shilpa-shirish" class="modal-title">Shilpa Shirish</h3>
-      <p class="modal-para">An architect and educator working at the intersection of climate change, the built environment and the ways in which people and places respond to a changing environment. Her work focuses on climate adaptation in urban areas, climate change and migration and inclusive spatial planning, with a particular interest in the ways vulnerable communities experience and respond to climate impacts.</p>
-      <p class="modal-para">With a background in sustainable architecture, she is also interested in landscape restoration, vernacular and heritage documentation and energy-efficient design. Across these areas, her work explores how environmental conditions, local knowledge, and spatial interventions shape the ways in which people and places adapt to change.</p>
+      <span class="modal-eyebrow" data-edit="page.modal-eyebrow.1">{{page.modal-eyebrow.1}}</span>
+      <h3 id="mm-shilpa-shirish" class="modal-title" data-edit="page.modal-title.1">{{page.modal-title.1}}</h3>
+      <p class="modal-para" data-edit="page.modal-para.3">{{page.modal-para.3}}</p>
+      <p class="modal-para" data-edit="page.modal-para.4">{{page.modal-para.4}}</p>
       <a class="founder-link" href="https://share.google/7ZnQBpAaHcInWMPJz" target="_blank" rel="noopener">Profile at IIHS <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>

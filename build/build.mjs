@@ -101,7 +101,11 @@ const ABS = /^(?:https?:|mailto:|tel:|data:|#|\/)/;
    ../../about/. Hash links start with "#", so this pass skips them. */
 const prefixAssets = (html, depth) => depth === 0 ? html
   : html
-    .replace(/(src|href|data-open-shot)="([^"]+)"/g, (m, a, v) =>
+    /* The lookbehind keeps "src=" inside "data-edit-src=" from being mistaken
+       for a real src attribute. Without it the editor's field paths were
+       being rewritten as if they were file paths, so every project page
+       shipped data-edit-src="../../gallery.rows.0.figures.0.image". */
+    .replace(/(?<![\w-])(src|href|data-open-shot)="([^"]+)"/g, (m, a, v) =>
       ABS.test(v) ? m : `${a}="${'../'.repeat(depth)}${v}"`)
     /* srcset is a comma-separated list of "url descriptor" pairs, so each
        candidate needs lifting on its own -- treating the whole attribute as

@@ -47,7 +47,7 @@ const stripChrome = t => t
   .replace(/<footer class="footer">[\s\S]*?<\/footer>/g, '');
 
 const norm = t => stripChrome(t)
-  .replace(/(src|href|srcset|data-open-shot)="[^"]*"/g, '$1=""')  // the build rewrites these by design
+  .replace(/(?<![\w-])(src|href|srcset|data-open-shot)="[^"]*"/g, '$1=""')  // the build rewrites these by design
   .replace(/ data-route="[^"]*"/g, '')           // and strips these
   .replace(/&([a-z]+);/g, (m, n) => ENT[n] ?? m)
   .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
@@ -94,7 +94,7 @@ for (const [url, file] of htmlFiles) {
   if (!fs.existsSync(file)) continue;
   const html = fs.readFileSync(file, 'utf8');
   const dir = path.dirname(file);
-  for (const m of html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
+  for (const m of html.matchAll(/(?<![\w-])(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
     const v = m[1];
     if (v === '') continue;
     refs++;
@@ -322,7 +322,7 @@ for (const [, file] of htmlFiles) {
   if (!fs.existsSync(file)) continue;
   const html = fs.readFileSync(file, 'utf8');
   const dir = path.dirname(file);
-  for (const m of html.matchAll(/(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
+  for (const m of html.matchAll(/(?<![\w-])(?:src|href)="((?!https?:|#|mailto:|tel:|data:)[^"]*)"/g)) {
     if (m[1] && !m[1].endsWith('/')) used.add(path.relative(DIST, path.join(dir, m[1])).replace(/\\/g, '/'));
   }
   // a font reached only through a CSS url() is still in use

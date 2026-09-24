@@ -49,7 +49,7 @@ check('modal sits outside every [data-page]',
 const mailto = (s.match(/window.location.href='mailto/g) || []).length;
 check('no per-page mailto bindings left', mailto === 0, `${mailto} left`);
 const openers = (s.match(/data-open-contact/g) || []).length;
-check('Get in Touch buttons wired', openers === 40, `${openers} (39 buttons + 1 delegated selector)`);
+check('Get in Touch buttons wired', openers === 46, `${openers} (45 buttons + 1 delegated selector)`);
 { /* it was empty while the backend did not exist; now it must be a real
      deployment URL, and /dev instead of /exec is the classic slip */
   const m = s.match(/var CONTACT_ENDPOINT = '([^']*)';/);

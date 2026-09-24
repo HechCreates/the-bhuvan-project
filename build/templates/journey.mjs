@@ -38,14 +38,14 @@ const captionOf = (cat, file) => {
 const altOf = (cat, file) => captionOf(cat, file) || genericAlt(cat);
 
 const cell = (cat, file, n) =>
-  `        <div class="vj-cell vj-cell-${n}"><img src="${IMG}${esc(file)}" loading="lazy" decoding="async" alt="${altOf(cat, file)}" data-edit="categories.${cat.i}.picks.${n - 1}"></div>`;
+  `        <div class="vj-cell vj-cell-${n}"><img src="${IMG}${esc(file)}" loading="lazy" decoding="async" alt="${altOf(cat, file)}" data-edit-src="categories.${cat.i}.picks.${n - 1}"></div>`;
 
 const block = cat => `      <article class="vj-block" data-reveal>
         <h2 class="vj-title" data-edit="categories.${cat.i}.title">${cat.title}</h2>
         <div class="vj-mosaic">
 ${cat.picks.map((f, n) => cell(cat, f, n + 1)).join('\n')}
           <button type="button" class="vj-more" data-open-journey="${esc(cat.key)}">
-            <span>${cat.moreLabel}</span>
+            <span data-edit="page.moreLabel">${cat.moreLabel}</span>
             <span class="vj-count">${cat.photos.length} photographs</span>
           </button>
         </div>
@@ -54,7 +54,7 @@ ${cat.picks.map((f, n) => cell(cat, f, n + 1)).join('\n')}
 
 const shot = (cat, p, i) => {
   const src = `${IMG}${esc(p.file)}`;
-  return `      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="${src}"><img src="${src}" loading="lazy" decoding="async" alt="${altOf(cat, p.file)}" data-edit="categories.${cat.i}.photos.${i}"></button>
+  return `      <figure class="vj-shot"><button type="button" class="vj-zoom" data-open-shot="${src}"><img src="${src}" loading="lazy" decoding="async" alt="${altOf(cat, p.file)}" data-edit-src="categories.${cat.i}.photos.${i}.file"></button>
         ${p.caption ? `<figcaption data-edit="categories.${cat.i}.photos.${i}.caption">${p.caption}</figcaption>` : ''}
       </figure>
 `;
@@ -64,7 +64,7 @@ const modal = cat => `<div class="modal vj-modal" data-journey-modal="${esc(cat.
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-panel vj-panel">
     <div class="vj-panel-head">
-      <h2 class="vj-panel-title">${cat.title}</h2>
+      <h2 class="vj-panel-title" data-edit="categories.${cat.i}.title">${cat.title}</h2>
       <p class="vj-panel-count">${cat.photos.length} photographs</p>
       <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
     </div>

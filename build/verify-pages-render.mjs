@@ -53,7 +53,7 @@ for (const page of Object.keys(SPEC)) {
          whitespace changes nothing about the rendered page
      Whitespace inside text is untouched, so a changed word still fails. */
   const strip = t => t
-    .replace(/ data-edit="[^"]*"/g, '')
+    .replace(/ data-(edit|edit-kind|edit-src|edit-alt|item)="[^"]*"/g, '')
     .replace(/\r\n/g, '\n')
     .replace(/>\s+</g, '><');
   if (strip(got) === strip(want)) {
@@ -82,7 +82,7 @@ for (const page of Object.keys(SPEC)) {
   const norm = t => t
     .replace(/<header class="site-header"[\s\S]*?<\/header>/, '')
     .replace(/<footer class="footer">[\s\S]*?<\/footer>/, '')
-    .replace(/ data-edit="[^"]*"/g, '')
+    .replace(/ data-(edit|edit-kind|edit-src|edit-alt|item)="[^"]*"/g, '')
     .replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
 
   const want = norm(src.slice(start, end));
