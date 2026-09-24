@@ -146,7 +146,7 @@ function pageNode(origin, page, html) {
      carries the questions. They are read out of the rendered markup, so the
      schema cannot answer a question the page does not visibly ask. */
   if (page.type === 'FAQPage') {
-    const items = [...html.matchAll(/<h2 class="faq-q">([\s\S]*?)<\/h2>\s*<p class="faq-a">([\s\S]*?)<\/p>/g)];
+    const items = [...html.matchAll(/<h2 class="faq-q"[^>]*>([\s\S]*?)<\/h2>\s*<p class="faq-a"[^>]*>([\s\S]*?)<\/p>/g)];
     base.mainEntity = items.map(m => ({
       '@type': 'Question',
       name: text(m[1]),
@@ -225,9 +225,9 @@ const extras = {
   testimonials(origin, html) {
     const cards = html.split('<article class="tq-card"').slice(1);
     return cards.map(card => {
-      const name = (card.match(/<p class="tq-name">([^<]+)<\/p>/) || [])[1];
-      const role = (card.match(/<p class="tq-role">([\s\S]*?)<\/p>/) || [])[1];
-      const full = (card.match(/<div class="tq-full">([\s\S]*?)<\/div>/) || [])[1];
+      const name = (card.match(/<p class="tq-name"[^>]*>([^<]+)<\/p>/) || [])[1];
+      const role = (card.match(/<p class="tq-role"[^>]*>([\s\S]*?)<\/p>/) || [])[1];
+      const full = (card.match(/<div class="tq-full"[^>]*>([\s\S]*?)<\/div>/) || [])[1];
       if (!name || !full) return null;
       return drop({
         '@type': 'Review',
@@ -243,7 +243,7 @@ const extras = {
   /* The projects index as an ordered list pointing at the seven project
      pages, which is how a crawler learns they are siblings and not strays. */
   projects(origin, html) {
-    const items = [...html.matchAll(/<a class="pi-link" href="([^"]+)"[\s\S]*?<h2 class="pi-title">([\s\S]*?)<\/h2>/g)];
+    const items = [...html.matchAll(/<a class="pi-link" href="([^"]+)"[\s\S]*?<h2 class="pi-title"[^>]*>([\s\S]*?)<\/h2>/g)];
     if (!items.length) return [];
     return [{
       '@type': 'ItemList',

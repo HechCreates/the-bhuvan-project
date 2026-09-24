@@ -274,6 +274,34 @@ console.log('\nstructured data');
       }
     }
 
+    /* The same trap, for everything else scraped out of the markup. It has
+       now sprung three times: an attribute is added to a tag, a regex that
+       named that tag exactly stops matching, and the page still looks right
+       while its structured data quietly empties. Counting what is ON the
+       page against what reached the graph is the check that notices. It is
+       also what keeps adding or removing an item honest: add an FAQ entry
+       and the question must appear in the schema too. */
+    {
+      const faq = graph.find(n => [].concat(n['@type']).includes('FAQPage'));
+      const asked = (html.match(/class="faq-q"/g) || []).length;
+      if (faq && asked !== (faq.mainEntity || []).length) {
+        fail(`${where} asks ${asked} questions but its FAQPage carries ${(faq.mainEntity || []).length}`);
+      }
+
+      const quoted = (html.match(/class="tq-card"/g) || []).length;
+      const reviews = graph.filter(n => [].concat(n['@type']).includes('Review')).length;
+      if (quoted && reviews !== quoted) {
+        fail(`${where} shows ${quoted} testimonials but the graph declares ${reviews} reviews`);
+      }
+
+      const cards = (html.match(/class="pi-card"/g) || []).length;
+      const list = graph.find(n => [].concat(n['@type']).includes('ItemList'));
+      if (cards && (!list || list.itemListElement.length !== cards)) {
+        fail(`${where} shows ${cards} project cards but its ItemList has `
+          + `${list ? list.itemListElement.length : 'no node'}`);
+      }
+    }
+
     const o = graph.find(n => [].concat(n['@type']).includes('Organization'));
     if (!o) fail(`${where} declares no Organization`);
     else for (const req of ['name', 'url', 'description', 'logo', 'address'])
