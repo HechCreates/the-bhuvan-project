@@ -53,7 +53,13 @@ function extract(page) {
      build, so it is replaced by its markers and never stored as content */
   let tpl = src.slice(start, end)
     .replace(/<header class="site-header"[\s\S]*?<\/header>/, '<header class="site-header" data-header></header>')
-    .replace(/<footer class="footer">[\s\S]*?<\/footer>/, '<footer class="footer"></footer>');
+    .replace(/<footer class="footer">[\s\S]*?<\/footer>/, '<footer class="footer"></footer>')
+    /* Strip the markers a previous extraction left behind. Without this they
+       accumulate: the stamping step refuses to overwrite an existing
+       data-edit, so an old path survives re-extraction and points at a field
+       that no longer exists -- and an image carrying both a stale data-edit
+       and a fresh data-edit-src would answer a click twice. */
+    .replace(/ data-(edit|edit-src|edit-alt|item)="[^"]*"/g, '');
 
   const data = {};
   let failed = 0;

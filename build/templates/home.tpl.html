@@ -6,17 +6,17 @@
       <source type="image/webp"
               srcset="images/site/hero-1000.webp 1000w, images/site/hero-1600.webp 1600w, images/site/hero-2200.webp 2200w"
               sizes="100vw">
-      <img class="hero-img" src="{{hero.hero-img.0.src}}" width="2200" height="1467" alt="{{hero.hero-img.0.alt}}" fetchpriority="high" data-edit="hero.image.src" data-edit-src="hero.hero-img.0.src" data-edit-alt="hero.hero-img.0.alt">
+      <img class="hero-img" src="{{hero.hero-img.0.src}}" width="2200" height="1467" alt="{{hero.hero-img.0.alt}}" fetchpriority="high" data-edit-src="hero.hero-img.0.src" data-edit-alt="hero.hero-img.0.alt">
     </picture>
   <div class="hero-band-top"></div>
   <div class="hero-band-bottom"></div>
   <div class="wrap hero-inner">
     <div class="hero-top">
-      <h1 class="hero-statement" data-edit="hero.statement">{{hero.hero-statement.0}}</h1>
-      <p class="hero-lede" data-edit="hero.lede">{{hero.hero-lede.0}}</p>
+      <h1 class="hero-statement" data-edit="hero.hero-statement.0">{{hero.hero-statement.0}}</h1>
+      <p class="hero-lede" data-edit="hero.hero-lede.0">{{hero.hero-lede.0}}</p>
     </div>
     <div class="hero-bottom">
-      <span class="label hero-eyebrow" data-edit="hero.eyebrow">{{hero.label.0}}</span>
+      <span class="label hero-eyebrow" data-edit="hero.label.0">{{hero.label.0}}</span>
       <div class="hero-tagpills">
         {{#each hero.tags}}<span class="hero-tag" data-edit="hero.tags.{{@i}}.label">{{label}}</span>{{/each}}
       </div>
@@ -26,7 +26,7 @@
 
 <section class="meaning" id="meaning">
   <div class="wrap">
-    <p class="meaning-text" data-edit="meaning.text">{{meaning.meaning-text.0}}</p>
+    <p class="meaning-text" data-edit="meaning.meaning-text.0">{{meaning.meaning-text.0}}</p>
   </div>
 </section>
 
@@ -35,27 +35,27 @@
     <div class="wrap">
       <div class="about-inner">
         <div class="about-content" data-reveal>
-          <span class="label about-eyebrow" data-edit="aboutTeaser.eyebrow">{{about-teaser.label.0}}</span>
-          <p class="about-statement" data-edit="aboutTeaser.statement">{{about-teaser.about-statement.0}}</p>
-          <a class="about-link" href="#/about" data-route="about"><span data-edit="aboutTeaser.linkLabel">{{about-teaser.span.0}}</span>
+          <span class="label about-eyebrow" data-edit="about-teaser.label.0">{{about-teaser.label.0}}</span>
+          <p class="about-statement" data-edit="about-teaser.about-statement.0">{{about-teaser.about-statement.0}}</p>
+          <a class="about-link" href="#/about" data-route="about"><span data-edit="about-teaser.span.0">{{about-teaser.span.0}}</span>
             <svg viewBox="0 0 24 24" aria-hidden="true" class="arrow"><path d="M7 17 L17 7 M9 7 L17 7 L17 15" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
         <figure class="about-figure" data-reveal>
           <button type="button" class="map-btn" data-open-map aria-label="Explore where we work across India">
-            <img src="{{about-teaser.img.0.src}}" alt="{{about-teaser.img.0.alt}}" data-edit="aboutTeaser.map.src" data-edit-src="about-teaser.img.0.src" data-edit-alt="about-teaser.img.0.alt">
+            <img src="{{about-teaser.img.0.src}}" alt="{{about-teaser.img.0.alt}}" data-edit-src="about-teaser.img.0.src" data-edit-alt="about-teaser.img.0.alt">
             <span class="map-hint" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M4 9 V4 H9 M15 4 H20 V9 M20 15 V20 H15 M9 20 H4 V15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
-          <figcaption class="about-cap" data-edit="aboutTeaser.map.caption">{{about-teaser.about-cap.0}}</figcaption>
+          <figcaption class="about-cap" data-edit="about-teaser.about-cap.0">{{about-teaser.about-cap.0}}</figcaption>
         </figure>
       </div>
     </div>
   </div>
   <div class="about-bottom">
     <div class="wrap">
-      <p class="label collab-head" data-edit="collaborators.heading">{{about-teaser.label.1}}</p>
+      <p class="label collab-head" data-edit="about-teaser.label.1">{{about-teaser.label.1}}</p>
       <div class="collab-grid" data-reveal>{{#each collaborators.logos}}<div class="collab-item" data-item="collaborators.logos.{{@i}}"><img src="{{image}}" alt="{{alt}}" loading="lazy" data-edit-src="collaborators.logos.{{@i}}.image" data-edit-alt="collaborators.logos.{{@i}}.alt"></div>{{/each}}</div>
     </div>
   </div>
@@ -64,22 +64,22 @@
 <section class="practices" id="what-we-do">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="practices.heading">{{what-we-do.sec-title.0}}</h2>
+      <h2 class="sec-title" data-edit="what-we-do.sec-title.0">{{what-we-do.sec-title.0}}</h2>
     </div>
     <div class="practice-list">
   <div class="practice" data-practice="ecological-restoration">
     <button class="practice-row" data-practice-toggle="ecological-restoration" aria-expanded="true">
       <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="{{what-we-do.p-icon.0.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.0.alt}}" data-edit-src="what-we-do.p-icon.0.src" data-edit-alt="what-we-do.p-icon.0.alt"><img class="p-icon p-icon-hover" src="{{what-we-do.p-icon.1.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.1.alt}}" aria-hidden="true" data-edit-src="what-we-do.p-icon.1.src" data-edit-alt="what-we-do.p-icon.1.alt"></span></span>
-      <span class="practice-name" data-edit="practices.items.ecological-restoration.name">{{what-we-do.practice-name.0}}</span>
+      <span class="practice-name" data-edit="what-we-do.practice-name.0">{{what-we-do.practice-name.0}}</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
     <div class="practice-panel" data-open>
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="{{what-we-do.img.0.src}}" alt="{{what-we-do.img.0.alt}}" loading="lazy" data-edit="practices.items.ecological-restoration.image" data-edit-src="what-we-do.img.0.src" data-edit-alt="what-we-do.img.0.alt"></div>
+        <div class="practice-media"><img src="{{what-we-do.img.0.src}}" alt="{{what-we-do.img.0.alt}}" loading="lazy" data-edit-src="what-we-do.img.0.src" data-edit-alt="what-we-do.img.0.alt"></div>
         <div class="practice-copy">
           
-          <p class="practice-desc" data-edit="practices.items.ecological-restoration.description">{{what-we-do.practice-desc.0}}</p>
-          <button class="practice-more" data-open-service="ecological-restoration" data-edit="practices.items.ecological-restoration.moreLabel">{{what-we-do.practice-more.0}}</button>
+          <p class="practice-desc" data-edit="what-we-do.practice-desc.0">{{what-we-do.practice-desc.0}}</p>
+          <button class="practice-more" data-open-service="ecological-restoration" data-edit="what-we-do.practice-more.0">{{what-we-do.practice-more.0}}</button>
         </div>
       </div>
     </div>
@@ -88,16 +88,16 @@
   <div class="practice" data-practice="landscape-architecture">
     <button class="practice-row" data-practice-toggle="landscape-architecture" aria-expanded="false">
       <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="{{what-we-do.p-icon.2.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.2.alt}}" data-edit-src="what-we-do.p-icon.2.src" data-edit-alt="what-we-do.p-icon.2.alt"><img class="p-icon p-icon-hover" src="{{what-we-do.p-icon.3.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.3.alt}}" aria-hidden="true" data-edit-src="what-we-do.p-icon.3.src" data-edit-alt="what-we-do.p-icon.3.alt"></span></span>
-      <span class="practice-name" data-edit="practices.items.landscape-architecture.name">{{what-we-do.practice-name.1}}</span>
+      <span class="practice-name" data-edit="what-we-do.practice-name.1">{{what-we-do.practice-name.1}}</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
     <div class="practice-panel">
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="{{what-we-do.img.1.src}}" alt="{{what-we-do.img.1.alt}}" loading="lazy" data-edit="practices.items.landscape-architecture.image" data-edit-src="what-we-do.img.1.src" data-edit-alt="what-we-do.img.1.alt"></div>
+        <div class="practice-media"><img src="{{what-we-do.img.1.src}}" alt="{{what-we-do.img.1.alt}}" loading="lazy" data-edit-src="what-we-do.img.1.src" data-edit-alt="what-we-do.img.1.alt"></div>
         <div class="practice-copy">
           <p class="practice-sub" data-edit="what-we-do.practice-sub.0">{{what-we-do.practice-sub.0}}</p>
-          <p class="practice-desc" data-edit="practices.items.landscape-architecture.description">{{what-we-do.practice-desc.1}}</p>
-          <button class="practice-more" data-open-service="landscape-architecture" data-edit="practices.items.landscape-architecture.moreLabel">{{what-we-do.practice-more.1}}</button>
+          <p class="practice-desc" data-edit="what-we-do.practice-desc.1">{{what-we-do.practice-desc.1}}</p>
+          <button class="practice-more" data-open-service="landscape-architecture" data-edit="what-we-do.practice-more.1">{{what-we-do.practice-more.1}}</button>
         </div>
       </div>
     </div>
@@ -106,16 +106,16 @@
   <div class="practice" data-practice="watershed-management">
     <button class="practice-row" data-practice-toggle="watershed-management" aria-expanded="false">
       <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="{{what-we-do.p-icon.4.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.4.alt}}" data-edit-src="what-we-do.p-icon.4.src" data-edit-alt="what-we-do.p-icon.4.alt"><img class="p-icon p-icon-hover" src="{{what-we-do.p-icon.5.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.5.alt}}" aria-hidden="true" data-edit-src="what-we-do.p-icon.5.src" data-edit-alt="what-we-do.p-icon.5.alt"></span></span>
-      <span class="practice-name" data-edit="practices.items.watershed-management.name">{{what-we-do.practice-name.2}}</span>
+      <span class="practice-name" data-edit="what-we-do.practice-name.2">{{what-we-do.practice-name.2}}</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
     <div class="practice-panel">
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="{{what-we-do.img.2.src}}" alt="{{what-we-do.img.2.alt}}" loading="lazy" data-edit="practices.items.watershed-management.image" data-edit-src="what-we-do.img.2.src" data-edit-alt="what-we-do.img.2.alt"></div>
+        <div class="practice-media"><img src="{{what-we-do.img.2.src}}" alt="{{what-we-do.img.2.alt}}" loading="lazy" data-edit-src="what-we-do.img.2.src" data-edit-alt="what-we-do.img.2.alt"></div>
         <div class="practice-copy">
           
-          <p class="practice-desc" data-edit="practices.items.watershed-management.description">{{what-we-do.practice-desc.2}}</p>
-          <button class="practice-more" data-open-service="watershed-management" data-edit="practices.items.watershed-management.moreLabel">{{what-we-do.practice-more.2}}</button>
+          <p class="practice-desc" data-edit="what-we-do.practice-desc.2">{{what-we-do.practice-desc.2}}</p>
+          <button class="practice-more" data-open-service="watershed-management" data-edit="what-we-do.practice-more.2">{{what-we-do.practice-more.2}}</button>
         </div>
       </div>
     </div>
@@ -124,16 +124,16 @@
   <div class="practice" data-practice="sustainable-architecture">
     <button class="practice-row" data-practice-toggle="sustainable-architecture" aria-expanded="false">
       <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="{{what-we-do.p-icon.6.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.6.alt}}" data-edit-src="what-we-do.p-icon.6.src" data-edit-alt="what-we-do.p-icon.6.alt"><img class="p-icon p-icon-hover" src="{{what-we-do.p-icon.7.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.7.alt}}" aria-hidden="true" data-edit-src="what-we-do.p-icon.7.src" data-edit-alt="what-we-do.p-icon.7.alt"></span></span>
-      <span class="practice-name" data-edit="practices.items.sustainable-architecture.name">{{what-we-do.practice-name.3}}</span>
+      <span class="practice-name" data-edit="what-we-do.practice-name.3">{{what-we-do.practice-name.3}}</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
     <div class="practice-panel">
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="{{what-we-do.img.3.src}}" alt="{{what-we-do.img.3.alt}}" loading="lazy" data-edit="practices.items.sustainable-architecture.image" data-edit-src="what-we-do.img.3.src" data-edit-alt="what-we-do.img.3.alt"></div>
+        <div class="practice-media"><img src="{{what-we-do.img.3.src}}" alt="{{what-we-do.img.3.alt}}" loading="lazy" data-edit-src="what-we-do.img.3.src" data-edit-alt="what-we-do.img.3.alt"></div>
         <div class="practice-copy">
           <p class="practice-sub" data-edit="what-we-do.practice-sub.1">{{what-we-do.practice-sub.1}}</p>
-          <p class="practice-desc" data-edit="practices.items.sustainable-architecture.description">{{what-we-do.practice-desc.3}}</p>
-          <button class="practice-more" data-open-service="sustainable-architecture" data-edit="practices.items.sustainable-architecture.moreLabel">{{what-we-do.practice-more.3}}</button>
+          <p class="practice-desc" data-edit="what-we-do.practice-desc.3">{{what-we-do.practice-desc.3}}</p>
+          <button class="practice-more" data-open-service="sustainable-architecture" data-edit="what-we-do.practice-more.3">{{what-we-do.practice-more.3}}</button>
         </div>
       </div>
     </div>
@@ -142,16 +142,16 @@
   <div class="practice" data-practice="academic-engagement">
     <button class="practice-row" data-practice-toggle="academic-engagement" aria-expanded="false">
       <span class="practice-coord"><span class="p-icon-wrap"><img class="p-icon p-icon-base" src="{{what-we-do.p-icon.8.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.8.alt}}" data-edit-src="what-we-do.p-icon.8.src" data-edit-alt="what-we-do.p-icon.8.alt"><img class="p-icon p-icon-hover" src="{{what-we-do.p-icon.9.src}}" width="168" height="168" loading="lazy" alt="{{what-we-do.p-icon.9.alt}}" aria-hidden="true" data-edit-src="what-we-do.p-icon.9.src" data-edit-alt="what-we-do.p-icon.9.alt"></span></span>
-      <span class="practice-name" data-edit="practices.items.academic-engagement.name">{{what-we-do.practice-name.4}}</span>
+      <span class="practice-name" data-edit="what-we-do.practice-name.4">{{what-we-do.practice-name.4}}</span>
       <span class="practice-plus" aria-hidden="true"></span>
     </button>
     <div class="practice-panel">
       <div class="practice-panel-inner">
-        <div class="practice-media"><img src="{{what-we-do.img.4.src}}" alt="{{what-we-do.img.4.alt}}" loading="lazy" data-edit="practices.items.academic-engagement.image" data-edit-src="what-we-do.img.4.src" data-edit-alt="what-we-do.img.4.alt"></div>
+        <div class="practice-media"><img src="{{what-we-do.img.4.src}}" alt="{{what-we-do.img.4.alt}}" loading="lazy" data-edit-src="what-we-do.img.4.src" data-edit-alt="what-we-do.img.4.alt"></div>
         <div class="practice-copy">
           <p class="practice-sub" data-edit="what-we-do.practice-sub.2">{{what-we-do.practice-sub.2}}</p>
-          <p class="practice-desc" data-edit="practices.items.academic-engagement.description">{{what-we-do.practice-desc.4}}</p>
-          <button class="practice-more" data-open-service="academic-engagement" data-edit="practices.items.academic-engagement.moreLabel">{{what-we-do.practice-more.4}}</button>
+          <p class="practice-desc" data-edit="what-we-do.practice-desc.4">{{what-we-do.practice-desc.4}}</p>
+          <button class="practice-more" data-open-service="academic-engagement" data-edit="what-we-do.practice-more.4">{{what-we-do.practice-more.4}}</button>
         </div>
       </div>
     </div>
@@ -162,8 +162,8 @@
 <section class="projects" id="projects">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title" data-edit="projects.heading">{{projects.sec-title.0}}</h2>
-      <a class="projects-view-all" href="#/projects" data-route="projects" data-edit="projects.viewAllLabel">{{projects.projects-view-all.0}}</a>
+      <h2 class="sec-title" data-edit="projects.sec-title.0">{{projects.sec-title.0}}</h2>
+      <a class="projects-view-all" href="#/projects" data-route="projects" data-edit="projects.projects-view-all.0">{{projects.projects-view-all.0}}</a>
     </div>
     <div class="plate-grid">{{#each projects.plates}}
   <article class="plate" data-reveal data-item="projects.plates.{{@i}}">

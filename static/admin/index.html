@@ -10,71 +10,75 @@
 
   It is the site, not a copy of it: the real published page loads in a frame
   and this page draws editing on top. Every element the build generated from a
-  content file carries a data-edit attribute naming that field, which is what
-  lets a click on a paragraph become a change to a line in a YAML file.
+  content file carries the field it came from, which is what lets a click on a
+  paragraph become a change to a line in a YAML file.
 
-  Nothing here knows the design. It reads data-edit and nothing else, so a
-  change to the layout cannot break it, and it can never let anyone move an
-  element somewhere the design did not put it.
-
-  Saving posts to SAVE_URL: on a laptop that is the dev server writing files
-  directly; in production it is a service that checks who is asking and
-  commits to the repository. Identical payloads either way.
+  Nothing here knows the design. It reads data-edit, data-edit-src,
+  data-edit-alt and data-item, and nothing else -- no class names, no layout
+  -- so a change to the site cannot break it, and it cannot put anything
+  anywhere the design did not already put it.
 -->
 <style>
   :root{
-    --ink:#2A1F08; --paper:#F3EFE6; --line:rgba(42,31,8,.16);
-    /* The site's clay is #B4703A. Cream on it measures 3.44:1, which is under
-       the 4.5:1 needed for text this size -- fine as an accent on the site,
-       not fine on the two buttons in here you most need to read. This darker
-       clay measures 5.2:1 and still reads as the same colour. The site's own
-       buttons are untouched; this is a tool, and legibility wins. */
+    --ink:#2A1F08; --paper:#F3EFE6; --bg:#E9E5D9; --line:rgba(42,31,8,.18);
     --clay:#B4703A; --clay-solid:#8F5628; --good:#3F7A4F; --bad:#B23A34;
     --ui:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{margin:0;font-family:var(--ui);color:var(--ink);background:#E9E5D9;
+  body{margin:0;font-family:var(--ui);color:var(--ink);background:var(--bg);
     display:flex;flex-direction:column;overflow:hidden}
 
   /* ---------- toolbar ---------- */
-  .bar{display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;
-    background:var(--ink);color:var(--paper);flex:none;box-shadow:0 2px 14px rgba(20,15,4,.3);z-index:2}
-  .bar h1{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 .5rem 0 0;opacity:.85}
-  select,.btn{font:inherit;font-size:.82rem;border-radius:3px;border:1px solid rgba(243,239,230,.28);
-    background:rgba(243,239,230,.08);color:var(--paper);padding:.4rem .7rem;cursor:pointer}
-  select{padding-right:1.5rem}
-  .btn:hover:not(:disabled){background:rgba(243,239,230,.2)}
+  .bar{display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem;
+    background:var(--ink);color:var(--paper);flex:none;z-index:3;flex-wrap:wrap}
+  .bar-label{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+  select,.btn{font:inherit;font-size:.82rem;border-radius:4px;
+    border:1px solid rgba(243,239,230,.3);background:rgba(243,239,230,.1);
+    color:var(--paper);padding:.42rem .7rem;cursor:pointer}
+  /* the page picker: dark options, not the browser's grey-on-white default,
+     which was unreadable */
+  select{max-width:min(22rem,42vw)}
+  select option{background:#241B06;color:#F3EFE6}
+  .btn:hover:not(:disabled){background:rgba(243,239,230,.22)}
   .btn:disabled{opacity:.4;cursor:not-allowed}
   .btn-primary{background:var(--clay-solid);border-color:var(--clay-solid);font-weight:700}
   .btn-primary:hover:not(:disabled){background:#7A4820}
   .spacer{flex:1}
-  .count{font-size:.78rem;opacity:.8;min-width:7.5rem}
-  .status{font-size:.78rem;padding:.25rem .6rem;border-radius:2px;display:none}
+  .count{font-size:.78rem;opacity:.85}
+  .status{font-size:.78rem;padding:.25rem .6rem;border-radius:3px;display:none}
   .status.show{display:inline-block}
   .status.ok{background:var(--good);color:#fff}
   .status.err{background:var(--bad);color:#fff}
-  .status.busy{background:rgba(243,239,230,.18)}
+  .status.busy{background:rgba(243,239,230,.2)}
 
   /* ---------- the site ---------- */
   .stage{flex:1;position:relative;min-height:0}
   iframe{width:100%;height:100%;border:0;background:var(--paper);display:block}
 
-  .hint{position:absolute;left:0;right:0;bottom:0;padding:.45rem .9rem;
-    background:rgba(42,31,8,.86);color:var(--paper);font-size:.74rem;letter-spacing:.02em}
+  /* ---------- what am I pressing ---------- */
+  .peek{position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;
+    background:rgba(36,27,6,.94);color:var(--paper);
+    padding:.5rem .85rem;font-size:.78rem;line-height:1.35;
+    display:flex;gap:.75rem;align-items:baseline;flex-wrap:wrap}
+  .peek b{font-weight:700;letter-spacing:.02em}
+  .peek code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;
+    background:rgba(243,239,230,.14);padding:.1rem .35rem;border-radius:3px}
+  .peek .hint{opacity:.72}
 
   /* ---------- the changes drawer ---------- */
-  .drawer{position:absolute;top:0;right:0;bottom:0;width:min(400px,86vw);
+  .drawer{position:absolute;top:0;right:0;bottom:0;width:min(400px,88vw);z-index:4;
     background:var(--paper);border-left:1px solid var(--line);
-    transform:translateX(100%);transition:transform .22s ease;overflow:auto;padding:1rem}
+    transform:translateX(100%);transition:transform .2s ease;overflow:auto;padding:1rem}
   .drawer.open{transform:none}
-  .drawer h2{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .8rem;opacity:.7}
-  .chg{border-top:1px solid var(--line);padding:.6rem 0;font-size:.8rem}
-  .chg code{font-size:.7rem;opacity:.65;display:block;margin-bottom:.25rem;word-break:break-all}
+  .drawer h2{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .8rem;opacity:.7}
+  .chg{border-top:1px solid var(--line);padding:.6rem 0;font-size:.82rem}
+  .chg code{font-size:.68rem;opacity:.7;display:block;margin-bottom:.25rem;word-break:break-all}
   .chg .was{text-decoration:line-through;opacity:.5}
-  .chg .now{color:var(--clay)}
-  .chg button{float:right;font-size:.7rem;background:none;border:0;color:var(--bad);cursor:pointer;text-decoration:underline}
-  .empty{opacity:.6;font-size:.82rem}
+  .chg .now{color:var(--clay-solid)}
+  .chg button{float:right;font-size:.72rem;background:none;border:0;color:var(--bad);
+    cursor:pointer;text-decoration:underline}
+  .empty{opacity:.65;font-size:.84rem}
 
   /* ---------- sign in ---------- */
   .gate{position:fixed;inset:0;z-index:10;background:var(--ink);color:var(--paper);
@@ -82,15 +86,15 @@
   .gate.hide{display:none}
   .gate form{width:min(360px,100%)}
   .gate h2{font-size:1.5rem;margin:0 0 .3rem;font-weight:700}
-  .gate p{font-size:.85rem;opacity:.7;margin:0 0 1.6rem;line-height:1.5}
+  .gate p{font-size:.85rem;opacity:.75;margin:0 0 1.6rem;line-height:1.5}
   .gate label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-    opacity:.75;margin:0 0 .35rem}
+    opacity:.8;margin:0 0 .35rem}
   .gate input{width:100%;font:inherit;font-size:.95rem;padding:.6rem .7rem;margin:0 0 1rem;
-    border-radius:3px;border:1px solid rgba(243,239,230,.3);
-    background:rgba(243,239,230,.08);color:var(--paper)}
+    border-radius:4px;border:1px solid rgba(243,239,230,.32);
+    background:rgba(243,239,230,.1);color:var(--paper)}
   .gate input:focus{outline:2px solid var(--clay);outline-offset:1px}
   .gate .btn-primary{width:100%;padding:.65rem;font-size:.9rem}
-  .gate .err{background:var(--bad);color:#fff;padding:.5rem .7rem;border-radius:3px;
+  .gate .err{background:var(--bad);color:#fff;padding:.5rem .7rem;border-radius:4px;
     font-size:.82rem;margin:0 0 1rem;display:none}
   .gate .err.show{display:block}
 </style>
@@ -111,7 +115,7 @@
 </div>
 
 <div class="bar">
-  <h1>Edit</h1>
+  <span class="bar-label">Page</span>
   <select id="page" aria-label="Page to edit"></select>
   <button class="btn" id="undo" disabled>Undo</button>
   <button class="btn" id="review" disabled>Changes</button>
@@ -124,7 +128,11 @@
 
 <div class="stage">
   <iframe id="site" title="The site"></iframe>
-  <div class="hint" id="hint">Click any text to edit it. Click a photograph to replace it.</div>
+  <div class="peek" id="peek">
+    <b id="peek-what">Loading the page…</b>
+    <span class="hint" id="peek-hint"></span>
+    <code id="peek-path" hidden></code>
+  </div>
   <aside class="drawer" id="drawer" aria-label="Unsaved changes">
     <h2>Unsaved changes</h2>
     <div id="changes"><p class="empty">Nothing changed yet.</p></div>
@@ -135,66 +143,56 @@
 (function () {
   'use strict';
 
-  /* WHERE SAVES GO, and whether a password is needed.
-     On a laptop the dev server writes the files itself and there is nothing
-     to sign in to. Anywhere else, saving means committing to the repository,
-     which means proving who you are first. */
   var LOCAL = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
   var SERVICE = 'https://bhuvan-admin.hechcreates.deno.net';
   var SAVE_URL = LOCAL ? location.origin + '/__save' : SERVICE + '/save';
   var LOGIN_URL = SERVICE + '/login';
-
-  /* The session token lives in sessionStorage: gone when the tab closes, and
-     never in localStorage where it would outlive the visit. */
   var token = LOCAL ? 'local' : (sessionStorage.getItem('bhuvan-token') || '');
 
-  /* The pages that are generated from content files, and the content file
-     each one belongs to. Anything not listed is not editable yet. */
   var PAGES = [
-    { label: 'Home',            url: '../',                                            scope: 'home' },
-    { label: 'About',           url: '../about/',                                      scope: 'about' },
-    { label: 'Visual Journey',  url: '../visual-journey/',                             scope: 'journey' },
+    { label: 'Home', url: '../', scope: 'home' },
+    { label: 'About', url: '../about/', scope: 'about' },
+    { label: 'Visual Journey', url: '../visual-journey/', scope: 'journey' },
+    { label: 'Projects (the index page)', url: '../projects/', scope: 'projects' },
+    { label: 'Testimonials', url: '../testimonials/', scope: 'testimonials' },
+    { label: 'FAQ', url: '../faq/', scope: 'faq' },
+    { label: 'Contact', url: '../contact/', scope: 'contact' },
     { label: 'Project — Bandipur (Junglescapes)', url: '../projects/hydro-ecological-restoration-bandipur/', scope: 'projects/bandipur-tiger-reserve' },
     { label: 'Project — Bandipur (Rewilding Earth)', url: '../projects/wildlife-habitat-restoration-bandipur/', scope: 'projects/ecological-restoration' },
-    { label: 'Project — Mysuru Rail Museum', url: '../projects/mysuru-rail-museum/',   scope: 'projects/mysuru-rail-museum' },
+    { label: 'Project — Mysuru Rail Museum', url: '../projects/mysuru-rail-museum/', scope: 'projects/mysuru-rail-museum' },
     { label: 'Project — Nilgiris tea estate', url: '../projects/tea-estate-watershed-nilgiris/', scope: 'projects/nilgiris-biosphere-reserve' },
     { label: "Project — Chairman's Bungalow", url: '../projects/chairmans-bungalow-nilgiris/', scope: 'projects/chairmans-bungalow' },
     { label: 'Project — Karavulapalli farm', url: '../projects/regenerative-farm-karavulapalli/', scope: 'projects/karavulapalli-farm' },
     { label: 'Project — Context-Responsive Design', url: '../projects/context-responsive-design/', scope: 'projects/context-responsive-design' }
   ];
 
-  var el = {
-    page: document.getElementById('page'),
-    site: document.getElementById('site'),
-    save: document.getElementById('save'),
-    discard: document.getElementById('discard'),
-    undo: document.getElementById('undo'),
-    review: document.getElementById('review'),
-    drawer: document.getElementById('drawer'),
-    changes: document.getElementById('changes'),
-    count: document.getElementById('count'),
-    status: document.getElementById('status'),
-    hint: document.getElementById('hint')
-  };
+  var el = {};
+  ['page', 'site', 'save', 'discard', 'undo', 'review', 'drawer', 'changes', 'count',
+   'status', 'peek', 'peek-what', 'peek-hint', 'peek-path'].forEach(function (id) {
+    el[id.replace(/-(\w)/g, function (m, c) { return c.toUpperCase(); })] = document.getElementById(id);
+  });
 
-  /* every pending change, keyed "scope:path" so editing the same thing twice
-     replaces rather than stacks */
-  var pending = {};
-  var order = [];
-  var images = {};
+  var pending = {}, order = [], images = {};
+  var scope = '';
 
-  function key(scope, path) { return scope + ':' + path; }
+  function key(s, p) { return s + ':' + p; }
 
-  function record(scope, path, was, now, image) {
-    var k = key(scope, path);
-    if (!(k in pending)) order.push(k);
-    if (was === now) { delete pending[k]; order = order.filter(function (x) { return x !== k; }); }
-    else pending[k] = { scope: scope, path: path, was: was, now: now, image: image || null };
+  function record(s, p, was, now, image) {
+    var k = key(s, p);
+    if (order.indexOf(k) < 0) order.push(k);
+    if (was === now && !image) {
+      delete pending[k];
+      order = order.filter(function (x) { return x !== k; });
+    } else {
+      pending[k] = { scope: s, path: p, was: was, now: now, image: image || null };
+    }
     paint();
   }
 
+  function liveCount() { return order.filter(function (k) { return pending[k]; }).length; }
+
   function paint() {
-    var n = order.filter(function (k) { return pending[k]; }).length;
+    var n = liveCount();
     el.count.textContent = n ? (n + (n === 1 ? ' change' : ' changes')) : '';
     el.save.disabled = el.discard.disabled = el.review.disabled = el.undo.disabled = !n;
 
@@ -210,154 +208,347 @@
       b.onclick = function () { revert(k); };
       d.appendChild(b);
       var code = document.createElement('code');
-      code.textContent = c.scope + ' → ' + c.path;
+      code.textContent = c.path;
       d.appendChild(code);
       var was = document.createElement('div');
       was.className = 'was';
-      was.textContent = String(c.was).replace(/<[^>]*>/g, '').slice(0, 120) || '(empty)';
+      was.textContent = plain(c.was) || '(empty)';
       var now = document.createElement('div');
       now.className = 'now';
-      now.textContent = c.image ? ('new photograph: ' + c.image.filename)
-        : (String(c.now).replace(/<[^>]*>/g, '').slice(0, 120) || '(empty)');
+      now.textContent = c.image ? ('new photograph: ' + c.image.filename) : (plain(c.now) || '(empty)');
       d.appendChild(was); d.appendChild(now);
       el.changes.appendChild(d);
     });
   }
 
+  function plain(v) { return String(v == null ? '' : v).replace(/<[^>]*>/g, '').trim().slice(0, 140); }
+
   function revert(k) {
     var c = pending[k];
     if (!c) return;
-    var doc = el.site.contentDocument;
-    var node = doc && doc.querySelector('[data-edit="' + cssEscape(c.path) + '"]');
-    if (node) {
-      if (c.image) { /* image reverts on reload */ }
-      else if (node.tagName === 'IMG') node.setAttribute('alt', c.was);
-      else node.innerHTML = c.was;
-    }
     delete pending[k];
     order = order.filter(function (x) { return x !== k; });
     if (c.image) delete images[c.image.id];
     paint();
-    if (c.image) el.site.contentWindow.location.reload();
+    reload();               // simplest honest undo: show what is actually stored
   }
-
-  function cssEscape(s) { return s.replace(/"/g, '\\"'); }
 
   function setStatus(text, kind) {
     el.status.textContent = text;
     el.status.className = 'status show ' + (kind || 'busy');
-    if (kind === 'ok') setTimeout(function () { el.status.className = 'status'; }, 4000);
+    if (kind === 'ok') setTimeout(function () { el.status.className = 'status'; }, 5000);
   }
 
-  /* ---------- the editing layer, injected into the site ---------- */
+  /* ---------- naming things, so you can see what you are pressing ----------
+     A field path like "philo.philo-body-p.1" is accurate but not friendly.
+     This turns it into "Who we are — paragraph 2". */
+  var WORDS = {
+    'p': 'paragraph', 'h1': 'heading', 'h2': 'heading', 'h3': 'heading',
+    'sec-title': 'section heading', 'proj-title': 'project title',
+    'proj-sub': 'project subtitle', 'plate-title': 'card title',
+    'plate-sub': 'card subtitle', 'pi-title': 'card title', 'pi-sub': 'card subtitle',
+    'lead-name': 'name', 'lead-role': 'role', 'member-name': 'name', 'member-role': 'role',
+    'tq-name': 'name', 'tq-role': 'role', 'tq-lede': 'testimonial',
+    'faq-q': 'question', 'faq-a': 'answer', 'vj-title': 'category name',
+    'about-statement': 'statement', 'hero-statement': 'headline', 'hero-lede': 'standfirst',
+    'meaning-text': 'the Sanskrit line', 'label': 'small label', 'about-cap': 'caption',
+    'practice-name': 'practice name', 'practice-desc': 'practice description',
+    'body': 'paragraph', 'caption': 'caption', 'alt': 'description for screen readers',
+    'image': 'photograph', 'src': 'photograph', 'file': 'photograph', 'title': 'title'
+  };
+
+  function friendly(path) {
+    var parts = String(path).split('.');
+    var words = [];
+    parts.forEach(function (part) {
+      if (/^\d+$/.test(part)) { words.push('#' + (Number(part) + 1)); return; }
+      words.push(WORDS[part] || part.replace(/-/g, ' '));
+    });
+    /* "philo paragraph #2" reads better than the raw path and still says
+       exactly which one */
+    return words.join(' ');
+  }
+
+  function describe(node) {
+    if (!node) return null;
+    if (node.hasAttribute('data-edit-src')) {
+      return { what: 'Photograph', hint: 'Click to replace it. Drag onto another photograph to swap them.',
+               path: node.getAttribute('data-edit-src') };
+    }
+    if (node.hasAttribute('data-edit')) {
+      var p = node.getAttribute('data-edit');
+      return { what: capitalise(friendly(p)), hint: 'Click to edit. Enter saves, Escape cancels.', path: p };
+    }
+    return null;
+  }
+
+  function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function peek(info) {
+    if (!info) {
+      var n = liveCount();
+      el.peekWhat.textContent = countEditable() + ' things you can change on this page';
+      el.peekHint.textContent = n ? (n + ' unsaved — press Publish when you are ready') :
+        'Hover anything to see what it is. Photographs can be dragged to swap.';
+      el.peekPath.hidden = true;
+      return;
+    }
+    el.peekWhat.textContent = info.what;
+    el.peekHint.textContent = info.hint;
+    el.peekPath.textContent = info.path;
+    el.peekPath.hidden = false;
+  }
+
+  function countEditable() {
+    var d = el.site.contentDocument;
+    return d ? d.querySelectorAll('[data-edit],[data-edit-src]').length : 0;
+  }
+
+  /* ---------- the editing layer ---------- */
   function attach() {
     var doc = el.site.contentDocument;
     if (!doc) return;
-    var scope = el.page.options[el.page.selectedIndex].dataset.scope;
+    scope = el.page.options[el.page.selectedIndex].dataset.scope;
 
     var style = doc.createElement('style');
     style.textContent =
-      '[data-edit]{outline:1px dashed rgba(180,112,58,.55);outline-offset:2px;cursor:text;transition:outline-color .15s}' +
-      '[data-edit]:hover{outline:2px solid #B4703A}' +
-      'img[data-edit]{cursor:zoom-in}' +
-      '[data-edit][contenteditable="true"]{outline:2px solid #B4703A;background:rgba(180,112,58,.08)}' +
-      '[data-edit].edited{outline:2px solid #3F7A4F}';
+      '[data-edit],[data-edit-src]{outline:1px dashed rgba(180,112,58,.5);outline-offset:2px;' +
+        'transition:outline-color .12s}' +
+      '[data-edit]{cursor:text}' +
+      '[data-edit-src]{cursor:grab}' +
+      '[data-edit]:hover,[data-edit-src]:hover{outline:2px solid #B4703A}' +
+      '[contenteditable="true"]{outline:2px solid #B4703A !important;background:rgba(180,112,58,.1)}' +
+      '.bhv-edited{outline:2px solid #3F7A4F !important}' +
+      '.bhv-drag{opacity:.4}' +
+      '.bhv-target{outline:3px solid #3F7A4F !important;outline-offset:3px}' +
+      '[data-item]{position:relative}' +
+      '.bhv-tools{position:absolute;top:2px;left:2px;z-index:9;display:flex;gap:2px;' +
+        'background:#241B06;border-radius:4px;padding:2px;opacity:0;transition:opacity .12s}' +
+      '[data-item]:hover .bhv-tools{opacity:1}' +
+      '.bhv-tools button{font:600 12px/1 system-ui;color:#F3EFE6;background:transparent;' +
+        'border:0;padding:4px 7px;cursor:pointer;border-radius:3px}' +
+      '.bhv-tools button:hover{background:#8F5628}';
     doc.head.appendChild(style);
 
-    var fields = doc.querySelectorAll('[data-edit]');
-    el.hint.textContent = fields.length + ' editable things on this page. '
-      + 'Click text to change it, click a photograph to replace it. Nothing is live until you press Publish.';
+    doc.querySelectorAll('[data-edit]').forEach(wireText);
+    doc.querySelectorAll('[data-edit-src]').forEach(wireImage);
+    doc.querySelectorAll('[data-item]').forEach(wireItem);
 
-    Array.prototype.forEach.call(fields, function (node) {
-      var path = node.getAttribute('data-edit');
-
-      if (node.tagName === 'IMG') {
-        node.addEventListener('click', function (e) {
-          e.preventDefault(); e.stopPropagation();
-          pickImage(node, scope, path);
-        });
-        return;
-      }
-
-      node.addEventListener('click', function (e) {
-        if (node.getAttribute('contenteditable') === 'true') return;
-        e.preventDefault(); e.stopPropagation();
-        node.dataset.was = node.innerHTML;
-        node.setAttribute('contenteditable', 'true');
-        node.focus();
-      });
-
-      node.addEventListener('blur', function () {
-        if (node.getAttribute('contenteditable') !== 'true') return;
-        node.removeAttribute('contenteditable');
-        var was = node.dataset.was;
-        var now = node.innerHTML.trim();
-        if (now !== was) node.classList.add('edited');
-        record(scope, path, was, now);
-      });
-
-      /* Enter commits, Escape abandons -- a heading is not a paragraph and
-         a stray line break inside one would be invisible until it shipped */
-      node.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); node.blur(); }
-        if (e.key === 'Escape') { node.innerHTML = node.dataset.was; node.blur(); }
-      });
-    });
-
-    /* clicking a link inside the editor would navigate away from the page
-       being edited; the page selector is how you move around */
+    /* links would navigate away from the page being edited */
     doc.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href]');
-      if (a) e.preventDefault();
+      if (a && !a.hasAttribute('data-edit')) e.preventDefault();
     }, true);
+
+    doc.addEventListener('mouseover', function (e) {
+      var n = e.target.closest && e.target.closest('[data-edit],[data-edit-src]');
+      peek(describe(n));
+    });
+    doc.addEventListener('mouseleave', function () { peek(null); });
+
+    peek(null);
   }
 
-  /* ---------- replacing a photograph ---------- */
+  function wireText(node) {
+    var path = node.getAttribute('data-edit');
+    node.addEventListener('click', function (e) {
+      if (node.getAttribute('contenteditable') === 'true') return;
+      e.preventDefault(); e.stopPropagation();
+      node.dataset.bhvWas = node.innerHTML;
+      node.setAttribute('contenteditable', 'true');
+      node.focus();
+      peek(describe(node));
+    });
+    node.addEventListener('blur', function () {
+      if (node.getAttribute('contenteditable') !== 'true') return;
+      node.removeAttribute('contenteditable');
+      var was = node.dataset.bhvWas, now = node.innerHTML.trim();
+      if (now !== was) node.classList.add('bhv-edited');
+      record(scope, path, was, now);
+    });
+    node.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); node.blur(); }
+      if (e.key === 'Escape') { node.innerHTML = node.dataset.bhvWas; node.blur(); }
+    });
+  }
+
+  /* ---------- photographs: replace, or drag one onto another to swap ------- */
+  var dragging = null;
+
+  function wireImage(img) {
+    img.setAttribute('draggable', 'true');
+
+    img.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      pickImage(img);
+    });
+
+    img.addEventListener('dragstart', function (e) {
+      dragging = img;
+      img.classList.add('bhv-drag');
+      e.dataTransfer.effectAllowed = 'move';
+      try { e.dataTransfer.setData('text/plain', img.getAttribute('data-edit-src')); } catch (err) {}
+    });
+    img.addEventListener('dragend', function () {
+      img.classList.remove('bhv-drag');
+      var d = el.site.contentDocument;
+      if (d) d.querySelectorAll('.bhv-target').forEach(function (n) { n.classList.remove('bhv-target'); });
+      dragging = null;
+    });
+    img.addEventListener('dragover', function (e) {
+      if (!dragging || dragging === img) return;
+      e.preventDefault();
+      img.classList.add('bhv-target');
+    });
+    img.addEventListener('dragleave', function () { img.classList.remove('bhv-target'); });
+    img.addEventListener('drop', function (e) {
+      e.preventDefault();
+      img.classList.remove('bhv-target');
+      if (!dragging || dragging === img) return;
+      swap(dragging, img);
+    });
+  }
+
+  /* Swapping writes each photograph's filename into the other's field, so two
+     changes are recorded and either can be undone on its own. */
+  function swap(a, b) {
+    var pa = a.getAttribute('data-edit-src'), pb = b.getAttribute('data-edit-src');
+    var fa = fileOf(a), fb = fileOf(b);
+    if (!pa || !pb || fa === fb) return;
+
+    record(scope, pa, fa, fb);
+    record(scope, pb, fb, fa);
+
+    /* the description belongs to the photograph, so it travels with it */
+    var aa = a.getAttribute('data-edit-alt'), ab = b.getAttribute('data-edit-alt');
+    if (aa && ab) {
+      var ta = a.getAttribute('alt') || '', tb = b.getAttribute('alt') || '';
+      record(scope, aa, ta, tb);
+      record(scope, ab, tb, ta);
+      a.setAttribute('alt', tb); b.setAttribute('alt', ta);
+    }
+
+    var tmp = a.getAttribute('src');
+    a.setAttribute('src', b.getAttribute('src'));
+    b.setAttribute('src', tmp);
+    a.classList.add('bhv-edited'); b.classList.add('bhv-edited');
+    setStatus('swapped — press Publish to keep it', 'ok');
+  }
+
+  /* the value stored in the content file, which is the path without the ../
+     the build adds for pages below the root */
+  function fileOf(img) {
+    return (img.getAttribute('src') || '').replace(/^(\.\.\/)+/, '');
+  }
+
   var picker = document.createElement('input');
   picker.type = 'file';
   picker.accept = 'image/*';
 
-  function pickImage(node, scope, path) {
+  function pickImage(node) {
+    var path = node.getAttribute('data-edit-src');
     picker.value = '';
     picker.onchange = function () {
       var file = picker.files && picker.files[0];
       if (!file) return;
       setStatus('preparing photograph…');
       toWebp(file, function (out) {
-        var current = node.getAttribute('src').replace(/^(\.\.\/)+/, '');
-        var dir = current.slice(0, current.lastIndexOf('/'));
+        var current = fileOf(node);
+        var dir = current.slice(0, current.lastIndexOf('/')) || 'images';
         var base = file.name.replace(/\.[^.]+$/, '').toLowerCase()
           .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'photograph';
         var name = base + '-' + Date.now().toString(36) + '.webp';
-        var id = dir + '/' + name;
-
-        images[id] = { dir: dir, filename: name, base64: out.base64 };
+        images[dir + '/' + name] = { dir: dir, filename: name, base64: out.base64 };
         node.src = out.dataUrl;
-        node.classList.add('edited');
-        record(scope, path + '.image', current.split('/').pop(), name,
-          { id: id, filename: name });
+        node.classList.add('bhv-edited');
+        record(scope, path, current, dir + '/' + name, { id: dir + '/' + name, filename: name });
         setStatus('photograph ready — press Publish', 'ok');
       });
     };
     picker.click();
   }
 
-  /* Resized and converted in the browser, so a 6 MB phone photograph does
-     not become a 6 MB file in the repository. 2000px is larger than any
-     place the site displays one. */
+  /* Resized and converted in the browser, so a 6 MB phone photograph does not
+     become a 6 MB file in the repository. */
   function toWebp(file, done) {
     var img = new Image();
     img.onload = function () {
-      var max = 2000;
-      var w = img.naturalWidth, h = img.naturalHeight;
+      var max = 2000, w = img.naturalWidth, h = img.naturalHeight;
       if (w > max || h > max) { var s = Math.min(max / w, max / h); w = Math.round(w * s); h = Math.round(h * s); }
       var c = document.createElement('canvas');
       c.width = w; c.height = h;
       c.getContext('2d').drawImage(img, 0, 0, w, h);
       var dataUrl = c.toDataURL('image/webp', 0.82);
-      done({ dataUrl: dataUrl, base64: dataUrl.split(',')[1], width: w, height: h });
+      done({ dataUrl: dataUrl, base64: dataUrl.split(',')[1] });
     };
     img.src = URL.createObjectURL(file);
+  }
+
+  /* ---------- items in a list: move and remove ----------
+     Only lists declare data-item, because only a list can be reordered
+     without inventing a layout the design does not have. */
+  function wireItem(node) {
+    var doc = el.site.contentDocument;
+    var tools = doc.createElement('div');
+    tools.className = 'bhv-tools';
+    tools.setAttribute('contenteditable', 'false');
+
+    [['←', -1, 'Move earlier'], ['→', 1, 'Move later']].forEach(function (spec) {
+      var b = doc.createElement('button');
+      b.type = 'button'; b.textContent = spec[0]; b.title = spec[2];
+      b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); move(node, spec[1]); };
+      tools.appendChild(b);
+    });
+    node.appendChild(tools);
+  }
+
+  /* Reordering is expressed as a set of field changes -- item A takes item
+     B's values and the other way round -- so it travels through exactly the
+     same save path as editing a word, and needs nothing new on the server. */
+  function move(node, delta) {
+    var siblings = Array.prototype.filter.call(
+      node.parentNode.children, function (n) { return n.hasAttribute && n.hasAttribute('data-item'); });
+    var i = siblings.indexOf(node);
+    var j = i + delta;
+    if (i < 0 || j < 0 || j >= siblings.length) return;
+
+    var other = siblings[j];
+    var pa = node.getAttribute('data-item'), pb = other.getAttribute('data-item');
+
+    /* every field of the two items trades places */
+    var fieldsA = fieldsOf(node, pa), fieldsB = fieldsOf(other, pb);
+    var names = Object.keys(fieldsA).filter(function (k) { return k in fieldsB; });
+    if (!names.length) return;
+    names.forEach(function (name) {
+      record(scope, pa + '.' + name, fieldsA[name], fieldsB[name]);
+      record(scope, pb + '.' + name, fieldsB[name], fieldsA[name]);
+    });
+
+    /* show it immediately by moving the element */
+    if (delta < 0) other.parentNode.insertBefore(node, other);
+    else other.parentNode.insertBefore(other, node);
+    node.classList.add('bhv-edited');
+    setStatus('moved — press Publish to keep it', 'ok');
+  }
+
+  /* Every field of an item, including an image's alt text. Leaving alt out
+     meant a reorder moved the photographs but not their descriptions, so a
+     logo ended up showing one company and telling a screen reader another. */
+  function fieldsOf(item, base) {
+    var out = {};
+    var under = function (p) { return p && p.indexOf(base + '.') === 0; };
+
+    item.querySelectorAll('[data-edit],[data-edit-src],[data-edit-alt]').forEach(function (n) {
+      var src = n.getAttribute('data-edit-src');
+      if (under(src)) out[src.slice(base.length + 1)] = fileOf(n);
+
+      var alt = n.getAttribute('data-edit-alt');
+      if (under(alt)) out[alt.slice(base.length + 1)] = n.getAttribute('alt') || '';
+
+      var text = n.getAttribute('data-edit');
+      if (under(text)) out[text.slice(base.length + 1)] = n.innerHTML.trim();
+    });
+    return out;
   }
 
   /* ---------- saving ---------- */
@@ -374,20 +565,18 @@
     var headers = { 'Content-Type': 'application/json' };
     if (!LOCAL) headers.Authorization = 'Bearer ' + token;
 
-    fetch(SAVE_URL, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ changes: changes, images: imgs })
-    }).then(function (r) {
-      if (r.status === 401) { signOut('Your session expired. Sign in again.'); throw new Error('signed out'); }
-      return r.json().catch(function () { return { ok: false, error: 'the service sent something unreadable' }; });
-    })
+    fetch(SAVE_URL, { method: 'POST', headers: headers,
+      body: JSON.stringify({ changes: changes, images: imgs }) })
+      .then(function (r) {
+        if (r.status === 401) { signOut('Your session expired. Sign in again.'); throw new Error('signed out'); }
+        return r.json().catch(function () { return { ok: false, error: 'the service sent something unreadable' }; });
+      })
       .then(function (out) {
         if (!out.ok) throw new Error(out.error || 'refused');
         pending = {}; order = []; images = {};
         paint();
         setStatus(LOCAL ? 'published' : 'published — live in about a minute', 'ok');
-        if (LOCAL) el.site.contentWindow.location.reload();
+        if (LOCAL) reload();
       })
       .catch(function (e) {
         if (e.message === 'signed out') return;
@@ -399,8 +588,7 @@
   el.discard.onclick = function () {
     if (!confirm('Throw away every unsaved change on this page?')) return;
     pending = {}; order = []; images = {};
-    paint();
-    el.site.contentWindow.location.reload();
+    paint(); reload();
   };
 
   el.undo.onclick = function () {
@@ -408,6 +596,8 @@
   };
 
   el.review.onclick = function () { el.drawer.classList.toggle('open'); };
+
+  function reload() { el.site.contentWindow.location.reload(); }
 
   /* ---------- signing in ---------- */
   var gate = document.getElementById('gate');
@@ -424,17 +614,11 @@
   document.getElementById('signin').onsubmit = function (e) {
     e.preventDefault();
     gateErr.classList.remove('show');
-    gateGo.disabled = true;
-    gateGo.textContent = 'Signing in…';
-
-    fetch(LOGIN_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-      })
-    }).then(function (r) { return r.json().catch(function () { return { ok: false, error: 'the service is not reachable' }; }); })
+    gateGo.disabled = true; gateGo.textContent = 'Signing in…';
+    fetch(LOGIN_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: document.getElementById('email').value,
+                             password: document.getElementById('password').value }) })
+      .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'the service is not reachable' }; }); })
       .then(function (out) {
         if (!out.ok) throw new Error(out.error || 'that did not work');
         token = out.token;
@@ -442,41 +626,31 @@
         document.getElementById('password').value = '';
         gate.classList.add('hide');
       })
-      .catch(function (err) {
-        gateErr.textContent = err.message;
-        gateErr.classList.add('show');
-      })
-      .finally(function () {
-        gateGo.disabled = false;
-        gateGo.textContent = 'Sign in';
-      });
+      .catch(function (err) { gateErr.textContent = err.message; gateErr.classList.add('show'); })
+      .finally(function () { gateGo.disabled = false; gateGo.textContent = 'Sign in'; });
   };
 
   if (token) gate.classList.add('hide');
 
   /* ---------- pages ---------- */
-  PAGES.forEach(function (p, i) {
+  PAGES.forEach(function (p) {
     var o = document.createElement('option');
     o.value = p.url; o.textContent = p.label; o.dataset.scope = p.scope;
     el.page.appendChild(o);
   });
 
-  function loadPage() {
-    if (order.filter(function (k) { return pending[k]; }).length
-        && !confirm('You have unsaved changes. Leave this page and lose them?')) {
-      return;
-    }
+  el.page.onchange = function () {
+    if (liveCount() && !confirm('You have unsaved changes on this page. Leave and lose them?')) return;
     pending = {}; order = []; images = {};
     paint();
     el.site.src = el.page.value;
-  }
+  };
 
-  el.page.onchange = loadPage;
   el.site.addEventListener('load', attach);
   el.site.src = PAGES[0].url;
 
   window.addEventListener('beforeunload', function (e) {
-    if (order.filter(function (k) { return pending[k]; }).length) { e.preventDefault(); e.returnValue = ''; }
+    if (liveCount()) { e.preventDefault(); e.returnValue = ''; }
   });
 })();
 </script>
